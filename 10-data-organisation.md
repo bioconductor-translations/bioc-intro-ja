@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Data organisation with spreadsheets
+title: Organisation des données avec des feuilles de calcul
 teaching: 30
 exercises: 30
 ---
@@ -9,38 +9,38 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Learn about spreadsheets, their strengths and weaknesses.
-- How do we format data in spreadsheets for effective data use?
-- Learn about common spreadsheet errors and how to correct them.
-- Organise your data according to tidy data principles.
-- Learn about text-based spreadsheet formats such as the comma-separated (CSV) or tab-separated (TSV) formats.
+- Découvrez les feuilles de calcul, leurs forces et leurs faiblesses.
+- Comment formater les données dans des feuilles de calcul pour une utilisation efficace des données ?
+- Découvrez les erreurs courantes des feuilles de calcul et comment les corriger.
+- Organisez vos données selon des principes de données propres.
+- Découvrez les formats de feuilles de calcul textuels tels que les formats séparés par des virgules (CSV) ou par des tabulations (TSV).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to organise tabular data?
+- Comment organiser des données tabulaires ?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
-## Spreadsheet programs
+## Tableurs
 
 **Question**
 
-- What are basic principles for using spreadsheets for good data
-  organization?
+- Quels sont les principes de base d'utilisation des feuilles de calcul pour une bonne organisation des données
+   ?
 
-**Objective**
+**Objectifs**
 
-- Describe best practices for organizing data so computers can make
-  the best use of datasets.
+- Décrire les bonnes pratiques pour organiser les données afin que les ordinateurs puissent en faire
+  la meilleure utilisation.
 
-**Keypoint**
+**Point clé**
 
-- Good data organization is the foundation of any research project.
+- Une bonne organisation des données est la base de tout projet de recherche.
 
 Good data organization is the foundation of your research
 project. Most researchers have data or do data entry in
@@ -58,12 +58,12 @@ some practices for more effective data wrangling.
 
 ### What this lesson will not teach you
 
-- How to do *statistics* in a spreadsheet
-- How to do *plotting* in a spreadsheet
-- How to *write code* in spreadsheet programs
+- How to do _statistics_ in a spreadsheet
+- How to do _plotting_ in a spreadsheet
+- How to _write code_ in spreadsheet programs
 
-If you're looking to do this, a good reference is [Head First
-Excel](https://www.amazon.com/Head-First-Excel-learners-spreadsheets/dp/0596807694/),
+If you're looking to do this, a good reference is Head First
+Excel,
 published by O'Reilly.
 
 ### Why aren't we teaching data analysis in spreadsheets
@@ -108,7 +108,6 @@ ensure efficient downstream analysis.
 - Have you accidentally done something in a spreadsheet program that made you
   frustrated or sad?
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Problems with spreadsheets
@@ -118,11 +117,10 @@ use spreadsheet programs for much more than data entry. We use them
 to create data tables for publications, to generate summary
 statistics, and make figures.
 
-Generating tables for publications in a spreadsheet is not
-optimal - often, when formatting a data table for publication, we're
-reporting key summary statistics in a way that is not really meant to
-be read as data, and often involves special formatting
-(merging cells, creating borders, making it pretty). We advise you to
+Générer des tableaux pour des publications dans une feuille de calcul n'est pas
+optimal - souvent, lors du formatage d'un tableau de données, nous
+rapportons les principales statistiques récapitulatives d'une manière qui n'est pas vraiment destinée à être lue comme des données, et implique souvent un formatage spécial
+(fusion de cellules, création de bordures, préférences esthétiques pour les couleurs, etc.). We advise you to
 do this sort of operation within your document editing software.
 
 The latter two applications, generating statistics and figures, should
@@ -153,7 +151,7 @@ In this lesson we're going to talk about:
 
 **Questions**
 
-- How do we format data in spreadsheets for effective data use?
+- Comment formater les données dans des feuilles de calcul pour une utilisation efficace des données ?
 
 **Objectives**
 
@@ -171,7 +169,7 @@ In this lesson we're going to talk about:
 - Keep track of all of the steps you take to clean your data in a
   plain text file.
 
-- Organise your data according to tidy data principles.
+- Organisez vos données selon des principes de données propres.
 
 The most common mistake made is treating spreadsheet programs like lab
 notebooks, that is, relying on context, notes in the margin, spatial
@@ -227,8 +225,8 @@ Put these principles in to practice today during your exercises.
 While versioning is out of scope for this course, you can look at the
 Carpentries lesson on
 ['Git'](https://swcarpentry.github.io/git-novice/) to learn how to
-maintain **version control** over your data. See also this [blog
-post](https://lgatto.github.io/github-intro/) for a quick tutorial or
+maintain **version control** over your data. See also this blog
+post for a quick tutorial or
 @Perez-Riverol:2016 for a more research-oriented use-case.
 
 ### Structuring data in spreadsheets
@@ -294,7 +292,6 @@ used for variables** and **rows are used for observations**:
 new file (or tab) for the cleaned data, never modify your original
 (raw) data.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 After you go through this exercise, we'll discuss as a group what was
@@ -330,11 +327,10 @@ wrong with this data and how you would fix it.
 - What is the average weight of AB men?
 - How many samples have been tested in the different hospitals?
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 An **excellent reference**, in particular with regard to R scripting
-is the *Tidy Data* paper @Wickham:2014.
+is the _Tidy Data_ paper @Wickham:2014.
 
 ## Common spreadsheet errors
 
@@ -416,8 +412,8 @@ But what about workbook tabs? That seems like an easy way to organise
 data, right? Well, yes and no. When you create extra tabs, you fail to
 allow the computer to see connections in the data that are there (you
 have to introduce spreadsheet application-specific functions or
-scripting to ensure this connection). Say, for instance, you make a
-separate tab for each day you take a measurement.
+scripting to ensure this connection). Supposons, par exemple, que vous aillez créé un
+onglet séparé pour chaque jour où vous prenez une mesure.
 
 This isn't good practice for two reasons:
 
@@ -425,10 +421,7 @@ This isn't good practice for two reasons:
   data if each time you take a measurement, you start recording data
   in a new tab, and
 
-2. even if you manage to prevent all inconsistencies from creeping in,
-  you will add an extra step for yourself before you analyse the data
-  because you will have to combine these data into a single
-  datatable. You will have to explicitly tell the computer how to
+2. même si vous parvenez à empêcher toute incohérence, vous vous ajoutez une étape supplémentaire avant même d'analyser les données car vous devrez combiner ces données en une seule table de données. You will have to explicitly tell the computer how to
   combine tabs - and if the tabs are inconsistently formatted, you
   might even have to do it manually.
 
@@ -442,8 +435,8 @@ Your data sheet might get very long over the course of the
 experiment. This makes it harder to enter data if you can't see your
 headers at the top of the spreadsheet. But don't repeat your header
 row. These can easily get mixed into the data, leading to problems
-down the road. Instead you can [freeze the column
-headers](https://support.office.com/en-ca/article/Freeze-column-headings-for-easy-scrolling-57ccce0c-cf85-4725-9579-c5d13106ca6a)
+down the road. Instead you can freeze the column
+headers
 so that they remain visible even when you have a spreadsheet with many
 rows.
 
@@ -485,8 +478,8 @@ like
 before analysis. Other times different null values are used to convey
 different reasons why the data isn't there. This is important
 information to capture, but is in effect using one column to capture
-two pieces of information. Like for [using formatting to convey
-information](#formatting) it would be good here to create a new
+two pieces of information. Like for using formatting to convey
+information it would be good here to create a new
 column like 'data\_missing' and use that column to capture the
 different reasons.
 
@@ -565,15 +558,15 @@ confusion and enables others to readily interpret your fields.
 
 **Examples**
 
-| Good Name        | Good Alternative  | Avoid             |
-| ---------------- | ----------------- | ----------------- |
-| Max\_temp\_C       | MaxTemp           | Maximum Temp (°C) |
-| Precipitation\_mm | Precipitation     | precmm            |
-| Mean\_year\_growth | MeanYearGrowth    | Mean growth/year  |
-| sex              | sex               | M/F               |
-| weight           | weight            | w.                |
-| cell\_type        | CellType          | Cell Type         |
-| Observation\_01   | first\_observation | 1st Obs           |
+| Good Name                                                      | Good Alternative                         | Avoid                                |
+| -------------------------------------------------------------- | ---------------------------------------- | ------------------------------------ |
+| Max\_temp\_C       | MaxTemp                                  | Maximum Temp (°C) |
+| Precipitation\_mm                        | Precipitation                            | precmm                               |
+| Mean\_year\_growth | MeanYearGrowth                           | Mean growth/year                     |
+| sex                                                            | sex                                      | M/F                                  |
+| weight                                                         | weight                                   | w.                   |
+| cell\_type                               | CellType                                 | Cell Type                            |
+| Observation\_01                          | first\_observation | 1st Obs                              |
 
 ### Using special characters in data {#special}
 
@@ -637,9 +630,9 @@ the files and folders in a project.
 
 (Text on metadata adapted from the online course Research Data
 [MANTRA](https://datalib.edina.ac.uk/mantra) by EDINA and Data Library,
-University of Edinburgh. MANTRA is licensed under a [Creative Commons
+University of Edinburgh. MANTRA is licensed under a Creative Commons
 Attribution 4.0 International
-License](https://creativecommons.org/licenses/by/4.0/).)
+License.)
 
 ## Exporting data
 
@@ -790,10 +783,10 @@ working with TSV files. TSV files can be exported from spreadsheet
 programs in the same way as CSV files.
 
 [^decsep]: This is particularly relevant in European
-countries where the comma is used as a decimal
-separator. In such cases, the default value separator in a
-csv file will be the semi-colon (;), or values will be
-systematically quoted.
+    countries where the comma is used as a decimal
+    separator. In such cases, the default value separator in a
+    csv file will be the semi-colon (;), or values will be
+    systematically quoted.
 
 If you are working with an already existing dataset in which the data
 values are not included in "" but which have commas as both delimiters
@@ -832,6 +825,6 @@ without having to look at it and/or fix it.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Good data organization is the foundation of any research project.
+- Une bonne organisation des données est la base de tout projet de recherche.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

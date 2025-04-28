@@ -11,7 +11,7 @@ exercises: 60
 
 - Define the following terms as they relate to R: object, assign, call, function, arguments, options.
 - Assign values to objects in R.
-- Learn how to *name* objects
+- Learn how to _name_ objects
 - Use comments to inform script.
 - Solve simple arithmetic operations in R.
 - Call functions and use arguments to change their default options.
@@ -27,8 +27,8 @@ exercises: 60
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
 ## Creating objects in R
 
@@ -51,8 +51,8 @@ You can get output from R simply by typing math in the console:
 [1] 1.714286
 ```
 
-However, to do useful and interesting things, we need to assign *values* to
-*objects*. To create an object, we need to give it a name followed by the
+However, to do useful and interesting things, we need to assign _values_ to
+_objects_. To create an object, we need to give it a name followed by the
 assignment operator `<-`, and the value we want to give it:
 
 
@@ -70,8 +70,7 @@ in syntax, it is good practice to always use `<-` for assignments.
 
 In RStudio, typing <kbd>Alt</kbd> + <kbd>\-</kbd> (push <kbd>Alt</kbd>
 at the same time as the <kbd>\-</kbd> key) will write `<-` in a single
-keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>\-</kbd> (push
-<kbd>Option</kbd> at the same time as the <kbd>\-</kbd> key) does the
+keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>\-</kbd> (push <kbd>Option</kbd> at the same time as the <kbd>\-</kbd> key) does the
 same in a Mac.
 
 ### Naming variables
@@ -97,9 +96,9 @@ your code (where you put spaces, how you name objects, etc.). Using a
 consistent coding style makes your code clearer to read for your
 future self and your collaborators. In R, some popular style guides
 are [Google's](https://google.github.io/styleguide/Rguide.xml), the
-[tidyverse's](https://style.tidyverse.org/) style and the [Bioconductor
+[tidyverse's](https://style.tidyverse.org/) style and the Bioconductor
 style
-guide](https://bioconductor.org/developers/how-to/coding-style/). The
+guide. The
 tidyverse's is very comprehensive and may seem overwhelming at
 first. You can install the
 [**`lintr`**](https://github.com/jimhester/lintr) package to
@@ -181,7 +180,6 @@ weight_kg <- 100
 What do you think is the current content of the object `weight_lb`?
 126\.5 or 220?
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Comments
@@ -218,12 +216,12 @@ mass_index <- mass/age  # mass_index?
 
 Functions are "canned scripts" that automate more complicated sets of commands
 including operations assignments, etc. Many functions are predefined, or can be
-made available by importing R *packages* (more on that later). A function
-usually gets one or more inputs called *arguments*. Functions often (but not
-always) return a *value*. A typical example would be the function `sqrt()`. The
+made available by importing R _packages_ (more on that later). A function
+usually gets one or more inputs called _arguments_. Functions often (but not
+always) return a _value_. A typical example would be the function `sqrt()`. The
 input (the argument) must be a number, and the return value (in fact, the
 output) is the square root of that number. Executing a function ('running it')
-is called *calling* the function. An example of a function call is:
+is called _calling_ the function. An example of a function call is:
 
 
 ``` r
@@ -241,8 +239,8 @@ even a dataset. We'll see that when we read data files into R.
 Arguments can be anything, not only numbers or filenames, but also other
 objects. Exactly what each argument means differs per function, and must be
 looked up in the documentation (see below). Some functions take arguments which
-may either be specified by the user, or, if left out, take on a *default* value:
-these are called *options*. Options are typically used to alter the way the
+may either be specified by the user, or, if left out, take on a _default_ value:
+these are called _options_. Options are typically used to alter the way the
 function operates, such as whether it ignores 'bad values', or what symbol to
 use in a plot.  However, if you want something specific, you can specify a value
 of your choice which will be used instead of the default.
@@ -475,8 +473,6 @@ these types in a single vector?
 
 R implicitly converts them to all be the same type
 
-
-
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -580,10 +576,8 @@ Why do you think it happens?
 ## Solution
 
 Vectors can be of only one data type. R tries to convert (coerce)
-the content of this vector to find a *common denominator* that
+the content of this vector to find a _common denominator_ that
 doesn't lose any information.
-
-
 
 :::::::::::::::::::::::::
 
@@ -630,7 +624,7 @@ combined_logical
 ## Challenge:
 
 In R, we call converting objects from one class into another class
-*coercion*. These conversions happen according to a hierarchy,
+_coercion_. These conversions happen according to a hierarchy,
 whereby some types get preferentially coerced into other types. Can
 you draw a diagram that represents the hierarchy of how these data
 types are coerced?
@@ -640,8 +634,6 @@ types are coerced?
 ## Solution
 
 logical → numeric → character ← logical
-
-
 
 :::::::::::::::::::::::::
 
@@ -842,10 +834,8 @@ Can you figure out why `"four" > "five"` returns `TRUE`?
 ```
 
 When using `>` or `<` on strings, R compares their alphabetical order.
-Here `"four"` comes after `"five"`, and therefore is *greater than*
+Here `"four"` comes after `"five"`, and therefore is _greater than_
 it.
-
-
 
 :::::::::::::::::::::::::
 
@@ -1372,8 +1362,8 @@ sample(1:10)
 
 The last function we are going to see is `rnorm`, that draws a random
 sample from a normal distribution. Two normal distributions of means 0
-and 100 and standard deviations 1 and 5, noted *N(0, 1)* and
-*N(100, 5)*, are shown below.
+and 100 and standard deviations 1 and 5, noted _N(0, 1)_ and
+_N(100, 5)_, are shown below.
 
 <div class="figure" style="text-align: center">
 <img src="fig/23-starting-with-r-rendered-unnamed-chunk-61-1.png" alt="Two normal distributions: *N(0, 1)* on the left and *N(100, 5)* on the right."  />

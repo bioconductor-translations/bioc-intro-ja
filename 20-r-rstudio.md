@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: R and RStudio
+title: R et RStudio
 teaching: 30
 exercises: 0
 ---
@@ -22,14 +22,14 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
 ## What is R? What is RStudio?
 
 The term [R](https://www.r-project.org/) is used to refer to the
-*programming language*, the *environment for statistical computing*
-and *the software* that interprets the scripts written using it.
+_programming language_, the _environment for statistical computing_
+and _the software_ that interprets the scripts written using it.
 
 [RStudio](https://rstudio.com) is currently a very popular way to not
 only write your R scripts but also to interact with the R
@@ -37,12 +37,12 @@ software[^plainr]. To function correctly, RStudio needs R and
 therefore both need to be installed on your computer.
 
 [^plainr]: As opposed to using R directly from the command line
-console. There exist other software that interface and integrate
-with R, but RStudio is particularly well suited for beginners
-while providing numerous very advanced features.
+    console. There exist other software that interface and integrate
+    with R, but RStudio is particularly well suited for beginners
+    while providing numerous very advanced features.
 
-The [RStudio IDE Cheat
-Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+The RStudio IDE Cheat
+Sheet
 provides much more information than will be covered here, but can be
 useful to learn keyboard shortcuts and discover new features.
 
@@ -91,7 +91,7 @@ R has packages for image analysis, GIS, time series, population
 genetics, and a lot more.
 
 [^whatarepkgs]: i.e. add-ons that confer R with new functionality,
-such as bioinformatics data analysis.
+    such as bioinformatics data analysis.
 
 <div class="figure" style="text-align: center">
 <img src="fig/cran.png" alt="Exponential increase of the number of packages available on [CRAN](https://cran.r-project.org/), the Comprehensive R Archive Network. From the R Journal, Volume 10/2, December 2018."  />
@@ -120,9 +120,9 @@ your data.
 ### R has a large and welcoming community
 
 Thousands of people use R daily. Many of them are willing to help you
-through mailing lists and websites such as [Stack
-Overflow](https://stackoverflow.com/), or on the [RStudio
-community](https://community.rstudio.com/). These broad user communities
+through mailing lists and websites such as Stack
+Overflow, or on the RStudio
+community. These broad user communities
 extend to specialised areas such as bioinformatics. One such subset of the R community is [Bioconductor](https://bioconductor.org/), a scientific project for analysis and comprehension "of data from current and emerging biological assays." This workshop was developed by members of the Bioconductor community; for more information on Bioconductor, please see the companion workshop ["The Bioconductor Project"](https://carpentries-incubator.github.io/bioc-project/).
 
 ### Not only is R free, but it is also open-source and cross-platform
@@ -137,8 +137,8 @@ Let's start by learning about [RStudio](https://www.rstudio.com/),
 which is an Integrated Development Environment (IDE) for working with
 R.
 
-The RStudio IDE open-source product is free under the [Affero General
-Public License (AGPL) v3](https://www.gnu.org/licenses/agpl-3.0.en.html).
+The RStudio IDE open-source product is free under the Affero General
+Public License (AGPL) v3.
 The RStudio IDE is also available with a commercial license and
 priority email support from Posit, Inc.
 
@@ -208,8 +208,8 @@ for 'Save workspace to .RData' on exit.
 <p class="caption">Set 'Save workspace to .RData on exit' to 'Never'</p>
 </div>
 
-To avoid [character encoding issues between Windows and other operating
-systems](https://yihui.name/en/2018/11/biggest-regret-knitr/), we are
+To avoid character encoding issues between Windows and other operating
+systems, we are
 going to set UTF-8 by default:
 
 <div class="figure" style="text-align: center">
@@ -228,7 +228,7 @@ create directories (folders) for **scripts**, **data**, and **documents**.
   datasets you may create for the need of a particular analysis. For
   the sake of transparency and
   [provenance](https://en.wikipedia.org/wiki/Provenance), you should
-  *always* keep a copy of your raw data accessible and do as much of
+  _always_ keep a copy of your raw data accessible and do as much of
   your data cleanup and preprocessing programmatically (i.e., with
   scripts, rather than manually) as possible. Separating raw data
   from processed data is also a good idea. For example, you could
@@ -264,7 +264,6 @@ create a folder named `data` within your newly created working directory
 your R console.) Repeat these operations to create a `data_output/` and a
 `fig_output` folders.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We are going to keep the script in the root of our working directory
@@ -283,7 +282,7 @@ of course[^bioindatascience]. William Noble (@Noble:2009) proposes the
 following directory structure:
 
 [^bioindatascience]: In this course, we consider bioinformatics as
-data science applied to biological or bio-medical data.
+    data science applied to biological or bio-medical data.
 
 > Directory names are in large typeface, and filenames are in smaller
 > typeface. Only a subset of the files are shown here. Note that the
@@ -315,8 +314,8 @@ project[^futureself] to
   analysis parameters.
 
 [^futureself]: That someone could be, and very likely will be your
-future self, a couple of months or years after the analyses were
-run.
+    future self, a couple of months or years after the analyses were
+    run.
 
 ### The working directory
 
@@ -359,10 +358,10 @@ If we were in the `data` directory, we would use the relative path
 
 The basis of programming is that we write down instructions for the
 computer to follow, and then we tell the computer to follow those
-instructions. We write, or *code*, instructions in R because it is a
+instructions. We write, or _code_, instructions in R because it is a
 common language that both the computer and we can understand. We call
-the instructions *commands* and we tell the computer to follow the
-instructions by *executing* (also called *running*) those commands.
+the instructions _commands_ and we tell the computer to follow the
+instructions by _executing_ (also called _running_) those commands.
 
 There are two main ways of interacting with R: by using the
 **console** or by using **scripts** (plain text files that contain
@@ -378,7 +377,7 @@ to type the commands we want in the script editor, and save the
 script. This way, there is a complete record of what we did, and
 anyone (including our future selves!) can easily replicate the
 results on their computer. Note, however, that merely typing the commands
-in the script does not automatically *run* them - they still need to
+in the script does not automatically _run_ them - they still need to
 be sent to the console for execution.
 
 RStudio allows you to execute commands directly from the script editor
@@ -386,9 +385,9 @@ by using the `Ctrl` + `Enter` shortcut (on Macs, `Cmd` + `Return` will
 work, too). The command on the current line in the script (indicated
 by the cursor) or all of the commands in the currently selected text
 will be sent to the console and executed when you press `Ctrl` +
-`Enter`. You can find other keyboard shortcuts in this [RStudio
+`Enter`. You can find other keyboard shortcuts in this RStudio
 cheatsheet about the RStudio
-IDE](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf).
+IDE.
 
 At some point in your analysis you may want to check the content of a
 variable or the structure of an object, without necessarily keeping a
@@ -427,8 +426,8 @@ people make their code available online, modifying existing code to
 suit your purpose might make it easier for you to get started.
 
 [^inthiscoure]: We will introduce most of these (except statistics)
-here, but will only manage to scratch the surface of the wealth of
-what is possible to do with R.
+    here, but will only manage to scratch the surface of the wealth of
+    what is possible to do with R.
 
 <img src="fig/kitten-try-things.jpg" width="400px" style="display: block; margin: auto;" />
 
@@ -521,16 +520,16 @@ about the difference in meaning. The key point is that it can make
 things confusing for people trying to help you. Be as precise as
 possible when describing your problem.
 
-If possible, try to reduce what doesn't work to a simple *reproducible
-example*. If you can reproduce the problem using a very small data
+If possible, try to reduce what doesn't work to a simple _reproducible
+example_. If you can reproduce the problem using a very small data
 frame instead of your 50000 rows and 10000 columns one, provide the
 small one with the description of your problem. When appropriate, try
 to generalise what you are doing so even people who are not in your
 field can understand the question. For instance instead of using a
 subset of your real dataset, create a small (3 columns, 5 rows)
 generic one. For more information on how to write a reproducible
-example see [this article by Hadley
-Wickham](https://adv-r.had.co.nz/Reproducibility.html).
+example see this article by Hadley
+Wickham.
 
 To share an object with someone else, if it's relatively small, you
 can use the function `dput()`. It will output R code that can be used
@@ -606,9 +605,15 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] BiocManager_1.30.25 compiler_4.5.0      tools_4.5.0        
-[4] yaml_2.3.10         knitr_1.50          xfun_0.51          
-[7] renv_1.1.4          evaluate_1.0.3     
+ [1] assertthat_0.2.1       R6_2.6.1               xfun_0.51             
+ [4] magrittr_2.0.3         glue_1.8.0             knitr_1.50            
+ [7] sandpaper_0.16.12.9000 lifecycle_1.0.4        xml2_1.3.8            
+[10] ps_1.9.1               cli_3.6.5              processx_3.8.6        
+[13] callr_3.7.6            vctrs_0.6.5            renv_1.1.4            
+[16] withr_3.0.2            compiler_4.5.0         purrr_1.0.4           
+[19] tools_4.5.0            tinkr_0.2.0.9002       evaluate_1.0.3        
+[22] yaml_2.3.10            BiocManager_1.30.25    pegboard_0.7.9        
+[25] rlang_1.1.6           
 ```
 
 ### Where to ask for help?
@@ -621,10 +626,10 @@ loaded via a namespace (and not attached):
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/r): if
   your question hasn't been answered before and is well crafted,
   chances are you will get an answer in less than 5 min. Remember to
-  follow their guidelines on [how to ask a good
-  question](https://stackoverflow.com/help/how-to-ask).
-- The [R-help mailing
-  list](https://stat.ethz.ch/mailman/listinfo/r-help): it is read by a
+  follow their guidelines on how to ask a good
+  question.
+- The R-help mailing
+  list: it is read by a
   lot of people (including most of the R core team), a lot of people
   post to it, but the tone can be pretty dry, and it is not always
   very welcoming to new users. If your question is valid, you are
@@ -649,20 +654,20 @@ loaded via a namespace (and not attached):
 - The [Posting Guide](https://www.r-project.org/posting-guide.html) for
   the R mailing lists.
 
-- [How to ask for R
-  help](https://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html)
+- How to ask for R
+  help
   useful guidelines.
 
-- [This blog post by Jon
-  Skeet](https://codeblog.jonskeet.uk/2010/08/29/writing-the-perfect-question/)
+- This blog post by Jon
+  Skeet
   has quite comprehensive advice on how to ask programming questions.
 
 - The [reprex](https://cran.rstudio.com/web/packages/reprex/) package
   is very helpful to create reproducible examples when asking for
   help. The rOpenSci community call "How to ask questions so they get
-  answered" ([Github
-  link](https://github.com/ropensci/commcalls/issues/14) and [video
-  recording](https://vimeo.com/208749032)) includes a presentation of
+  answered" (Github
+  link and video
+  recording) includes a presentation of
   the reprex package and of its philosophy.
 
 ## R packages
@@ -681,8 +686,8 @@ library("ggplot2")
 
 ### Installing packages
 
-The default package repository is The *Comprehensive R Archive
-Network* (CRAN), and any package that is available on CRAN can be
+The default package repository is The _Comprehensive R Archive
+Network_ (CRAN), and any package that is available on CRAN can be
 installed with the `install.packages()` function. Below, for example,
 we install the `dplyr` package that we will learn about later.
 

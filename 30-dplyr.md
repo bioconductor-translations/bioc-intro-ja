@@ -11,9 +11,9 @@ exercises: 75
 
 - Describe the purpose of the **`dplyr`** and **`tidyr`** packages.
 - Describe several of their functions that are extremely useful to
-  manipulate data.
+ manipulate data.
 - Describe the concept of a wide and a long table format, and see
-  how to reshape a data frame from one format to the other one.
+ how to reshape a data frame from one format to the other one.
 - Demonstrate how to join tables.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -26,8 +26,8 @@ exercises: 75
 
 
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
 ## Data manipulation using **`dplyr`** and **`tidyr`**
 
@@ -43,27 +43,26 @@ it on your machine, and then you should import it in every subsequent
 R session when you need it.
 
 - The package **`dplyr`** provides powerful tools for data manipulation tasks.
-  It is built to work directly with data frames, with many manipulation tasks
-  optimised.
+ It is built to work directly with data frames, with many manipulation tasks
+ optimised.
 
 - As we will see latter on, sometimes we want a data frame to be reshaped to be able
-  to do some specific analyses or for visualisation. The package **`tidyr`** addresses
-  this common problem of reshaping data and provides tools for manipulating
-  data in a tidy way.
+ to do some specific analyses or for visualisation. The package **`tidyr`** addresses
+ this common problem of reshaping data and provides tools for manipulating
+ data in a tidy way.
 
 To learn more about **`dplyr`** and **`tidyr`** after the workshop,
-you may want to check out this [handy data transformation with
-**`dplyr`**
-cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
-and this [one about
-**`tidyr`**](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf).
+you may want to check out this handy data transformation with
+
+and this one about
+.
 
 - The **`tidyverse`** package is an "umbrella-package" that installs
-  several useful packages for data analysis which work well together,
-  such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
-  These packages help us to work and interact with the data.
-  They allow us to do many things with your data, such as subsetting, transforming,
-  visualising, etc.
+ several useful packages for data analysis which work well together,
+ such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
+ These packages help us to work and interact with the data.
+ They allow us to do many things with your data, such as subsetting, transforming,
+ visualising, etc.
 
 If you did the set up, you should have already installed the tidyverse package.
 Check to see if you have it by trying to load in from the library:
@@ -83,7 +82,6 @@ BiocManager::install("tidyverse")
 ```
 
 If you had to install the **`tidyverse`** package, do not forget to load it in this R session by using the `library()` command above!
-
 
 ## Loading data with tidyverse
 
@@ -127,11 +125,11 @@ previously. The data structure is very similar to a data frame. For our purposes
 the only differences are that:
 
 1. It displays the data type of each column under its name.
-  Note that \<`dbl`\> is a data type defined to hold numeric values with
-  decimal points.
+ Note that \<`dbl`\> is a data type defined to hold numeric values with
+ decimal points.
 
 2. It only prints the first few rows of data and only as many columns as fit on
-  one screen.
+ one screen.
 
 We are now going to learn some of the most common **`dplyr`** functions:
 
@@ -170,7 +168,7 @@ select(rna, gene, sample, tissue, expression)
 # ℹ 32,418 more rows
 ```
 
-To select all columns *except* certain ones, put a "-" in front of
+To select all columns _except_ certain ones, put a "-" in front of
 the variable to exclude it.
 
 
@@ -312,7 +310,7 @@ filter(genes, is.na(hsapiens_homolog_associated_gene_name))
 
 If we want to keep only mouse genes that have a human homolog, we can
 insert a "!" symbol that negates the result, so we're asking for
-every row where hsapiens\_homolog\_associated\_gene\_name *is not* an
+every row where hsapiens\_homolog\_associated\_gene\_name _is not_ an
 `NA`.
 
 
@@ -402,7 +400,7 @@ rna3
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then selecting).
 
-The last option, *pipes*, are a recent addition to R. Pipes let you take
+The last option, _pipes_, are a recent addition to R. Pipes let you take
 the output of one function and send it directly to the next, which is useful
 when you need to do many things to the same dataset.
 
@@ -447,8 +445,8 @@ rna |>
 ```
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we took the data frame `rna`, *then* we `filter`ed
-for rows with `sex == "Male"`, *then* we `select`ed columns `gene`, `sample`,
+in the above example, we took the data frame `rna`, _then_ we `filter`ed
+for rows with `sex == "Male"`, _then_ we `select`ed columns `gene`, `sample`,
 `tissue`, and `expression`.
 
 The **`dplyr`** functions by themselves are somewhat simple, but by
@@ -635,7 +633,7 @@ rna |>
 ## Split-apply-combine data analysis
 
 Many data analysis tasks can be approached using the
-*split-apply-combine* paradigm: split the data into groups, apply some
+_split-apply-combine_ paradigm: split the data into groups, apply some
 analysis to each group, and then combine the results. **`dplyr`**
 makes this very easy through the use of the `group_by()` function.
 
@@ -904,8 +902,8 @@ rna |>
 ```
 
 The previous example shows the use of `count()` to count the number of rows/observations
-for *one* factor (i.e., `infection`).
-If we wanted to count a *combination of factors*, such as `infection` and `time`,
+for _one_ factor (i.e., `infection`).
+If we wanted to count a _combination of factors_, such as `infection` and `time`,
 we would specify the first and the second factor as the arguments of `count()`:
 
 
@@ -1244,9 +1242,9 @@ rna_exp
 
 1. the data to be transformed;
 2. the `names_from` : the column whose values will become new column
-  names;
+ names;
 3. the `values_from`: the column whose values will fill the new
-  columns.
+ columns.
 
 <div class="figure" style="text-align: center">
 <img src="fig/pivot_wider.png" alt="Wide pivot of the `rna` data."  />
@@ -1360,11 +1358,11 @@ associated with the column names.
 
 1. the data to be transformed;
 2. the `names_to`: the new column name we wish to create and populate with the
-  current column names;
+ current column names;
 3. the `values_to`: the new column name we wish to create and populate with
-  current values;
+ current values;
 4. the names of the columns to be used to populate the `names_to` and
-  `values_to` variables (or to drop).
+ `values_to` variables (or to drop).
 
 <div class="figure" style="text-align: center">
 <img src="fig/pivot_longer.png" alt="Long pivot of the `rna` data."  />
@@ -1806,7 +1804,7 @@ rna |>
 # ℹ 1,464 more rows
 ```
 
-To select the timepoint 4, we would have to quote the column name, with backticks "\`"
+To select the timepoint 4, we would have to quote the column name, with backticks "\\`"
 
 
 ``` r
@@ -1992,10 +1990,10 @@ to all the tables.
 The `dplyr` package provides a set of join functions for combining two
 data frames based on matches within specified columns. Here, we
 provide a short introduction to joins. For further reading, please
-refer to the chapter about [table
-joins](https://uclouvain-cbio.github.io/WSBIM1207/sec-join.html). The
-[Data Transformation Cheat
-Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+refer to the chapter about table
+joins. The
+Data Transformation Cheat
+Sheet
 also provides a short overview on table joins.
 
 We are going to illustrate join using a small table, `rna_mini` that
@@ -2155,7 +2153,7 @@ Download the `annot3` table by clicking
 [here](https://carpentries-incubator.github.io/bioc-intro/data/annot3.csv)
 and put the table in your data/ repository.  Using the `full_join()`
 function, join tables `rna_mini` and `annot3`. What has happened for
-genes *Klk6*, *mt-Tf*, *mt-Rnr1*, *mt-Tv*, *mt-Rnr2*, and *mt-Tl1* ?
+genes _Klk6_, _mt-Tf_, _mt-Rnr1_, _mt-Tv_, _mt-Rnr2_, and _mt-Tl1_ ?
 
 :::::::::::::::  solution
 
@@ -2188,8 +2186,8 @@ full_join(rna_mini, annot3)
 15 mt-Tl1  <NA>               NA mitochondrially encoded tRNA leucine 1 [Source…
 ```
 
-Genes *Klk6* is only present in `rna_mini`, while genes *mt-Tf*, *mt-Rnr1*, *mt-Tv*,
-*mt-Rnr2*, and *mt-Tl1* are only present in `annot3` table. Their respective values for the
+Genes _Klk6_ is only present in `rna_mini`, while genes _mt-Tf_, _mt-Rnr1_, _mt-Tv_,
+_mt-Rnr2_, and _mt-Tl1_ are only present in `annot3` table. Their respective values for the
 variables of the table have been encoded as missing.
 
 :::::::::::::::::::::::::

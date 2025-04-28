@@ -26,15 +26,14 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
 ## Presentation of the gene expression data
 
-We are going to use part of the data published by [Blackmore *et al.*
-(2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/), *The
+We are going to use part of the data published by Blackmore , _The
 effect of upper-respiratory infection on transcriptomic changes in the
-CNS*. The goal of the study was to determine the effect of an
+CNS_. The goal of the study was to determine the effect of an
 upper-respiratory infection on changes in RNA transcription occurring
 in the cerebellum and spinal cord post infection. Gender matched eight
 week old C57BL/6 mice were inoculated with saline or with Influenza A by
@@ -46,19 +45,19 @@ The dataset is stored as a comma-separated values (CSV) file.  Each row
 holds information for a single RNA expression measurement, and the first eleven
 columns represent:
 
-| Column     | Description                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------- |
-| gene       | The name of the gene that was measured                                                       |
-| sample     | The name of the sample the gene expression was measured in                                   |
-| expression | The value of the gene expression                                                             |
-| organism   | The organism/species - here all data stem from mice                                          |
-| age        | The age of the mouse (all mice were 8 weeks here)                                            |
-| sex        | The sex of the mouse                                                                         |
+| Column     | Description                                                                                                                                  |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| gene       | The name of the gene that was measured                                                                                                       |
+| sample     | The name of the sample the gene expression was measured in                                                                                   |
+| expression | The value of the gene expression                                                                                                             |
+| organism   | The organism/species - here all data stem from mice                                                                                          |
+| age        | The age of the mouse (all mice were 8 weeks here)                                                                         |
+| sex        | The sex of the mouse                                                                                                                         |
 | infection  | The infection state of the mouse, i.e. infected with Influenza A or not infected.            |
-| strain     | The Influenza A strain.                                                                      |
-| time       | The duration of the infection (in days).                                                     |
+| strain     | The Influenza A strain.                                                                                                      |
+| time       | The duration of the infection (in days).                                                                  |
 | tissue     | The tissue that was used for the gene expression experiment, i.e. cerebellum or spinal cord. |
-| mouse      | The mouse unique identifier.                                                                 |
+| mouse      | The mouse unique identifier.                                                                                                 |
 
 We are going to use the R function `download.file()` to download the
 CSV file that contains the gene expression data, and we will use
@@ -183,7 +182,7 @@ FALSE.
 
 ## What are data frames?
 
-Data frames are the *de facto* data structure for most tabular data,
+Data frames are the _de facto_ data structure for most tabular data,
 and what we use for statistics and plotting.
 
 A data frame can be created by hand, but most commonly they are
@@ -397,7 +396,7 @@ actually treated as integer vectors by R. So you need to be very
 careful when treating them as strings.
 
 Once created, factors can only contain a pre-defined set of values,
-known as *levels*. By default, R always sorts levels in alphabetical
+known as _levels_. By default, R always sorts levels in alphabetical
 order. For instance, if you have a factor with 2 levels:
 
 
@@ -676,8 +675,8 @@ you import in R are of the correct type within your data frame. If not, use it
 to your advantage to detect mistakes that might have been introduced during data
 entry (a letter in a column that should only contain numbers for instance).
 
-Learn more in this [RStudio
-tutorial](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio)
+Learn more in this RStudio
+tutorial
 
 ## Matrices
 
@@ -802,14 +801,14 @@ as YEAR and DAY-OF-YEAR in separate columns.
 Spreadsheet programs such as LibreOffice, Microsoft Excel, OpenOffice,
 Gnumeric, ... have different (and often incompatible) ways of encoding
 dates (even for the same program between versions and operating
-systems). Additionally, Excel can [turn things that aren't dates into
-dates](https://nsaunders.wordpress.com/2012/10/22/gene-name-errors-and-excel-lessons-not-learned/)
+systems). Additionally, Excel can turn things that aren't dates into
+dates
 (@Zeeberg:2004), for example names or identifiers like MAR1, DEC1,
 OCT4. So if you're avoiding the date format overall, it's easier to
 identify these issues.
 
-The [Dates as
-data](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
+The Dates as
+data
 section of the Data Carpentry lesson provides additional insights
 about pitfalls of dates with spreadsheets.
 

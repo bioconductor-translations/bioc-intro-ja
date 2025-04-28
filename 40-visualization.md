@@ -25,8 +25,8 @@ exercises: 60
 
 
 
-> This episode is based on the Data Carpentries's *Data Analysis and
-> Visualisation in R for Ecologists* lesson.
+> Cet épisode est basé sur la leçon _Analyse des données et
+> Visualisation dans R pour les écologistes_ de Data Carpentries.
 
 ## Data Visualization
 
@@ -46,8 +46,8 @@ lesson.
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-The [Data Visualization Cheat
-Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+The Data Visualization Cheat
+Sheet
 will cover the basics and more advanced features of `ggplot2` and will
 help, in addition to serve as a reminder, getting an overview of the
 many data representations available in the package. The following video
@@ -61,7 +61,7 @@ are also very instructive.
 plots from data in a data frame. It provides a more programmatic
 interface for specifying what variables to plot, how they are displayed,
 and general visual properties. The theoretical foundation that supports
-the `ggplot2` is the *Grammar of Graphics* (@Wilkinson:2005). Using this
+the `ggplot2` is the _Grammar of Graphics_ (@Wilkinson:2005). Using this
 approach, we only need minimal changes if the underlying data change or
 if we decide to change from a bar plot to a scatterplot. This helps in
 creating publication quality plots with minimal amounts of adjustments
@@ -82,9 +82,9 @@ customization of plots.
 
 > The idea behind the Grammar of Graphics it is that you can build every
 > graph from the same 3 components: (1) a data set, (2) a coordinate system,
-> and (3) geoms — i.e. visual marks that represent data points [^three\_comp\_ggplot2]
+> and (3) geoms — i.e. visual marks that represent data points \[^three\\_comp\\_ggplot2]
 
-[^three\_comp\_ggplot2]: Source: [Data Visualization Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
+[^three_comp_ggplot2]: Source: [Data Visualization Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
 To build a ggplot, we will use the following basic template that can be
 used for different types of plots:
@@ -94,7 +94,7 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
 
 - use the `ggplot()` function and bind the plot to a specific **data
-  frame** using the `data` argument
+ frame** using the `data` argument
 
 
 ``` r
@@ -102,9 +102,9 @@ ggplot(data = rna)
 ```
 
 - define a **mapping** (using the aesthetic (`aes`) function), by
-  selecting the variables to be plotted and specifying how to present
-  them in the graph, e.g. as x/y positions or characteristics such as
-  size, shape, color, etc.
+ selecting the variables to be plotted and specifying how to present
+ them in the graph, e.g. as x/y positions or characteristics such as
+ size, shape, color, etc.
 
 
 ``` r
@@ -112,15 +112,13 @@ ggplot(data = rna, mapping = aes(x = expression))
 ```
 
 - add '**geoms**' - geometries, or graphical representations of the
-  data in the plot (points, lines, bars). `ggplot2` offers many
-  different geoms; we will use some common ones today, including:
+ data in the plot (points, lines, bars). `ggplot2` offers many
+ different geoms; we will use some common ones today, including:
 
-  ```
-  * `geom_point()` for scatter plots, dot plots, etc.
-  * `geom_histogram()` for histograms
-  * `geom_boxplot()` for, well, boxplots!
-  * `geom_line()` for trend lines, time series, etc.
-  ```
+   \* `geom_point()` for scatter plots, dot plots, etc.
+   \* `geom_histogram()` for histograms
+   \* `geom_boxplot()` for, well, boxplots!
+   \* `geom_line()` for trend lines, time series, etc.
 
 To add a geom(etry) to the plot use the `+` operator. Let's use
 `geom_histogram()` first:
@@ -231,8 +229,8 @@ adding/modifying other components (i.e., by incrementally adding
 commands). Try making this modification:
 
 - Represent the un-transformed expression on the log10 scale; see
-  `scale_x_log10()`. Compare it with the previous graph. Why do you
-  now have warning messages appearing?
+ `scale_x_log10()`. Compare it with the previous graph. Why do you
+ now have warning messages appearing?
 
 :::::::::::::::  solution
 
@@ -267,15 +265,15 @@ Warning: Removed 507 rows containing non-finite outside the scale range
 **Notes**
 
 - Anything you put in the `ggplot()` function can be seen by any geom
-  layers that you add (i.e., these are global plot settings). This
-  includes the x- and y-axis mapping you set up in `aes()`.
+ layers that you add (i.e., these are global plot settings). This
+ includes the x- and y-axis mapping you set up in `aes()`.
 - You can also specify mappings for a given geom independently of the
-  mappings defined globally in the `ggplot()` function.
+ mappings defined globally in the `ggplot()` function.
 - The `+` sign used to add new layers must be placed at the end of the
-  line containing the *previous* layer. If, instead, the `+` sign is
-  added at the beginning of the line containing the new layer,
-  `ggplot2` will not add the new layer and will return an error
-  message.
+ line containing the _previous_ layer. If, instead, the `+` sign is
+ added at the beginning of the line containing the new layer,
+ `ggplot2` will not add the new layer and will return an error
+ message.
 
 
 ``` r
@@ -417,13 +415,13 @@ hexagon is assigned a color based on the number of observations that
 fall within its boundaries.
 
 - To use hexagonal binning in `ggplot2`, first install the R package
-  `hexbin` from CRAN and load it.
+ `hexbin` from CRAN and load it.
 
 - Then use the `geom_hex()` function to produce the hexbin figure.
 
 - What are the relative strengths and weaknesses of a hexagonal bin
-  plot compared to a scatter plot? Examine the above scatter plot
-  and compare it with the hexagonal bin plot that you created.
+ plot compared to a scatter plot? Examine the above scatter plot
+ and compare it with the hexagonal bin plot that you created.
 
 :::::::::::::::  solution
 
@@ -551,7 +549,7 @@ ggplot(data = rna,
 Add color to the data points on your boxplot according to the duration
 of the infection (`time`).
 
-*Hint:* Check the class for `time`. Consider changing the class of
+_Hint:_ Check the class for `time`. Consider changing the class of
 `time` from integer to factor directly in the ggplot mapping. Why does
 this change how R makes the graph?
 
@@ -592,13 +590,13 @@ ggplot(data = rna,
 
 ## Challenge
 
-Boxplots are useful summaries, but hide the *shape* of the
+Boxplots are useful summaries, but hide the _shape_ of the
 distribution. For example, if the distribution is bimodal, we would
 not see it in a boxplot. An alternative to the boxplot is the violin
 plot, where the shape (of the density of points) is drawn.
 
 - Replace the box plot with a violin plot; see `geom_violin()`. Fill
-  in the violins according to the time with the argument `fill`.
+ in the violins according to the time with the argument `fill`.
 
 :::::::::::::::  solution
 
@@ -729,7 +727,7 @@ ggplot(data = mean_exp_by_time,
 
 ## Faceting
 
-`ggplot2` has a special technique called *faceting* that allows the user
+`ggplot2` has a special technique called _faceting_ that allows the user
 to split one plot into multiple (sub) plots based on a factor included
 in the dataset. These different subplots inherit the same properties
 (axes limits, ticks, ...) to facilitate their direct comparison. We will
@@ -904,8 +902,7 @@ can be useful as a starting point to create a new hand-crafted theme.
 
 The [ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
 package provides a wide variety of options (including an Excel 2003
-theme). The [`ggplot2` extensions
-website](https://exts.ggplot2.tidyverse.org/) provides a list of
+theme). The ggplot2 provides a list of
 packages that extend the capabilities of `ggplot2`, including additional
 themes.
 
@@ -914,8 +911,7 @@ themes.
 Let's come back to the faceted plot of mean expression by time and gene,
 colored by sex.
 
-Take a look at the [`ggplot2` cheat
-sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf),
+Take a look at the ggplot2,
 and think of ways you could improve the plot.
 
 Now, we can change names of axes to something more informative than
@@ -956,8 +952,7 @@ ggplot(data = mean_exp_by_time_sex,
 <img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-xfont-size-1.png" style="display: block; margin: auto;" />
 
 Note that it is also possible to change the fonts of your plots. If you
-are on Windows, you may have to install the [**`extrafont`**
-package](https://cran.r-project.org/web/packages/extrafont/index.html).
+are on Windows, you may have to install the .
 
 We can further customize the color of x- and y-axis text, the color of
 the grid, etc. We can also for example move the legend to the top by
@@ -1010,17 +1005,16 @@ ggplot(rna, aes(x = expression_log)) +
 
 With all of this information in hand, please take another five minutes
 to either improve one of the plots generated in this exercise or
-create a beautiful graph of your own. Use the RStudio [`ggplot2` cheat
-sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+create a beautiful graph of your own. Use the RStudio ggplot2
 for inspiration. Here are some ideas:
 
 - See if you can change the thickness of the lines.
 - Can you find a way to change the name of the legend? What about
-  its labels? (hint: look for a ggplot function starting with
-  `scale_`)
+ its labels? (hint: look for a ggplot function starting with
+ `scale_`)
 - Try using a different color palette or manually specifying the
-  colors for the lines (see
-  [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\(ggplot2\)/)).
+ colors for the lines (see
+ [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\\(ggplot2\\)/)).
 
 :::::::::::::::  solution
 
@@ -1238,8 +1232,8 @@ grid.arrange(count_gene_chromosome, exp_boxplot_sex, ncol = 2)
 <img src="fig/40-visualization-rendered-gridarrange-example-1.png" style="display: block; margin: auto;" />
 
 In addition to the `ncol` and `nrow` arguments, used to make simple
-arrangements, there are tools for [constructing more complex
-layouts](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
+arrangements, there are tools for constructing more complex
+layouts.
 
 ## Exporting plots
 
@@ -1287,15 +1281,15 @@ in the saved plot.
 
 ## Other packages for visualisation
 
-`ggplot2` is a very powerful package that fits very nicely in our *tidy
-data* and *tidy tools* pipeline. There are other visualization packages
+`ggplot2` is a very powerful package that fits very nicely in our _tidy
+data_ and _tidy tools_ pipeline. There are other visualization packages
 in R that shouldn't be ignored.
 
 ### Base graphics
 
-The default graphics system that comes with R, often called *base R
-graphics* is simple and fast. It is based on the *painter's or canvas
-model*, where different output are directly overlaid on top of each
+The default graphics system that comes with R, often called _base R
+graphics_ is simple and fast. It is based on the _painter's or canvas
+model_, where different output are directly overlaid on top of each
 other (see figure @ref(fig:paintermodel)). This is a fundamental
 difference with `ggplot2` (and with `lattice`, described below), that
 returns dedicated objects, that are rendered on screen or in a file, and
@@ -1320,7 +1314,7 @@ rect(5, 5, 15, 15, lwd = 3)
 </div>
 
 Another main difference is that base graphics' plotting function try to
-do *the right* thing based on their input type, i.e. they will adapt
+do _the right_ thing based on their input type, i.e. they will adapt
 their behaviour based on the class of their input. This is again very
 different from what we have in `ggplot2`, that only accepts dataframes
 as input, and that requires plots to be constructed bit by bit.
