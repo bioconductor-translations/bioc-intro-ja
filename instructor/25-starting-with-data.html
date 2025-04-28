@@ -196,7 +196,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="10-data-organisation.html">1. Data organisation with spreadsheets</a>
+        <a href="10-data-organisation.html">1. Organisation des données avec des feuilles de calcul</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -205,7 +205,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="20-r-rstudio.html">2. R and RStudio</a>
+        <a href="20-r-rstudio.html">2. R et RStudio</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -334,7 +334,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Starting with data</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-04-28 |
 
         <a href="https://github.com/carpentries-incubator/bioc-intro/edit/main/episodes/25-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -377,23 +377,23 @@
 </div>
 </div>
 <blockquote>
-<p>This episode is based on the Data Carpentries’s <em>Data Analysis and
-Visualisation in R for Ecologists</em> lesson.</p>
+<p>Cet épisode est basé sur la leçon <em>Analyse des données et
+Visualisation dans R pour les écologistes</em> de Data Carpentries.</p>
 </blockquote>
 <section><h2 class="section-heading" id="presentation-of-the-gene-expression-data">Presentation of the gene expression data<a class="anchor" aria-label="anchor" href="#presentation-of-the-gene-expression-data"></a></h2>
-<hr class="half-width"><p>We are going to use part of the data published by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/" class="external-link">Blackmore
-<em>et al.</em> (2017)</a>, <em>The effect of upper-respiratory
-infection on transcriptomic changes in the CNS</em>. The goal of the
-study was to determine the effect of an upper-respiratory infection on
-changes in RNA transcription occurring in the cerebellum and spinal cord
-post infection. Gender matched eight week old C57BL/6 mice were
-inoculated with saline or with Influenza A by intranasal route and
-transcriptomic changes in the cerebellum and spinal cord tissues were
-evaluated by RNA-seq at days 0 (non-infected), 4 and 8.</p>
+<hr class="half-width"><p>We are going to use part of the data published by Blackmore , <em>The
+effect of upper-respiratory infection on transcriptomic changes in the
+CNS</em>. The goal of the study was to determine the effect of an
+upper-respiratory infection on changes in RNA transcription occurring in
+the cerebellum and spinal cord post infection. Gender matched eight week
+old C57BL/6 mice were inoculated with saline or with Influenza A by
+intranasal route and transcriptomic changes in the cerebellum and spinal
+cord tissues were evaluated by RNA-seq at days 0 (non-infected), 4 and
+8.</p>
 <p>The dataset is stored as a comma-separated values (CSV) file. Each
 row holds information for a single RNA expression measurement, and the
 first eleven columns represent:</p>
-<table class="table"><colgroup><col width="9%"><col width="90%"></colgroup><thead><tr class="header"><th>Column</th>
+<table class="table"><colgroup><col width="6%"><col width="93%"></colgroup><thead><tr class="header"><th>Column</th>
 <th>Description</th>
 </tr></thead><tbody><tr class="odd"><td>gene</td>
 <td>The name of the gene that was measured</td>
@@ -641,7 +641,7 @@ following questions?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul><li>class: data frame</li>
 <li>how many rows: 32428, how many columns: 19</li>
@@ -734,7 +734,7 @@ the first through 6th rows of the rna dataset.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -935,7 +935,7 @@ Levels: M F</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -986,7 +986,7 @@ hesitate to experiment!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul><li>missing quotations around the names of the animals</li>
 <li>missing one entry in the “feel” column (probably for one of the
@@ -1031,7 +1031,7 @@ spreadsheets into R using <code>read.csv()</code>.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1066,8 +1066,7 @@ double check that data you import in R are of the correct type within
 your data frame. If not, use it to your advantage to detect mistakes
 that might have been introduced during data entry (a letter in a column
 that should only contain numbers for instance).</p>
-<p>Learn more in this <a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio" class="external-link">RStudio
-tutorial</a></p>
+<p>Learn more in this RStudio tutorial</p>
 </div>
 </section><section><h2 class="section-heading" id="matrices">Matrices<a class="anchor" aria-label="anchor" href="#matrices"></a></h2>
 <hr class="half-width"><p>Before proceeding, now that we have learnt about data frames, let’s
@@ -1115,7 +1114,7 @@ packages currently installed on your computer. Explore it.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Solution: </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1157,7 +1156,7 @@ data (mean 0, standard deviation 1)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1209,13 +1208,12 @@ DAY-OF-YEAR in separate columns.</p>
 <p>Spreadsheet programs such as LibreOffice, Microsoft Excel,
 OpenOffice, Gnumeric, … have different (and often incompatible) ways of
 encoding dates (even for the same program between versions and operating
-systems). Additionally, Excel can <a href="https://nsaunders.wordpress.com/2012/10/22/gene-name-errors-and-excel-lessons-not-learned/" class="external-link">turn
-things that aren’t dates into dates</a> (<span class="citation">@Zeeberg:2004</span>), for example names or identifiers
-like MAR1, DEC1, OCT4. So if you’re avoiding the date format overall,
-it’s easier to identify these issues.</p>
-<p>The <a href="https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html" class="external-link">Dates
-as data</a> section of the Data Carpentry lesson provides additional
-insights about pitfalls of dates with spreadsheets.</p>
+systems). Additionally, Excel can turn things that aren’t dates into
+dates (<span class="citation">@Zeeberg:2004</span>), for example names
+or identifiers like MAR1, DEC1, OCT4. So if you’re avoiding the date
+format overall, it’s easier to identify these issues.</p>
+<p>The Dates as data section of the Data Carpentry lesson provides
+additional insights about pitfalls of dates with spreadsheets.</p>
 <p>We are going to use the <code>ymd()</code> function from the package
 <strong><code>lubridate</code></strong> (which belongs to the
 <strong><code>tidyverse</code></strong>; learn more <a href="https://www.tidyverse.org/" class="external-link">here</a>). .
@@ -1555,7 +1553,7 @@ happens if the values and number of rows/columns don’t add up.<a href="#fnref1
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/main" class="external-link">sandpaper (0.16.12.9000)</a>, <a href="https://github.com/carpentries/pegboard/tree/main" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1566,10 +1564,10 @@ happens if the values and number of rows/columns don’t add up.<a href="#fnref1
   <script type="application/ld+json">
     {
   "@context": "https://schema.org",
-  "@type": "TrainingMaterial",
+  "@type": "LearningResource",
   "@id": "https://carpentries-incubator.github.io/bioc-intro/instructor/25-starting-with-data.html",
   "inLanguage": "en",
-  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+  "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
   "name": "Starting with data",
@@ -1577,8 +1575,8 @@ happens if the values and number of rows/columns don’t add up.<a href="#fnref1
   "url": "https://carpentries-incubator.github.io/bioc-intro/instructor/25-starting-with-data.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/instructor/25-starting-with-data.html",
   "dateCreated": "2020-09-14",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-23"
+  "dateModified": "2025-04-28",
+  "datePublished": "2025-04-28"
 }
 
   </script><script>
