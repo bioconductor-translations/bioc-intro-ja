@@ -16,7 +16,7 @@ jobs:
         uses: crowdin/github-action@v2
         with:
           base_url: 'https://bioconductor.api.crowdin.com'
-          upload_sources: true
+          upload_sources: false
           upload_translations: false
           download_translations: true
           localization_branch_name: l10n_main
