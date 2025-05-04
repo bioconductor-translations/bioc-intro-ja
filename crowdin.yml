@@ -1,8 +1,0 @@
-"preserve_hierarchy": true
-
-"files": [
-  {
-    "source": "episodes/*.md",
-    "translation": "locale/%two_letters_code%/episodes/%original_file_name%"
-  }
-]
