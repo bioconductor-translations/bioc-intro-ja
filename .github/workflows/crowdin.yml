@@ -26,8 +26,7 @@ jobs:
           pull_request_base_branch_name: 'main'
           crowdin_branch_name: main
           preserve_hierarchy: true
-          source: /CONTRIBUTING.md
-          translation: /locale/%two_letters_code%/%original_file_name%
+
         env:
           # A classic GitHub Personal Access Token with the 'repo' scope selected (the user should have write access to the repository).
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
