@@ -2,7 +2,7 @@
 
 "files": [
   {
-    "source": "episodes/*.md",
+    "source": "main/episodes/*.md",
     "translation": "locale/%two_letters_code%/episodes/%original_file_name%"
   }
 ]
