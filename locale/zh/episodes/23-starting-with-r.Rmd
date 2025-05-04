@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Introduction to R
+title: R 简介
 teaching: 60
 exercises: 60
 ---
@@ -10,98 +10,99 @@ exercises: 60
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Define the following terms as they relate to R: object, assign, call, function, arguments, options.
-- Assign values to objects in R.
-- Learn how to _name_ objects
-- Use comments to inform script.
-- Solve simple arithmetic operations in R.
-- Call functions and use arguments to change their default options.
-- Inspect the content of vectors and manipulate their content.
-- Subset and extract values from vectors.
-- Analyze vectors with missing data.
+- 定义与 R 相关的以下术语：对象、分配、调用、函数、参数、选项。
+- 为 R 中的对象分配值。
+- 学习如何命名物体
+- 使用注释来告知脚本。
+- 解决 R 中的简单算术运算。
+- 调用函数并使用参数来改变其默认选项。
+- 检查向量的内容并操作其内容。
+- 从向量中取子集并提取值。
+- 分析缺失数据的向量。
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- First commands in R
+- R 中的第一个命令
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> 本集基于 Data Carpentries 的_面向生态学家的 R 语言数据分析和
+> 可视化_课程。
 
-## Creating objects in R
+## 在 R 中创建对象
 
-You can get output from R simply by typing math in the console:
+只需在控制台中输入数学即可获得 R 的输出：
 
 ```{r, purl=TRUE}
 3 + 5
 12 / 7
 ```
 
-However, to do useful and interesting things, we need to assign _values_ to
-_objects_. To create an object, we need to give it a name followed by the
-assignment operator `<-`, and the value we want to give it:
+然而，为了做一些有用和有趣的事情，我们需要为
+_对象_分配\*值。 要创建一个对象，我们需要给它一个名字，后跟
+赋值运算符`<-`，以及我们想要赋予它的值：
 
 ```{r, purl=TRUE}
 weight_kg <- 55
 ```
 
-`<-` is the assignment operator. It assigns values on the right to
-objects on the left. So, after executing `x <- 3`, the value of `x` is
-`3`. The arrow can be read as 3 **goes into** `x`.  For historical
-reasons, you can also use `=` for assignments, but not in every
-context. Because of the
-[slight differences](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
-in syntax, it is good practice to always use `<-` for assignments.
+`<-` 是赋值运算符。 它将右侧的值分配给左侧的
+对象。 因此，执行 `x <- 3` 后，`x` 的值为
+`3`。 箭头可以读作 3 **进入** `x`。  由于历史
+原因，您也可以使用 `=` 进行赋值，但并非在每个
+上下文中都是如此。 由于语法上存在
+[细微差别](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
+，因此在赋值时始终使用 `<-` 是一种很好的做法。
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>\-</kbd> (push <kbd>Alt</kbd>
-at the same time as the <kbd>\-</kbd> key) will write `<-` in a single
-keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>\-</kbd> (push <kbd>Option</kbd> at the same time as the <kbd>\-</kbd> key) does the
-same in a Mac.
+在 RStudio 中，输入 <kbd>Alt</kbd> + <kbd>\-</kbd> （同时按下 <kbd>Alt</kbd>
+和 <kbd>\-</kbd> 键）将在 PC 上的单个
+按键中写入 `<-`，而输入 <kbd>Option</kbd> + <kbd>\-</kbd> （同时按下 <kbd>Option</kbd> 和 <kbd>\-</kbd> 键）则不会在单个
+按键中写入 `<-`。
+在 Mac 上也一样。
 
-### Naming variables
+### 命名变量
 
-Objects can be given any name such as `x`, `current_temperature`, or
-`subject_id`. You want your object names to be explicit and not too
-long. They cannot start with a number (`2x` is not valid, but `x2`
-is). R is case sensitive (e.g., `weight_kg` is different from
-`Weight_kg`). There are some names that cannot be used because they
-are the names of fundamental functions in R (e.g., `if`, `else`,
-`for`, see
-[here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
-for a complete list). In general, even if it's allowed, it's best to
+对象可以被赋予任何名称，例如“x”、“current_temperature”或
+“subject_id”。 You want your object names to be explicit and not too
+long. 它们不能以数字开头（`2x` 无效，但 `x2`
+有效）。 R 区分大小写（例如，`weight_kg` 与
+`Weight_kg` 不同）。 有些名称不能使用，因为它们
+是 R 中基本函数的名称（例如，`if`、`else`、
+`for`，请参阅
+[此处](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
+了解完整列表）。 In general, even if it's allowed, it's best to
 not use other function names (e.g., `c`, `T`, `mean`, `data`, `df`,
-`weights`). If in doubt, check the help to see if the name is already
-in use. It's also best to avoid dots (`.`) within an object name as in
-`my.dataset`. There are many functions in R with dots in their names
-for historical reasons, but because dots have a special meaning in R
-(for methods) and other programming languages, it's best to avoid
-them. It is also recommended to use nouns for object names, and verbs
-for function names. It's important to be consistent in the styling of
-your code (where you put spaces, how you name objects, etc.). Using a
-consistent coding style makes your code clearer to read for your
-future self and your collaborators. In R, some popular style guides
-are [Google's](https://google.github.io/styleguide/Rguide.xml), the
-[tidyverse's](https://style.tidyverse.org/) style and the Bioconductor
-style
-guide. The
+`weights`). 如果有疑问，请检查帮助以查看该名称是否已被
+使用。 最好避免在对象名称中使用点（“。”），如
+“my.dataset”。 由于历史原因，R 中有许多函数名称中带有点
+，但由于点在 R
+（用于方法）和其他编程语言中具有特殊含义，因此最好避免使用
+它们。 还建议使用名词作为对象名称，使用动词
+作为函数名称。 保持代码
+样式的一致性（空格的位置、对象命名方式等）非常重要。 使用
+一致的编码风格可以让您的代码更清晰地供您
+未来的自己和您的合作者阅读。 在 R 中，一些流行的风格指南
+是 [Google 的](https://google.github.io/styleguide/Rguide.xml)、
+[tidyverse 的](https://style.tidyverse.org/) 风格和 Bioconductor
+风格
+指南。 The
 tidyverse's is very comprehensive and may seem overwhelming at
-first. You can install the
-[**`lintr`**](https://github.com/jimhester/lintr) package to
-automatically check for issues in the styling of your code.
+first. 您可以安装
+[**`lintr`**](https://github.com/jimhester/lintr) 包来
+自动检查代码样式中的问题。
 
 > **Objects vs. variables**: What are known as `objects` in `R` are
 > known as `variables` in many other programming languages. Depending
 > on the context, `object` and `variable` can have drastically
 > different meanings. However, in this lesson, the two words are used
-> synonymously. For more information
-> [see here.](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
+> synonymously. 有关更多信息
+> [请参阅此处](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
-When assigning a value to an object, R does not print anything. You
-can force R to print the value by using parentheses or by typing the
-object name:
+当为一个对象分配值时，R 不会打印任何内容。 您
+可以使用括号或键入
+对象名称来强制 R 打印该值：
 
 ```{r, purl=TRUE}
 weight_kg <- 55    # doesn't print anything
@@ -109,29 +110,29 @@ weight_kg <- 55    # doesn't print anything
 weight_kg          # and so does typing the name of the object
 ```
 
-Now that R has `weight_kg` in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
+现在 R 内存中有了“weight_kg”，我们可以用它进行算术运算。 例如，对于
+来说，我们可能希望将这个重量转换为磅（磅重量是公斤重量的 2.2 倍）：
 
 ```{r, purl=TRUE}
 2.2 * weight_kg
 ```
 
-We can also change an object's value by assigning it a new one:
+我们还可以通过分配新值来更改对象的值：
 
 ```{r, purl=TRUE}
 weight_kg <- 57.5
 2.2 * weight_kg
 ```
 
-This means that assigning a value to one object does not change the values of
-other objects  For example, let's store the animal's weight in pounds in a new
-object, `weight_lb`:
+这意味着为一个对象分配一个值不会改变
+其他对象的值例如，让我们将动物的体重（磅）存储在一个新的
+对象`weight_lb`中：
 
 ```{r, purl=TRUE}
 weight_lb <- 2.2 * weight_kg
 ```
 
-and then change `weight_kg` to 100.
+然后将“weight_kg”改为100。
 
 ```{r}
 weight_kg <- 100
@@ -139,31 +140,31 @@ weight_kg <- 100
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-What do you think is the current content of the object `weight_lb`?
-126\.5 or 220?
+您认为对象“weight_lb”的当前内容是什么？
+126\.5 还是 220？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Comments
+## 评论
 
-The comment character in R is `#`, anything to the right of a `#` in a
-script will be ignored by R. It is useful to leave notes, and
-explanations in your scripts.
+R 中的注释字符是 `#`，
+脚本中 `#` 右边的任何内容都将被 R 忽略。在脚本中留下注释和
+解释很有用。
 
-RStudio makes it easy to comment or uncomment a paragraph: after
-selecting the lines you want to comment, press at the same time on
-your keyboard <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If
-you only want to comment out one line, you can put the cursor at any
-location of that line (i.e. no need to select the whole line), then
-press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
+RStudio 可以轻松注释或取消注释一个段落：在
+选择要注释的行后，同时按下键盘上
+上的 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>。 如果
+你只想注释掉一行，你可以将光标放在该行的任意
+位置（即不需要选择整行），然后
+按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-What are the values after each statement in the following?
+以下每个语句后面的值是什么？
 
 ```{r, purl=TRUE}
 mass <- 47.5            # mass?
@@ -175,49 +176,49 @@ mass_index <- mass/age  # mass_index?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Functions and their arguments
+## 函数及其参数
 
-Functions are "canned scripts" that automate more complicated sets of commands
-including operations assignments, etc. Many functions are predefined, or can be
-made available by importing R _packages_ (more on that later). A function
-usually gets one or more inputs called _arguments_. Functions often (but not
-always) return a _value_. A typical example would be the function `sqrt()`. The
-input (the argument) must be a number, and the return value (in fact, the
-output) is the square root of that number. Executing a function ('running it')
-is called _calling_ the function. An example of a function call is:
+函数是“固定脚本”，可以自动执行更复杂的命令集
+，包括操作分配等。 Many functions are predefined, or can be
+made available by importing R _packages_ (more on that later). 函数
+通常会获得一个或多个称为 _参数_ 的输入。 函数通常（但并非总是
+）返回一个 _值_。 一个典型的例子是函数“sqrt()”。
+输入（参数）必须是一个数字，返回值（实际上是
+输出）是该数字的平方根。 执行一个函数（“运行它”）
+被称为_调用_该函数。 函数调用的一个示例是：
 
 ```{r, eval=FALSE, purl=FALSE}
 b <- sqrt(a)
 ```
 
-Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
-calculates the square root, and returns the value which is then assigned to
-the object `b`. This function is very simple, because it takes just one argument.
+这里，将 `a` 的值传递给 `sqrt()` 函数，`sqrt()` 函数
+计算平方根，并返回该值，然后将该值赋值给
+对象 `b`。 这个函数非常简单，因为它只接受一个参数。
 
-The return 'value' of a function need not be numerical (like that of `sqrt()`),
-and it also does not need to be a single item: it can be a set of things, or
-even a dataset. We'll see that when we read data files into R.
+函数的返回“值”不必是数字（如 `sqrt()` 的值），
+并且它也不必是单个项：它可以是一组事物，或者
+甚至是一个数据集。 当我们将数据文件读入 R 时，我们就会看到这一点。
 
-Arguments can be anything, not only numbers or filenames, but also other
-objects. Exactly what each argument means differs per function, and must be
-looked up in the documentation (see below). Some functions take arguments which
-may either be specified by the user, or, if left out, take on a _default_ value:
-these are called _options_. Options are typically used to alter the way the
-function operates, such as whether it ignores 'bad values', or what symbol to
-use in a plot.  However, if you want something specific, you can specify a value
-of your choice which will be used instead of the default.
+参数可以是任何东西，不仅是数字或文件名，还可以是其他
+对象。 每个参数的具体含义因函数而异，必须在文档中查找
+（见下文）。 一些函数接受的参数
+可以由用户指定，或者，如果省略，则采用_默认_值：
+，这些被称为_选项_。 选项通常用于改变
+函数的运行方式，例如是否忽略“坏值”，或者
+在图中使用什么符号。  但是，如果您想要一些特定的东西，您可以指定一个您选择的值
+来代替默认值。
 
-Let's try a function that can take multiple arguments: `round()`.
+让我们尝试一个可以接受多个参数的函数：“round()”。
 
 ```{r, results="show", purl=TRUE}
 round(3.14159)
 ```
 
-Here, we've called `round()` with just one argument, `3.14159`, and it has
-returned the value `3`.  That's because the default is to round to the nearest
-whole number. If we want more digits we can see how to do that by getting
-information about the `round` function.  We can use `args(round)` or look at the
-help for this function using `?round`.
+在这里，我们仅用一个参数“3.14159”调用了“round()”，并且它
+返回了值“3”。  这是因为默认设置是四舍五入到最接近的
+整数。 如果我们想要更多的数字，我们可以通过获取有关“round”函数的
+信息来了解如何做到这一点。  我们可以使用“args(round)”或者使用“?round”查看此函数的
+帮助。
 
 ```{r, results="show", purl=TRUE}
 args(round)
@@ -227,135 +228,135 @@ args(round)
 ?round
 ```
 
-We see that if we want a different number of digits, we can
-type `digits=2` or however many we want.
+我们看到，如果我们想要不同数量的数字，我们可以
+输入“digits=2”或任意我们想要的数字。
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, digits = 2)
 ```
 
-If you provide the arguments in the exact same order as they are defined you
-don't have to name them:
+如果您按照定义参数的完全相同的顺序提供参数，则
+不必命名它们：
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, 2)
 ```
 
-And if you do name the arguments, you can switch their order:
+如果你确实命名了参数，你可以切换它们的顺序：
 
 ```{r, results="show", purl=TRUE}
 round(digits = 2, x = 3.14159)
 ```
 
-It's good practice to put the non-optional arguments (like the number you're
-rounding) first in your function call, and to specify the names of all optional
-arguments.  If you don't, someone reading your code might have to look up the
-definition of a function with unfamiliar arguments to understand what you're
-doing. By specifying the name of the arguments you are also safeguarding
-against possible future changes in the function interface, which may
-potentially add new arguments in between the existing ones.
+很好的做法是，在函数调用中将非可选参数（比如
+四舍五入的数字）放在第一位，并指定所有可选
+参数的名称。  如果你不这样做，阅读你代码的人可能必须查找具有不熟悉参数的函数的
+定义才能理解你在
+做什么。 通过指定参数的名称，您还可以保护
+免受函数接口将来可能发生的变化的影响，这些变化可能会
+在现有参数之间添加新参数。
 
-## Vectors and data types
+## 向量和数据类型
 
-A vector is the most common and basic data type in R, and is pretty much
-the workhorse of R. A vector is composed by a series of values, such as
-numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of animal weights and assign
-it to a new object `weight_g`:
+向量是 R 中最常见、最基本的数据类型，基本上是
+R 的主力。向量由一系列值组成，例如
+数字或字符。 我们可以使用
+`c()` 函数为向量分配一系列值。 例如，我们可以创建一个动物体重向量，并将
+分配给一个新的对象“weight_g”：
 
 ```{r, purl=TRUE}
 weight_g <- c(50, 60, 65, 82)
 weight_g
 ```
 
-A vector can also contain characters:
+向量也可以包含字符：
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein")
 molecules
 ```
 
-The quotes around "dna", "rna", etc. are essential here. Without the
-quotes R will assume there are objects called `dna`, `rna` and
-`protein`. As these objects don't exist in R's memory, there will be
-an error message.
+这里“dna”、“rna”等周围的引号至关重要。 如果没有
+引号，R 将假定存在名为 `dna`、`rna` 和
+`protein` 的对象。 由于这些对象在 R 的内存中不存在，因此会出现
+错误消息。
 
-There are many functions that allow you to inspect the content of a
-vector. `length()` tells you how many elements are in a particular vector:
+有许多函数可让您检查
+向量的内容。 `length()` 告诉你特定向量中有多少个元素：
 
 ```{r, purl=TRUE}
 length(weight_g)
 length(molecules)
 ```
 
-An important feature of a vector, is that all of the elements are the
-same type of data.  The function `class()` indicates the class (the
-type of element) of an object:
+向量的一个重要特征是，所有元素都是
+相同类型的数据。  函数 `class()` 表示对象的类（元素的
+类型）：
 
 ```{r, purl=TRUE}
 class(weight_g)
 class(molecules)
 ```
 
-The function `str()` provides an overview of the structure of an
-object and its elements. It is a useful function when working with
-large and complex objects:
+函数“str()”概述了
+对象及其元素的结构。 在处理
+大型复杂对象时，它是一个很有用的函数：
 
 ```{r, purl=TRUE}
 str(weight_g)
 str(molecules)
 ```
 
-You can use the `c()` function to add other elements to your vector:
+您可以使用 `c()` 函数将其他元素添加到向量中：
 
 ```{r}
-weight_g <- c(weight_g, 90) # add to the end of the vector
-weight_g <- c(30, weight_g) # add to the beginning of the vector
+weight_g <- c(weight_g, 90) # 添加到向量末尾
+weight_g <- c(30, weight_g) # 添加到向量开头
 weight_g
 ```
 
-In the first line, we take the original vector `weight_g`, add the
-value `90` to the end of it, and save the result back into
-`weight_g`. Then we add the value `30` to the beginning, again saving
+在第一行中，我们取原始向量“weight_g”，将
+值“90”添加到其末尾，然后将结果保存回
+“weight_g”。 Then we add the value `30` to the beginning, again saving
 the result back into `weight_g`.
 
-We can do this over and over again to grow a vector, or assemble a
-dataset.  As we program, this may be useful to add results that we are
-collecting or calculating.
+我们可以反复这样做来增加一个向量，或者组装一个
+数据集。  在我们编程时，这可能有助于添加我们正在
+收集或计算的结果。
 
-An **atomic vector** is the simplest R **data type** and is a linear
-vector of a single type. Above, we saw 2 of the 6 main **atomic
-vector** types that R uses: `"character"` and `"numeric"` (or
-`"double"`). These are the basic building blocks that all R objects
-are built from. The other 4 **atomic vector** types are:
+**原子向量**是最简单的 R **数据类型**，是单一类型的线性
+向量。 上面，我们看到了 R 使用的 6 个主要**原子
+向量**类型中的 2 个：“字符”和“数字”（或
+“双精度”）。 这些是构建所有 R 对象
+的基本构建块。 其他 4 种 **原子向量** 类型是：
 
-- `"logical"` for `TRUE` and `FALSE` (the boolean data type)
-- `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R
-  that it's an integer)
-- `"complex"` to represent complex numbers with real and imaginary
-  parts (e.g., `1 + 4i`) and that's all we're going to say about them
-- `"raw"` for bitstreams that we won't discuss further
+- `“逻辑”` 表示 `TRUE` 和 `FALSE`（布尔数据类型）
+- `“integer”` 表示整数（例如 `2L`，`L` 向 R
+  表示它是一个整数）
+- `“complex”` 表示具有实部和虚部
+  的复数（例如 `1 + 4i`），这就是我们要说的
+- “raw” 表示比特流，我们不会进一步讨论
 
-You can check the type of your vector using the `typeof()` function
-and inputting your vector as the argument.
+您可以使用 `typeof()` 函数
+并输入您的向量作为参数来检查您的向量的类型。
 
-Vectors are one of the many **data structures** that R uses. Other
-important ones are lists (`list`), matrices (`matrix`), data frames
-(`data.frame`), factors (`factor`) and arrays (`array`).
+向量是 R 使用的众多**数据结构**之一。 其他
+重要的是列表（`list`）、矩阵（`matrix`）、数据框
+（`data.frame`）、因子（`factor`）和数组（`array`）。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-We've seen that atomic vectors can be of type character, numeric (or
-double), integer, and logical. But what happens if we try to mix
-these types in a single vector?
+我们已经看到，原子向量可以是字符类型、数字类型（或
+双精度型）、整数类型和逻辑类型。 但是如果我们尝试在一个向量中混合
+这些类型会发生什么？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-R implicitly converts them to all be the same type
+R 隐式地将它们全部转换为同一类型
 
 :::::::::::::::::::::::::
 
@@ -363,10 +364,10 @@ R implicitly converts them to all be the same type
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-What will happen in each of these examples? (hint: use `class()` to
-check the data type of your objects and type in their names to see what happens):
+每个例子中会发生什么？ （提示：使用 `class()` 来
+检查对象的数据类型并输入其名称以查看会发生什么）：
 
 ```{r, eval=TRUE}
 num_char <- c(1, 2, 3, "a")
@@ -377,7 +378,7 @@ tricky <- c(1, 2, 3, "4")
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
 class(num_char)
@@ -396,17 +397,17 @@ tricky
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Why do you think it happens?
+您认为为什么会发生这种情况？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-Vectors can be of only one data type. R tries to convert (coerce)
-the content of this vector to find a _common denominator_ that
-doesn't lose any information.
+向量只能是一种数据类型。 R 尝试转换（强制）
+该向量的内容以找到
+不会丢失任何信息的 _共同点_。
 
 :::::::::::::::::::::::::
 
@@ -414,10 +415,10 @@ doesn't lose any information.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-How many values in `combined_logical` are `"TRUE"` (as a character)
-in the following example:
+以下示例中，`combined_logical` 中有多少个值为 `“TRUE”`（作为字符）
+：
 
 ```{r, eval=TRUE}
 num_logical <- c(1, 2, 3, TRUE)
@@ -427,12 +428,12 @@ combined_logical <- c(num_logical, char_logical)
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-Only one. There is no memory of past data types, and the coercion
-happens the first time the vector is evaluated. Therefore, the `TRUE`
-in `num_logical` gets converted into a `1` before it gets converted
-into `"1"` in `combined_logical`.
+只有一个。 没有过去数据类型的记忆，并且强制
+发生在第一次评估向量时。 因此，`num_logical` 中的 `TRUE`
+在 `combined_logical` 中的
+转换为 `"1"` 之前，会先转换为 `1`。
 
 ```{r}
 combined_logical
@@ -444,19 +445,19 @@ combined_logical
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-In R, we call converting objects from one class into another class
-_coercion_. These conversions happen according to a hierarchy,
-whereby some types get preferentially coerced into other types. Can
+在 R 中，我们将对象从一个类转换为另一个类称为
+_强制_。 这些转换根据层次结构进行，
+，某些类型优先被强制转换为其他类型。 Can
 you draw a diagram that represents the hierarchy of how these data
 types are coerced?
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-logical → numeric → character ← logical
+逻辑 → 数字 → 字符 ← 逻辑
 
 :::::::::::::::::::::::::
 
@@ -488,10 +489,10 @@ tricky <- c(1, 2, 3, "4")
 ## types are coerced?
 ```
 
-## Subsetting vectors
+## 向量子集
 
-If we want to extract one or several values from a vector, we must
-provide one or several indices in square brackets. For instance:
+如果我们想从一个向量中提取一个或多个值，我们必须
+在方括号中提供一个或多个索引。 例如：
 
 ```{r, results="show", purl=TRUE}
 molecules <- c("dna", "rna", "peptide", "protein")
@@ -499,21 +500,21 @@ molecules[2]
 molecules[c(3, 2)]
 ```
 
-We can also repeat the indices to create an object with more elements
-than the original one:
+我们还可以重复索引来创建一个比原始对象具有更多元素
+的对象：
 
 ```{r, results="show", purl=TRUE}
 more_molecules <- molecules[c(1, 2, 3, 2, 1, 4)]
 more_molecules
 ```
 
-R indices start at 1. Programming languages like Fortran, MATLAB,
-Julia, and R start counting at 1, because that's what human beings
-typically do. Languages in the C family (including C++, Java, Perl,
-and Python) count from 0 because that's simpler for computers to do.
+R 索引从 1 开始。 Fortran、MATLAB、
+Julia 和 R 等编程语言从 1 开始计数，因为这是人类
+通常所做的。 C 系列语言（包括 C++、Java、Perl、
+和 Python）从 0 开始计数，因为这对于计算机来说更简单。
 
-Finally, it is also possible to get all the elements of a vector
-except some specified elements using negative indices:
+最后，还可以使用负索引获取向量
+的所有元素，除了一些指定元素：
 
 ```{r}
 molecules ## all molecules
@@ -522,19 +523,19 @@ molecules[-c(1, 3)] ## all but 1st/3rd ones
 molecules[c(-1, -3)] ## all but 1st/3rd ones
 ```
 
-## Conditional subsetting
+## 条件子集
 
-Another common way of subsetting is by using a logical vector. `TRUE` will
-select the element with the same index, while `FALSE` will not:
+另一种常见的子集方法是使用逻辑向量。 `TRUE` 将
+选择具有相同索引的元素，而 `FALSE` 则不会：
 
 ```{r, purl=TRUE}
 weight_g <- c(21, 34, 39, 54, 55)
 weight_g[c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 ```
 
-Typically, these logical vectors are not typed by hand, but are the
-output of other functions or logical tests. For instance, if you
-wanted to select only the values above 50:
+通常，这些逻辑向量不是手工输入的，而是其他函数或逻辑测试的
+输出。 例如，如果您
+只想选择 50 以上的值：
 
 ```{r, purl=TRUE}
 ## will return logicals with TRUE for the indices that meet
@@ -544,24 +545,24 @@ weight_g > 50
 weight_g[weight_g > 50]
 ```
 
-You can combine multiple tests using `&` (both conditions are true,
-AND) or `|` (at least one of the conditions is true, OR):
+您可以使用 `&`（两个条件都为真，
+AND）或 `|`（至少有一个条件为真，OR）组合多个测试：
 
 ```{r, results="show", purl=TRUE}
 weight_g[weight_g < 30 | weight_g > 50]
 weight_g[weight_g >= 30 & weight_g == 21]
 ```
 
-Here, `<` stands for "less than", `>` for "greater than", `>=` for
-"greater than or equal to", and `==` for "equal to". The double equal
-sign `==` is a test for numerical equality between the left and right
-hand sides, and should not be confused with the single `=` sign, which
-performs variable assignment (similar to `<-`).
+这里，`<` 代表“小于”，`>` 代表“大于”，`>=` 代表
+“大于或等于”，`==` 代表“等于”。 双等号
+符号 `==` 用于测试左右两边
+之间是否数值相等，不要与单个 `=` 符号混淆，后者
+执行变量赋值（类似于 `<-`）。
 
-A common task is to search for certain strings in a vector.  One could
-use the "or" operator `|` to test for equality to multiple values, but
-this can quickly become tedious. The function `%in%` allows you to
-test if any of the elements of a search vector are found:
+一个常见的任务是在向量中搜索某些字符串。  人们可以
+使用“或”运算符 `|` 来测试多个值是否相等，但是
+这很快就会变得乏味。 函数 `%in%` 允许您
+测试是否找到搜索向量的任何元素：
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein", "peptide")
@@ -572,31 +573,31 @@ molecules[molecules %in% c("rna", "dna", "metabolite", "peptide", "glycerol")]
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Can you figure out why `"four" > "five"` returns `TRUE`?
+你能弄清楚为什么 `"four" > "five"` 返回 `TRUE` 吗？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r}
 "four" > "five"
 ```
 
-When using `>` or `<` on strings, R compares their alphabetical order.
-Here `"four"` comes after `"five"`, and therefore is _greater than_
-it.
+在字符串上使用 `>` 或 `<` 时，R 会比较它们的字母顺序。
+这里的“four”位于“five”之后，因此大于
+它。
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Names
+## 名字
 
-It is possible to name each element of a vector. The code chunk below
-shows an initial vector without any names, how names are set, and
-retrieved.
+可以命名向量的每个元素。 下面的代码块
+显示了没有任何名称的初始向量，如何设置名称，以及如何检索
+。
 
 ```{r}
 x <- c(1, 5, 3, 5, 10)
@@ -605,25 +606,25 @@ names(x) <- c("A", "B", "C", "D", "E")
 names(x) ## now we have names
 ```
 
-When a vector has names, it is possible to access elements by their
-name, in addition to their index.
+当向量具有名称时，除了索引之外，还可以通过其
+名称来访问元素。
 
 ```{r}
 x[c(1, 3)]
 x[c("A", "C")]
 ```
 
-## Missing data
+## 缺失数据
 
-As R was designed to analyze datasets, it includes the concept of
-missing data (which is uncommon in other programming
-languages). Missing data are represented in vectors as `NA`.
+由于 R 旨在分析数据集，因此它包含
+缺失数据的概念（这在其他编程
+语言中并不常见）。 缺失数据在向量中表示为“NA”。
 
 When doing operations on numbers, most functions will return `NA` if
-the data you are working with include missing values. This feature
-makes it harder to overlook the cases where you are dealing with
-missing data.  You can add the argument `na.rm = TRUE` to calculate
-the result while ignoring the missing values.
+the data you are working with include missing values. 此功能
+使您更难忽视处理
+缺失数据的情况。  您可以添加参数“na.rm = TRUE”来计算
+结果，同时忽略缺失值。
 
 ```{r}
 heights <- c(2, 4, 4, NA, 6)
@@ -634,44 +635,44 @@ max(heights, na.rm = TRUE)
 ```
 
 If your data include missing values, you may want to become familiar
-with the functions `is.na()`, `na.omit()`, and `complete.cases()`. See
-below for examples.
+with the functions `is.na()`, `na.omit()`, and `complete.cases()`. 请参阅下文
+中的示例。
 
 ```{r}
-## Extract those elements which are not missing values.
+## 提取那些不是缺失值的元素。
 heights[!is.na(heights)]
 
-## Returns the object with incomplete cases removed.
-## The returned object is an atomic vector of type `"numeric"`
-## (or `"double"`).
+## 返回删除了不完整案例的对象。
+## 返回的对象是类型为 `"numeric"` 的原子向量
+## （或 `"double"`）。
 na.omit(heights)
 
-## Extract those elements which are complete cases.
-## The returned object is an atomic vector of type `"numeric"`
-## (or `"double"`).
+## 提取那些完整案例的元素。
+## 返回的对象是类型为 `"numeric"` 的原子向量
+## （或 `"double"`）。
 heights[complete.cases(heights)]
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-1. Using this vector of heights in inches, create a new vector with the NAs removed.
+1. 使用这个以英寸为单位的高度向量，创建一个删除了 NA 的新向量。
 
 ```{r}
-heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+高度 <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 ```
 
-2. Use the function `median()` to calculate the median of the `heights` vector.
-3. Use R to figure out how many people in the set are taller than 67 inches.
+2. 使用函数“median（）”计算“高度”向量的中值。
+3. 使用 R 找出集合中有多少人的身高超过 67 英寸。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
 heights_no_na <- heights[!is.na(heights)]
-## or
+## 或
 heights_no_na <- na.omit(heights)
 ```
 
@@ -680,82 +681,82 @@ median(heights, na.rm = TRUE)
 ```
 
 ```{r, purl=TRUE}
-heights_above_67 <- heights_no_na[heights_no_na > 67]
-length(heights_above_67)
+高度_高于_67 <- 高度_无_na[高度_无_na > 67]
+长度(高度_高于_67)
 ```
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Generating vectors {#sec:genvec}
+## 生成向量 {#sec:genvec}
 
 ```{r, echo=FALSE}
 set.seed(1)
 ```
 
-### Constructors
+### 构造函数
 
-There exists some functions to generate vectors of different type. To
-generate a vector of numerics, one can use the `numeric()`
-constructor, providing the length of the output vector as
-parameter. The values will be initialised with 0.
+存在一些函数来生成不同类型的向量。 要
+生成一个数字向量，可以使用 `numeric()`
+构造函数，并将输出向量的长度作为
+参数。 这些值将被初始化为 0。
 
 ```{r, purl=TRUE}
 numeric(3)
 numeric(10)
 ```
 
-Note that if we ask for a vector of numerics of length 0, we obtain
-exactly that:
+请注意，如果我们要求长度为 0 的数字向量，我们将获得
+：
 
 ```{r, purl=TRUE}
 numeric(0)
 ```
 
-There are similar constructors for characters and logicals, named
-`character()` and `logical()` respectively.
+字符和逻辑值有类似的构造函数，分别名为
+`character()` 和 `logical()`。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-What are the defaults for character and logical vectors?
+字符和逻辑向量的默认值是什么？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
-character(2) ## the empty character
-logical(2)   ## FALSE
+character(2) ## 空字符
+logical(2) ## FALSE
 ```
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Replicate elements
+### 复制元素
 
-The `rep` function allow to repeat a value a certain number of
-times. If we want to initiate a vector of numerics of length 5 with
-the value -1, for example, we could do the following:
+`rep` 函数允许将一个值重复一定次数
+次。 例如，如果我们想要用
+值 -1 来初始化一个长度为 5 的数字向量，我们可以执行以下操作：
 
 ```{r, purl=TRUE}
 rep(-1, 5)
 ```
 
-Similarly, to generate a vector populated with missing values, which
-is often a good way to start, without setting assumptions on the data
-to be collected:
+类似地，要生成一个填充了缺失值的向量，
+通常是一个很好的开始方式，而无需对要收集的数据
+设定假设：
 
 ```{r, purl=TRUE}
 rep(NA, 5)
 ```
 
-`rep` can take vectors of any length as input (above, we used vectors
-of length 1) and any type. For example, if we want to repeat the
-values 1, 2 and 3 five times, we would do the following:
+`rep` 可以将任意长度的向量作为输入（上面，我们使用了长度为 1 的向量
+）和任何类型。 例如，如果我们想重复
+值 1、2 和 3 五次，我们可以执行以下操作：
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), 5)
@@ -763,15 +764,15 @@ rep(c(1, 2, 3), 5)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-What if we wanted to repeat the values 1, 2 and 3 five times, but
-obtain five 1s, five 2s and five 3s in that order? There are two
-possibilities - see `?rep` or `?sort` for help.
+如果我们想重复值 1、2 和 3 五次，但
+却按顺序获得五个 1、五个 2 和五个 3，该怎么办？ 有两种
+可能性 - 请参阅 `?rep` 或 `?sort` 寻求帮助。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), each = 5)
@@ -780,59 +781,59 @@ sort(rep(c(1, 2, 3), 5))
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Sequence generation
+### 序列生成
 
-Another very useful function is `seq`, to generate a sequence of
-numbers. For example, to generate a sequence of integers from 1 to 20
-by steps of 2, one would use:
+另一个非常有用的函数是“seq”，用于生成一个
+数字序列。 例如，为了以 2 为步长生成从 1 到 20
+的整数序列，可以使用：
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, by = 2)
 ```
 
-The default value of `by` is 1 and, given that the generation of a
-sequence of one value to another with steps of 1 is frequently used,
-there's a shortcut:
+`by` 的默认值为 1，并且鉴于经常使用以 1 为步长生成一个值到另一个值的
+序列，
+有一个快捷方式：
 
 ```{r, purl=TRUE}
 seq(1, 5, 1)
-seq(1, 5) ## default by
+seq(1, 5) ## 默认为
 1:5
 ```
 
-To generate a sequence of numbers from 1 to 20 of final length of 3,
-one would use:
+要生成最终长度为 3，
+的从 1 到 20 的数字序列，可以使用：
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, length.out = 3)
 ```
 
-### Random samples and permutations
+### 随机样本和排列
 
-A last group of useful functions are those that generate random
-data. The first one, `sample`, generates a random permutation of
-another vector. For example, to draw a random order to 10 students
-oral exam, I first assign each student a number from 1 to ten (for
-instance based on the alphabetic order of their name) and then:
+最后一组有用的函数是那些生成随机
+数据的函数。 第一个，“样本”，生成另一个向量的随机排列
+。 例如，为了对 10 名学生
+口语考试进行随机排序，我首先为每个学生分配一个从 1 到 10 的数字（例如
+根据他们姓名的字母顺序排列），然后：
 
 ```{r, purl=TRUE}
 sample(1:10)
 ```
 
-Without further arguments, `sample` will return a permutation of all
-elements of the vector. If I want a random sample of a certain size, I
-would set this value as the second argument. Below, I sample 5 random
-letters from the alphabet contained in the pre-defined `letters` vector:
+如果没有进一步的参数，“sample”将返回向量中所有
+元素的排列。 如果我想要一个特定大小的随机样本，我
+会将该值设置为第二个参数。 下面，我从预定义的“字母”向量中的字母表中随机抽取 5 个
+个字母：
 
 ```{r, purl=TRUE}
 sample(letters, 5)
 ```
 
-If I wanted an output larger than the input vector, or being able to
-draw some elements multiple times, I would need to set the `replace`
-argument to `TRUE`:
+如果我想要一个大于输入向量的输出，或者能够
+多次绘制一些元素，我需要将`replace`
+参数设置为`TRUE`：
 
 ```{r, purl=TRUE}
 sample(1:5, 10, replace = TRUE)
@@ -840,35 +841,35 @@ sample(1:5, 10, replace = TRUE)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-When trying the functions above out, you will have realised that the
-samples are indeed random and that one doesn't get the same
-permutation twice. To be able to reproduce these random draws, one can
+当尝试上述函数时，您将意识到
+样本确实是随机的，并且不会两次得到相同的
+排列。 To be able to reproduce these random draws, one can
 set the random number generation seed manually with `set.seed()`
 before drawing the random sample.
 
-Test this feature with your neighbour. First draw two random
-permutations of `1:10` independently and observe that you get
-different results.
+和你的邻居一起测试此功能。 首先独立绘制两个随机的
+排列 `1:10`，并观察是否得到了
+个不同的结果。
 
-Now set the seed with, for example, `set.seed(123)` and repeat the
-random draw. Observe that you now get the same random draws.
+现在设置种子，例如`set.seed(123)`并重复
+随机抽取。 注意，您现在获得相同的随机抽取。
 
-Repeat by setting a different seed.
+通过设置不同的种子来重复。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-Different permutations
+不同的排列
 
 ```{r, purl=TRUE}
 sample(1:10)
 sample(1:10)
 ```
 
-Same permutations with seed 123
+与种子 123 相同的排列
 
 ```{r, purl=TRUE}
 set.seed(123)
@@ -877,7 +878,7 @@ set.seed(123)
 sample(1:10)
 ```
 
-A different seed
+不同的种子
 
 ```{r, purl=TRUE}
 set.seed(1)
@@ -890,12 +891,12 @@ sample(1:10)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Drawing samples from a normal distribution
+### 从正态分布中抽取样本
 
-The last function we are going to see is `rnorm`, that draws a random
-sample from a normal distribution. Two normal distributions of means 0
-and 100 and standard deviations 1 and 5, noted _N(0, 1)_ and
-_N(100, 5)_, are shown below.
+我们将要看到的最后一个函数是`rnorm`，它从正态分布中抽取一个随机的
+样本。 下面显示了两个均值 0
+和 100、标准差 1 和 5 的正态分布，分别记为 _N(0, 1)_ 和
+_N(100, 5)_。
 
 ```{r, echo=FALSE, fig.width=12, fig.height=6, fig.cap="Two normal distributions: *N(0, 1)* on the left and *N(100, 5)* on the right."}
 par(mfrow = c(1, 2))
@@ -903,9 +904,9 @@ plot(density(rnorm(1000)), main = "", sub = "N(0, 1)")
 plot(density(rnorm(1000, 100, 5)), main = "", sub = "N(100, 5)")
 ```
 
-The three arguments, `n`, `mean` and `sd`, define the size of the
-sample, and the parameters of the normal distribution, i.e the mean
-and its standard deviation. The defaults of the latter are 0 and 1.
+三个参数 `n`、`mean` 和 `sd` 定义了
+样本的大小，以及正态分布的参数，即平均值
+及其标准差。 后者的默认值为0和1。
 
 ```{r, purl=TRUE}
 rnorm(5)
@@ -913,12 +914,12 @@ rnorm(5, 2, 2)
 rnorm(5, 100, 5)
 ```
 
-Now that we have learned how to write scripts, and the basics of R's
-data structures, we are ready to start working with larger data, and
-learn about data frames.
+现在我们已经学习了如何编写脚本，以及 R 的
+数据结构的基础知识，我们已经准备好开始处理更大的数据，并且
+了解数据框。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- How to interact with R
+- 如何与 R 交互
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -2,9 +2,9 @@
 title: Reference
 ---
 
-## Glossary
+## Glosario
 
-FIXME
+ARREGLARME
 
 
 

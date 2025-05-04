@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Data organisation with spreadsheets
+title: Organização de dados com planilhas
 teaching: 30
 exercises: 30
 ---
@@ -11,16 +11,16 @@ exercises: 30
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Aprenda sobre planilhas, seus pontos fortes e fracos.
-- How do we format data in spreadsheets for effective data use?
-- Learn about common spreadsheet errors and how to correct them.
-- Organise your data according to tidy data principles.
-- Learn about text-based spreadsheet formats such as the comma-separated (CSV) or tab-separated (TSV) formats.
+- Como formatamos os dados em planilhas para um uso eficaz de dados?
+- Aprenda sobre erros comuns da manipulação de planilhas e como corrigi-los.
+- - Organize os seus dados de acordo com os princípios _tidy_.
+- Saiba mais sobre os formatos de folhas de cálculo baseados em texto, como os formatos separados por vírgula (CSV) ou separados por tabulações (TSV).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to organise tabular data?
+- Como organizar dados tabulares?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -215,7 +215,7 @@ This might be an example of a spreadsheet setup:
 
 ![](fig/spreadsheet-setup-updated.png)
 
-Put these principles in to practice today during your exercises.
+Put these principles into practice today during your exercises.
 
 Enquanto o controle de versão está fora de escopo, você pode ver a aula
 do Carpentries em

@@ -595,17 +595,17 @@ rna_exp
 3. the `values_from`: the column whose values will fill the new
  columns.
 
-\`\`\`{r, fig.cap="Wide pivot of the `rna` data.", echo=FALSE, message=FALSE}
+```{r, fig.cap="Wide pivot of the `rna` data.", echo=FALSE, message=FALSE}
 knitr::include_graphics("fig/pivot_wider.png")
 
-````
+```
 
 ```{r, purl=TRUE}
 rna_wide <- rna_exp |>
   pivot_wider(names_from = sample,
               values_from = expression)
 rna_wide
-````
+```
 
 Note that by default, the `pivot_wider()` function will add `NA` for missing values.
 
@@ -655,10 +655,10 @@ associated with the column names.
 4. the names of the columns to be used to populate the `names_to` and
  `values_to` variables (or to drop).
 
-\`\`\`{r, fig.cap="Long pivot of the `rna` data.", echo=FALSE, message=FALSE}
+```{r, fig.cap="Long pivot of the `rna` data.", echo=FALSE, message=FALSE}
 knitr::include_graphics("fig/pivot_longer.png")
 
-````
+```
 
 To recreate `rna_long` from `rna_wide` we would create a key
 called `sample` and value called `expression` and use all columns
@@ -673,7 +673,7 @@ rna_long <- rna_wide |>
                  values_to = "expression",
                  -gene)
 rna_long
-````
+```
 
 We could also have used a specification for what columns to
 include. This can be useful if you have a large number of identifying

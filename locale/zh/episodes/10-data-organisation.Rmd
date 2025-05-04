@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Data organisation with spreadsheets
+title: 使用电子表格组织数据
 teaching: 30
 exercises: 30
 ---
@@ -10,120 +10,120 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Learn about spreadsheets, their strengths and weaknesses.
-- How do we format data in spreadsheets for effective data use?
-- Learn about common spreadsheet errors and how to correct them.
-- Organise your data according to tidy data principles.
-- Learn about text-based spreadsheet formats such as the comma-separated (CSV) or tab-separated (TSV) formats.
+- 了解电子表格及其优点和缺点。
+- 我们该如何在电子表格中格式化数据以有效使用数据？
+- 了解常见的电子表格错误以及如何纠正它们。
+- 根据整洁数据原则组织您的数据。
+- 了解基于文本的电子表格格式，例如逗号分隔 (CSV) 或制表符分隔 (TSV) 格式。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to organise tabular data?
+- 如何组织表格数据？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> 本集基于 Data Carpentries 的_面向生态学家的 R 语言数据分析和
+> 可视化_课程。
 
-## Spreadsheet programs
+## 电子表格程序
 
-**Question**
+**问题**
 
-- What are basic principles for using spreadsheets for good data
-  organization?
+- 使用电子表格进行良好的数据
+  组织的基本原则是什么？
 
-**Objective**
+**客观的**
 
 - Describe best practices for organizing data so computers can make
   the best use of datasets.
 
-**Keypoint**
+**关键**
 
-- Good data organization is the foundation of any research project.
+- 良好的数据组织是任何研究项目的基础。
 
-Good data organization is the foundation of your research
-project. Most researchers have data or do data entry in
-spreadsheets. Spreadsheet programs are very useful graphical
-interfaces for designing data tables and handling very basic data
-quality control functions. See also @Broman:2018.
+良好的数据组织是您的研究
+项目的基础。 大多数研究人员都有数据或在
+电子表格中输入数据。 电子表格程序是非常有用的图形
+界面，用于设计数据表和处理非常基本的数据
+质量控制功能。 另请参阅@Broman:2018。
 
-### Spreadsheet outline
+### 电子表格大纲
 
-Spreadsheets are good for data entry. Therefore we have a lot of data
-in spreadsheets.  Much of your time as a researcher will be spent in
-this 'data wrangling' stage.  It's not the most fun, but it's
-necessary. We'll teach you how to think about data organization and
-some practices for more effective data wrangling.
+电子表格适合数据输入。 因此，我们在电子表格中有大量数据
+。  作为研究人员，你的大部分时间将花在
+这个“数据整理”阶段。  这虽然不是最有趣的，但它是
+必要的。 我们将教您如何思考数据组织和
+一些更有效的数据整理实践。
 
-### What this lesson will not teach you
+### 这堂课不会教你什么
 
-- How to do _statistics_ in a spreadsheet
-- How to do _plotting_ in a spreadsheet
-- How to _write code_ in spreadsheet programs
+- 如何在电子表格中进行_统计_
+- 如何在电子表格中绘图
+- 如何在电子表格程序中“编写代码”
 
-If you're looking to do this, a good reference is Head First
+如果你想这样做，一个很好的参考是 O'Reilly 出版的 Head First
 Excel,
-published by O'Reilly.
+。
 
-### Why aren't we teaching data analysis in spreadsheets
+### 为什么我们不在电子表格中教授数据分析
 
-- Data analysis in spreadsheets usually requires a lot of manual
-  work. If you want to change a parameter or run an analysis with a
-  new dataset, you usually have to redo everything by hand. (We do
-  know that you can create macros, but see the next point.)
+- 电子表格中的数据分析通常需要大量的手动
+  工作。 如果您想更改参数或使用
+  新数据集运行分析，通常必须手动重做所有操作。 （我们确实
+  知道您可以创建宏，但请参阅下一点。）
 
-- It is also difficult to track or reproduce statistical or plotting
-  analyses done in spreadsheet programs when you want to go back to
-  your work or someone asks for details of your analysis.
+- 当您想要返回到
+  您的工作或有人询问您的分析细节时，追踪或重现电子表格程序中完成的统计或绘制
+  分析也很困难。
 
-Many spreadsheet programs are available. Since most participants
-utilise Excel as their primary spreadsheet program, this lesson will
-make use of Excel examples. A free spreadsheet program that can also
-be used is LibreOffice. Commands may differ a bit between programs,
-but the general idea is the same.
+有许多电子表格程序可供使用。 由于大多数参与者
+使用 Excel 作为主要电子表格程序，本课将
+使用 Excel 示例。 A free spreadsheet program that can also
+be used is LibreOffice. 程序之间的命令可能略有不同，
+但总体思路是相同的。
 
 Spreadsheet programs encompass a lot of the things we need to be able
-to do as researchers. We can use them for:
+to do as researchers. 我们可以用它们来做：
 
-- Data entry
-- Organizing data
-- Subsetting and sorting data
-- Statistics
-- Plotting
+- 数据输入
+- 组织数据
+- 数据子集和排序
+- 统计数据
+- 绘图
 
-Spreadsheet programs use tables to represent and display data. Data
-formatted as tables is also the main theme of this chapter, and we
-will see how to organise data into tables in a standardised way to
-ensure efficient downstream analysis.
+电子表格程序使用表格来表示和显示数据。 格式化为表格的数据
+也是本章的主题，我们
+将看到如何以标准化的方式将数据组织成表格，以
+确保高效的下游分析。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Discuss the following points with your neighbour
+## 挑战：与邻居讨论以下几点
 
-- Have you used spreadsheets, in your research, courses,
-  or at home?
-- What kind of operations do you do in spreadsheets?
-- Which ones do you think spreadsheets are good for?
-- Have you accidentally done something in a spreadsheet program that made you
-  frustrated or sad?
+- 您在研究、课程、
+  或在家里使用过电子表格吗？
+- 您在电子表格中进行哪些类型的操作？
+- 您认为电子表格适合用于哪些方面？
+- 您是否曾在电子表格程序中意外地做了一些令您
+  感到沮丧或悲伤的事情？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Problems with spreadsheets
+### 电子表格问题
 
-Spreadsheets are good for data entry, but in reality we tend to
-use spreadsheet programs for much more than data entry. We use them
-to create data tables for publications, to generate summary
-statistics, and make figures.
+电子表格适合于数据输入，但实际上我们倾向于
+使用电子表格程序进行更多数据输入以外的用途。 我们使用它们
+来创建出版物的数据表，生成摘要
+统计数据，并制作图表。
 
-Generating tables for publications in a spreadsheet is not
-optimal - often, when formatting a data table for publication, we're
-reporting key summary statistics in a way that is not really meant to
-be read as data, and often involves special formatting
-(merging cells, creating borders, making it pretty). We advise you to
-do this sort of operation within your document editing software.
+在电子表格中生成用于出版的表格并不是
+最佳选择——通常，在格式化用于出版的数据表时，我们
+以一种实际上并不打算
+被读取为数据的方式报告关键汇总统计数据，并且通常涉及特殊格式
+（合并单元格、创建边框、使其美观）。 我们建议您
+在文档编辑软件中执行此类操作。
 
 The latter two applications, generating statistics and figures, should
 be used with caution: because of the graphical, drag and drop nature of
@@ -131,168 +131,168 @@ spreadsheet programs, it can be very difficult, if not impossible, to
 replicate your steps (much less retrace anyone else's), particularly if your
 stats or figures require you to do more complex calculations. Furthermore,
 in doing calculations in a spreadsheet, it's easy to accidentally apply a
-slightly different formula to multiple adjacent cells. When using a
-command-line based statistics program like R or SAS, it's practically
-impossible to apply a calculation to one observation in your
-dataset but not another unless you're doing it on purpose.
+slightly different formula to multiple adjacent cells. 当使用基于
+命令行的统计程序（例如 R 或 SAS）时，除非您有意为之，否则几乎不可能
+将计算应用于
+数据集中的一个观察结果，而不应用于另一个观察结果。
 
-### Using spreadsheets for data entry and cleaning
+### 使用电子表格进行数据输入和清理
 
-In this lesson, we will assume that you are most likely using Excel as
-your primary spreadsheet program - there are others (gnumeric, Calc
-from OpenOffice), and their functionality is similar, but Excel seems
-to be the program most used by biologists and biomedical researchers.
+在本课中，我们假设您很可能使用 Excel 作为
+您主要的电子表格程序 - 还有其他程序（gnumeric、OpenOffice 的 Calc
+），它们的功能类似，但 Excel 似乎
+是生物学家和生物医学研究人员最常用的程序。
 
-In this lesson we're going to talk about:
+在本课中我们将讨论：
 
-1. Formatting data tables in spreadsheets
-2. Formatting problems
-3. Exporting data
+1. 格式化电子表格中的数据表
+2. 格式问题
+3. 导出数据
 
-## Formatting data tables in spreadsheets
+## 格式化电子表格中的数据表
 
-**Questions**
+**问题**
 
-- How do we format data in spreadsheets for effective data use?
+- 我们该如何在电子表格中格式化数据以有效使用数据？
 
-**Objectives**
+**目标**
 
-- Describe best practices for data entry and formatting in
-  spreadsheets.
+- 描述在
+  电子表格中输入和格式化数据的最佳实践。
 
-- Apply best practices to arrange variables and observations in a
-  spreadsheet.
+- 应用最佳实践在
+  电子表格中排列变量和观察结果。
 
-**Keypoints**
+**关键点**
 
-- Never modify your raw data. Always make a copy before making any
-  changes.
+- 切勿修改原始数据。 在进行任何
+  更改之前，务必先进行复制。
 
-- Keep track of all of the steps you take to clean your data in a
-  plain text file.
+- 在
+  纯文本文件中跟踪您清理数据所采取的所有步骤。
 
-- Organise your data according to tidy data principles.
+- 根据整洁数据原则组织您的数据。
 
-The most common mistake made is treating spreadsheet programs like lab
-notebooks, that is, relying on context, notes in the margin, spatial
-layout of data and fields to convey information. As humans, we can
-(usually) interpret these things, but computers don't view information
-the same way, and unless we explain to the computer what every single
-thing means (and that can be hard!), it will not be able to see how
-our data fits together.
+最常见的错误是将电子表格程序视为实验室
+笔记本，即依赖上下文、边缘注释、数据和字段的空间
+布局来传达信息。 作为人类，我们可以
+（通常）解释这些事物，但计算机不会以相同的方式查看信息
+，并且除非我们向计算机解释每个
+事物的含义（这可能很难！），否则它将无法看到
+我们的数据是如何组合在一起的。
 
 Using the power of computers, we can manage and analyse data in much
 more effective and faster ways, but to use that power, we have to set
 up our data for the computer to be able to understand it (and
 computers are very literal).
 
-This is why it's extremely important to set up well-formatted tables
-from the outset - before you even start entering data from your very
-first preliminary experiment. Data organization is the foundation of
-your research project. It can make it easier or harder to work with
-your data throughout your analysis, so it's worth thinking about when
-you're doing your data entry or setting up your experiment. You can
-set things up in different ways in spreadsheets, but some of these
-choices can limit your ability to work with the data in other programs
-or have the you-of-6-months-from-now or your collaborator work with
-the data.
+这就是为什么从一开始就设置格式良好的表格
+非常重要 - 甚至在您开始输入您的
+第一次初步实验的数据之前。 数据组织是
+研究项目的基础。 它可以使您在整个分析过程中处理
+数据变得更容易或更难，因此在
+进行数据输入或设置实验时值得考虑。 您可以在电子表格中以不同的方式进行
+设置，但其中一些
+选择可能会限制您处理其他程序中数据的能力
+，或者限制 6 个月后的您或您的合作者处理
+数据。
 
-**Note:** the best layouts/formats (as well as software and
-interfaces) for data entry and data analysis might be different. It is
+\*\*注意：\*\*数据输入和数据分析的最佳布局/格式（以及软件和
+界面）可能不同。 It is
 important to take this into account, and ideally automate the
 conversion from one to another.
 
-### Keeping track of your analyses
+### 跟踪你的分析
 
-When you're working with spreadsheets, during data clean up or
-analyses, it's very easy to end up with a spreadsheet that looks very
-different from the one you started with. In order to be able to
-reproduce your analyses or figure out what you did when a reviewer or
-instructor asks for a different analysis, you should
+当您使用电子表格时，在数据清理或
+分析期间，很容易得到与您开始时非常
+不同的电子表格。 为了能够
+重现你的分析，或者在审稿人或
+导师要求进行不同的分析时弄清楚你做了什么，你应该
 
-- create a new file with your cleaned or analysed data. Don't modify
-  the original dataset, or you will never know where you started!
+- 使用您清理或分析过的数据创建一个新文件。 不要修改
+  原始数据集，否则您将永远不知道从哪里开始！
 
-- keep track of the steps you took in your clean up or analysis. You
-  should track these steps as you would any step in an experiment. We
-  recommend that you do this in a plain text file stored in the same
-  folder as the data file.
+- 跟踪您在清理或分析中所采取的步骤。 您
+  应该像追踪实验中的任何步骤一样追踪这些步骤。 我们
+  建议您在与数据文件存储在同一个
+  文件夹中的纯文本文件中执行此操作。
 
-This might be an example of a spreadsheet setup:
+这可能是电子表格设置的一个示例：
 
-![](fig/spreadsheet-setup-updated.png)
+![](图/电子表格设置更新.png)
 
-Put these principles in to practice today during your exercises.
+今天在练习中将这些原则付诸实践。
 
-While versioning is out of scope for this course, you can look at the
-Carpentries lesson on
-['Git'](https://swcarpentry.github.io/git-novice/) to learn how to
-maintain **version control** over your data. See also this blog
-post for a quick tutorial or
-@Perez-Riverol:2016 for a more research-oriented use-case.
+虽然版本控制超出了本课程的范围，但您可以查看
+Carpentries 课程中关于
+['Git'](https://swcarpentry.github.io/git-novice/) 的内容，了解如何
+对数据进行**版本控制**。 另请参阅此 博客
+帖子 了解快速教程或
+@Perez-Riverol:2016 了解更面向研究的用例。
 
-### Structuring data in spreadsheets
+### 在电子表格中构建数据
 
-The cardinal rules of using spreadsheet programs for data:
+使用电子表格程序处理数据的基本规则：
 
-1. Put all your variables in columns - the thing you're measuring,
-  like 'weight' or 'temperature'.
-2. Put each observation in its own row.
-3. Don't combine multiple pieces of information in one cell. Sometimes
-  it just seems like one thing, but think if that's the only way
-  you'll want to be able to use or sort that data.
-4. Leave the raw data raw - don't change it!
-5. Export the cleaned data to a text-based format like CSV
-  (comma-separated values) format. This ensures that anyone can use
-  the data, and is required by most data repositories.
+1. 将所有变量放在列中 - 您要测量的东西，
+  例如“重量”或“温度”。
+2. 将每个观察结果放在其自己的行中。
+3. 不要在一个单元格中合并多条信息。 有时
+  看起来只是一件事，但想想如果这是唯一的方法
+  你会希望能够使用或排序这些数据。
+4. 保留原始数据 - 不要更改它！
+5. 将清理后的数据导出为基于文本的格式，如 CSV
+  （逗号分隔值）格式。 这确保任何人都可以使用
+  数据，并且是大多数数据存储库所要求的。
 
-For instance, we have data from patients that visited several
-hospitals in Brussels, Belgium. They recorded the date of the visit,
+例如，我们拥有来自比利时布鲁塞尔几家
+家医院的患者的数据。 They recorded the date of the visit,
 the hospital, the patients' gender, weight and blood group.
 
-If we were to keep track of the data like this:
+如果我们像这样跟踪数据：
 
-![](fig/multiple-info.png)
+![](图/multiple-info.png)
 
-the problem is that the ABO and Rhesus groups are in the same `Blood`
-type column. So, if they wanted to look at all observations of the A
-group or look at weight distributions by ABO group, it would be tricky
-to do this using this data setup. If instead we put the ABO and Rhesus
-groups in different columns, you can see that it would be much easier.
+问题在于 ABO 和 Rh 血型位于同一个“血液”
+类型列中。 因此，如果他们想要查看 A
+组的所有观察结果或查看 ABO 组的体重分布，使用此数据设置执行此操作会很棘手
+。 如果我们将 ABO 和 Rh 血型
+组放在不同的列中，您会发现这会容易得多。
 
-![](fig/single-info.png)
+![](图/单个信息.png)
 
-An important rule when setting up a datasheet, is that **columns are
-used for variables** and **rows are used for observations**:
+设置数据表时的一个重要规则是**列
+用于变量**并且**行用于观察**：
 
-- columns are variables
-- rows are observations
-- cells are individual values
+- 列是变量
+- 行是观察值
+- 单元格是单独的值
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: We're going to take a messy dataset and describe how we would clean it up.
+## 挑战：我们将获取一个混乱的数据集并描述如何清理它。
 
-1. Download a messy dataset by clicking
-  [here](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx).
+1. 点击
+  [此处](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx) 下载混乱的数据集。
 
-2. Open up the data in a spreadsheet program.
+2. 在电子表格程序中打开数据。
 
-3. You can see that there are two tabs. The data contains various
+3. 您可以看到有两个选项卡。 The data contains various
   clinical variables recorded in various hospitals in Brussels during
-  the first and second COVID-19 waves in 2020. As you can see, the
-  data have been recorded differently during the March and November
-  waves. Now you're the person in charge of this project and you want
-  to be able to start analyzing the data.
+  the first and second COVID-19 waves in 2020. 如您所见，在 3 月和 11 月的
+  波期间，
+  数据的记录方式有所不同。 现在您是该项目的负责人，并且您希望
+  能够开始分析数据。
 
-4. With the person next to you, identify what is wrong with this
-  spreadsheet. Also discuss the steps you would need to take to clean
-  up first and second wave tabs, and to put them all together in one
-  spreadsheet.
+4. 与您旁边的人一起，找出这个
+  电子表格中存在的问题。 还要讨论清理
+  第一和第二波标签所需采取的步骤，并将它们全部放在一个
+  电子表格中。
 
-**Important:** Do not forget our first piece of advice: to create a
-new file (or tab) for the cleaned data, never modify your original
-(raw) data.
+\*\*重要：\*\*不要忘记我们的第一条建议：为清理后的数据创建一个
+新文件（或选项卡），切勿修改原始
+（原始）数据。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -319,45 +319,45 @@ wrong with this data and how you would fix it.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Once you have tidied up the data, answer the following questions:
+## 挑战：整理好数据后，回答以下问题：
 
-- How many men and women took part in the study?
-- How many A, AB, and B types have been tested?
-- As above, but disregarding the contaminated samples?
-- How many Rhesus + and - have been tested?
-- How many universal donors (O-) have been tested?
-- What is the average weight of AB men?
-- How many samples have been tested in the different hospitals?
+- 有多少男性和女性参加了这项研究？
+- 已检测出 A 型、AB 型、B 型各有多少个？
+- 如上所述，但忽略受污染的样本？
+- 已检测了多少 Rh 阳性和 Rh 阴性患者？
+- 有多少位通用捐献者（O-）接受了检测？
+- AB型男人的平均体重是多少？
+- 不同医院检测了多少样本？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-An **excellent reference**, in particular with regard to R scripting
-is the _Tidy Data_ paper @Wickham:2014.
+一个**优秀的参考资料**，特别是关于 R 脚本
+的是_Tidy Data_ 论文@Wickham:2014。
 
-## Common spreadsheet errors
+## 常见的电子表格错误
 
-**Questions**
+**问题**
 
-- What are some common challenges with formatting data in spreadsheets
-  and how can we avoid them?
+- 在电子表格中格式化数据时会遇到哪些常见挑战？
+  我们如何避免它们？
 
-**Objectives**
+**目标**
 
-- Recognise and resolve common spreadsheet formatting problems.
+- 识别并解决常见的电子表格格式问题。
 
-**Keypoints**
+**关键点**
 
-- Avoid using multiple tables within one spreadsheet.
-- Avoid spreading data across multiple tabs.
-- Record zeros as zeros.
-- Use an appropriate null value to record missing data.
-- Don't use formatting to convey information or to make your spreadsheet look pretty.
-- Place comments in a separate column.
-- Record units in column headers.
-- Include only one piece of information in a cell.
-- Avoid spaces, numbers and special characters in column headers.
-- Avoid special characters in your data.
-- Record metadata in a separate plain text file.
+- 避免在一个电子表格中使用多个表格。
+- 避免将数据分散到多个选项卡中。
+- 将零记录为零。
+- 使用适当的空值来记录缺失的数据。
+- 不要使用格式来传达信息或让你的电子表格看起来漂亮。
+- 将评论放在单独的栏中。
+- 在列标题中记录单位。
+- 每个单元格中仅包含一条信息。
+- 避免在列标题中使用空格、数字和特殊字符。
+- 避免在数据中包含特殊字符。
+- 在单独的纯文本文件中记录元数据。
 
 <!-- This lesson is meant to be used as a reference for discussion as -->
 
@@ -367,376 +367,376 @@ is the _Tidy Data_ paper @Wickham:2014.
 
 <!-- refer to responses to the exercise in the previous lesson. -->
 
-There are a few potential errors to be on the lookout for in your own
-data as well as data from collaborators or the Internet. If you are
-aware of the errors and the possible negative effect on downstream
-data analysis and result interpretation, it might motivate yourself
-and your project members to try and avoid them. Making small changes
-to the way you format your data in spreadsheets, can have a great
-impact on efficiency and reliability when it comes to data cleaning
-and analysis.
+在您自己的
+数据以及来自合作者或互联网的数据中，有一些潜在的错误需要注意。 如果您
+意识到错误以及对下游
+数据分析和结果解释可能产生的负面影响，它可能会激励您自己
+和您的项目成员尝试避免这些错误。 对电子表格中数据格式的方式进行一些小的改变
+，可以在数据清理
+和分析时对效率和可靠性产生很大的
+影响。
 
-- [Using multiple tables](#tables)
-- [Using multiple tabs](#tabs)
-- [Not filling in zeros](#zeros)
-- [Using problematic null values](#null)
-- [Using formatting to convey information](#formatting)
-- [Using formatting to make the data sheet look pretty](#formatting_pretty)
-- [Placing comments or units in cells](#units)
-- [Entering more than one piece of information in a cell](#info)
-- [Using problematic field names](#field_name)
-- [Using special characters in data](#special)
-- [Inclusion of metadata in data table](#metadata)
+- [使用多个表格](#tables)
+- [使用多个标签](#tabs)
+- [不填零](#zeros)
+- [使用有问题的空值](#null)
+- [使用格式传达信息](#formatting)
+- [使用格式让数据表看起来更美观](#formatting_pretty)
+- [在单元格中放置注释或单位](#units)
+- [在一个单元格中输入多条信息](#info)
+- [使用有问题的字段名称](#field_name)
+- [在数据中使用特殊字符](#special)
+- [在数据表中包含元数据](#metadata)
 
-### Using multiple tables {#tables}
+### 使用多个表 {#tables}
 
-A common strategy is creating multiple data tables within one
-spreadsheet. This confuses the computer, so don't do this!  When you
-create multiple tables within one spreadsheet, you're drawing false
-associations between things for the computer, which sees each row as
-an observation. You're also potentially using the same field name in
-multiple places, which will make it harder to clean your data up into
-a usable form. The example below depicts the problem:
+一种常见的策略是在一个
+电子表格内创建多个数据表。 这会让计算机感到困惑，所以不要这样做！  当您
+在一个电子表格中创建多个表格时，您会在计算机中绘制事物之间的错误
+关联，计算机会将每一行视为
+一个观察结果。 您还可能会在
+多个地方使用相同的字段名称，这将使您更难将数据清理为
+可用形式。 下面的例子描述了这个问题：
 
-![](fig/2_datasheet_example.jpg)
+![](图/2_数据表_示例.jpg)
 
-In the example above, the computer will see (for example) row 4 and
-assume that all columns A-AF refer to the same sample. This row
-actually represents four distinct samples (sample 1 for each of four
-different collection dates - May 29th, June 12th, June 19th, and June
-26th), as well as some calculated summary statistics (an average (avr)
-and standard error of measurement (SEM)) for two of those
-samples. Other rows are similarly problematic.
+在上面的例子中，计算机将看到（例如）第 4 行和
+假设所有 A-AF 列都指的是同一个样本。 此行
+实际上代表四个不同的样本（四个
+不同收集日期中的每个日期都有一个样本 1 - 5 月 29 日、6 月 12 日、6 月 19 日和 6 月
+26 日），以及一些计算出的汇总统计数据（平均值 (avr)
+和标准测量误差 (SEM)）对于其中两个
+样本。 其他行也存在类似问题。
 
-### Using multiple tabs {#tabs}
+### 使用多个标签 {#tabs}
 
-But what about workbook tabs? That seems like an easy way to organise
-data, right? Well, yes and no. When you create extra tabs, you fail to
-allow the computer to see connections in the data that are there (you
-have to introduce spreadsheet application-specific functions or
-scripting to ensure this connection). Say, for instance, you make a
-separate tab for each day you take a measurement.
+但是工作簿标签怎么办？ 这似乎是组织
+数据的一种简单方法，对吗？ 嗯，是也不是。 当您创建额外的选项卡时，您无法
+允许计算机查看数据中的连接（您
+必须引入电子表格应用程序特定的函数或
+脚本来确保这种连接）。 举例来说，你为每天进行的测量创建一个
+单独的标签。
 
-This isn't good practice for two reasons:
+这不是一个好的做法，原因有二：
 
-1. you are more likely to accidentally add inconsistencies to your
-  data if each time you take a measurement, you start recording data
-  in a new tab, and
+1. 如果你每次测量时都在新标签页中开始记录数据
+  ，那么你很可能会意外地在你的
+  数据中添加不一致的内容，并且
 
-2. even if you manage to prevent all inconsistencies from creeping in,
-  you will add an extra step for yourself before you analyse the data
-  because you will have to combine these data into a single
-  datatable. You will have to explicitly tell the computer how to
-  combine tabs - and if the tabs are inconsistently formatted, you
-  might even have to do it manually.
+2. 即使你设法防止所有不一致性出现，
+  你也需要在分析数据
+  之前为自己添加一个额外的步骤，因为你必须将这些数据合并到单个
+  数据表中。 您必须明确地告诉计算机如何
+  组合标签 - 如果标签格式不一致，您
+  甚至可能必须手动执行此操作。
 
-The next time you're entering data, and you go to create another tab
-or table, ask yourself if you could avoid adding this tab by adding
-another column to your original spreadsheet. We used multiple tabs in
-our example of a messy data file, but now you've seen how you can
-reorganise your data to consolidate across tabs.
+下次输入数据并创建另一个选项卡
+或表格时，问问自己是否可以通过在原始电子表格中添加
+另一列来避免添加此选项卡。 在
+混乱数据文件示例中，我们使用了多个选项卡，但现在您已经了解了如何
+重新组织数据以跨选项卡合并。
 
-Your data sheet might get very long over the course of the
-experiment. This makes it harder to enter data if you can't see your
-headers at the top of the spreadsheet. But don't repeat your header
-row. These can easily get mixed into the data, leading to problems
-down the road. Instead you can freeze the column
-headers
-so that they remain visible even when you have a spreadsheet with many
-rows.
+在
+实验过程中，您的数据表可能会变得很长。 如果您在电子表格顶部看不到
+标题，这将使输入数据变得更加困难。 但不要重复你的标题
+行。 这些很容易混入数据中，从而导致以后出现问题
+。 相反，您可以冻结列
+标题
+，这样即使您的电子表格包含许多
+行，它们仍然可见。
 
-### Not filling in zeros {#zeros}
+### 不填零 {#zeros}
 
-It might be that when you're measuring something, it's usually a zero,
-say the number of times a rabbit is observed in the survey. Why bother
-writing in the number zero in that column, when it's mostly zeros?
+当您测量某个东西时，它通常为零，
+表示在调查中观察到兔子的次数。 既然该列大部分都是零，为什么还要费心
+在该列中写入数字零？
 
-However, there's a difference between a zero and a blank cell in a
-spreadsheet. To the computer, a zero is actually data. You measured or
-counted it. A blank cell means that it wasn't measured and the
-computer will interpret it as an unknown value (also known as a null
-or missing value).
+但是，在
+电子表格中，零和空白单元格之间存在差异。 对于计算机来说，零实际上是数据。 您测量了或者
+计算了它。 空白单元格表示未经测量，并且
+计算机将其解释为未知值（也称为空
+或缺失值）。
 
-The spreadsheets or statistical programs will likely misinterpret
-blank cells that you intend to be zeros. By not entering the value of
-your observation, you are telling your computer to represent that data
-as unknown or missing (null). This can cause problems with subsequent
-calculations or analyses. For example, the average of a set of numbers
-which includes a single null value is always null (because the
-computer can't guess the value of the missing observations). Because
-of this, it's very important to record zeros as zeros and truly
-missing data as nulls.
+电子表格或统计程序可能会误解您希望为零的
+空白单元格。 通过不输入观察值
+，您就是在告诉计算机将数据
+表示为未知或缺失（空）。 这可能会导致后续
+计算或分析出现问题。 例如，包含单个空值的一组数字
+的平均值始终为空（因为
+计算机无法猜测缺失观测值的值）。 由于
+这个原因，将零记录为零以及将真正
+缺失数据记录为空值非常重要。
 
-### Using problematic null values {#null}
+### 使用有问题的空值 {#null}
 
-**Example**: using -999 or other numerical values (or zero) to
-represent missing data.
+**示例**：使用 -999 或其他数值（或零）至
+表示缺失数据。
 
-**Solutions**:
+**解决方案**：
 
-There are a few reasons why null values get represented differently
-within a dataset. Sometimes confusing null values are automatically
-recorded from the measuring device. If that's the case, there's not
+有几个原因导致数据集中的空值以不同方式表示
+。 有时，测量设备会自动记录令人困惑的空值
+。 If that's the case, there's not
 much you can do, but it can be addressed in data cleaning with a tool
 like
 [OpenRefine](https://www.datacarpentry.org/OpenRefine-ecology-lesson/)
-before analysis. Other times different null values are used to convey
-different reasons why the data isn't there. This is important
-information to capture, but is in effect using one column to capture
-two pieces of information. Like for using formatting to convey
-information it would be good here to create a new
-column like 'data\_missing' and use that column to capture the
-different reasons.
+before analysis. 其他时候，不同的空值用于传达
+数据不存在的不同原因。 这是需要捕获的重要
+信息，但实际上是使用一列来捕获
+两条信息。 就像 使用格式来传达
+信息 一样，在这里创建一个新的
+列（如 'data\_missing'）并使用该列来捕获
+不同的原因会很好。
 
-Whatever the reason, it's a problem if unknown or missing data is
-recorded as -999, 999, or 0.
+无论原因是什么，如果未知或缺失的数据
+记录为 -999、999 或 0，那就有问题了。
 
-Many statistical programs will not recognise that these are intended
-to represent missing (null) values. How these values are interpreted
-will depend on the software you use to analyse your data. It is
+许多统计程序不会认识到这些旨在用
+来表示缺失（空）值。 如何解释这些值
+将取决于您用来分析数据的软件。 It is
 essential to use a clearly defined and consistent null indicator.
 
-Blanks (most applications) and NA (for R) are good
-choices. @White:2013 explain good choices for indicating null values
-for different software applications in their article:
+空白（大多数应用）和 NA（对于 R）是良好的
+选择。 @White:2013 在他们的文章中解释了为不同的软件应用程序指示空值
+的良好选择：
 
-![](fig/3_white_table_1.jpg)
+![](图/3_white_table_1.jpg)
 
-### Using formatting to convey information {#formatting}
+### 使用格式传达信息 {#formatting}
 
-**Example**: highlighting cells, rows or columns that should be
-excluded from an analysis, leaving blank rows to indicate
-separations in data.
+**示例**：突出显示应从分析中排除的
+单元格、行或列，留下空白行以指示数据中的
+分离。
 
-![](fig/formatting.png)
+![](图/格式化.png)
 
-**Solution**: create a new field to encode which data should be
-excluded.
+**解决方案**：创建一个新字段来编码哪些数据应该被
+排除。
 
-![](fig/good_formatting.png)
+![](图/good_formatting.png)
 
-### Using formatting to make the data sheet look pretty {#formatting\_pretty}
+### 使用格式化使数据表看起来更漂亮{#formatting\_pretty}
 
-**Example**: merging cells.
+**示例**：合并单元格。
 
-**Solution**: If you're not careful, formatting a worksheet to be more
-aesthetically pleasing can compromise your computer's ability to see
-associations in the data. Merged cells will make your data unreadable
-by statistics software. Consider restructuring your data in such a way
-that you will not need to merge cells to organise your data.
+**解决方案**：如果您不小心，将工作表格式化为更美观的
+可能会影响您的计算机查看数据中的
+关联的能力。 合并的单元格将导致统计软件无法读取您的数据
+。 考虑以这样的方式重构您的数据
+，这样您就不需要合并单元格来组织您的数据。
 
-### Placing comments or units in cells {#units}
+### 将注释或单元放置在单元格中 {#units}
 
-Most analysis software can't see Excel or LibreOffice comments, and
-would be confused by comments placed within your data cells. As
-described above for formatting, create another field if you need to
-add notes to cells. Similarly, don't include units in cells: ideally,
-all the measurements you place in one column should be in the same
-unit, but if for some reason they aren't, create another field and
-specify the units the cell is in.
+大多数分析软件无法看到 Excel 或 LibreOffice 注释，并且
+会对数据单元内的注释感到困惑。 正如
+上面描述的格式化一样，如果您需要
+向单元格添加注释，请创建另一个字段。 类似地，不要在单元格中包含单位：理想情况下，
+放在一列中的所有测量值都应该在同一个
+单位中，但如果由于某种原因它们不在，请创建另一个字段并
+指定单元格所在的单位。
 
-### Entering more than one piece of information in a cell {#info}
+### 在一个单元格中输入多条信息 {#info}
 
-**Example**: Recording ABO and Rhesus groups in one cell, such as A+,
-B+, A-, ...
+**示例**：在一个单元格中记录 ABO 和 Rh 血型，例如 A+、
+B+、A-、...
 
-**Solution**: Don't include more than one piece of information in a
-cell. This will limit the ways in which you can analyse your data.  If
-you need both these measurements, design your data sheet to include
-this information. For example, include one column for the ABO group and
+**解决方案**：不要在
+单元格中包含多条信息。 这将限制您分析数据的方式。  如果
+您需要这两种测量值，请设计您的数据表以包含
+此信息。 For example, include one column for the ABO group and
 one for the Rhesus group.
 
-### Using problematic field names {#field\_name}
+### 使用有问题的字段名称 {#field\_name}
 
-Choose descriptive field names, but be careful not to include spaces,
-numbers, or special characters of any kind. Spaces can be
-misinterpreted by parsers that use whitespace as delimiters and some
-programs don't like field names that are text strings that start with
-numbers.
+选择描述性的字段名称，但注意不要包含空格、
+数字或任何类型的特殊字符。 使用空格作为分隔符的解析器可能会误解空格
+，并且某些
+程序不喜欢以
+数字开头的文本字符串作为字段名称。
 
-Underscores (`_`) are a good alternative to spaces. Consider writing
-names in camel case (like this: ExampleFileName) to improve
-readability. Remember that abbreviations that make sense at the moment
-may not be so obvious in 6 months, but don't overdo it with names that
-are excessively long. Including the units in the field names avoids
-confusion and enables others to readily interpret your fields.
+下划线（`_`）是空格的良好替代品。 考虑以驼峰式命名法书写
+名称（像这样：ExampleFileName）以提高
+的可读性。 请记住，目前有意义的缩写
+可能在 6 个月后就不那么明显了，但不要使用过长的名称
+。 在字段名称中包含单位可避免
+混淆，并使其他人能够轻松解释您的字段。
 
-**Examples**
+**例子**
 
-| Good Name                                                      | Good Alternative                         | Avoid                                |
-| -------------------------------------------------------------- | ---------------------------------------- | ------------------------------------ |
-| Max\_temp\_C       | MaxTemp                                  | Maximum Temp (°C) |
-| Precipitation\_mm                        | Precipitation                            | precmm                               |
-| Mean\_year\_growth | MeanYearGrowth                           | Mean growth/year                     |
-| sex                                                            | sex                                      | M/F                                  |
-| weight                                                         | weight                                   | w.                   |
-| cell\_type                               | CellType                                 | Cell Type                            |
-| Observation\_01                          | first\_observation | 1st Obs                              |
+| 好名字                           | 不错的选择 | 避免                           |
+| ----------------------------- | ----- | ---------------------------- |
+| 最高温度                          | 最高温度  | 最高温度 (°C) |
+| 降水量\_mm | 沉淀    | 预CMM                         |
+| 平均年增长率                        | 年均增长率 | 平均年增长率                       |
+| 性别                            | 性别    | 男/女                          |
+| 重量                            | 重量    | w.           |
+| 单元格类型                         | 单元格类型 | 单元格类型                        |
+| 观察\_01  | 第一次观察 | 第一次观察                        |
 
-### Using special characters in data {#special}
+### 在数据中使用特殊字符 {#special}
 
-**Example**: You treat your spreadsheet program as a word processor
-when writing notes, for example copying data directly from Word or
-other applications.
+**示例**：在写笔记时，您将电子表格程序视为文字处理器
+，例如直接从 Word 或
+其他应用程序复制数据。
 
-**Solution**: This is a common strategy. For example, when writing
-longer text in a cell, people often include line breaks, em-dashes,
-etc. in their spreadsheet. Also, when copying data in from
-applications such as Word, formatting and fancy non-standard
-characters (such as left- and right-aligned quotation marks) are
-included. When exporting this data into a coding/statistical
-environment or into a relational database, dangerous things may occur,
-such as lines being cut in half and encoding errors being thrown.
+**解决方案**：这是一种常见的策略。 例如，当在单元格中写入
+较长的文本时，人们通常会在电子表格中包含换行符、破折号、
+等。 另外，从
+应用程序（例如 Word）复制数据时，格式和花哨的非标准
+字符（例如左对齐和右对齐的引号）将包含在
+中。 将这些数据导出到编码/统计
+环境或关系数据库时，可能会发生危险的事情，
+例如行被切成两半，并出现编码错误。
 
-General best practice is to avoid adding characters such as newlines,
-tabs, and vertical tabs. In other words, treat a text cell as if it
-were a simple web form that can only contain text and spaces.
+一般的最佳做法是避免添加换行符、
+制表符和垂直制表符等字符。 换句话说，将文本单元格视为
+一个只能包含文本和空格的简单 Web 表单。
 
-### Inclusion of metadata in data table {#metadata}
+### 在数据表中包含元数据 {#metadata}
 
-**Example**: You add a legend at the top or bottom of your data table
-explaining column meaning, units, exceptions, etc.
+**示例**：在数据表的顶部或底部添加图例
+，解释列的含义、单位、例外等。
 
-**Solution**: Recording data about your data ("metadata") is
-essential. You may be on intimate terms with your dataset while you
-are collecting and analysing it, but the chances that you will still
-remember that the variable "sglmemgp" means single member of group,
-for example, or the exact algorithm you used to transform a variable
-or create a derived one, after a few months, a year, or more are slim.
+**解决方案**：记录有关您的数据的数据（“元数据”）是
+至关重要。 在
+收集和分析数据集时，您可能对数据集了如指掌，但几个月、一年或更长时间后，您仍然
+记得变量“sglmemgp”表示组中的单个成员，例如
+，或者您用来转换变量
+或创建派生变量的确切算法的可能性很小。
 
-As well, there are many reasons other people may want to examine or
-use your data - to understand your findings, to verify your findings,
-to review your submitted publication, to replicate your results, to
-design a similar study, or even to archive your data for access and
-re-use by others. While digital data by definition are
-machine-readable, understanding their meaning is a job for human
-beings. The importance of documenting your data during the collection
-and analysis phase of your research cannot be overestimated,
-especially if your research is going to be part of the scholarly
-record.
+同样，其他人可能出于多种原因想要检查或
+使用您的数据 - 了解您的发现、验证您的发现、
+审查您提交的出版物、复制您的结果、
+设计类似的研究，甚至存档您的数据以供他人访问和
+重复使用。 虽然数字数据从定义上来说是
+机器可读的，但理解其含义却是人类
+的工作。 在研究的收集
+和分析阶段记录数据的重要性怎么强调也不为过，
+尤其是当您的研究将成为学术
+记录的一部分时。
 
-However, metadata should not be contained in the data file
-itself. Unlike a table in a paper or a supplemental file, metadata (in
-the form of legends) should not be included in a data file since this
-information is not data, and including it can disrupt how computer
-programs interpret your data file. Rather, metadata should be stored
-as a separate file in the same directory as your data file, preferably
-in plain text format with a name that clearly associates it with your
-data file. Because metadata files are free text format, they also
+但是，元数据不应该包含在数据文件
+本身中。 与论文或补充文件中的表格不同，元数据（以
+图例的形式）不应包含在数据文件中，因为此
+信息不是数据，并且包含它可能会破坏计算机
+程序对数据文件的解释方式。 相反，元数据应该作为单独的文件存储在
+与数据文件位于同一目录中，最好以纯文本格式存储在
+中，并且其名称应与
+数据文件明确关联。 Because metadata files are free text format, they also
 allow you to encode comments, units, information about how null values
 are encoded, etc. that are important to document but can disrupt the
 formatting of your data file.
 
-Additionally, file or database level metadata describes how files that
-make up the dataset relate to each other; what format they are in; and
-whether they supercede or are superceded by previous files. A
-folder-level readme.txt file is the classic way of accounting for all
-the files and folders in a project.
+此外，文件或数据库级别的元数据描述了组成数据集的
+文件彼此间的关系、它们的格式是什么；以及
+它们是否取代了以前的文件或者被以前的文件取代。
+文件夹级别的 readme.txt 文件是记录项目中所有
+文件和文件夹的经典方式。
 
 (Text on metadata adapted from the online course Research Data
 [MANTRA](https://datalib.edina.ac.uk/mantra) by EDINA and Data Library,
-University of Edinburgh. MANTRA is licensed under a Creative Commons
+University of Edinburgh. MANTRA 已获得 Creative Commons
 Attribution 4.0 International
-License.)
+License 的许可。)
 
-## Exporting data
+## 导出数据
 
-**Question**
+**问题**
 
-- How can we export data from spreadsheets in a way that is useful for
-  downstream applications?
+- 我们如何才能以对
+  下游应用程序有用的方式从电子表格中导出数据？
 
-**Objectives**
+**目标**
 
-- Store spreadsheet data in universal file formats.
-- Export data from a spreadsheet to a CSV file.
+- 以通用文件格式存储电子表格数据。
+- 将数据从电子表格导出到 CSV 文件。
 
-**Keypoints**
+**关键点**
 
 - Data stored in common spreadsheet formats will often not be read
   correctly into data analysis software, introducing errors into your
   data.
 
-- Exporting data from spreadsheets to formats like CSV or TSV puts it
-  in a format that can be used consistently by most programs.
+- 将数据从电子表格导出为 CSV 或 TSV 等格式，会将其
+  置于大多数程序可以一致使用的格式中。
 
-Storing the data you're going to work with for your analyses in Excel
-default file format (`*.xls` or `*.xlsx` - depending on the Excel
-version) isn't a good idea. Why?
+将您要用于分析的数据存储在 Excel
+默认文件格式（`*.xls` 或 `*.xlsx` - 取决于 Excel
+版本）中并不是一个好主意。 为什么？
 
-- Because it is a proprietary format, and it is possible that in the
-  future, technology won't exist (or will become sufficiently rare) to
-  make it inconvenient, if not impossible, to open the file.
+- 因为它是一种专有格式，并且有可能在
+  未来，技术将不再存在（或者变得足够稀有），从而导致
+  打开文件变得不方便，甚至不可能。
 
-- Other spreadsheet software may not be able to open files saved in a
-  proprietary Excel format.
+- 其他电子表格软件可能无法打开以
+  专有 Excel 格式保存的文件。
 
-- Different versions of Excel may handle data differently, leading to
-  inconsistencies. [Dates](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
-  is a well-documented example of inconsistencies in data storage.
+- 不同版本的 Excel 可能以不同的方式处理数据，导致
+  不一致。 [日期](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
+  是数据存储不一致的一个有据可查的例子。
 
 - Finally, more journals and grant agencies are requiring you to
   deposit your data in a data repository, and most of them don't
-  accept Excel format. It needs to be in one of the formats discussed
-  below.
+  accept Excel format. 它需要采用下面讨论的
+  格式之一。
 
-- The above points also apply to other formats such as open data
-  formats used by LibreOffice / Open Office. These formats are not
-  static and do not get parsed the same way by different software
-  packages.
+- 上述要点也适用于其他格式，例如 LibreOffice / Open Office 使用的开放数据
+  格式。 这些格式不是
+  静态的，并且不会被不同的软件
+  包以相同的方式解析。
 
 Storing data in a universal, open, and static format will help deal
-with this problem. Try tab-delimited (tab separated values or TSV) or
-comma-delimited (comma separated values or CSV). CSV files are plain
-text files where the columns are separated by commas, hence 'comma
-separated values' or CSV. The advantage of a CSV file over an
-Excel/SPSS/etc. file is that we can open and read a CSV file using
-just about any software, including plain text editors like TextEdit or
-NotePad. Data in a CSV file can also be easily imported into other
-formats and environments, such as SQLite and R. We're not tied to a
-certain version of a certain expensive program when we work with CSV
-files, so it's a good format to work with for maximum portability and
-endurance. Most spreadsheet programs can save to delimited text
+with this problem. 尝试制表符分隔（制表符分隔值或 TSV）或
+逗号分隔（逗号分隔值或 CSV）。 CSV 文件是普通的
+文本文件，其中列由逗号分隔，因此为“逗号
+分隔值”或 CSV。 CSV 文件相对于
+Excel/SPSS/等文件的优势在于，我们可以使用
+几乎任何软件打开和读取 CSV 文件，包括纯文本编辑器，如 TextEdit 或
+NotePad。 CSV 文件中的数据还可以轻松导入到其他
+格式和环境中，例如 SQLite 和 R。当我们使用 CSV
+文件时，我们不受
+某个昂贵程序的某个版本的限制，因此它是一种很好的格式，可以实现最大的可移植性和
+耐用性。 Most spreadsheet programs can save to delimited text
 formats like CSV easily, although they may give you a warning during
 the file export.
 
-To save a file you have opened in Excel in CSV format:
+要以 CSV 格式保存在 Excel 中打开的文件：
 
-1. From the top menu select 'File' and 'Save as'.
-2. In the 'Format' field, from the list, select 'Comma Separated
-  Values' (`*.csv`).
-3. Double check the file name and the location where you want to save
-  it and hit 'Save'.
+1. 从顶部菜单中选择“文件”和“另存为”。
+2. 在“格式”字段中，从列表中选择“以逗号分隔的
+  值”（`*.csv`）。
+3. 仔细检查文件名和要保存的位置
+  然后点击“保存”。
 
-An important note for backwards compatibility: you can open CSV files
-in Excel!
+关于向后兼容性的重要说明：您可以在 Excel 中打开 CSV 文件
+！
 
 ```{r, results="markup", fig.cap="Saving an Excel file to CSV.", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/excel-to-csv.png")
 ```
 
-**A note on R and `xls`**: There are R packages that can read `xls`
-files (as well as Google spreadsheets). It is even possible to access
-different worksheets in the `xls` documents.
+**关于 R 和 `xls`** 的注释：有一些 R 包可以读取 `xls`
+文件（以及 Google 电子表格）。 甚至可以访问 `xls` 文档中的
+个不同的工作表。
 
-**But**
+**但**
 
-- some of these only work on Windows.
-- this equates to replacing a (simple but manual) export to `csv` with
-  additional complexity/dependencies in the data analysis R code.
-- data formatting best practice still apply.
-- Is there really a good reason why `csv` (or similar) is not
-  adequate?
+- 其中一些仅适用于 Windows。
+- 这相当于用数据分析 R 代码中的
+  额外的复杂性/依赖性替换 (简单但手动的) 导出到 `csv`。
+- 数据格式的最佳实践仍然适用。
+- 真的有充分的理由说明为什么 `csv`（或类似的东西）不适合
+  吗？
 
-### Caveats on commas
+### 关于逗号的注意事项
 
-In some datasets, the data values themselves may include commas
-(,). In that case, the software which you use (including Excel) will
-most likely incorrectly display the data in columns. This is because
-the commas which are a part of the data values will be interpreted as
-delimiters.
+在某些数据集中，数据值本身可能包含逗号
+(,)。 In that case, the software which you use (including Excel) will
+most likely incorrectly display the data in columns. 这是因为
+作为数据值一部分的逗号将被解释为
+分隔符。
 
-For example, our data might look like this:
+例如，我们的数据可能如下所示：
 
 ```
 species_id,genus,species,taxa
@@ -746,26 +746,26 @@ AS,Ammodramus,savannarum,Bird
 BA,Baiomys,taylori,Rodent
 ```
 
-In the record `AH,Ammospermophilus,harrisi,Rodent, not censused` the
-value for `taxa` includes a comma (`Rodent, not censused`).  If we try
-to read the above into Excel (or other spreadsheet program), we will
-get something like this:
+在记录“AH,Ammospermophilus,harrisi,Rodent, not censused”中，“taxa”的
+值包含逗号（“Rodent, not censused”）。  如果我们尝试
+将上述内容读入 Excel（或其他电子表格程序），我们将
+得到如下内容：
 
 ```{r, results="markup", fig.cap="The risks of having commas inside comma-separated data.", echo=FALSE, purl=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("fig/csv-mistake.png")
 ```
 
-The value for `taxa` was split into two columns (instead of being put
-in one column `D`). This can propagate to a number of further
-errors. For example, the extra column will be interpreted as a column
-with many missing values (and without a proper header). In addition to
-that, the value in column `D` for the record in row 3 (so the one
-where the value for 'taxa' contained the comma) is now incorrect.
+“taxa” 的值被分成两列（而不是被放在“D”列中的
+）。 这可能会导致更多
+错误。 例如，额外的列将被解释为具有许多缺失值（并且没有适当的标题）的列
+。 除
+之外，第 3 行记录的 `D` 列中的值（因此
+其中 'taxa' 的值包含逗号）现在不正确。
 
-If you want to store your data in `csv` format and expect that your
-data values may contain commas, you can avoid the problem discussed
-above by putting the values in quotes (""). Applying this rule, our
-data might look like this:
+如果您想以 `csv` 格式存储数据，并预计
+数据值可能包含逗号，则可以通过将值放在引号（“”）中来避免上面讨论的
+问题。 应用此规则，我们的
+数据可能如下所示：
 
 ```
 species_id,genus,species,taxa
@@ -775,58 +775,58 @@ species_id,genus,species,taxa
 "BA","Baiomys","taylori","Rodent"
 ```
 
-Now opening this file as a `csv` in Excel will not lead to an extra
-column, because Excel will only use commas that fall outside of
-quotation marks as delimiting characters.
+现在在 Excel 中将此文件作为 `csv` 打开不会导致出现多余的
+列，因为 Excel 只会使用超出
+引号的逗号作为分隔字符。
 
 Alternatively, if you are working with data that contains commas, you
 likely will need to use another delimiter when working in a
-spreadsheet[^decsep]. In this case, consider using tabs as your delimiter and
-working with TSV files. TSV files can be exported from spreadsheet
-programs in the same way as CSV files.
+spreadsheet[^decsep]. 在这种情况下，请考虑使用制表符作为分隔符，并使用
+来处理 TSV 文件。 TSV 文件可以以与 CSV 文件相同的方式从电子表格
+程序中导出。
 
-[^decsep]: This is particularly relevant in European
-    countries where the comma is used as a decimal
-    separator. In such cases, the default value separator in a
-    csv file will be the semi-colon (;), or values will be
-    systematically quoted.
+[^decsep]: 这在欧洲
+    国家尤其重要，这些国家使用逗号作为小数
+    分隔符。 在这种情况下，
+    csv 文件中的默认值分隔符将是分号 (;)，或者值将是
+    系统引用。
 
-If you are working with an already existing dataset in which the data
-values are not included in "" but which have commas as both delimiters
-and parts of data values, you are potentially facing a major problem
-with data cleaning. If the dataset you're dealing with contains
-hundreds or thousands of records, cleaning them up manually (by either
-removing commas from the data values or putting the values into
-quotes - "") is not only going to take hours and hours but may
-potentially end up with you accidentally introducing many errors.
+如果您正在处理一个已经存在的数据集，其中数据
+值未包含在“”中，但其中逗号既作为分隔符
+又作为数据值的一部分，则您可能会面临数据清理的一个主要问题
+。 如果您处理的数据集包含
+数百或数千条记录，手动清理它们（通过
+从数据值中删除逗号或将值放入
+引号中 - “”）不仅会花费数小时，而且可能
+最终导致您意外引入许多错误。
 
-Cleaning up datasets is one of the major problems in many scientific
-disciplines. The approach almost always depends on the particular
-context. However, it is a good practice to clean the data in an
-automated fashion, for example by writing and running a script. The
-Python and R lessons will give you the basis for developing skills to
-build relevant scripts.
+清理数据集是许多科学
+学科的主要问题之一。 该方法几乎总是依赖于特定的
+环境。 但是，以
+自动化的方式清理数据是一种很好的做法，例如通过编写和运行脚本。
+Python 和 R 课程将为您提供开发
+构建相关脚本的技能的基础。
 
-## Summary
+## 概括
 
 ```{r analysis, results="asis", fig.margin=TRUE, fig.cap="A typical data analysis workflow.", fig.width=7, fig.height=4, echo=FALSE, purl=FALSE}
 knitr::include_graphics("fig/analysis.png")
 ```
 
-A typical data analysis workflow is illustrated in the figure above,
-where data is repeatedly transformed, visualised, and modelled. This
-iteration is repeated multiple times until the data is understood. In
-many real-life cases, however, most time is spent cleaning up and
-preparing the data, rather than actually analysing and understanding
-it.
+上图展示了典型的数据分析工作流程，
+其中数据被重复转换、可视化和建模。 这个
+迭代重复多次，直到数据被理解。 然而，在
+许多现实生活中，大部分时间都花在清理和
+准备数据上，而不是实际分析和理解
+数据上。
 
-An agile data analysis workflow, with several fast iterations of the
-transform/visualise/model cycle is only feasible if the data is
-formatted in a predictable way and one can reason about the data
-without having to look at it and/or fix it.
+敏捷的数据分析工作流程（包含
+转换/可视化/模型循环的几次快速迭代）只有在数据
+以可预测的方式格式化，并且可以推断数据
+而不必查看和/或修复它时才可行。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Good data organization is the foundation of any research project.
+- 良好的数据组织是任何研究项目的基础。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

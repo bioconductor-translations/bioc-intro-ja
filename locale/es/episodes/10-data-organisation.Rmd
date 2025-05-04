@@ -10,294 +10,294 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Learn about spreadsheets, their strengths and weaknesses.
-- How do we format data in spreadsheets for effective data use?
-- Learn about common spreadsheet errors and how to correct them.
-- Organise your data according to tidy data principles.
-- Learn about text-based spreadsheet formats such as the comma-separated (CSV) or tab-separated (TSV) formats.
+- Aprenda sobre las hojas de cálculo, sus fortalezas y debilidades.
+- ¿Cómo damos formato a los datos en hojas de cálculo para un uso eficaz de los datos?
+- Obtenga información sobre los errores comunes de las hojas de cálculo y cómo corregirlos.
+- Organice sus datos de acuerdo con los principios de datos ordenados.
+- Obtenga información sobre los formatos de hojas de cálculo basados en texto, como los formatos separados por comas (CSV) o separados por tabulaciones (TSV).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to organise tabular data?
+- ¿Cómo organizar datos tabulares?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> Este episodio se basa en la lección _Análisis de datos y
+> Visualización en R para ecologistas_ de Data Carpentries.
 
-## Spreadsheet programs
+## Programas de hoja de cálculo
 
-**Question**
+**Pregunta**
 
-- What are basic principles for using spreadsheets for good data
-  organization?
+- ¿Cuáles son los principios básicos para usar hojas de cálculo para una buena organización de datos
+  ?
 
-**Objective**
+**Objetivo**
 
-- Describe best practices for organizing data so computers can make
-  the best use of datasets.
+- Describir las mejores prácticas para organizar datos para que las computadoras puedan hacer
+  el mejor uso de los conjuntos de datos.
 
-**Keypoint**
+**Punto clave**
 
-- Good data organization is the foundation of any research project.
+- Una buena organización de los datos es la base de cualquier proyecto de investigación.
 
-Good data organization is the foundation of your research
-project. Most researchers have data or do data entry in
-spreadsheets. Spreadsheet programs are very useful graphical
-interfaces for designing data tables and handling very basic data
-quality control functions. See also @Broman:2018.
+Una buena organización de los datos es la base de su proyecto de investigación
+. La mayoría de los investigadores tienen datos o los ingresan en
+hojas de cálculo. Los programas de hojas de cálculo son interfaces gráficas
+muy útiles para diseñar tablas de datos y manejar datos muy básicos
+funciones de control de calidad. Ver también @Broman:2018.
 
-### Spreadsheet outline
+### Esquema de hoja de cálculo
 
-Spreadsheets are good for data entry. Therefore we have a lot of data
-in spreadsheets.  Much of your time as a researcher will be spent in
-this 'data wrangling' stage.  It's not the most fun, but it's
-necessary. We'll teach you how to think about data organization and
-some practices for more effective data wrangling.
+Las hojas de cálculo son buenas para la entrada de datos. Por lo tanto, tenemos muchos datos
+en hojas de cálculo.  Gran parte de su tiempo como investigador lo dedicará a
+esta etapa de "disputación de datos".  No es lo más divertido, pero es
+necesario. Le enseñaremos cómo pensar en la organización de datos y
+algunas prácticas para una gestión de datos más eficaz.
 
-### What this lesson will not teach you
+### Lo que esta lección no te enseñará
 
-- How to do _statistics_ in a spreadsheet
-- How to do _plotting_ in a spreadsheet
-- How to _write code_ in spreadsheet programs
+- Cómo hacer _estadísticas_ en una hoja de cálculo
+- Cómo hacer _trazar_ en una hoja de cálculo
+- Cómo _escribir código_ en programas de hojas de cálculo
 
-If you're looking to do this, a good reference is Head First
+Si desea hacer esto, una buena referencia es Head First
 Excel,
-published by O'Reilly.
+publicado por O'Reilly.
 
-### Why aren't we teaching data analysis in spreadsheets
+### ¿Por qué no enseñamos análisis de datos en hojas de cálculo?
 
-- Data analysis in spreadsheets usually requires a lot of manual
-  work. If you want to change a parameter or run an analysis with a
-  new dataset, you usually have to redo everything by hand. (We do
-  know that you can create macros, but see the next point.)
+- El análisis de datos en hojas de cálculo suele requerir mucho trabajo manual
+  . Si desea cambiar un parámetro o ejecutar un análisis con un
+  nuevo conjunto de datos, normalmente tendrá que rehacer todo a mano. (Sabemos
+  que puedes crear macros, pero mira el siguiente punto).
 
-- It is also difficult to track or reproduce statistical or plotting
-  analyses done in spreadsheet programs when you want to go back to
-  your work or someone asks for details of your analysis.
+- También es difícil rastrear o reproducir análisis estadísticos o gráficos
+  realizados en programas de hojas de cálculo cuando desea volver a
+  su trabajo o alguien solicita detalles de su análisis.
 
-Many spreadsheet programs are available. Since most participants
-utilise Excel as their primary spreadsheet program, this lesson will
-make use of Excel examples. A free spreadsheet program that can also
-be used is LibreOffice. Commands may differ a bit between programs,
-but the general idea is the same.
+Hay muchos programas de hojas de cálculo disponibles. Dado que la mayoría de los participantes
+utilizan Excel como su programa principal de hoja de cálculo, esta lección
+utilizará ejemplos de Excel. Un programa de hoja de cálculo gratuito que también se puede utilizar
+es LibreOffice. Los comandos pueden diferir un poco entre programas,
+pero la idea general es la misma.
 
-Spreadsheet programs encompass a lot of the things we need to be able
-to do as researchers. We can use them for:
+Los programas de hojas de cálculo abarcan muchas de las cosas que necesitamos poder hacer
+como investigadores. Podemos usarlos para:
 
-- Data entry
-- Organizing data
-- Subsetting and sorting data
-- Statistics
-- Plotting
+- Entrada de datos
+- Organizar datos
+- Subcomponer y ordenar datos
+- Estadísticas
+- Graficado
 
-Spreadsheet programs use tables to represent and display data. Data
-formatted as tables is also the main theme of this chapter, and we
-will see how to organise data into tables in a standardised way to
-ensure efficient downstream analysis.
+Los programas de hojas de cálculo utilizan tablas para representar y mostrar datos. Los datos
+formateados como tablas también son el tema principal de este capítulo, y
+veremos cómo organizar los datos en tablas de una manera estandarizada para
+garantizar un análisis posterior eficiente.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Discuss the following points with your neighbour
+## Desafío: discute los siguientes puntos con tu vecino.
 
-- Have you used spreadsheets, in your research, courses,
-  or at home?
-- What kind of operations do you do in spreadsheets?
-- Which ones do you think spreadsheets are good for?
-- Have you accidentally done something in a spreadsheet program that made you
-  frustrated or sad?
+- ¿Has utilizado hojas de cálculo en tus investigaciones, cursos,
+  o en casa?
+- ¿Qué tipo de operaciones hacéis en hojas de cálculo?
+- ¿Para cuáles crees que son buenas las hojas de cálculo?
+- ¿Has hecho accidentalmente algo en un programa de hoja de cálculo que te hizo
+  frustrado o triste?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Problems with spreadsheets
+### Problemas con las hojas de cálculo
 
-Spreadsheets are good for data entry, but in reality we tend to
-use spreadsheet programs for much more than data entry. We use them
-to create data tables for publications, to generate summary
-statistics, and make figures.
+Las hojas de cálculo son buenas para ingresar datos, pero en realidad tendemos a
+usar programas de hojas de cálculo para mucho más que ingresar datos. Los usamos
+para crear tablas de datos para publicaciones, para generar estadísticas resumidas
+y hacer cifras.
 
 Generating tables for publications in a spreadsheet is not
 optimal - often, when formatting a data table for publication, we're
 reporting key summary statistics in a way that is not really meant to
 be read as data, and often involves special formatting
-(merging cells, creating borders, making it pretty). We advise you to
-do this sort of operation within your document editing software.
+(merging cells, creating borders, making it pretty). Le recomendamos que
+realice este tipo de operación dentro de su software de edición de documentos.
 
-The latter two applications, generating statistics and figures, should
-be used with caution: because of the graphical, drag and drop nature of
-spreadsheet programs, it can be very difficult, if not impossible, to
-replicate your steps (much less retrace anyone else's), particularly if your
-stats or figures require you to do more complex calculations. Furthermore,
-in doing calculations in a spreadsheet, it's easy to accidentally apply a
-slightly different formula to multiple adjacent cells. When using a
-command-line based statistics program like R or SAS, it's practically
-impossible to apply a calculation to one observation in your
-dataset but not another unless you're doing it on purpose.
+Las dos últimas aplicaciones, que generan estadísticas y cifras, deben usarse
+con precaución: debido a la naturaleza gráfica, de arrastrar y soltar, de los programas de hojas de cálculo
+, puede ser muy difícil, si no imposible,
+replica tus pasos (y mucho menos vuelve sobre los de cualquier otra persona), especialmente si tus estadísticas o cifras de
+requieren que hagas cálculos más complejos. Además,
+al hacer cálculos en una hoja de cálculo, es fácil aplicar accidentalmente una fórmula
+ligeramente diferente a varias celdas adyacentes. Cuando se utiliza un programa de estadísticas basado en línea de comandos
+como R o SAS, es prácticamente
+imposible aplicar un cálculo a una observación en su conjunto de datos
+pero no a otra, a menos que esté haciendo a propósito.
 
-### Using spreadsheets for data entry and cleaning
+### Uso de hojas de cálculo para la entrada y limpieza de datos.
 
-In this lesson, we will assume that you are most likely using Excel as
-your primary spreadsheet program - there are others (gnumeric, Calc
-from OpenOffice), and their functionality is similar, but Excel seems
-to be the program most used by biologists and biomedical researchers.
+En esta lección, asumiremos que lo más probable es que esté utilizando Excel como
+su programa de hoja de cálculo principal; hay otros (gnumeric, Calc
+de OpenOffice) y su funcionalidad es similar, pero Excel parece
+ser el programa más utilizado por biólogos e investigadores biomédicos.
 
-In this lesson we're going to talk about:
+En esta lección vamos a hablar de:
 
-1. Formatting data tables in spreadsheets
-2. Formatting problems
-3. Exporting data
+1. Formatear tablas de datos en hojas de cálculo
+2. Problemas de formato
+3. Exportar datos
 
-## Formatting data tables in spreadsheets
+## Formatear tablas de datos en hojas de cálculo
 
-**Questions**
+**Preguntas**
 
-- How do we format data in spreadsheets for effective data use?
+- ¿Cómo damos formato a los datos en hojas de cálculo para un uso eficaz de los datos?
 
-**Objectives**
+**Objetivos**
 
-- Describe best practices for data entry and formatting in
-  spreadsheets.
+- Describir las mejores prácticas para la entrada y formato de datos en
+  hojas de cálculo.
 
-- Apply best practices to arrange variables and observations in a
-  spreadsheet.
+- Aplique las mejores prácticas para organizar variables y observaciones en una hoja de cálculo
+  .
 
-**Keypoints**
+**Puntos clave**
 
-- Never modify your raw data. Always make a copy before making any
-  changes.
+- Nunca modifique sus datos sin procesar. Siempre haga una copia antes de realizar
+  cambios.
 
-- Keep track of all of the steps you take to clean your data in a
-  plain text file.
+- Realice un seguimiento de todos los pasos que sigue para limpiar sus datos en un
+  archivo de texto sin formato.
 
-- Organise your data according to tidy data principles.
+- Organice sus datos de acuerdo con los principios de datos ordenados.
 
-The most common mistake made is treating spreadsheet programs like lab
-notebooks, that is, relying on context, notes in the margin, spatial
-layout of data and fields to convey information. As humans, we can
-(usually) interpret these things, but computers don't view information
-the same way, and unless we explain to the computer what every single
-thing means (and that can be hard!), it will not be able to see how
-our data fits together.
+El error más común que se comete es tratar los programas de hojas de cálculo como cuadernos de laboratorio
+, es decir, confiar en el contexto, las notas al margen, el diseño espacial
+de los datos y los campos para transmitir información. Como humanos, podemos
+(generalmente) interpretar estas cosas, pero las computadoras no ven la información
+de la misma manera, y a menos que le expliquemos a la computadora qué significa cada cosa
+(¡y eso puede ser difícil!), no podrá ver cómo
+encajan nuestros datos.
 
-Using the power of computers, we can manage and analyse data in much
-more effective and faster ways, but to use that power, we have to set
-up our data for the computer to be able to understand it (and
-computers are very literal).
+Usando el poder de las computadoras, podemos administrar y analizar datos de maneras mucho
+más efectivas y rápidas, pero para usar ese poder, tenemos que configurar
+nuestros datos para que la computadora pueda entenderlo (y
+las computadoras son muy literales).
 
-This is why it's extremely important to set up well-formatted tables
-from the outset - before you even start entering data from your very
-first preliminary experiment. Data organization is the foundation of
-your research project. It can make it easier or harder to work with
-your data throughout your analysis, so it's worth thinking about when
-you're doing your data entry or setting up your experiment. You can
-set things up in different ways in spreadsheets, but some of these
-choices can limit your ability to work with the data in other programs
-or have the you-of-6-months-from-now or your collaborator work with
-the data.
+Por eso es extremadamente importante configurar tablas bien formateadas
+desde el principio, incluso antes de comenzar a ingresar datos de su
+primer experimento preliminar. La organización de datos es la base de
+su proyecto de investigación. Puede hacer que sea más fácil o más difícil trabajar con
+sus datos a lo largo de su análisis, por lo que vale la pena pensar en cuándo
+está ingresando datos o configurando su experimento. Puedes
+configurar las cosas de diferentes maneras en hojas de cálculo, pero algunas de estas
+opciones pueden limitar tu capacidad para trabajar con los datos en otros programas
+o tener la tuya de- Dentro de 6 meses o tu colaborador trabajará con
+los datos.
 
-**Note:** the best layouts/formats (as well as software and
-interfaces) for data entry and data analysis might be different. It is
-important to take this into account, and ideally automate the
-conversion from one to another.
+**Nota:** los mejores diseños/formatos (así como el software y las
+interfaces) para la entrada y el análisis de datos pueden ser diferentes. Es
+importante tener esto en cuenta e idealmente automatizar la
+conversión de uno a otro.
 
-### Keeping track of your analyses
+### Seguimiento de sus análisis
 
-When you're working with spreadsheets, during data clean up or
-analyses, it's very easy to end up with a spreadsheet that looks very
-different from the one you started with. In order to be able to
-reproduce your analyses or figure out what you did when a reviewer or
-instructor asks for a different analysis, you should
+Cuando trabajas con hojas de cálculo, durante la limpieza de datos o
+análisis, es muy fácil terminar con una hoja de cálculo que se ve muy
+diferente de la que tenías al principio. Para poder
+reproducir tus análisis o descubrir qué hiciste cuando un revisor o
+instructor te pide un análisis diferente, debes
 
-- create a new file with your cleaned or analysed data. Don't modify
-  the original dataset, or you will never know where you started!
+- cree un nuevo archivo con sus datos limpios o analizados. ¡No modifiques
+  el conjunto de datos original o nunca sabrás por dónde empezaste!
 
-- keep track of the steps you took in your clean up or analysis. You
-  should track these steps as you would any step in an experiment. We
-  recommend that you do this in a plain text file stored in the same
-  folder as the data file.
+- Lleve un registro de los pasos que siguió en su limpieza o análisis. Usted
+  debe realizar un seguimiento de estos pasos como lo haría con cualquier paso de un experimento.
+  recomendamos que haga esto en un archivo de texto sin formato almacenado en la misma carpeta
+  que el archivo de datos.
 
-This might be an example of a spreadsheet setup:
+Este podría ser un ejemplo de configuración de una hoja de cálculo:
 
 ![](fig/spreadsheet-setup-updated.png)
 
-Put these principles in to practice today during your exercises.
+Pon estos principios en práctica hoy durante tus ejercicios.
 
-While versioning is out of scope for this course, you can look at the
-Carpentries lesson on
-['Git'](https://swcarpentry.github.io/git-novice/) to learn how to
-maintain **version control** over your data. See also this blog
-post for a quick tutorial or
-@Perez-Riverol:2016 for a more research-oriented use-case.
+Si bien el control de versiones está fuera del alcance de este curso, puede consultar la lección
+Carpentries en
+['Git'](https://swcarpentry.github.io/git-novice/) para aprenda cómo
+mantener **control de versiones** sobre sus datos. Vea también este blog
+post para un tutorial rápido o
+@Perez-Riverol:2016 para un tutorial más orientado a la investigación. caso de uso.
 
-### Structuring data in spreadsheets
+### Estructurar datos en hojas de cálculo.
 
-The cardinal rules of using spreadsheet programs for data:
+Las reglas fundamentales para el uso de programas de hojas de cálculo para datos:
 
-1. Put all your variables in columns - the thing you're measuring,
-  like 'weight' or 'temperature'.
-2. Put each observation in its own row.
-3. Don't combine multiple pieces of information in one cell. Sometimes
-  it just seems like one thing, but think if that's the only way
-  you'll want to be able to use or sort that data.
-4. Leave the raw data raw - don't change it!
-5. Export the cleaned data to a text-based format like CSV
-  (comma-separated values) format. This ensures that anyone can use
-  the data, and is required by most data repositories.
+1. Coloque todas sus variables en columnas: lo que está midiendo,
+  como 'peso' o 'temperatura'.
+2. Coloque cada observación en su propia fila.
+3. No combine varias piezas de información en una celda. A veces
+  simplemente parece una cosa, pero piensa si esa es la única manera
+  en la que querrás poder usar u ordenar esos datos.
+4. Deje los datos sin procesar, ¡no los cambie!
+5. Exporte los datos limpios a un formato basado en texto como CSV
+  (valores separados por comas). Esto garantiza que cualquiera pueda usar
+  los datos y es requerido por la mayoría de los repositorios de datos.
 
-For instance, we have data from patients that visited several
-hospitals in Brussels, Belgium. They recorded the date of the visit,
-the hospital, the patients' gender, weight and blood group.
+Por ejemplo, tenemos datos de pacientes que visitaron varios
+hospitales en Bruselas, Bélgica. Registraron la fecha de la visita,
+el hospital, el sexo, el peso y el grupo sanguíneo de los pacientes.
 
-If we were to keep track of the data like this:
+Si tuviéramos que realizar un seguimiento de los datos como este:
 
 ![](fig/multiple-info.png)
 
-the problem is that the ABO and Rhesus groups are in the same `Blood`
-type column. So, if they wanted to look at all observations of the A
-group or look at weight distributions by ABO group, it would be tricky
-to do this using this data setup. If instead we put the ABO and Rhesus
-groups in different columns, you can see that it would be much easier.
+el problema es que los grupos ABO y Rhesus están en la misma columna de tipo `Blood`
+. Entonces, si quisieran ver todas las observaciones del grupo A
+o ver las distribuciones de peso por grupo ABO, sería complicado
+hacerlo usando esta configuración de datos. Si en cambio ponemos los grupos ABO y Rhesus
+en columnas diferentes, puedes ver que sería mucho más fácil.
 
 ![](fig/single-info.png)
 
-An important rule when setting up a datasheet, is that **columns are
-used for variables** and **rows are used for observations**:
+Una regla importante al configurar una hoja de datos es que **las columnas se usan
+para las variables** y **las filas se usan para las observaciones**:
 
-- columns are variables
-- rows are observations
-- cells are individual values
+- las columnas son variables
+- las filas son observaciones
+- las celdas son valores individuales
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: We're going to take a messy dataset and describe how we would clean it up.
+## Desafío: tomaremos un conjunto de datos desordenado y describiremos cómo lo limpiaríamos.
 
-1. Download a messy dataset by clicking
-  [here](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx).
+1. Descargue un conjunto de datos desordenado haciendo clic en
+  [aquí](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx).
 
-2. Open up the data in a spreadsheet program.
+2. Abra los datos en un programa de hoja de cálculo.
 
-3. You can see that there are two tabs. The data contains various
-  clinical variables recorded in various hospitals in Brussels during
-  the first and second COVID-19 waves in 2020. As you can see, the
-  data have been recorded differently during the March and November
-  waves. Now you're the person in charge of this project and you want
-  to be able to start analyzing the data.
+3. Puedes ver que hay dos pestañas. Los datos contienen varias
+  variables clínicas registradas en varios hospitales de Bruselas durante
+  la primera y segunda oleada de COVID-19 en 2020. Como puede ver, los datos
+  se registraron de manera diferente durante las oleadas
+  de marzo y noviembre. Ahora eres la persona a cargo de este proyecto y quieres que
+  pueda comenzar a analizar los datos.
 
-4. With the person next to you, identify what is wrong with this
-  spreadsheet. Also discuss the steps you would need to take to clean
-  up first and second wave tabs, and to put them all together in one
-  spreadsheet.
+4. Con la persona a tu lado, identifica qué está mal en esta hoja de cálculo
+  . También analice los pasos que necesitaría seguir para limpiar
+  las pestañas de la primera y segunda ola, y juntarlas todas en una
+  hoja de cálculo.
 
-**Important:** Do not forget our first piece of advice: to create a
-new file (or tab) for the cleaned data, never modify your original
-(raw) data.
+**Importante:** No olvide nuestro primer consejo: para crear un
+nuevo archivo (o pestaña) para los datos limpios, nunca modifique sus datos originales
+(sin procesar).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-After you go through this exercise, we'll discuss as a group what was
-wrong with this data and how you would fix it.
+Después de realizar este ejercicio, discutiremos en grupo qué
+estaba mal con estos datos y cómo solucionarlo.
 
 <!-- - Take about 10 minutes to work on this exercise. -->
 
@@ -319,45 +319,45 @@ wrong with this data and how you would fix it.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Once you have tidied up the data, answer the following questions:
+## Desafío: una vez que haya ordenado los datos, responda las siguientes preguntas:
 
-- How many men and women took part in the study?
-- How many A, AB, and B types have been tested?
-- As above, but disregarding the contaminated samples?
-- How many Rhesus + and - have been tested?
-- How many universal donors (O-) have been tested?
-- What is the average weight of AB men?
-- How many samples have been tested in the different hospitals?
+- ¿Cuántos hombres y mujeres participaron en el estudio?
+- ¿Cuántos tipos A, AB y B se han probado?
+- ¿Como arriba, pero sin tener en cuenta las muestras contaminadas?
+- ¿Cuántos Rhesus + y - se han probado?
+- ¿Cuántos donantes universales (O-) se han probado?
+- ¿Cuál es el peso promedio de los hombres AB?
+- ¿Cuántas muestras se han analizado en los diferentes hospitales?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-An **excellent reference**, in particular with regard to R scripting
-is the _Tidy Data_ paper @Wickham:2014.
+Una **excelente referencia**, en particular con respecto a las secuencias de comandos R
+es el artículo _Tidy Data_ @Wickham:2014.
 
-## Common spreadsheet errors
+## Errores comunes en las hojas de cálculo
 
-**Questions**
+**Preguntas**
 
-- What are some common challenges with formatting data in spreadsheets
-  and how can we avoid them?
+- ¿Cuáles son algunos de los desafíos comunes al formatear datos en hojas de cálculo
+  y cómo podemos evitarlos?
 
-**Objectives**
+**Objetivos**
 
-- Recognise and resolve common spreadsheet formatting problems.
+- Reconocer y resolver problemas comunes de formato de hojas de cálculo.
 
-**Keypoints**
+**Puntos clave**
 
-- Avoid using multiple tables within one spreadsheet.
-- Avoid spreading data across multiple tabs.
-- Record zeros as zeros.
-- Use an appropriate null value to record missing data.
-- Don't use formatting to convey information or to make your spreadsheet look pretty.
-- Place comments in a separate column.
-- Record units in column headers.
-- Include only one piece of information in a cell.
-- Avoid spaces, numbers and special characters in column headers.
-- Avoid special characters in your data.
-- Record metadata in a separate plain text file.
+- Evite el uso de varias tablas dentro de una hoja de cálculo.
+- Evite distribuir datos en varias pestañas.
+- Registre los ceros como ceros.
+- Utilice un valor nulo apropiado para registrar los datos faltantes.
+- No utilices el formato para transmitir información o hacer que tu hoja de cálculo luzca bonita.
+- Coloque los comentarios en una columna separada.
+- Registre las unidades en los encabezados de las columnas.
+- Incluya solo una pieza de información en una celda.
+- Evite espacios, números y caracteres especiales en los encabezados de las columnas.
+- Evite caracteres especiales en sus datos.
+- Registre los metadatos en un archivo de texto sin formato separado.
 
 <!-- This lesson is meant to be used as a reference for discussion as -->
 
@@ -367,376 +367,376 @@ is the _Tidy Data_ paper @Wickham:2014.
 
 <!-- refer to responses to the exercise in the previous lesson. -->
 
-There are a few potential errors to be on the lookout for in your own
-data as well as data from collaborators or the Internet. If you are
-aware of the errors and the possible negative effect on downstream
-data analysis and result interpretation, it might motivate yourself
-and your project members to try and avoid them. Making small changes
-to the way you format your data in spreadsheets, can have a great
-impact on efficiency and reliability when it comes to data cleaning
-and analysis.
+Hay algunos errores potenciales a los que debe prestar atención en sus propios datos
+, así como en los datos de sus colaboradores o de Internet. Si es
+consciente de los errores y del posible efecto negativo en el análisis de datos y la interpretación de resultados de
+posteriores, podría motivarse a usted mismo
+y a los miembros de su proyecto a intentar evitarlos. Hacer pequeños cambios
+en la forma en que formatea sus datos en las hojas de cálculo puede tener un gran
+impacto en la eficiencia y confiabilidad cuando se trata de limpieza y análisis de datos
+.
 
-- [Using multiple tables](#tables)
-- [Using multiple tabs](#tabs)
-- [Not filling in zeros](#zeros)
-- [Using problematic null values](#null)
-- [Using formatting to convey information](#formatting)
-- [Using formatting to make the data sheet look pretty](#formatting_pretty)
-- [Placing comments or units in cells](#units)
-- [Entering more than one piece of information in a cell](#info)
-- [Using problematic field names](#field_name)
-- [Using special characters in data](#special)
-- [Inclusion of metadata in data table](#metadata)
+- [Usando varias tablas](#tables)
+- [Usar varias pestañas](#pestañas)
+- [Sin completar ceros](#zeros)
+- [Usando valores nulos problemáticos](#null)
+- [Usar formato para transmitir información](#formateo)
+- [Usar formato para que la hoja de datos se vea bonita](#formatting_pretty)
+- [Colocar comentarios o unidades en celdas](#unidades)
+- [Ingresar más de un dato en una celda](#info)
+- [Usando nombres de campos problemáticos](#field_name)
+- [Usar caracteres especiales en los datos](#special)
+- [Inclusión de metadatos en tabla de datos](#metadata)
 
-### Using multiple tables {#tables}
+### Usando múltiples tablas {#tables}
 
-A common strategy is creating multiple data tables within one
-spreadsheet. This confuses the computer, so don't do this!  When you
-create multiple tables within one spreadsheet, you're drawing false
-associations between things for the computer, which sees each row as
-an observation. You're also potentially using the same field name in
-multiple places, which will make it harder to clean your data up into
-a usable form. The example below depicts the problem:
+Una estrategia común es crear varias tablas de datos dentro de una
+hoja de cálculo. Esto confunde a la computadora, ¡así que no hagas esto!  Cuando
+creas varias tablas dentro de una hoja de cálculo, estás dibujando
+asociaciones falsas entre cosas para la computadora, que ve cada fila como
+una observación. También estás potencialmente usando el mismo nombre de campo en
+varios lugares, lo que hará que sea más difícil limpiar tus datos en
+un formulario utilizable. El siguiente ejemplo muestra el problema:
 
 ![](fig/2_datasheet_example.jpg)
 
-In the example above, the computer will see (for example) row 4 and
-assume that all columns A-AF refer to the same sample. This row
-actually represents four distinct samples (sample 1 for each of four
-different collection dates - May 29th, June 12th, June 19th, and June
-26th), as well as some calculated summary statistics (an average (avr)
-and standard error of measurement (SEM)) for two of those
-samples. Other rows are similarly problematic.
+En el ejemplo anterior, la computadora verá (por ejemplo) la fila 4 y
+asumirá que todas las columnas A-AF se refieren a la misma muestra. Esta fila
+en realidad representa cuatro muestras distintas (muestra 1 para cada una de las cuatro
+fechas de recolección diferentes: 29 de mayo, 12 de junio, 19 de junio y
+26 de junio), así como algunas estadísticas resumidas calculadas (un promedio (avr)
+y un error estándar de medición (SEM)) para dos de esas
+muestras. Otras filas son igualmente problemáticas.
 
-### Using multiple tabs {#tabs}
+### Usando múltiples pestañas {#tabs}
 
-But what about workbook tabs? That seems like an easy way to organise
-data, right? Well, yes and no. When you create extra tabs, you fail to
-allow the computer to see connections in the data that are there (you
-have to introduce spreadsheet application-specific functions or
-scripting to ensure this connection). Say, for instance, you make a
-separate tab for each day you take a measurement.
+Pero ¿qué pasa con las pestañas del libro de trabajo? Parece una manera fácil de organizar
+datos, ¿verdad? Bueno, sí y no. Cuando crea pestañas adicionales, no
+permite que la computadora vea las conexiones en los datos que están allí (usted
+tiene que introducir funciones específicas de la aplicación de hoja de cálculo o
+secuencias de comandos para garantizar esta conexión). Digamos, por ejemplo, que creas una
+pestaña separada para cada día que tomas una medición.
 
-This isn't good practice for two reasons:
+Esta no es una buena práctica por dos razones:
 
-1. you are more likely to accidentally add inconsistencies to your
-  data if each time you take a measurement, you start recording data
-  in a new tab, and
+1. es más probable que accidentalmente agregue inconsistencias a sus
+  datos si cada vez que toma una medición, comienza a registrar datos
+  en una nueva pestaña, y
 
 2. even if you manage to prevent all inconsistencies from creeping in,
   you will add an extra step for yourself before you analyse the data
   because you will have to combine these data into a single
-  datatable. You will have to explicitly tell the computer how to
-  combine tabs - and if the tabs are inconsistently formatted, you
-  might even have to do it manually.
+  datatable. Tendrás que decirle explícitamente a la computadora cómo
+  combinar pestañas, y si las pestañas tienen un formato inconsistente, es posible que
+  incluso tengas que hacerlo manualmente.
 
-The next time you're entering data, and you go to create another tab
-or table, ask yourself if you could avoid adding this tab by adding
-another column to your original spreadsheet. We used multiple tabs in
-our example of a messy data file, but now you've seen how you can
-reorganise your data to consolidate across tabs.
+La próxima vez que ingrese datos y vaya a crear otra pestaña
+o tabla, pregúntese si podría evitar agregar esta pestaña agregando
+otra columna a su hoja de cálculo original. Usamos varias pestañas en
+nuestro ejemplo de un archivo de datos desordenado, pero ahora has visto cómo puedes
+reorganizar tus datos para consolidarlos entre pestañas.
 
-Your data sheet might get very long over the course of the
-experiment. This makes it harder to enter data if you can't see your
-headers at the top of the spreadsheet. But don't repeat your header
-row. These can easily get mixed into the data, leading to problems
-down the road. Instead you can freeze the column
-headers
-so that they remain visible even when you have a spreadsheet with many
-rows.
+Su hoja de datos puede volverse muy larga durante el transcurso del experimento
+. Esto hace que sea más difícil ingresar datos si no puedes ver los encabezados
+en la parte superior de la hoja de cálculo. Pero no repita la fila del encabezado
+. Estos pueden mezclarse fácilmente con los datos, generando problemas
+en el futuro. En su lugar, puede [congelar los encabezados de la columna
+](https://support.office.com/en-ca/article/Freeze-column-headings-for-easy-scrolling-57ccce0c-cf85-4725-9579 -c5d13106ca6a)
+para que permanezcan visibles incluso cuando tengas una hoja de cálculo con muchas
+filas.
 
-### Not filling in zeros {#zeros}
+### No completar ceros {#zeros}
 
-It might be that when you're measuring something, it's usually a zero,
-say the number of times a rabbit is observed in the survey. Why bother
-writing in the number zero in that column, when it's mostly zeros?
+Puede ser que cuando estás midiendo algo, generalmente sea un cero,
+dice la cantidad de veces que se observa un conejo en la encuesta. ¿Por qué molestarse
+en escribir el número cero en esa columna, cuando en su mayoría son ceros?
 
-However, there's a difference between a zero and a blank cell in a
-spreadsheet. To the computer, a zero is actually data. You measured or
-counted it. A blank cell means that it wasn't measured and the
-computer will interpret it as an unknown value (also known as a null
-or missing value).
+Sin embargo, existe una diferencia entre un cero y una celda en blanco en una hoja de cálculo
+. Para la computadora, un cero son en realidad datos. Lo mediste o
+lo contaste. Una celda en blanco significa que no se midió y la computadora
+la interpretará como un valor desconocido (también conocido como nulo
+o valor faltante).
 
-The spreadsheets or statistical programs will likely misinterpret
-blank cells that you intend to be zeros. By not entering the value of
-your observation, you are telling your computer to represent that data
-as unknown or missing (null). This can cause problems with subsequent
-calculations or analyses. For example, the average of a set of numbers
-which includes a single null value is always null (because the
-computer can't guess the value of the missing observations). Because
-of this, it's very important to record zeros as zeros and truly
-missing data as nulls.
+Es probable que las hojas de cálculo o los programas estadísticos malinterpreten
+celdas en blanco que usted pretende que sean ceros. Al no ingresar el valor de
+su observación, le está diciendo a su computadora que represente esos datos
+como desconocidos o faltantes (nulos). Esto puede causar problemas con
+cálculos o análisis posteriores. Por ejemplo, el promedio de un conjunto de números
+que incluye un único valor nulo siempre es nulo (porque la computadora
+no puede adivinar el valor de las observaciones faltantes). Debido a
+esto, es muy importante registrar los ceros como ceros y realmente
+los datos faltantes como nulos.
 
-### Using problematic null values {#null}
+### Usar valores nulos problemáticos {#null}
 
-**Example**: using -999 or other numerical values (or zero) to
-represent missing data.
+**Ejemplo**: usar -999 u otros valores numéricos (o cero) para
+representar datos faltantes.
 
-**Solutions**:
+**Soluciones**:
 
-There are a few reasons why null values get represented differently
-within a dataset. Sometimes confusing null values are automatically
-recorded from the measuring device. If that's the case, there's not
-much you can do, but it can be addressed in data cleaning with a tool
-like
-[OpenRefine](https://www.datacarpentry.org/OpenRefine-ecology-lesson/)
-before analysis. Other times different null values are used to convey
-different reasons why the data isn't there. This is important
-information to capture, but is in effect using one column to capture
-two pieces of information. Like for using formatting to convey
+Hay algunas razones por las que los valores nulos se representan de manera diferente
+dentro de un conjunto de datos. A veces, los valores nulos confusos se registran automáticamente
+desde el dispositivo de medición. Si ese es el caso, no hay
+mucho que puedas hacer, pero se puede abordar en la limpieza de datos con una herramienta
+como
+[OpenRefine](https://www.datacarpentry .org/OpenRefine-ecology-lesson/)
+antes del análisis. Otras veces se utilizan diferentes valores nulos para transmitir
+diferentes razones por las que los datos no están ahí. Esta es
+información importante para capturar, pero en realidad se utiliza una columna para capturar
+dos piezas de información. Like for using formatting to convey
 information it would be good here to create a new
 column like 'data\_missing' and use that column to capture the
 different reasons.
 
-Whatever the reason, it's a problem if unknown or missing data is
-recorded as -999, 999, or 0.
+Cualquiera sea el motivo, es un problema si datos desconocidos o faltantes se registran
+como -999, 999 o 0.
 
-Many statistical programs will not recognise that these are intended
-to represent missing (null) values. How these values are interpreted
-will depend on the software you use to analyse your data. It is
-essential to use a clearly defined and consistent null indicator.
+Muchos programas estadísticos no reconocerán que estos
+pretenden representar valores faltantes (nulos). La forma en que se interpreten estos valores
+dependerá del software que utilice para analizar sus datos. Es
+esencial utilizar un indicador nulo claramente definido y consistente.
 
-Blanks (most applications) and NA (for R) are good
-choices. @White:2013 explain good choices for indicating null values
-for different software applications in their article:
+Los espacios en blanco (la mayoría de las aplicaciones) y NA (para R) son buenas opciones
+. @White:2013 explica buenas opciones para indicar valores nulos
+para diferentes aplicaciones de software en su artículo:
 
 ![](fig/3_white_table_1.jpg)
 
-### Using formatting to convey information {#formatting}
+### Usar formato para transmitir información {#formatting}
 
-**Example**: highlighting cells, rows or columns that should be
-excluded from an analysis, leaving blank rows to indicate
-separations in data.
+**Ejemplo**: resaltar celdas, filas o columnas que deben excluirse
+de un análisis, dejando filas en blanco para indicar
+separaciones en los datos.
 
-![](fig/formatting.png)
+![](fig/formateo.png)
 
-**Solution**: create a new field to encode which data should be
-excluded.
+**Solución**: cree un nuevo campo para codificar qué datos deben excluirse
+.
 
 ![](fig/good_formatting.png)
 
-### Using formatting to make the data sheet look pretty {#formatting\_pretty}
+### Usar formato para que la hoja de datos se vea bonita {#formatting\_pretty}
 
-**Example**: merging cells.
+**Ejemplo**: fusionar celdas.
 
-**Solution**: If you're not careful, formatting a worksheet to be more
-aesthetically pleasing can compromise your computer's ability to see
-associations in the data. Merged cells will make your data unreadable
-by statistics software. Consider restructuring your data in such a way
-that you will not need to merge cells to organise your data.
+**Solución**: Si no tiene cuidado, formatear una hoja de cálculo para que sea más
+estéticamente agradable puede comprometer la capacidad de su computadora para ver
+asociaciones en los datos. Las celdas combinadas harán que sus datos sean ilegibles
+para el software de estadísticas. Considere reestructurar sus datos de tal manera
+que no necesite fusionar celdas para organizar sus datos.
 
-### Placing comments or units in cells {#units}
+### Colocar comentarios o unidades en celdas {#units}
 
-Most analysis software can't see Excel or LibreOffice comments, and
-would be confused by comments placed within your data cells. As
-described above for formatting, create another field if you need to
-add notes to cells. Similarly, don't include units in cells: ideally,
-all the measurements you place in one column should be in the same
-unit, but if for some reason they aren't, create another field and
-specify the units the cell is in.
+La mayoría del software de análisis no puede ver los comentarios de Excel o LibreOffice, y
+se confundiría con los comentarios colocados dentro de sus celdas de datos. Como
+se describió anteriormente para el formato, cree otro campo si necesita
+agregar notas a las celdas. De manera similar, no incluyas unidades en las celdas: idealmente,
+todas las medidas que coloques en una columna deberían estar en la misma
+unidad, pero si por alguna razón no lo están, crea otro campo y
+especifican las unidades en las que se encuentra la celda.
 
-### Entering more than one piece of information in a cell {#info}
+### Ingresar más de un dato en una celda {#info}
 
-**Example**: Recording ABO and Rhesus groups in one cell, such as A+,
+**Ejemplo**: Grabar grupos ABO y Rhesus en una celda, como A+,
 B+, A-, ...
 
-**Solution**: Don't include more than one piece of information in a
-cell. This will limit the ways in which you can analyse your data.  If
-you need both these measurements, design your data sheet to include
-this information. For example, include one column for the ABO group and
-one for the Rhesus group.
+**Solución**: No incluyas más de un dato en una celda
+. Esto limitará las formas en que puede analizar sus datos.  Si
+necesita ambas medidas, diseñe su hoja de datos para incluir
+esta información. Por ejemplo, incluya una columna para el grupo ABO y
+una para el grupo Rhesus.
 
-### Using problematic field names {#field\_name}
+### Usar nombres de campos problemáticos {#field\_name}
 
-Choose descriptive field names, but be careful not to include spaces,
-numbers, or special characters of any kind. Spaces can be
-misinterpreted by parsers that use whitespace as delimiters and some
-programs don't like field names that are text strings that start with
-numbers.
+Elija nombres de campos descriptivos, pero tenga cuidado de no incluir espacios, números
+ni caracteres especiales de ningún tipo. Los espacios pueden ser
+mal interpretados por analizadores que usan espacios en blanco como delimitadores y a algunos programas
+no les gustan los nombres de campos que son cadenas de texto que comienzan con
+números.
 
-Underscores (`_`) are a good alternative to spaces. Consider writing
-names in camel case (like this: ExampleFileName) to improve
-readability. Remember that abbreviations that make sense at the moment
-may not be so obvious in 6 months, but don't overdo it with names that
-are excessively long. Including the units in the field names avoids
-confusion and enables others to readily interpret your fields.
+Los guiones bajos (`_`) son una buena alternativa a los espacios. Considere escribir
+nombres en mayúsculas y minúsculas (como este: Ejemplo de nombre de archivo) para mejorar la legibilidad de
+. Recuerda que las abreviaturas que tienen sentido en este momento
+pueden no ser tan obvias en 6 meses, pero no te excedas con nombres que
+son excesivamente largos. Incluir las unidades en los nombres de los campos evita
+confusión y permite que otros interpreten fácilmente sus campos.
 
-**Examples**
+**Ejemplos**
 
-| Good Name                                                      | Good Alternative                         | Avoid                                |
-| -------------------------------------------------------------- | ---------------------------------------- | ------------------------------------ |
-| Max\_temp\_C       | MaxTemp                                  | Maximum Temp (°C) |
-| Precipitation\_mm                        | Precipitation                            | precmm                               |
-| Mean\_year\_growth | MeanYearGrowth                           | Mean growth/year                     |
-| sex                                                            | sex                                      | M/F                                  |
-| weight                                                         | weight                                   | w.                   |
-| cell\_type                               | CellType                                 | Cell Type                            |
-| Observation\_01                          | first\_observation | 1st Obs                              |
+| Buen nombre                                              | Buena alternativa                          | Evitar                                     |
+| -------------------------------------------------------- | ------------------------------------------ | ------------------------------------------ |
+| Máx\_temp\_C | Temperatura máxima                         | Temperatura máxima (°C) |
+| Precipitación\_mm                  | Precipitación                              | precm                                      |
+| Crecimiento medio\_año\_                               | Crecimiento medio anual                    | Crecimiento medio/año                      |
+| sexo                                                     | sexo                                       | L/F                                        |
+| peso                                                     | peso                                       | w.                         |
+| tipo de célula                                           | Tipo de célula                             | Tipo de célula                             |
+| Observación\_01                    | primera\_observación | 1.ª observación            |
 
-### Using special characters in data {#special}
+### Usar caracteres especiales en datos {#special}
 
-**Example**: You treat your spreadsheet program as a word processor
-when writing notes, for example copying data directly from Word or
-other applications.
+**Ejemplo**: Tratas tu programa de hoja de cálculo como un procesador de textos
+cuando escribes notas, por ejemplo, copiando datos directamente desde Word u
+otras aplicaciones.
 
-**Solution**: This is a common strategy. For example, when writing
-longer text in a cell, people often include line breaks, em-dashes,
-etc. in their spreadsheet. Also, when copying data in from
-applications such as Word, formatting and fancy non-standard
-characters (such as left- and right-aligned quotation marks) are
-included. When exporting this data into a coding/statistical
-environment or into a relational database, dangerous things may occur,
-such as lines being cut in half and encoding errors being thrown.
+**Solución**: Esta es una estrategia común. Por ejemplo, al escribir
+texto más largo en una celda, las personas suelen incluir saltos de línea, guiones,
+, etc. en su hoja de cálculo. Además, al copiar datos desde
+aplicaciones como Word, se incluyen
+formatos y caracteres elegantes no estándar
+(como comillas alineadas a la izquierda y a la derecha). Al exportar estos datos a un entorno de codificación/estadístico
+o a una base de datos relacional, pueden ocurrir cosas peligrosas,
+, como líneas cortadas por la mitad y errores de codificación.
 
-General best practice is to avoid adding characters such as newlines,
-tabs, and vertical tabs. In other words, treat a text cell as if it
-were a simple web form that can only contain text and spaces.
+La mejor práctica general es evitar agregar caracteres como nuevas líneas, pestañas
+y pestañas verticales. En otras palabras, trate una celda de texto como si
+fuera un formulario web simple que solo puede contener texto y espacios.
 
-### Inclusion of metadata in data table {#metadata}
+### Inclusión de metadatos en tabla de datos {#metadata}
 
-**Example**: You add a legend at the top or bottom of your data table
-explaining column meaning, units, exceptions, etc.
+**Ejemplo**: Agrega una leyenda en la parte superior o inferior de su tabla de datos
+explicando el significado de las columnas, las unidades, las excepciones, etc.
 
-**Solution**: Recording data about your data ("metadata") is
-essential. You may be on intimate terms with your dataset while you
+**Solución**: Registrar datos sobre sus datos ("metadatos") es
+esencial. You may be on intimate terms with your dataset while you
 are collecting and analysing it, but the chances that you will still
 remember that the variable "sglmemgp" means single member of group,
 for example, or the exact algorithm you used to transform a variable
 or create a derived one, after a few months, a year, or more are slim.
 
-As well, there are many reasons other people may want to examine or
-use your data - to understand your findings, to verify your findings,
-to review your submitted publication, to replicate your results, to
-design a similar study, or even to archive your data for access and
-re-use by others. While digital data by definition are
-machine-readable, understanding their meaning is a job for human
-beings. The importance of documenting your data during the collection
-and analysis phase of your research cannot be overestimated,
-especially if your research is going to be part of the scholarly
-record.
+Además, hay muchas razones por las que otras personas pueden querer examinar o
+usar sus datos: para comprender sus hallazgos, para verificar sus hallazgos,
+para revisar la publicación enviada, para replicar sus resultados, para
+diseñar un estudio similar, o incluso archivar sus datos para que otros puedan acceder a ellos y
+reutilizarlos. Si bien los datos digitales, por definición, son
+legibles por máquina, comprender su significado es una tarea para los seres humanos
+. No se puede sobrestimar la importancia de documentar sus datos durante la fase de recopilación
+y análisis de su investigación,
+, especialmente si su investigación va a ser parte del registro académico
+.
 
-However, metadata should not be contained in the data file
-itself. Unlike a table in a paper or a supplemental file, metadata (in
-the form of legends) should not be included in a data file since this
-information is not data, and including it can disrupt how computer
-programs interpret your data file. Rather, metadata should be stored
-as a separate file in the same directory as your data file, preferably
-in plain text format with a name that clearly associates it with your
-data file. Because metadata files are free text format, they also
+Sin embargo, los metadatos no deben estar contenidos en el propio archivo de datos
+. A diferencia de una tabla en un documento o un archivo complementario, los metadatos (en
+la forma de leyendas) no deben incluirse en un archivo de datos ya que esta información
+no son datos, y su inclusión puede alterar la forma Los programas
+de computadora interpretan su archivo de datos. Más bien, los metadatos deben almacenarse
+como un archivo separado en el mismo directorio que su archivo de datos, preferiblemente
+en formato de texto sin formato con un nombre que lo asocie claramente con su archivo de datos
+. . Because metadata files are free text format, they also
 allow you to encode comments, units, information about how null values
 are encoded, etc. that are important to document but can disrupt the
 formatting of your data file.
 
-Additionally, file or database level metadata describes how files that
-make up the dataset relate to each other; what format they are in; and
-whether they supercede or are superceded by previous files. A
-folder-level readme.txt file is the classic way of accounting for all
-the files and folders in a project.
+Además, los metadatos a nivel de archivo o base de datos describen cómo los archivos que
+componen el conjunto de datos se relacionan entre sí; en qué formato están; y
+si reemplazan o son reemplazados por archivos anteriores. Un archivo readme.txt a nivel de carpeta
+es la forma clásica de contabilizar todos
+los archivos y carpetas de un proyecto.
 
-(Text on metadata adapted from the online course Research Data
-[MANTRA](https://datalib.edina.ac.uk/mantra) by EDINA and Data Library,
-University of Edinburgh. MANTRA is licensed under a Creative Commons
+(Texto sobre metadatos adaptado del curso en línea Research Data
+[MANTRA](https://datalib.edina.ac.uk/mantra) de EDINA y Data Library,
+Universidad de Edimburgo. MANTRA tiene una licencia Creative Commons
 Attribution 4.0 International
-License.)
+.)
 
-## Exporting data
+## Exportar datos
 
-**Question**
+**Pregunta**
 
-- How can we export data from spreadsheets in a way that is useful for
-  downstream applications?
+- ¿Cómo podemos exportar datos de hojas de cálculo de una manera que sea útil para
+  aplicaciones posteriores?
 
-**Objectives**
+**Objetivos**
 
-- Store spreadsheet data in universal file formats.
-- Export data from a spreadsheet to a CSV file.
+- Almacene datos de hojas de cálculo en formatos de archivo universales.
+- Exporte datos de una hoja de cálculo a un archivo CSV.
 
-**Keypoints**
+**Puntos clave**
 
-- Data stored in common spreadsheet formats will often not be read
-  correctly into data analysis software, introducing errors into your
-  data.
+- Los datos almacenados en formatos comunes de hojas de cálculo a menudo no se leerán
+  correctamente en el software de análisis de datos, lo que introducirá errores en sus datos
+  .
 
-- Exporting data from spreadsheets to formats like CSV or TSV puts it
-  in a format that can be used consistently by most programs.
+- Exportar datos de hojas de cálculo a formatos como CSV o TSV los coloca
+  en un formato que la mayoría de los programas pueden usar de manera consistente.
 
-Storing the data you're going to work with for your analyses in Excel
-default file format (`*.xls` or `*.xlsx` - depending on the Excel
-version) isn't a good idea. Why?
+Almacenar los datos con los que va a trabajar para sus análisis en el formato de archivo predeterminado de Excel
+(`*.xls` o `*.xlsx`, dependiendo de la versión de Excel
+) no es una buena idea. ¿Por qué?
 
-- Because it is a proprietary format, and it is possible that in the
-  future, technology won't exist (or will become sufficiently rare) to
-  make it inconvenient, if not impossible, to open the file.
+- Debido a que es un formato propietario, y es posible que en el
+  futuro, la tecnología no exista (o se vuelva lo suficientemente rara) como para
+  hacer que sea inconveniente, si no imposible, abrir el formato. archivo.
 
-- Other spreadsheet software may not be able to open files saved in a
-  proprietary Excel format.
+- Es posible que otro software de hoja de cálculo no pueda abrir archivos guardados en un formato propietario de Excel
+  .
 
-- Different versions of Excel may handle data differently, leading to
-  inconsistencies. [Dates](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
-  is a well-documented example of inconsistencies in data storage.
+- Las diferentes versiones de Excel pueden manejar los datos de manera diferente, lo que genera
+  inconsistencias. [Fechas](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
+  es un ejemplo bien documentado de inconsistencias en el almacenamiento de datos.
 
-- Finally, more journals and grant agencies are requiring you to
-  deposit your data in a data repository, and most of them don't
-  accept Excel format. It needs to be in one of the formats discussed
-  below.
+- Finalmente, más revistas y agencias de subvenciones exigen que
+  deposite sus datos en un repositorio de datos, y la mayoría de ellos no
+  aceptan el formato Excel. Debe estar en uno de los formatos que se analizan
+  a continuación.
 
-- The above points also apply to other formats such as open data
-  formats used by LibreOffice / Open Office. These formats are not
-  static and do not get parsed the same way by different software
-  packages.
+- Los puntos anteriores también se aplican a otros formatos, como los formatos de datos abiertos
+  utilizados por LibreOffice/Open Office. Estos formatos no son
+  estáticos y no se analizan de la misma manera por diferentes paquetes de software
+  .
 
-Storing data in a universal, open, and static format will help deal
-with this problem. Try tab-delimited (tab separated values or TSV) or
-comma-delimited (comma separated values or CSV). CSV files are plain
-text files where the columns are separated by commas, hence 'comma
-separated values' or CSV. The advantage of a CSV file over an
-Excel/SPSS/etc. file is that we can open and read a CSV file using
-just about any software, including plain text editors like TextEdit or
-NotePad. Data in a CSV file can also be easily imported into other
-formats and environments, such as SQLite and R. We're not tied to a
-certain version of a certain expensive program when we work with CSV
-files, so it's a good format to work with for maximum portability and
-endurance. Most spreadsheet programs can save to delimited text
-formats like CSV easily, although they may give you a warning during
-the file export.
+Almacenar datos en un formato universal, abierto y estático ayudará a solucionar
+este problema. Pruebe delimitado por tabulaciones (valores separados por tabulaciones o TSV) o
+delimitado por comas (valores separados por comas o CSV). Los archivos CSV son archivos de texto simple
+donde las columnas están separadas por comas, de ahí 'valores separados por coma
+' o CSV. La ventaja de un archivo CSV sobre un
+Excel/SPSS/etc. El archivo es que podemos abrir y leer un archivo CSV usando
+casi cualquier software, incluidos editores de texto sin formato como TextEdit o
+NotePad. Los datos en un archivo CSV también se pueden importar fácilmente a otros
+formatos y entornos, como SQLite y R. No estamos atados a una
+determinada versión de un determinado programa costoso cuando trabajamos con Archivos CSV
+, por lo que es un buen formato para trabajar para máxima portabilidad y
+resistencia. La mayoría de los programas de hojas de cálculo pueden guardar fácilmente en formatos de texto delimitado
+como CSV, aunque pueden darte una advertencia durante
+la exportación del archivo.
 
-To save a file you have opened in Excel in CSV format:
+Para guardar un archivo que ha abierto en Excel en formato CSV:
 
-1. From the top menu select 'File' and 'Save as'.
-2. In the 'Format' field, from the list, select 'Comma Separated
-  Values' (`*.csv`).
-3. Double check the file name and the location where you want to save
-  it and hit 'Save'.
+1. En el menú superior, seleccione "Archivo" y "Guardar como".
+2. En el campo 'Formato', de la lista, seleccione 'Valores
+  separados por comas' (`*.csv`).
+3. Verifique dos veces el nombre del archivo y la ubicación donde desea guardarlo
+  y presione 'Guardar'.
 
-An important note for backwards compatibility: you can open CSV files
-in Excel!
+Una nota importante para la compatibilidad con versiones anteriores: ¡puedes abrir archivos CSV
+en Excel!
 
 ```{r, results="markup", fig.cap="Saving an Excel file to CSV.", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/excel-to-csv.png")
 ```
 
-**A note on R and `xls`**: There are R packages that can read `xls`
-files (as well as Google spreadsheets). It is even possible to access
-different worksheets in the `xls` documents.
+**Una nota sobre R y `xls`**: Hay paquetes de R que pueden leer archivos `xls`
+(así como hojas de cálculo de Google). Incluso es posible acceder a
+diferentes hojas de trabajo en los documentos `xls`.
 
-**But**
+**Pero**
 
-- some of these only work on Windows.
-- this equates to replacing a (simple but manual) export to `csv` with
-  additional complexity/dependencies in the data analysis R code.
-- data formatting best practice still apply.
-- Is there really a good reason why `csv` (or similar) is not
-  adequate?
+- algunos de estos sólo funcionan en Windows.
+- esto equivale a reemplazar una exportación (simple pero manual) a `csv` con
+  complejidad/dependencias adicionales en el código R de análisis de datos.
+- Las mejores prácticas de formato de datos aún se aplican.
+- ¿Existe realmente una buena razón por la cual `csv` (o similar) no es
+  adecuado?
 
-### Caveats on commas
+### Advertencias sobre las comas
 
-In some datasets, the data values themselves may include commas
-(,). In that case, the software which you use (including Excel) will
-most likely incorrectly display the data in columns. This is because
-the commas which are a part of the data values will be interpreted as
-delimiters.
+En algunos conjuntos de datos, los propios valores de los datos pueden incluir comas
+(,). En ese caso, lo más probable es que el software que utilice (incluido Excel)
+muestre incorrectamente los datos en columnas. Esto se debe a que
+las comas que forman parte de los valores de datos se interpretarán como
+delimitadores.
 
-For example, our data might look like this:
+Por ejemplo, nuestros datos podrían verse así:
 
 ```
 species_id,genus,species,taxa
@@ -746,79 +746,79 @@ AS,Ammodramus,savannarum,Bird
 BA,Baiomys,taylori,Rodent
 ```
 
-In the record `AH,Ammospermophilus,harrisi,Rodent, not censused` the
-value for `taxa` includes a comma (`Rodent, not censused`).  If we try
-to read the above into Excel (or other spreadsheet program), we will
-get something like this:
+En el registro `AH,Ammospermophilus,harrisi,Roedor, no censado` el valor
+para `taxa` incluye una coma (`Roedor, no censado`).  Si intentamos
+leer lo anterior en Excel (u otro programa de hoja de cálculo),
+obtendremos algo como esto:
 
 ```{r, results="markup", fig.cap="The risks of having commas inside comma-separated data.", echo=FALSE, purl=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("fig/csv-mistake.png")
 ```
 
-The value for `taxa` was split into two columns (instead of being put
-in one column `D`). This can propagate to a number of further
-errors. For example, the extra column will be interpreted as a column
-with many missing values (and without a proper header). In addition to
-that, the value in column `D` for the record in row 3 (so the one
-where the value for 'taxa' contained the comma) is now incorrect.
+El valor de `taxa` se dividió en dos columnas (en lugar de colocarse
+en una columna `D`). Esto puede propagarse a una serie de errores
+adicionales. Por ejemplo, la columna adicional se interpretará como una columna
+con muchos valores faltantes (y sin un encabezado adecuado). Además de
+eso, el valor en la columna `D` para el registro en la fila 3 (por lo tanto, el
+donde el valor de 'taxa' contenía la coma) ahora es incorrecto.
 
-If you want to store your data in `csv` format and expect that your
-data values may contain commas, you can avoid the problem discussed
-above by putting the values in quotes (""). Applying this rule, our
-data might look like this:
+Si desea almacenar sus datos en formato `csv` y espera que sus valores de datos
+puedan contener comas, puede evitar el problema discutido
+anteriormente poniendo los valores entre comillas (""). Aplicando esta regla, nuestros datos
+podrían verse así:
 
 ```
-species_id,genus,species,taxa
+spec_id,género,especie,taxones
 "AB","Amphispiza","bilineata","Bird"
-"AH","Ammospermophilus","harrisi","Rodent, not censused"
-"AS","Ammodramus","savannarum","Bird"
-"BA","Baiomys","taylori","Rodent"
+"AH","Ammospermophilus","harrisi","Roedor, no censado"
+"AS","Ammodramus","savannarum","Pájaro"
+"BA","Baiomys","taylori","Roedor"
 ```
 
-Now opening this file as a `csv` in Excel will not lead to an extra
-column, because Excel will only use commas that fall outside of
-quotation marks as delimiting characters.
+Ahora, abrir este archivo como `csv` en Excel no generará una columna
+adicional, porque Excel solo usará comas que queden fuera de las comillas
+como caracteres delimitadores.
 
-Alternatively, if you are working with data that contains commas, you
-likely will need to use another delimiter when working in a
-spreadsheet[^decsep]. In this case, consider using tabs as your delimiter and
-working with TSV files. TSV files can be exported from spreadsheet
-programs in the same way as CSV files.
+Alternativamente, si está trabajando con datos que contienen comas,
+probablemente necesitará usar otro delimitador cuando trabaje en una hoja de cálculo
+[^decsep]. En este caso, considere usar pestañas como delimitador y
+trabajar con archivos TSV. Los archivos TSV se pueden exportar desde programas de hoja de cálculo
+de la misma manera que los archivos CSV.
 
-[^decsep]: This is particularly relevant in European
-    countries where the comma is used as a decimal
-    separator. In such cases, the default value separator in a
-    csv file will be the semi-colon (;), or values will be
-    systematically quoted.
+[^decsep]: Esto es particularmente relevante en los países europeos
+    donde la coma se usa como separador decimal
+    . En tales casos, el separador de valores predeterminado en un archivo csv
+    será el punto y coma (;), o los valores se citarán
+    sistemáticamente.
 
-If you are working with an already existing dataset in which the data
-values are not included in "" but which have commas as both delimiters
-and parts of data values, you are potentially facing a major problem
-with data cleaning. If the dataset you're dealing with contains
-hundreds or thousands of records, cleaning them up manually (by either
-removing commas from the data values or putting the values into
-quotes - "") is not only going to take hours and hours but may
-potentially end up with you accidentally introducing many errors.
+Si está trabajando con un conjunto de datos ya existente en el que los valores de datos
+no están incluidos en "" pero que tienen comas como delimitadores
+y partes de los valores de datos, potencialmente se enfrenta a un problema importante.
+con limpieza de datos. Si el conjunto de datos con el que está tratando contiene
+cientos o miles de registros, límpielos manualmente (ya sea
+eliminando comas de los valores de datos o poniendo los valores entre
+comillas - "") no solo llevará horas y horas, sino que
+potencialmente terminará introduciendo accidentalmente muchos errores.
 
-Cleaning up datasets is one of the major problems in many scientific
-disciplines. The approach almost always depends on the particular
-context. However, it is a good practice to clean the data in an
-automated fashion, for example by writing and running a script. The
-Python and R lessons will give you the basis for developing skills to
-build relevant scripts.
+La limpieza de conjuntos de datos es uno de los principales problemas en muchas disciplinas científicas
+. El enfoque casi siempre depende del contexto
+particular. Sin embargo, es una buena práctica limpiar los datos de forma
+automatizada, por ejemplo escribiendo y ejecutando un script. Las
+lecciones de Python y R le brindarán la base para desarrollar habilidades para
+crear scripts relevantes.
 
-## Summary
+## Resumen
 
 ```{r analysis, results="asis", fig.margin=TRUE, fig.cap="A typical data analysis workflow.", fig.width=7, fig.height=4, echo=FALSE, purl=FALSE}
 knitr::include_graphics("fig/analysis.png")
 ```
 
-A typical data analysis workflow is illustrated in the figure above,
-where data is repeatedly transformed, visualised, and modelled. This
-iteration is repeated multiple times until the data is understood. In
-many real-life cases, however, most time is spent cleaning up and
-preparing the data, rather than actually analysing and understanding
-it.
+En la figura anterior,
+, se ilustra un flujo de trabajo de análisis de datos típico, donde los datos se transforman, visualizan y modelan repetidamente. Esta iteración
+se repite varias veces hasta que se comprenden los datos. Sin embargo, en
+muchos casos de la vida real, la mayor parte del tiempo se dedica a limpiar y
+preparar los datos, en lugar de analizarlos y comprenderlos
+.
 
 An agile data analysis workflow, with several fast iterations of the
 transform/visualise/model cycle is only feasible if the data is
@@ -827,6 +827,6 @@ without having to look at it and/or fix it.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Good data organization is the foundation of any research project.
+- Una buena organización de los datos es la base de cualquier proyecto de investigación.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::

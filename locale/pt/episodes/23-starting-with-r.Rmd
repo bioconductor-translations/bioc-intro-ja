@@ -10,98 +10,98 @@ exercises: 60
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Define the following terms as they relate to R: object, assign, call, function, arguments, options.
-- Assign values to objects in R.
-- Learn how to _name_ objects
-- Use comments to inform script.
-- Solve simple arithmetic operations in R.
-- Call functions and use arguments to change their default options.
-- Inspect the content of vectors and manipulate their content.
-- Subset and extract values from vectors.
-- Analyze vectors with missing data.
+- Defina os seguintes termos relacionados com o R: objeto, atribuição, chamada, função, argumentos, opções.
+- Atribua valores a objectos em R.
+- Aprenda a dar _nome_ aos objectos
+- Utilize os comentários para informar o guião.
+- Resolva operações aritméticas simples em R.
+- Chame funções e utilize argumentos para alterar as suas opções predefinidas.
+- Inspeccione o conteúdo dos vectores e manipule o seu conteúdo.
+- Subconjunto e extrair valores de vectores.
+- Analise vectores com dados em falta.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- First commands in R
+- Primeiros comandos em R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> Este episódio baseia-se na lição _Data Analysis and
+> Visualisation in R for Ecologists_ do Data Carpentries.
 
-## Creating objects in R
+## Criar objectos no R
 
-You can get output from R simply by typing math in the console:
+Pode obter resultados do R simplesmente escrevendo math na consola:
 
 ```{r, purl=TRUE}
 3 + 5
 12 / 7
 ```
 
-However, to do useful and interesting things, we need to assign _values_ to
-_objects_. To create an object, we need to give it a name followed by the
-assignment operator `<-`, and the value we want to give it:
+No entanto, para fazer coisas úteis e interessantes, precisamos de atribuir _valores_ a
+_objectos_. Para criar um objeto, temos de lhe dar um nome seguido do operador de atribuição
+`<-`, e o valor que lhe queremos dar:
 
 ```{r, purl=TRUE}
 weight_kg <- 55
 ```
 
-`<-` is the assignment operator. It assigns values on the right to
-objects on the left. So, after executing `x <- 3`, the value of `x` is
-`3`. The arrow can be read as 3 **goes into** `x`.  For historical
-reasons, you can also use `=` for assignments, but not in every
-context. Because of the
-[slight differences](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
-in syntax, it is good practice to always use `<-` for assignments.
+`<-` é o operador de atribuição. Atribui valores à direita a
+objectos à esquerda. Assim, após executar `x <- 3`, o valor de `x` é
+`3`. A seta pode ser lida como 3 **entra em** `x`.  Por razões históricas
+, pode também utilizar `=` para atribuições, mas não em todos os contextos
+. Devido às
+[ligeiras diferenças](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
+na sintaxe, é boa prática utilizar sempre `<-` para atribuições.
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>\-</kbd> (push <kbd>Alt</kbd>
-at the same time as the <kbd>\-</kbd> key) will write `<-` in a single
-keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>\-</kbd> (push <kbd>Option</kbd> at the same time as the <kbd>\-</kbd> key) does the
-same in a Mac.
+No RStudio, digitar <kbd>Alt</kbd> + <kbd>\-</kbd> (pressione <kbd>Alt</kbd>
+ao mesmo tempo que a tecla <kbd>\-</kbd> ) escreverá `<-` em um único pressionamento de tecla
+em um PC, enquanto digitar <kbd>Option</kbd> + <kbd>\-</kbd> (pressione <kbd>Option</kbd> ao mesmo tempo que a tecla <kbd>\-</kbd> ) faz o
+mesmo em um Mac.
 
-### Naming variables
+### Nomear variáveis
 
-Objects can be given any name such as `x`, `current_temperature`, or
-`subject_id`. You want your object names to be explicit and not too
-long. They cannot start with a number (`2x` is not valid, but `x2`
-is). R is case sensitive (e.g., `weight_kg` is different from
-`Weight_kg`). There are some names that cannot be used because they
-are the names of fundamental functions in R (e.g., `if`, `else`,
-`for`, see
-[here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
-for a complete list). In general, even if it's allowed, it's best to
-not use other function names (e.g., `c`, `T`, `mean`, `data`, `df`,
-`weights`). If in doubt, check the help to see if the name is already
-in use. It's also best to avoid dots (`.`) within an object name as in
-`my.dataset`. There are many functions in R with dots in their names
-for historical reasons, but because dots have a special meaning in R
-(for methods) and other programming languages, it's best to avoid
-them. It is also recommended to use nouns for object names, and verbs
-for function names. It's important to be consistent in the styling of
-your code (where you put spaces, how you name objects, etc.). Using a
-consistent coding style makes your code clearer to read for your
-future self and your collaborators. In R, some popular style guides
-are [Google's](https://google.github.io/styleguide/Rguide.xml), the
-[tidyverse's](https://style.tidyverse.org/) style and the Bioconductor
+Os objectos podem receber qualquer nome, como `x`, `temperatura_actual`, ou
+`id_assunto`. Pretende que os nomes dos seus objectos sejam explícitos e não muito
+longos. Não podem começar por um número (`2x` não é válido, mas `x2`
+é). R é sensível a maiúsculas e minúsculas (por exemplo, `weight_kg` é diferente de
+`Weight_kg`). Existem alguns nomes que não podem ser utilizados porque
+são nomes de funções fundamentais em R (por exemplo, `if`, `else`,
+`for`, veja
+[aqui](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
+para uma lista completa). Em geral, mesmo que seja permitido, é melhor
+não utilizar outros nomes de funções (por exemplo, `c`, `T`, `mean`, `data`, `df`,
+`weights`). Em caso de dúvida, consulte a ajuda para ver se o nome já está
+a ser utilizado. Também é melhor evitar pontos (`.`) dentro de um nome de objeto como em
+`my.dataset`. Existem muitas funções no R com pontos nos seus nomes
+por razões históricas, mas como os pontos têm um significado especial no R
+(para métodos) e noutras linguagens de programação, é melhor evitar
+os pontos. Recomenda-se também que utilize substantivos para nomes de objectos e verbos
+para nomes de funções. É importante ser consistente no estilo do
+seu código (onde coloca os espaços, como nomeia os objectos, etc.). A utilização de um estilo de codificação consistente
+torna o seu código mais fácil de ler para o seu
+futuro eu e para os seus colaboradores. Em R, alguns guias de estilo populares
+são o [Google's](https://google.github.io/styleguide/Rguide.xml), o estilo
+[tidyverse's](https://style.tidyverse.org/) e o Bioconductor
 style
-guide. The
-tidyverse's is very comprehensive and may seem overwhelming at
-first. You can install the
-[**`lintr`**](https://github.com/jimhester/lintr) package to
-automatically check for issues in the styling of your code.
+guide. O
+tidyverse's é muito abrangente e pode parecer-lhe avassalador no
+início. Pode instalar o pacote
+[**`lintr`**](https://github.com/jimhester/lintr) para
+verificar automaticamente se existem problemas no estilo do seu código.
 
-> **Objects vs. variables**: What are known as `objects` in `R` are
-> known as `variables` in many other programming languages. Depending
-> on the context, `object` and `variable` can have drastically
-> different meanings. However, in this lesson, the two words are used
-> synonymously. For more information
-> [see here.](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
+> **Objectos vs. variáveis**: O que é conhecido como `objectos` no `R` é
+> conhecido como `variáveis` em muitas outras linguagens de programação. Dependendo
+> do contexto, `objeto` e `variável` podem ter significados drasticamente
+> diferentes. No entanto, nesta lição, as duas palavras são utilizadas
+> como sinónimos. Para mais informações, consulte
+> [ver aqui].(https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
-When assigning a value to an object, R does not print anything. You
-can force R to print the value by using parentheses or by typing the
-object name:
+Quando atribui um valor a um objeto, o R não imprime nada. Você
+pode forçar o R a imprimir o valor utilizando parênteses ou digitando o nome do objeto
+:
 
 ```{r, purl=TRUE}
 weight_kg <- 55    # doesn't print anything
@@ -109,29 +109,29 @@ weight_kg <- 55    # doesn't print anything
 weight_kg          # and so does typing the name of the object
 ```
 
-Now that R has `weight_kg` in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
+Agora que o R tem `peso_kg` na memória, podemos fazer aritmética com ele. Para
+exemplo, pode querer converter este peso em libras (o peso em libras é 2,2 vezes o peso em kg):
 
 ```{r, purl=TRUE}
 2.2 * weight_kg
 ```
 
-We can also change an object's value by assigning it a new one:
+Também podemos alterar o valor de um objeto atribuindo-lhe um novo valor:
 
 ```{r, purl=TRUE}
 weight_kg <- 57.5
 2.2 * weight_kg
 ```
 
-This means that assigning a value to one object does not change the values of
-other objects  For example, let's store the animal's weight in pounds in a new
-object, `weight_lb`:
+Isto significa que atribuir um valor a um objeto não altera os valores de
+outros objectos Por exemplo, vamos armazenar o peso do animal em libras num novo objeto
+, `weight_lb`:
 
 ```{r, purl=TRUE}
 weight_lb <- 2.2 * weight_kg
 ```
 
-and then change `weight_kg` to 100.
+e, em seguida, altere `peso_kg` para 100.
 
 ```{r}
 weight_kg <- 100
@@ -139,31 +139,31 @@ weight_kg <- 100
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-What do you think is the current content of the object `weight_lb`?
-126\.5 or 220?
+Qual acha que é o conteúdo atual do objeto `weight_lb`?
+126\.5 ou 220?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Comments
+## Comentários
 
-The comment character in R is `#`, anything to the right of a `#` in a
-script will be ignored by R. It is useful to leave notes, and
-explanations in your scripts.
+O caractere de comentário no R é `#`, qualquer coisa à direita de um `#` num script
+será ignorado pelo R. É útil deixar notas, e
+explicações nos seus scripts.
 
-RStudio makes it easy to comment or uncomment a paragraph: after
-selecting the lines you want to comment, press at the same time on
-your keyboard <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If
-you only want to comment out one line, you can put the cursor at any
-location of that line (i.e. no need to select the whole line), then
-press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
+O RStudio torna fácil comentar ou descomentar um parágrafo: depois de
+selecionar as linhas que pretende comentar, prima ao mesmo tempo no
+seu teclado <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. Se
+só quiser comentar uma linha, pode colocar o cursor em qualquer
+local dessa linha (ou seja, não é necessário selecionar toda a linha), depois
+prima <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## Desafio
 
-What are the values after each statement in the following?
+Quais são os valores a seguir a cada afirmação no seguinte?
 
 ```{r, purl=TRUE}
 mass <- 47.5            # mass?
@@ -175,49 +175,49 @@ mass_index <- mass/age  # mass_index?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Functions and their arguments
+## Funções e seus argumentos
 
-Functions are "canned scripts" that automate more complicated sets of commands
-including operations assignments, etc. Many functions are predefined, or can be
-made available by importing R _packages_ (more on that later). A function
-usually gets one or more inputs called _arguments_. Functions often (but not
-always) return a _value_. A typical example would be the function `sqrt()`. The
-input (the argument) must be a number, and the return value (in fact, the
-output) is the square root of that number. Executing a function ('running it')
-is called _calling_ the function. An example of a function call is:
+As funções são "scripts enlatados" que automatizam conjuntos de comandos mais complicados
+incluindo atribuições de operações, etc. Muitas funções estão predefinidas, ou podem ser
+disponibilizadas através da importação de _pacotes_ do R (mais sobre isso mais tarde). Uma função
+recebe normalmente um ou mais inputs chamados _argumentos_. As funções devolvem frequentemente (mas não
+sempre) um _valor_. Um exemplo típico é a função `sqrt()`. A entrada
+(o argumento) tem de ser um número, e o valor de retorno (de facto, a saída
+) é a raiz quadrada desse número. A execução de uma função ('running it')
+chama-se _calling_ a função. Um exemplo de uma chamada de função é:
 
 ```{r, eval=FALSE, purl=FALSE}
 b <- sqrt(a)
 ```
 
-Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
-calculates the square root, and returns the value which is then assigned to
-the object `b`. This function is very simple, because it takes just one argument.
+Aqui, o valor de `a` é dado à função `sqrt()`, a função `sqrt()`
+calcula a raiz quadrada, e retorna o valor que é então atribuído a
+o objeto `b`. Esta função é muito simples, porque recebe apenas um argumento.
 
-The return 'value' of a function need not be numerical (like that of `sqrt()`),
-and it also does not need to be a single item: it can be a set of things, or
-even a dataset. We'll see that when we read data files into R.
+O 'valor' de retorno de uma função não precisa de ser numérico (como o de `sqrt()`),
+e também não precisa de ser um único item: pode ser um conjunto de coisas, ou
+mesmo um conjunto de dados. Veremos isso quando lermos ficheiros de dados no R.
 
-Arguments can be anything, not only numbers or filenames, but also other
-objects. Exactly what each argument means differs per function, and must be
-looked up in the documentation (see below). Some functions take arguments which
-may either be specified by the user, or, if left out, take on a _default_ value:
-these are called _options_. Options are typically used to alter the way the
-function operates, such as whether it ignores 'bad values', or what symbol to
-use in a plot.  However, if you want something specific, you can specify a value
-of your choice which will be used instead of the default.
+Os argumentos podem ser qualquer coisa, não apenas números ou nomes de ficheiros, mas também outros objectos
+. O significado exato de cada argumento varia de acordo com a função e deve ser
+consultado na documentação (ver abaixo). Algumas funções aceitam argumentos que
+podem ser especificados pelo utilizador ou, se não forem especificados, assumem um valor _default_:
+estas são chamadas _opções_. As opções são normalmente utilizadas para alterar a forma como a função
+funciona, como por exemplo, se ignora 'valores maus', ou que símbolo
+utilizar num gráfico.  No entanto, se pretender algo específico, pode especificar um valor
+à sua escolha que será utilizado em vez do valor predefinido.
 
-Let's try a function that can take multiple arguments: `round()`.
+Vamos experimentar uma função que pode receber vários argumentos: `round()`.
 
 ```{r, results="show", purl=TRUE}
 round(3.14159)
 ```
 
-Here, we've called `round()` with just one argument, `3.14159`, and it has
-returned the value `3`.  That's because the default is to round to the nearest
-whole number. If we want more digits we can see how to do that by getting
-information about the `round` function.  We can use `args(round)` or look at the
-help for this function using `?round`.
+Aqui, nós chamamos `round()` com apenas um argumento, `3.14159`, e ele
+retornou o valor `3`.  Isto porque a predefinição é arredondar para o número inteiro
+mais próximo. Se quisermos mais dígitos, podemos ver como o fazer obtendo
+informação sobre a função `round`.  Pode utilizar `args(round)` ou consultar a ajuda
+para esta função utilizando `?round`.
 
 ```{r, results="show", purl=TRUE}
 args(round)
@@ -227,135 +227,135 @@ args(round)
 ?round
 ```
 
-We see that if we want a different number of digits, we can
-type `digits=2` or however many we want.
+Vemos que se quisermos um número diferente de dígitos, podemos
+digitar `digits=2` ou o número que quisermos.
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, digits = 2)
 ```
 
-If you provide the arguments in the exact same order as they are defined you
-don't have to name them:
+Se fornecer os argumentos exatamente na mesma ordem em que são definidos, não precisa de lhes dar um nome
+:
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, 2)
 ```
 
-And if you do name the arguments, you can switch their order:
+E se nomear os argumentos, pode mudar a sua ordem:
 
 ```{r, results="show", purl=TRUE}
 round(digits = 2, x = 3.14159)
 ```
 
-It's good practice to put the non-optional arguments (like the number you're
-rounding) first in your function call, and to specify the names of all optional
-arguments.  If you don't, someone reading your code might have to look up the
-definition of a function with unfamiliar arguments to understand what you're
-doing. By specifying the name of the arguments you are also safeguarding
-against possible future changes in the function interface, which may
-potentially add new arguments in between the existing ones.
+É uma boa prática colocar os argumentos não opcionais (como o número que está a
+arredondar) em primeiro lugar na sua chamada de função e especificar os nomes de todos os argumentos opcionais
+.  Se não o fizer, alguém que leia o seu código poderá ter de procurar a definição
+de uma função com argumentos desconhecidos para perceber o que está
+a fazer. Ao especificar o nome dos argumentos, está também a proteger
+contra possíveis alterações futuras na interface da função, que podem
+potencialmente adicionar novos argumentos entre os existentes.
 
-## Vectors and data types
+## Vectores e tipos de dados
 
-A vector is the most common and basic data type in R, and is pretty much
-the workhorse of R. A vector is composed by a series of values, such as
-numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of animal weights and assign
-it to a new object `weight_g`:
+Um vetor é o tipo de dados mais comum e básico do R e é praticamente
+o cavalo de batalha do R. Um vetor é composto por uma série de valores, tais como
+números ou caracteres. Podemos atribuir uma série de valores a um vetor utilizando
+a função `c()`. Por exemplo, podemos criar um vetor de pesos de animais e atribuí-lo
+a um novo objeto `peso_g`:
 
 ```{r, purl=TRUE}
 weight_g <- c(50, 60, 65, 82)
 weight_g
 ```
 
-A vector can also contain characters:
+Um vetor também pode conter caracteres:
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein")
 molecules
 ```
 
-The quotes around "dna", "rna", etc. are essential here. Without the
-quotes R will assume there are objects called `dna`, `rna` and
-`protein`. As these objects don't exist in R's memory, there will be
-an error message.
+As aspas em torno de "dna", "rna", etc. são essenciais aqui. Sem as aspas
+o R assumirá que existem objectos chamados `dna`, `rna` e
+`protein`. Como estes objectos não existem na memória do R, receberá
+uma mensagem de erro.
 
-There are many functions that allow you to inspect the content of a
-vector. `length()` tells you how many elements are in a particular vector:
+Existem muitas funções que lhe permitem inspecionar o conteúdo de um vetor
+. `length()` diz-lhe quantos elementos existem num determinado vetor:
 
 ```{r, purl=TRUE}
 length(weight_g)
 length(molecules)
 ```
 
-An important feature of a vector, is that all of the elements are the
-same type of data.  The function `class()` indicates the class (the
-type of element) of an object:
+Uma caraterística importante de um vetor é que todos os elementos são do
+mesmo tipo de dados.  A função `class()` indica a classe (o
+tipo de elemento) de um objeto:
 
 ```{r, purl=TRUE}
 class(weight_g)
 class(molecules)
 ```
 
-The function `str()` provides an overview of the structure of an
-object and its elements. It is a useful function when working with
-large and complex objects:
+A função `str()` fornece uma visão geral da estrutura de um objeto
+e dos seus elementos. É uma função útil quando trabalha com
+objectos grandes e complexos:
 
 ```{r, purl=TRUE}
 str(weight_g)
 str(molecules)
 ```
 
-You can use the `c()` function to add other elements to your vector:
+Pode utilizar a função `c()` para adicionar outros elementos ao seu vetor:
 
 ```{r}
-weight_g <- c(weight_g, 90) # add to the end of the vector
-weight_g <- c(30, weight_g) # add to the beginning of the vector
+weight_g <- c(weight_g, 90) # adiciona ao fim do vetor
+weight_g <- c(30, weight_g) # adiciona ao início do vetor
 weight_g
 ```
 
-In the first line, we take the original vector `weight_g`, add the
-value `90` to the end of it, and save the result back into
-`weight_g`. Then we add the value `30` to the beginning, again saving
-the result back into `weight_g`.
+Na primeira linha, pegamos o vetor original `peso_g`, adicionamos o valor
+`90` ao final dele, e salvamos o resultado de volta em
+`peso_g`. De seguida, adicionamos o valor `30` ao início, guardando novamente
+o resultado de volta em `peso_g`.
 
-We can do this over and over again to grow a vector, or assemble a
-dataset.  As we program, this may be useful to add results that we are
-collecting or calculating.
+Podemos fazer isto repetidamente para fazer crescer um vetor, ou montar um conjunto de dados
+.  À medida que programamos, isto pode ser útil para adicionar resultados que estamos
+a recolher ou a calcular.
 
-An **atomic vector** is the simplest R **data type** and is a linear
-vector of a single type. Above, we saw 2 of the 6 main **atomic
-vector** types that R uses: `"character"` and `"numeric"` (or
-`"double"`). These are the basic building blocks that all R objects
-are built from. The other 4 **atomic vector** types are:
+Um **vetor atómico** é o **tipo de dados** mais simples do R e é um
+vetor linear de um único tipo. Acima, vimos 2 dos 6 principais tipos de vectores \*\*atómicos
+\*\* que o R utiliza: `"character"` e `"numeric"` (ou
+`"double"`). Estes são os blocos de construção básicos a partir dos quais todos os objectos R
+são construídos. Os outros 4 tipos de vectores **atómicos** são:
 
-- `"logical"` for `TRUE` and `FALSE` (the boolean data type)
-- `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R
-  that it's an integer)
-- `"complex"` to represent complex numbers with real and imaginary
-  parts (e.g., `1 + 4i`) and that's all we're going to say about them
-- `"raw"` for bitstreams that we won't discuss further
+- `"lógico"` para `TRUE` e `FALSE` (o tipo de dados booleano)
+- `"integer"` para números inteiros (por exemplo, `2L`, o `L` indica ao R
+  que se trata de um número inteiro)
+- `"complexo"` para representar números complexos com partes
+  reais e imaginárias (por exemplo, `1 + 4i`) e é tudo o que vamos dizer sobre eles
+- `"raw"` para bitstreams que não discutiremos mais
 
-You can check the type of your vector using the `typeof()` function
-and inputting your vector as the argument.
+Pode verificar o tipo do seu vetor utilizando a função `typeof()`
+e introduzindo o seu vetor como argumento.
 
-Vectors are one of the many **data structures** that R uses. Other
-important ones are lists (`list`), matrices (`matrix`), data frames
-(`data.frame`), factors (`factor`) and arrays (`array`).
+Os vectores são uma das muitas **estruturas de dados** que o R utiliza. Outros
+importantes são listas (`list`), matrizes (`matrix`), quadros de dados
+(`data.frame`), factores (`fator`) e matrizes (`array`).
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-We've seen that atomic vectors can be of type character, numeric (or
-double), integer, and logical. But what happens if we try to mix
-these types in a single vector?
+Vimos que os vectores atómicos podem ser do tipo carácter, numérico (ou
+double), inteiro e lógico. Mas o que acontece se tentarmos misturar
+estes tipos num único vetor?
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
-R implicitly converts them to all be the same type
+O R converte-os implicitamente para que sejam todos do mesmo tipo
 
 :::::::::::::::::::::::::
 
@@ -363,10 +363,10 @@ R implicitly converts them to all be the same type
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-What will happen in each of these examples? (hint: use `class()` to
-check the data type of your objects and type in their names to see what happens):
+O que é que acontece em cada um destes exemplos? (dica: use `class()` para
+verificar o tipo de dados dos seus objetos e digite seus nomes para ver o que acontece):
 
 ```{r, eval=TRUE}
 num_char <- c(1, 2, 3, "a")
@@ -377,7 +377,7 @@ tricky <- c(1, 2, 3, "4")
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
 ```{r, purl=TRUE}
 class(num_char)
@@ -396,17 +396,17 @@ tricky
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-Why do you think it happens?
+Porque é que acha que isso acontece?
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
-Vectors can be of only one data type. R tries to convert (coerce)
-the content of this vector to find a _common denominator_ that
-doesn't lose any information.
+Os vectores só podem ter um tipo de dados. R tenta converter (coagir)
+o conteúdo deste vetor para encontrar um _denominador comum_ que
+não perca qualquer informação.
 
 :::::::::::::::::::::::::
 
@@ -414,10 +414,10 @@ doesn't lose any information.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-How many values in `combined_logical` are `"TRUE"` (as a character)
-in the following example:
+Quantos valores em `combined_logical` são `"TRUE"` (como um carácter)
+no seguinte exemplo:
 
 ```{r, eval=TRUE}
 num_logical <- c(1, 2, 3, TRUE)
@@ -427,12 +427,12 @@ combined_logical <- c(num_logical, char_logical)
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
-Only one. There is no memory of past data types, and the coercion
-happens the first time the vector is evaluated. Therefore, the `TRUE`
-in `num_logical` gets converted into a `1` before it gets converted
-into `"1"` in `combined_logical`.
+Apenas um. Não há memória de tipos de dados anteriores e a coerção
+acontece na primeira vez que o vetor é avaliado. Portanto, o `TRUE`
+em `num_logical` é convertido em `1` antes de ser convertido
+em `"1"` em `combined_logical`.
 
 ```{r}
 combined_logical
@@ -444,19 +444,19 @@ combined_logical
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-In R, we call converting objects from one class into another class
-_coercion_. These conversions happen according to a hierarchy,
-whereby some types get preferentially coerced into other types. Can
-you draw a diagram that represents the hierarchy of how these data
-types are coerced?
+Em R, chamamos à conversão de objectos de uma classe para outra classe
+_coerção_. Estas conversões ocorrem de acordo com uma hierarquia,
+segundo a qual alguns tipos são preferencialmente coagidos a transformarem-se noutros tipos. Pode
+desenhar um diagrama que represente a hierarquia da forma como estes dados
+tipos são coagidos?
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
-logical → numeric → character ← logical
+lógico → numérico → carácter ← lógico
 
 :::::::::::::::::::::::::
 
@@ -488,10 +488,10 @@ tricky <- c(1, 2, 3, "4")
 ## types are coerced?
 ```
 
-## Subsetting vectors
+## Subconjunto de vectores
 
-If we want to extract one or several values from a vector, we must
-provide one or several indices in square brackets. For instance:
+Se quisermos extrair um ou vários valores de um vetor, temos de
+fornecer um ou vários índices entre parênteses rectos. Por exemplo:
 
 ```{r, results="show", purl=TRUE}
 molecules <- c("dna", "rna", "peptide", "protein")
@@ -499,21 +499,21 @@ molecules[2]
 molecules[c(3, 2)]
 ```
 
-We can also repeat the indices to create an object with more elements
-than the original one:
+Também pode repetir os índices para criar um objeto com mais elementos
+do que o original:
 
 ```{r, results="show", purl=TRUE}
 more_molecules <- molecules[c(1, 2, 3, 2, 1, 4)]
 more_molecules
 ```
 
-R indices start at 1. Programming languages like Fortran, MATLAB,
-Julia, and R start counting at 1, because that's what human beings
-typically do. Languages in the C family (including C++, Java, Perl,
-and Python) count from 0 because that's simpler for computers to do.
+Os índices R começam em 1. Linguagens de programação como Fortran, MATLAB,
+Julia e R começam a contar em 1, porque é isso que os seres humanos
+normalmente fazem. As linguagens da família C (incluindo C++, Java, Perl,
+e Python) contam a partir de 0 porque isso é mais simples para os computadores.
 
-Finally, it is also possible to get all the elements of a vector
-except some specified elements using negative indices:
+Finalmente, também é possível obter todos os elementos de um vetor
+, exceto alguns elementos especificados, utilizando índices negativos:
 
 ```{r}
 molecules ## all molecules
@@ -522,19 +522,19 @@ molecules[-c(1, 3)] ## all but 1st/3rd ones
 molecules[c(-1, -3)] ## all but 1st/3rd ones
 ```
 
-## Conditional subsetting
+## Subconjunto condicional
 
-Another common way of subsetting is by using a logical vector. `TRUE` will
-select the element with the same index, while `FALSE` will not:
+Outra forma comum de subconjunto é a utilização de um vetor lógico. `TRUE` irá
+selecionar o elemento com o mesmo índice, enquanto que `FALSE` não o fará:
 
 ```{r, purl=TRUE}
 weight_g <- c(21, 34, 39, 54, 55)
 weight_g[c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 ```
 
-Typically, these logical vectors are not typed by hand, but are the
-output of other functions or logical tests. For instance, if you
-wanted to select only the values above 50:
+Normalmente, estes vectores lógicos não são digitados à mão, mas são o
+resultado de outras funções ou testes lógicos. Por exemplo, se você
+quisesse selecionar apenas os valores acima de 50:
 
 ```{r, purl=TRUE}
 ## will return logicals with TRUE for the indices that meet
@@ -544,24 +544,24 @@ weight_g > 50
 weight_g[weight_g > 50]
 ```
 
-You can combine multiple tests using `&` (both conditions are true,
-AND) or `|` (at least one of the conditions is true, OR):
+Pode combinar vários testes utilizando `&` (ambas as condições são verdadeiras,
+AND) ou `|` (pelo menos uma das condições é verdadeira, OR):
 
 ```{r, results="show", purl=TRUE}
 weight_g[weight_g < 30 | weight_g > 50]
 weight_g[weight_g >= 30 & weight_g == 21]
 ```
 
-Here, `<` stands for "less than", `>` for "greater than", `>=` for
-"greater than or equal to", and `==` for "equal to". The double equal
-sign `==` is a test for numerical equality between the left and right
-hand sides, and should not be confused with the single `=` sign, which
-performs variable assignment (similar to `<-`).
+Aqui, `<` stands for "less than", `>` para "maior que", `>=` para
+"maior ou igual a", e `==` para "igual a". O sinal duplo de
+igualdade `==` é um teste de igualdade numérica entre os lados esquerdo e direito
+e não deve ser confundido com o sinal simples `=`, que
+efectua a atribuição de variáveis (semelhante a `<-`).
 
-A common task is to search for certain strings in a vector.  One could
-use the "or" operator `|` to test for equality to multiple values, but
-this can quickly become tedious. The function `%in%` allows you to
-test if any of the elements of a search vector are found:
+Uma tarefa comum é procurar determinadas cadeias de caracteres num vetor.  Pode
+utilizar o operador "or" `|` para testar a igualdade de vários valores, mas
+isto pode tornar-se rapidamente aborrecido. A função `%in%` permite-lhe
+testar se algum dos elementos de um vetor de pesquisa é encontrado:
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein", "peptide")
@@ -572,31 +572,31 @@ molecules[molecules %in% c("rna", "dna", "metabolite", "peptide", "glycerol")]
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-Can you figure out why `"four" > "five"` returns `TRUE`?
+Consegue perceber porque é que `"four" > "five"` devolve `TRUE`?
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
 ```{r}
 "four" > "five"
 ```
 
-When using `>` or `<` on strings, R compares their alphabetical order.
-Here `"four"` comes after `"five"`, and therefore is _greater than_
-it.
+Quando utiliza `>` ou `<` em strings, o R compara a sua ordem alfabética.
+Aqui `"four"` vem depois de `"five"`, e portanto é _maior do que_
+.
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Names
+## Nomes
 
-It is possible to name each element of a vector. The code chunk below
-shows an initial vector without any names, how names are set, and
-retrieved.
+É possível nomear cada elemento de um vetor. O trecho de código abaixo
+mostra um vetor inicial sem quaisquer nomes, como os nomes são definidos e
+recuperados.
 
 ```{r}
 x <- c(1, 5, 3, 5, 10)
@@ -605,25 +605,25 @@ names(x) <- c("A", "B", "C", "D", "E")
 names(x) ## now we have names
 ```
 
-When a vector has names, it is possible to access elements by their
-name, in addition to their index.
+Quando um vetor tem nomes, é possível aceder aos elementos pelo seu nome
+, para além do seu índice.
 
 ```{r}
 x[c(1, 3)]
 x[c("A", "C")]
 ```
 
-## Missing data
+## Dados em falta
 
-As R was designed to analyze datasets, it includes the concept of
-missing data (which is uncommon in other programming
-languages). Missing data are represented in vectors as `NA`.
+Uma vez que o R foi concebido para analisar conjuntos de dados, inclui o conceito de
+dados em falta (o que não é comum noutras linguagens de programação
+). Os dados em falta são representados em vectores como `NA`.
 
-When doing operations on numbers, most functions will return `NA` if
-the data you are working with include missing values. This feature
-makes it harder to overlook the cases where you are dealing with
-missing data.  You can add the argument `na.rm = TRUE` to calculate
-the result while ignoring the missing values.
+Ao efetuar operações sobre números, a maioria das funções devolverá `NA` se
+os dados com que está a trabalhar incluírem valores em falta. Esta funcionalidade
+faz com que seja mais difícil ignorar os casos em que está a lidar com
+dados em falta.  Pode adicionar o argumento `na.rm = TRUE` para calcular
+o resultado ignorando os valores em falta.
 
 ```{r}
 heights <- c(2, 4, 4, NA, 6)
@@ -633,41 +633,41 @@ mean(heights, na.rm = TRUE)
 max(heights, na.rm = TRUE)
 ```
 
-If your data include missing values, you may want to become familiar
-with the functions `is.na()`, `na.omit()`, and `complete.cases()`. See
-below for examples.
+Se os seus dados incluem valores em falta, pode querer familiarizar-se
+com as funções `is.na()`, `na.omit()`, e `complete.cases()`. Consulte
+para obter exemplos.
 
 ```{r}
-## Extract those elements which are not missing values.
+## Extraia os elementos que não são valores em falta.
 heights[!is.na(heights)]
 
-## Returns the object with incomplete cases removed.
-## The returned object is an atomic vector of type `"numeric"`
-## (or `"double"`).
+## Devolve o objeto com os casos incompletos removidos.
+## O objeto devolvido é um vetor atómico do tipo `"numeric"`
+## (ou `"double"`).
 na.omit(heights)
 
-## Extract those elements which are complete cases.
-## The returned object is an atomic vector of type `"numeric"`
-## (or `"double"`).
+## Extrai os elementos que são casos completos.
+## O objeto devolvido é um vetor atómico do tipo `"numeric"`
+## (ou `"double"`).
 heights[complete.cases(heights)]
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-1. Using this vector of heights in inches, create a new vector with the NAs removed.
+1. Utilizando este vetor de alturas em polegadas, crie um novo vetor com os NAs removidos.
 
 ```{r}
-heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+alturas <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 ```
 
-2. Use the function `median()` to calculate the median of the `heights` vector.
-3. Use R to figure out how many people in the set are taller than 67 inches.
+2. Utilize a função `median()` para calcular a mediana do vetor `altura`.
+3. Utilize o R para descobrir quantas pessoas no conjunto têm uma altura superior a 67 polegadas.
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
 ```{r, purl=TRUE}
 heights_no_na <- heights[!is.na(heights)]
@@ -688,43 +688,43 @@ length(heights_above_67)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Generating vectors {#sec:genvec}
+## Geração de vectores {#sec:genvec}
 
 ```{r, echo=FALSE}
 set.seed(1)
 ```
 
-### Constructors
+### Construtores
 
-There exists some functions to generate vectors of different type. To
-generate a vector of numerics, one can use the `numeric()`
-constructor, providing the length of the output vector as
-parameter. The values will be initialised with 0.
+Existem algumas funções para gerar vectores de diferentes tipos. Para
+gerar um vetor de números, pode utilizar o construtor `numeric()`
+, fornecendo o comprimento do vetor de saída como parâmetro
+. Os valores serão inicializados com 0.
 
 ```{r, purl=TRUE}
 numeric(3)
 numeric(10)
 ```
 
-Note that if we ask for a vector of numerics of length 0, we obtain
-exactly that:
+Note que se pedirmos um vetor de números de comprimento 0, obtemos
+exatamente isso:
 
 ```{r, purl=TRUE}
 numeric(0)
 ```
 
-There are similar constructors for characters and logicals, named
-`character()` and `logical()` respectively.
+Existem construtores semelhantes para caracteres e lógicos, denominados
+`character()` e `logical()` respetivamente.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-What are the defaults for character and logical vectors?
+Quais são as predefinições para vectores de caracteres e lógicos?
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
 ```{r, purl=TRUE}
 character(2) ## the empty character
@@ -735,27 +735,27 @@ logical(2)   ## FALSE
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Replicate elements
+### Replicar elementos
 
-The `rep` function allow to repeat a value a certain number of
-times. If we want to initiate a vector of numerics of length 5 with
-the value -1, for example, we could do the following:
+A função `rep` permite-lhe repetir um valor um determinado número de
+vezes. Se quisermos iniciar um vetor de números de comprimento 5 com
+o valor -1, por exemplo, podemos fazer o seguinte:
 
 ```{r, purl=TRUE}
 rep(-1, 5)
 ```
 
-Similarly, to generate a vector populated with missing values, which
-is often a good way to start, without setting assumptions on the data
-to be collected:
+Da mesma forma, para gerar um vetor preenchido com valores em falta, que
+é muitas vezes uma boa maneira de começar, sem definir pressupostos sobre os dados
+a recolher:
 
 ```{r, purl=TRUE}
 rep(NA, 5)
 ```
 
-`rep` can take vectors of any length as input (above, we used vectors
-of length 1) and any type. For example, if we want to repeat the
-values 1, 2 and 3 five times, we would do the following:
+`rep` pode receber vectores de qualquer comprimento como entrada (acima, utilizámos os vectores
+de comprimento 1) e de qualquer tipo. Por exemplo, se quisermos repetir os valores 1, 2 e 3 de
+cinco vezes, deve fazer o seguinte:
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), 5)
@@ -763,15 +763,14 @@ rep(c(1, 2, 3), 5)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-What if we wanted to repeat the values 1, 2 and 3 five times, but
-obtain five 1s, five 2s and five 3s in that order? There are two
-possibilities - see `?rep` or `?sort` for help.
+E se quisermos repetir os valores 1, 2 e 3 cinco vezes, mas
+obter cinco 1s, cinco 2s e cinco 3s nessa ordem? Existem duas possibilidades* consulte `?rep` ou `?sort` para obter ajuda.
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), each = 5)
@@ -782,19 +781,19 @@ sort(rep(c(1, 2, 3), 5))
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Sequence generation
+### Geração de sequências
 
-Another very useful function is `seq`, to generate a sequence of
-numbers. For example, to generate a sequence of integers from 1 to 20
-by steps of 2, one would use:
+Outra função muito útil é `seq`, para gerar uma sequência de
+números. Por exemplo, para gerar uma sequência de números inteiros de 1 a 20
+por passos de 2, pode utilizar:
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, by = 2)
 ```
 
-The default value of `by` is 1 and, given that the generation of a
-sequence of one value to another with steps of 1 is frequently used,
-there's a shortcut:
+O valor por defeito de `by` é 1 e, dado que a geração de uma sequência
+de um valor para outro com passos de 1 é frequentemente utilizada,
+existe um atalho:
 
 ```{r, purl=TRUE}
 seq(1, 5, 1)
@@ -802,37 +801,37 @@ seq(1, 5) ## default by
 1:5
 ```
 
-To generate a sequence of numbers from 1 to 20 of final length of 3,
-one would use:
+Para gerar uma sequência de números de 1 a 20 com um comprimento final de 3,
+, deve utilizar:
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, length.out = 3)
 ```
 
-### Random samples and permutations
+### Amostras aleatórias e permutações
 
-A last group of useful functions are those that generate random
-data. The first one, `sample`, generates a random permutation of
-another vector. For example, to draw a random order to 10 students
-oral exam, I first assign each student a number from 1 to ten (for
-instance based on the alphabetic order of their name) and then:
+Um último grupo de funções úteis são as que geram dados
+aleatórios. O primeiro, `sample`, gera uma permutação aleatória de
+outro vetor. Por exemplo, para selecionar uma ordem aleatória para 10 alunos
+exame oral, primeiro atribuo a cada aluno um número de 1 a dez (para
+exemplo, com base na ordem alfabética do seu nome) e depois:
 
 ```{r, purl=TRUE}
 sample(1:10)
 ```
 
-Without further arguments, `sample` will return a permutation of all
-elements of the vector. If I want a random sample of a certain size, I
-would set this value as the second argument. Below, I sample 5 random
-letters from the alphabet contained in the pre-defined `letters` vector:
+Sem outros argumentos, `sample` retornará uma permutação de todos os
+elementos do vetor. Se quiser uma amostra aleatória de um determinado tamanho, eu
+definiria este valor como o segundo argumento. Abaixo, faço uma amostragem de 5 letras
+aleatórias do alfabeto contidas no vetor `letters` pré-definido:
 
 ```{r, purl=TRUE}
 sample(letters, 5)
 ```
 
-If I wanted an output larger than the input vector, or being able to
-draw some elements multiple times, I would need to set the `replace`
-argument to `TRUE`:
+Se eu quisesse uma saída maior do que o vetor de entrada, ou ser capaz de
+desenhar alguns elementos várias vezes, eu precisaria definir o argumento `replace`
+para `TRUE`:
 
 ```{r, purl=TRUE}
 sample(1:5, 10, replace = TRUE)
@@ -840,35 +839,35 @@ sample(1:5, 10, replace = TRUE)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafio:
 
-When trying the functions above out, you will have realised that the
-samples are indeed random and that one doesn't get the same
-permutation twice. To be able to reproduce these random draws, one can
-set the random number generation seed manually with `set.seed()`
-before drawing the random sample.
+Ao experimentar as funções acima, terá percebido que as amostras
+são de facto aleatórias e que não se obtém a mesma permutação
+duas vezes. Para ser capaz de reproduzir estes sorteios aleatórios, pode
+definir a semente de geração de números aleatórios manualmente com `set.seed()`
+antes de desenhar a amostra aleatória.
 
-Test this feature with your neighbour. First draw two random
-permutations of `1:10` independently and observe that you get
-different results.
+Teste esta funcionalidade com o seu vizinho. Comece por desenhar duas
+permutações aleatórias de `1:10` de forma independente e observe que obtém
+resultados diferentes.
 
-Now set the seed with, for example, `set.seed(123)` and repeat the
-random draw. Observe that you now get the same random draws.
+Agora defina a semente com, por exemplo, `set.seed(123)` e repita o sorteio aleatório
+. Observe que agora obtém os mesmos sorteios aleatórios.
 
-Repeat by setting a different seed.
+Repita a operação com uma semente diferente.
 
 :::::::::::::::  solution
 
-## Solution
+## Solução
 
-Different permutations
+Diferentes permutações
 
 ```{r, purl=TRUE}
 sample(1:10)
 sample(1:10)
 ```
 
-Same permutations with seed 123
+As mesmas permutações com a semente 123
 
 ```{r, purl=TRUE}
 set.seed(123)
@@ -877,7 +876,7 @@ set.seed(123)
 sample(1:10)
 ```
 
-A different seed
+Uma semente diferente
 
 ```{r, purl=TRUE}
 set.seed(1)
@@ -890,12 +889,12 @@ sample(1:10)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Drawing samples from a normal distribution
+### Extrair amostras de uma distribuição normal
 
-The last function we are going to see is `rnorm`, that draws a random
-sample from a normal distribution. Two normal distributions of means 0
-and 100 and standard deviations 1 and 5, noted _N(0, 1)_ and
-_N(100, 5)_, are shown below.
+A última função que vamos ver é a `rnorm`, que retira uma amostra
+aleatória de uma distribuição normal. De seguida, apresentam-se duas distribuições normais com médias 0
+e 100 e desvios-padrão 1 e 5, designadas por _N(0, 1)_ e
+_N(100, 5)_.
 
 ```{r, echo=FALSE, fig.width=12, fig.height=6, fig.cap="Two normal distributions: *N(0, 1)* on the left and *N(100, 5)* on the right."}
 par(mfrow = c(1, 2))
@@ -903,9 +902,9 @@ plot(density(rnorm(1000)), main = "", sub = "N(0, 1)")
 plot(density(rnorm(1000, 100, 5)), main = "", sub = "N(100, 5)")
 ```
 
-The three arguments, `n`, `mean` and `sd`, define the size of the
-sample, and the parameters of the normal distribution, i.e the mean
-and its standard deviation. The defaults of the latter are 0 and 1.
+Os três argumentos, `n`, `mean` e `sd`, definem o tamanho da amostra
+e os parâmetros da distribuição normal, ou seja, a média
+e o seu desvio padrão. As predefinições deste último são 0 e 1.
 
 ```{r, purl=TRUE}
 rnorm(5)
@@ -913,12 +912,12 @@ rnorm(5, 2, 2)
 rnorm(5, 100, 5)
 ```
 
-Now that we have learned how to write scripts, and the basics of R's
-data structures, we are ready to start working with larger data, and
-learn about data frames.
+Agora que aprendemos a escrever scripts e as noções básicas das estruturas de dados do R
+, estamos prontos para começar a trabalhar com dados maiores e
+aprender sobre estruturas de dados.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- How to interact with R
+- Como interagir com o R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

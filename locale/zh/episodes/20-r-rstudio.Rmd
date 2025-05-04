@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: R and RStudio
+title: R 和 RStudio
 teaching: 30
 exercises: 0
 ---
@@ -10,329 +10,329 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe the purpose of the RStudio Script, Console, Environment, and Plots panes.
-- Organise files and directories for a set of analyses as an R project, and understand the purpose of the working directory.
-- Use the built-in RStudio help interface to search for more information on R functions.
-- Demonstrate how to provide sufficient information for troubleshooting with the R user community.
+- 描述 RStudio 脚本、控制台、环境和绘图窗格的用途。
+- 将一组分析的文件和目录组织为 R 项目，并了解工作目录的用途。
+- 使用内置的 RStudio 帮助界面搜索有关 R 函数的更多信息。
+- 演示如何向 R 用户社区提供足够的信息以进行故障排除。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What are R and RStudio?
+- 什么是 R 和 RStudio？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> 本集基于 Data Carpentries 的_面向生态学家的 R 语言数据分析和
+> 可视化_课程。
 
-## What is R? What is RStudio?
+## 什么是 R？ 什么是 RStudio？
 
-The term [R](https://www.r-project.org/) is used to refer to the
-_programming language_, the _environment for statistical computing_
-and _the software_ that interprets the scripts written using it.
+术语 [R](https://www.r-project.org/) 用于指代
+_编程语言_、_统计计算环境_
+和 _解释使用该语言编写的脚本的软件_。
 
-[RStudio](https://rstudio.com) is currently a very popular way to not
-only write your R scripts but also to interact with the R
-software[^plainr]. To function correctly, RStudio needs R and
-therefore both need to be installed on your computer.
+[RStudio](https://rstudio.com) 目前是一种非常流行的方式，不仅可以
+编写 R 脚本，还可以与 R
+软件进行交互[^plainr]。 为了正常运行，RStudio 需要 R 和
+，因此两者都需要安装在您的计算机上。
 
-[^plainr]: As opposed to using R directly from the command line
-    console. There exist other software that interface and integrate
-    with R, but RStudio is particularly well suited for beginners
-    while providing numerous very advanced features.
+[^plainr]: 与直接从命令行
+    控制台使用 R 相反。 还有其他软件可以将
+    与 R 进行接口和集成，但 RStudio 特别适合初学者
+    ，同时提供许多非常高级的功能。
 
 The RStudio IDE Cheat
 Sheet
 provides much more information than will be covered here, but can be
 useful to learn keyboard shortcuts and discover new features.
 
-## Why learn R?
+## 为什么要学习 R？
 
-### R does not involve lots of pointing and clicking, and that's a good thing
+### R 不需要大量的指向和点击，这是一件好事
 
-The learning curve might be steeper than with other software, but with
-R, the results of your analysis do not rely on remembering a
-succession of pointing and clicking, but instead on a series of
-written commands, and that's a good thing! So, if you want to redo
-your analysis because you collected more data, you don't have to
-remember which button you clicked in which order to obtain your
-results; you just have to run your script again.
+学习曲线可能比其他软件更陡峭，但使用
+R，您的分析结果并不依赖于记住
+连续的指向和单击，而是依赖于一系列
+书面命令，这是一件好事！ 因此，如果您因为收集了更多数据而想要重新进行
+分析，您不必
+记住您以何种顺序单击了哪个按钮来获得
+结果；您只需再次运行脚本即可。
 
-Working with scripts makes the steps you used in your analysis clear,
-and the code you write can be inspected by someone else who can give
-you feedback and spot mistakes.
+使用脚本可以使您在分析中使用的步骤更加清晰，
+并且您编写的代码可以由其他人检查，他们可以为您提供
+反馈并发现错误。
 
 Working with scripts forces you to have a deeper understanding of what
 you are doing, and facilitates your learning and comprehension of the
 methods you use.
 
-### R code is great for reproducibility
+### R 代码具有很好的可重复性
 
 Reproducibility means that someone else (including your future self) can
 obtain the same results from the same dataset when using the same
 analysis code.
 
-R integrates with other tools to generate manuscripts or reports from your
-code. If you collect more data, or fix a mistake in your dataset, the
-figures and the statistical tests in your manuscript or report are updated
-automatically.
+R 与其他工具集成，从您的
+代码生成手稿或报告。 如果您收集了更多数据，或者修复了数据集中的错误，则手稿或报告中的
+图表和统计测试将自动更新
+。
 
-An increasing number of journals and funding agencies expect analyses
-to be reproducible, so knowing R will give you an edge with these
-requirements.
+越来越多的期刊和资助机构希望分析
+具有可重复性，因此了解 R 将使您在满足这些
+要求方面更具优势。
 
-### R is interdisciplinary and extensible
+### R 是跨学科且可扩展的
 
-With 10000+ packages[^whatarepkgs] that can be installed to extend its
-capabilities, R provides a framework that allows you to combine
-statistical approaches from many scientific disciplines to best suit
-the analytical framework you need to analyse your data. For instance,
-R has packages for image analysis, GIS, time series, population
-genetics, and a lot more.
+R 有超过 10000 个软件包[^whatarepkgs]可供安装以扩展其
+功能，它提供了一个框架，允许您结合来自许多科学学科的
+统计方法，以最适合
+分析数据所需的分析框架。 例如，
+R 具有用于图像分析、GIS、时间序列、人口
+遗传学等的软件包。
 
-[^whatarepkgs]: i.e. add-ons that confer R with new functionality,
-    such as bioinformatics data analysis.
+[^whatarepkgs]: 即赋予 R 新功能的附加组件，
+    例如生物信息学数据分析。
 
 ```{r, fig.cap="Exponential increase of the number of packages available on [CRAN](https://cran.r-project.org/), the Comprehensive R Archive Network. From the R Journal, Volume 10/2, December 2018.", echo=FALSE, message=FALSE}
 knitr::include_graphics("fig/cran.png")
 ```
 
-### R works on data of all shapes and sizes
+### R 可处理各种形状和大小的数据
 
-The skills you learn with R scale easily with the size of your
-dataset. Whether your dataset has hundreds or millions of lines, it
-won't make much difference to you.
+您通过 R 学到的技能会随着您的
+数据集的大小而轻松扩展。 无论您的数据集有数百行还是数百万行，
+对您来说都不会有太大区别。
 
-R is designed for data analysis. It comes with special data structures
-and data types that make handling of missing data and statistical
-factors convenient.
+R 是为数据分析而设计的。 它带有特殊的数据结构
+和数据类型，可以方便地处理缺失数据和统计
+因素。
 
-R can connect to spreadsheets, databases, and many other data formats,
-on your computer or on the web.
+R 可以连接到您的计算机或网络上的电子表格、数据库和许多其他数据格式，
+。
 
-### R produces high-quality graphics
+### R 生成高质量图形
 
-The plotting functionalities in R are extensive, and allow you to adjust
-any aspect of your graph to convey most effectively the message from
-your data.
+R 中的绘图功能非常广泛，允许您调整
+图形的任何方面，以最有效地传达来自
+数据的信息。
 
-### R has a large and welcoming community
+### R 有一个庞大而热情的社区
 
-Thousands of people use R daily. Many of them are willing to help you
-through mailing lists and websites such as Stack
-Overflow, or on the RStudio
-community. These broad user communities
-extend to specialised areas such as bioinformatics. One such subset of the R community is [Bioconductor](https://bioconductor.org/), a scientific project for analysis and comprehension "of data from current and emerging biological assays." This workshop was developed by members of the Bioconductor community; for more information on Bioconductor, please see the companion workshop ["The Bioconductor Project"](https://carpentries-incubator.github.io/bioc-project/).
+每天都有成千上万的人使用 R。 他们中的许多人都愿意通过邮件列表和网站（例如 Stack
+Overflow 或 RStudio
+社区 为您提供帮助
+。 这些广泛的用户社区
+扩展到生物信息学等专业领域。 R 社区的一个这样的子集是 [Bioconductor](https://bioconductor.org/)，这是一个用于分析和理解“来自当前和新兴生物检测的数据”的科学项目。 该研讨会由 Bioconductor 社区成员开发；有关 Bioconductor 的更多信息，请参阅配套研讨会 [“Bioconductor 项目”](https://carpentries-incubator.github.io/bioc-project/)。
 
-### Not only is R free, but it is also open-source and cross-platform
+### R 不仅免费，而且开源且跨平台
 
-Anyone can inspect the source code to see how R works. Because of this
-transparency, there is less chance for mistakes, and if you (or
-someone else) find some, you can report and fix bugs.
+任何人都可以检查源代码来了解 R 的工作原理。 由于这种
+透明度，出现错误的可能性较小，如果您（或
+其他人）发现一些错误，您可以报告并修复错误。
 
-## Knowing your way around RStudio
+## 了解 RStudio
 
-Let's start by learning about [RStudio](https://www.rstudio.com/),
-which is an Integrated Development Environment (IDE) for working with
-R.
+让我们首先了解 [RStudio](https://www.rstudio.com/)，
+它是一个用于处理
+R 的集成开发环境 (IDE)。
 
-The RStudio IDE open-source product is free under the Affero General
-Public License (AGPL) v3.
-The RStudio IDE is also available with a commercial license and
-priority email support from Posit, Inc.
+RStudio IDE 开源产品在 Affero General
+Public License (AGPL) v3 下免费使用。
+RStudio IDE 还提供商业许可和 Posit, Inc. 的
+优先电子邮件支持。
 
-We will use the RStudio IDE to write code, navigate the files on our
-computer, inspect the variables we are going to create, and visualise
-the plots we will generate. RStudio can also be used for other things
-(e.g., version control, developing packages, writing Shiny apps) that
-we will not cover during the workshop.
+我们将使用 RStudio IDE 编写代码，浏览我们
+计算机上的文件，检查我们要创建的变量，并可视化
+我们将生成的图表。 RStudio 还可用于其他事项
+（例如版本控制、开发包、编写 Shiny 应用程序），而
+我们不会在研讨会期间介绍这些事项。
 
 ```{r, results="markup", fig.cap="RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console.", echo=FALSE, purl=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("fig/rstudio-screenshot.png")
 ```
 
-The RStudio window is divided into 4 "Panes":
+RStudio 窗口分为 4 个“窗格”：
 
-- the **Source** for your scripts and documents (top-left, in the
-  default layout)
-- your **Environment/History** (top-right),
-- your **Files/Plots/Packages/Help/Viewer** (bottom-right), and
-- the R **Console** (bottom-left).
+- 脚本和文档的**来源**（左上角，在
+  默认布局中）
+- 你的**环境/历史**（右上），
+- 您的 **Files/Plots/Packages/Help/Viewer** （右下角），以及
+- R **控制台**（左下）。
 
-The placement of these panes and their content can be customised (see
-menu, `Tools -> Global Options -> Pane Layout`).
+这些窗格的位置和它们的内容可以自定义（参见
+菜单，“工具->全局选项->窗格布局”）。
 
 One of the advantages of using RStudio is that all the information you
-need to write code is available in a single window. Additionally, with
-many shortcuts, **autocompletion**, and **highlighting** for the major
-file types you use while developing in R, RStudio will make typing
-easier and less error-prone.
+need to write code is available in a single window. 此外，通过
+的许多快捷方式、**自动完成**和**突出显示**，针对您在 R 中开发时使用的主要
+文件类型，RStudio 将使输入
+变得更容易且更不容易出错。
 
-## Getting set up
+## 开始设置
 
-It is good practice to keep a set of related data, analyses, and text
-self-contained in a single folder, called the **working
-directory**. All of the scripts within this folder can then use
-**relative paths** to files that indicate where inside the project a
-file is located (as opposed to absolute paths, which point to where a
-file is on a specific computer). Working this way makes it a lot
+将一组相关数据、分析和文本
+保存在一个文件夹中，称为 **工作
+目录**，是一种很好的做法。 然后，此文件夹中的所有脚本都可以使用
+**相对路径** 来指示
+文件在项目内部的位置（而不是绝对路径，绝对路径指向
+文件在特定计算机上的位置）。 Working this way makes it a lot
 easier to move your project around on your computer and share it with
 others without worrying about whether or not the underlying scripts
 will still work.
 
-RStudio provides a helpful set of tools to do this through its "Projects"
-interface, which not only creates a working directory for you, but also remembers
-its location (allowing you to quickly navigate to it) and optionally preserves
-custom settings and open files to make it easier to resume work after a
-break. Go through the steps for creating an "R Project" for this
-tutorial below.
+RStudio 通过其“项目”
+界面提供了一套有用的工具来执行此操作，它不仅可以为您创建工作目录，还可以记住
+它的位置（允许您快速导航到它）并可选择保留
+自定义设置和打开的文件，以便在
+休息后更容易恢复工作。 按照下面为本
+教程创建“R 项目”的步骤进行操作。
 
-1. Start RStudio.
-2. Under the `File` menu, click on `New project`. Choose `New directory`, then
-  `New project`.
-3. Enter a name for this new folder (or "directory"), and choose a
-  convenient location for it. This will be your **working directory**
-  for this session (or whole course) (e.g., `bioc-intro`).
-4. Click on `Create project`.
-5. (Optional) Set Preferences to 'Never' save workspace in RStudio.
+1. 启动 RStudio。
+2. 在“文件”菜单下，点击“新建项目”。 选择“新目录”，然后
+  “新项目”。
+3. 输入这个新文件夹（或“目录”）的名称，并为其选择一个
+  方便的位置。 这将是您本次会话（或整个课程）的**工作目录**
+  （例如`bioc-intro`）。
+4. 点击“创建项目”。
+5. （可选）将首选项设置为“从不”在 RStudio 中保存工作区。
 
-RStudio's default preferences generally work well, but saving a workspace to
-.RData can be cumbersome, especially if you are working with larger datasets.
-To turn that off, go to Tools --> 'Global Options' and select the 'Never' option
-for 'Save workspace to .RData' on exit.
+RStudio 的默认首选项通常运行良好，但将工作区保存到
+.RData 可能会很麻烦，特别是在处理较大的数据集时。
+要关闭该功能，请转到工具-->“全局选项”，然后在退出时选择“从不”选项
+以将“工作区保存到.RData”。
 
 ```{r, results="markup", fig.cap="Set 'Save workspace to .RData on exit' to 'Never'", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/rstudio-preferences.png")
 ```
 
-To avoid character encoding issues between Windows and other operating
-systems, we are
-going to set UTF-8 by default:
+为了避免 Windows 与其他操作系统
+之间的字符编码问题，我们
+将默认设置 UTF-8：
 
 ```{r, results="markup", fig.cap="Set the default text encoding to UTF-8 to save us headache in the coming future. (Figure from the link above).", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/utf8.png")
 ```
 
-### Organizing your working directory
+### 组织你的工作目录
 
-Using a consistent folder structure across your projects will help keep things
-organised, and will also make it easy to find/file things in the future. This
-can be especially helpful when you have multiple projects. In general, you may
-create directories (folders) for **scripts**, **data**, and **documents**.
+在您的项目中使用一致的文件夹结构将有助于保持事物
+井然有序，并且还能让您在将来轻松查找/归档事物。 当您有多个项目时，这个
+会特别有用。 一般来说，您可以
+为**脚本**、**数据**和**文档**创建目录（文件夹）。
 
-- **`data/`** Use this folder to store your raw data and intermediate
-  datasets you may create for the need of a particular analysis. For
-  the sake of transparency and
-  [provenance](https://en.wikipedia.org/wiki/Provenance), you should
-  _always_ keep a copy of your raw data accessible and do as much of
-  your data cleanup and preprocessing programmatically (i.e., with
-  scripts, rather than manually) as possible. Separating raw data
-  from processed data is also a good idea. For example, you could
-  have files `data/raw/tree_survey.plot1.txt` and `...plot2.txt` kept
-  separate from a `data/processed/tree.survey.csv` file generated by
-  the `scripts/01.preprocess.tree_survey.R` script.
-- **`documents/`** This would be a place to keep outlines, drafts,
-  and other text.
-- **`scripts/`** (or `src`) This would be the location to keep your R
-  scripts for different analyses or plotting, and potentially a
-  separate folder for your functions (more on that later).
+- **`data/`** 使用此文件夹存储您可能为特定分析的需要而创建的原始数据和中间
+  数据集。 为了
+  透明度和
+  [来源](https://en.wikipedia.org/wiki/Provenance)，您应该
+  _始终_ 保留原始数据的副本，并尽可能多地以编程方式 (即使用
+  脚本，而不是手动) 完成
+  数据清理和预处理。 将原始数据
+  与处理后的数据分开也是一个好主意。 例如，你可以将
+  文件“data/raw/tree_survey.plot1.txt”和“...plot2.txt”与
+  由
+  “scripts/01.preprocess.tree_survey.R”脚本生成的“data/processed/tree.survey.csv”文件分开保存。
+- **`documents/`** 这里用来保存大纲、草稿、
+  和其他文本。
+- **`scripts/`**（或`src`）这将是保存用于不同分析或绘图的 R
+  脚本的位置，并且可能为您的函数保存一个
+  单独的文件夹（稍后会详细介绍）。
 
-You may want additional directories or subdirectories depending on
-your project needs, but these should form the backbone of your working
-directory.
+根据
+项目需求，您可能需要额外的目录或子目录，但这些应该构成您工作
+目录的骨干。
 
 ```{r, results="markup", fig.cap="Example of a working directory structure.", echo=FALSE, purl=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("fig/working-directory-structure.png")
 ```
 
-For this course, we will need a `data/` folder to store our raw data,
-and we will use `data_output/` for when we learn how to export data as
-CSV files, and `fig_output/` folder for the figures that we will save.
+对于本课程，我们将需要一个 `data/` 文件夹来存储我们的原始数据
+并且当我们学习如何将数据导出为
+CSV 文件时，我们将使用 `data_output/`，以及 `fig_output/` 文件夹来存储我们将保存的图形。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: create your project directory structure
+## 挑战：创建项目目录结构
 
-Under the `Files` tab on the right of the screen, click on `New Folder` and
-create a folder named `data` within your newly created working directory
-(e.g., `~/bioc-intro/data`). (Alternatively, type `dir.create("data")` at
-your R console.) Repeat these operations to create a `data_output/` and a
-`fig_output` folders.
+在屏幕右侧的“文件”选项卡下，单击“新建文件夹”并
+在新创建的工作目录
+内创建一个名为“data”的文件夹（例如，“~/bioc-intro/data”）。 （或者，在 R 控制台的
+处输入 `dir.create("data")`。） 重复这些操作来创建“data_output/”和
+“fig_output”文件夹。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We are going to keep the script in the root of our working directory
-because we are only going to use one file and it will make things
-easier.
+我们将把脚本保存在工作目录
+的根目录中，因为我们只使用一个文件，这将使事情
+更容易。
 
-Your working directory should now look like this:
+您的工作目录现在应如下所示：
 
 ```{r, results="markup", fig.cap="How it should look like at the beginning of this lesson", echo=FALSE, purl=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("fig/r-starting-how-it-should-look-like.png")
 ```
 
-**Project management** is also applicable to bioinformatics projects,
-of course[^bioindatascience]. William Noble (@Noble:2009) proposes the
-following directory structure:
+**项目管理**也适用于生物信息学项目，
+当然[^bioindatascience]。 William Noble (@Noble:2009) 建议
+以下目录结构：
 
-[^bioindatascience]: In this course, we consider bioinformatics as
-    data science applied to biological or bio-medical data.
+[^bioindatascience]: 在本课程中，我们将生物信息学视为应用于生物或生物医学数据的
+    数据科学。
 
-> Directory names are in large typeface, and filenames are in smaller
-> typeface. Only a subset of the files are shown here. Note that the
+> 目录名称采用大字体，文件名采用较小的
+> 字体。 此处仅显示一部分文件。 Note that the
 > dates are formatted `<year>-<month>-<day>` so that they can be
-> sorted in chronological order. The source code `src/ms-analysis.c`
-> is compiled to create `bin/ms-analysis` and is documented in
-> `doc/ms-analysis.html`. The `README` files in the data directories
-> specify who downloaded the data files from what URL on what
-> date. The driver script `results/2009-01-15/runall` automatically
-> generates the three subdirectories split1, split2, and split3,
-> corresponding to three cross-validation splits. The
-> `bin/parse-sqt.py` script is called by both of the `runall` driver
-> scripts.
+> sorted in chronological order. 源代码“src/ms-analysis.c”
+> 被编译以创建“bin/ms-analysis”并记录在
+> “doc/ms-analysis.html”中。 数据目录
+> 中的 `README` 文件指定了谁在哪个
+> 日期从哪个 URL 下载了数据文件。 驱动脚本“results/2009-01-15/runall”自动
+> 生成三个子目录split1、split2 和 split3、
+> 对应三个交叉验证分割。
+> `bin/parse-sqt.py` 脚本被两个 `runall` 驱动程序
+> 脚本调用。
 
 ```{r bioinfoproj, fig.cap="Directory structure for a sample bioinformatics project.", out.width="100%", echo=FALSE}
 knitr::include_graphics("fig/noble-bioinfo-project.png")
 ```
 
-The most important aspect of a well defined and well documented
-project directory is to enable someone unfamiliar with the
-project[^futureself] to
+定义明确、记录良好的
+项目目录最重要的方面是，让不熟悉
+项目[^futureself] 的人能够
 
 1. understand what the project is about, what data are available, what
   analyses were run, and what results were produced and, most
   importantly to
 
-2. repeat the analysis over again - with new data, or changing some
-  analysis parameters.
+2. 再次重复分析 - 使用新数据，或更改一些
+  分析参数。
 
 [^futureself]: That someone could be, and very likely will be your
     future self, a couple of months or years after the analyses were
     run.
 
-### The working directory
+### 工作目录
 
-The working directory is an important concept to understand. It is the
-place from where R will be looking for and saving the files. When you
-write code for your project, it should refer to files in relation to
-the root of your working directory and only need files within this
-structure.
+工作目录是一个需要理解的重要概念。 它是 R 查找和保存文件的
+位置。 当你
+为你的项目编写代码时，它应该引用与
+你的工作目录的根目录相关的文件，并且只需要这个
+结构内的文件。
 
-Using RStudio projects makes this easy and ensures that your working
-directory is set properly. If you need to check it, you can use
-`getwd()`. If for some reason your working directory is not what it
-should be, you can change it in the RStudio interface by navigating in
-the file browser where your working directory should be, and clicking
-on the blue gear icon `More`, and select `Set As Working Directory`.
-Alternatively you can use `setwd("/path/to/working/directory")` to
-reset your working directory. However, your scripts should not include
-this line because it will fail on someone else's computer.
+使用 RStudio 项目可以轻松实现此目的并确保您的工作
+目录设置正确。 如果您需要检查它，您可以使用
+`getwd()`。 如果由于某种原因您的工作目录不是它
+应该的样子，您可以在 RStudio 界面中更改它，方法是在
+文件浏览器中导航到您的工作目录应该所在的位置，然后单击
+蓝色齿轮图标“更多”，然后选择“设置为工作目录”。
+或者，您可以使用 `setwd("/path/to/working/directory")` 来
+重置您的工作目录。 但是，您的脚本不应该包含
+这一行，因为它会在别人的计算机上失败。
 
-**Example**
+**例子**
 
-The schema below represents the working directory `bioc-intro` with the
-`data` and `fig_output` sub-directories, and 2 files in the latter:
+下面的模式表示工作目录“bioc-intro”，其中包含
+“data”和“fig_output”子目录，以及后者中的 2 个文件：
 
 ```
 bioc-intro/data/
@@ -340,127 +340,127 @@ bioc-intro/data/
           /fig_output/fig2.png
 ```
 
-If we were in the working directory, we could refer to the `fig1.pdf`
-file using the relative path `bioc-intro/fig_output/fig1.pdf` or the
-absolute path `/home/user/bioc-intro/fig_output/fig1.pdf`.
+如果我们在工作目录中，我们可以使用相对路径“bioc-intro/fig_output/fig1.pdf”或
+绝对路径“/home/user/bioc-intro/fig_output/fig1.pdf”引用“fig1.pdf”
+文件。
 
-If we were in the `data` directory, we would use the relative path
-`../fig_output/fig1.pdf` or the same absolute path
-`/home/user/bioc-intro/fig_output/fig1.pdf`.
+如果我们在“数据”目录中，我们将使用相对路径
+“../fig_output/fig1.pdf”或相同的绝对路径
+“/home/user/bioc-intro/fig_output/fig1.pdf”。
 
-## Interacting with R
+## 与 R 交互
 
-The basis of programming is that we write down instructions for the
-computer to follow, and then we tell the computer to follow those
-instructions. We write, or _code_, instructions in R because it is a
-common language that both the computer and we can understand. We call
-the instructions _commands_ and we tell the computer to follow the
-instructions by _executing_ (also called _running_) those commands.
+编程的基础是我们写下
+计算机要遵循的指令，然后我们告诉计算机遵循那些
+指令。 我们用 R 编写或_编码_指令，因为它是一种
+通用语言，计算机和我们都能理解。 我们将
+指令称为 _命令_，并告诉计算机通过 _执行_（也称为 _运行_）这些命令来遵循
+指令。
 
-There are two main ways of interacting with R: by using the
-**console** or by using **scripts** (plain text files that contain
-your code). The console pane (in RStudio, the bottom left panel) is
-the place where commands written in the R language can be typed and
-executed immediately by the computer. It is also where the results
-will be shown for commands that have been executed. You can type
-commands directly into the console and press `Enter` to execute those
-commands, but they will be forgotten when you close the session.
+与 R 交互的主要方式有两种：使用
+**控制台** 或使用 **脚本**（包含
+代码的纯文本文件）。 控制台窗格（在 RStudio 中，左下方面板）是
+用 R 语言编写的命令可以被计算机输入并
+立即执行的地方。 它还将显示已执行命令的结果
+。 您可以直接在控制台中输入
+命令，然后按 `Enter` 来执行那些
+命令，但是当您关闭会话时它们会被遗忘。
 
-Because we want our code and workflow to be reproducible, it is better
-to type the commands we want in the script editor, and save the
-script. This way, there is a complete record of what we did, and
-anyone (including our future selves!) can easily replicate the
-results on their computer. Note, however, that merely typing the commands
-in the script does not automatically _run_ them - they still need to
-be sent to the console for execution.
+因为我们希望我们的代码和工作流程具有可重现性，所以最好
+在脚本编辑器中输入我们想要的命令，然后保存
+脚本。 这样，我们所做的事情就有了完整的记录，而且
+任何人（包括我们未来的自己！） 可以轻松地在他们的计算机上复制
+的结果。 但是请注意，仅在脚本中输入命令
+并不能自动_运行_它们 - 它们仍然需要通过
+发送到控制台进行执行。
 
-RStudio allows you to execute commands directly from the script editor
-by using the `Ctrl` + `Enter` shortcut (on Macs, `Cmd` + `Return` will
-work, too). The command on the current line in the script (indicated
-by the cursor) or all of the commands in the currently selected text
-will be sent to the console and executed when you press `Ctrl` +
-`Enter`. You can find other keyboard shortcuts in this RStudio
-cheatsheet about the RStudio
-IDE.
+RStudio 允许您使用 `Ctrl` + `Enter` 快捷键直接从脚本编辑器
+执行命令（在 Mac 上，`Cmd` + `Return` 也可以
+起作用）。 当您按下 `Ctrl` +
+`Enter` 时，脚本中当前行的命令（光标指示为
+）或当前选定的文本
+中的所有命令将被发送到控制台并执行。 您可以在此 RStudio
+有关 RStudio
+IDE 的备忘单 中找到其他键盘快捷键。
 
-At some point in your analysis you may want to check the content of a
-variable or the structure of an object, without necessarily keeping a
-record of it in your script. You can type these commands and execute
-them directly in the console.  RStudio provides the `Ctrl` + `1` and
-`Ctrl` + `2` shortcuts allow you to jump between the script and the
-console panes.
+在分析的某个阶段，您可能想要检查
+变量的内容或对象的结构，而不一定在脚本中保留它的
+记录。 You can type these commands and execute
+them directly in the console.  RStudio 提供了 `Ctrl` + `1` 和
+`Ctrl` + `2` 快捷键，允许您在脚本和
+控制台窗格之间跳转。
 
-If R is ready to accept commands, the R console shows a `>` prompt. If
-it receives a command (by typing, copy-pasting or sending from the script
-editor using `Ctrl` + `Enter`), R will try to execute it, and when
-ready, will show the results and come back with a new `>` prompt to
-wait for new commands.
+如果 R 准备好接受命令，R 控制台将显示 `>` 提示。 如果
+收到一个命令（通过键入、复制粘贴或使用 `Ctrl` + `Enter` 从脚本
+编辑器发送），R 将尝试执行它，并且当
+准备就绪时，将显示结果并返回一个新的 `>` 提示符以
+等待新命令。
 
 If R is still waiting for you to enter more data because it isn't
-complete yet, the console will show a `+` prompt. It means that you
-haven't finished entering a complete command. This is because you have
+complete yet, the console will show a `+` prompt. 这意味着你
+还没有输入完整的命令。 This is because you have
 not 'closed' a parenthesis or quotation, i.e. you don't have the same
 number of left-parentheses as right-parentheses, or the same number of
-opening and closing quotation marks.  When this happens, and you
-thought you finished typing your command, click inside the console
-window and press `Esc`; this will cancel the incomplete command and
-return you to the `>` prompt.
+opening and closing quotation marks.  当这种情况发生时，如果你
+认为你已经完成了命令输入，请单击控制台
+窗口内并按 `Esc`；这将取消不完整的命令并且
+返回到 `>` 提示符。
 
-## How to learn more during and after the course?
+## 如何在课程中和课程结束后学习更多知识？
 
-The material we cover during this course will give you an initial
-taste of how you can use R to analyse data for your own
-research. However, you will need to learn more to do advanced
-operations such as cleaning your dataset, using statistical methods,
-or creating beautiful graphics[^inthiscoure]. The best way to become
+我们在本课程中涵盖的材料将为您提供初步的
+体验如何使用 R 分析数据以进行您自己的
+研究。 但是，您需要学习更多知识才能执行高级
+操作，例如清理数据集、使用统计方法、
+或创建漂亮的图形[^inthiscoure]。 The best way to become
 proficient and efficient at R, as with any other tool, is to use it to
-address your actual research questions. As a beginner, it can feel
-daunting to have to write a script from scratch, and given that many
-people make their code available online, modifying existing code to
-suit your purpose might make it easier for you to get started.
+address your actual research questions. 对于初学者来说，从头开始编写脚本可能会让人感到
+畏惧，而考虑到许多
+人将他们的代码发布到网上，修改现有代码以
+满足你的目的可能会让你更容易上手。
 
-[^inthiscoure]: We will introduce most of these (except statistics)
-    here, but will only manage to scratch the surface of the wealth of
-    what is possible to do with R.
+[^inthiscoure]: 我们将在这里介绍其中的大部分内容（统计数据除外）
+    ，但只能触及使用 R 可以实现的
+    的丰富内容的表面。
 
 ```{r kitten, results="markup", echo=FALSE, purl=FALSE, out.width="400px", fig.align="center"}
 knitr::include_graphics("fig/kitten-try-things.jpg")
 ```
 
-## Seeking help
+## 寻求帮助
 
-### Use the built-in RStudio help interface to search for more information on R functions
+### 使用内置的 RStudio 帮助界面搜索有关 R 函数的更多信息
 
 ```{r rstudiohelp, fig.cap="RStudio help interface.", results="markup", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/rstudiohelp.png")
 ```
 
-One of the fastest ways to get help, is to use the RStudio help
-interface. This panel by default can be found at the lower right hand
-panel of RStudio. As seen in the screenshot, by typing the word
-"Mean", RStudio tries to also give a number of suggestions that you
-might be interested in. The description is then shown in the display
-window.
+获得帮助的最快方法之一是使用 RStudio 帮助
+界面。 默认情况下，该面板位于 RStudio 右下角
+面板。 如屏幕截图所示，通过输入单词
+“Mean”，RStudio 还会尝试提供一些您
+可能感兴趣的建议。 然后描述就会显示在显示
+窗口中。
 
-### I know the name of the function I want to use, but I'm not sure how to use it
+### 我知道我想使用的函数的名称，但我不知道如何使用它
 
-If you need help with a specific function, let's say `barplot()`, you
-can type:
+如果您需要有关特定函数的帮助，比如说 `barplot()`，您
+可以输入：
 
 ```{r, eval=FALSE, purl=TRUE}
 ?barplot
 ```
 
-If you just need to remind yourself of the names of the arguments, you can use:
+如果您只需要提醒自己参数的名称，您可以使用：
 
 ```{r, eval=FALSE, purl=TRUE}
 args(lm)
 ```
 
-### I want to use a function that does X, there must be a function for it but I don't know which one...
+### 我想使用一个执行 X 的函数，一定有一个函数可以执行该操作，但我不知道是哪一个......
 
-If you are looking for a function to do a particular task, you can use the
-`help.search()` function, which is called by the double question mark `??`.
+如果您正在寻找一个函数来执行特定任务，您可以使用
+`help.search()`函数，它由双问号`??`调用。
 However, this only looks through the installed packages for help pages with a
 match to your search request
 
@@ -468,64 +468,64 @@ match to your search request
 ??kruskal
 ```
 
-If you can't find what you are looking for, you can use
-the [rdocumentation.org](https://www.rdocumentation.org) website that searches
-through the help files across all packages available.
+如果您找不到所需内容，您可以使用
+[rdocumentation.org](https://www.rdocumentation.org) 网站，该网站通过所有可用软件包中的帮助文件进行搜索
+。
 
 Finally, a generic Google or internet search "R \<task>" will often either send
 you to the appropriate package documentation or a helpful forum where someone
 else has already asked your question.
 
-### I am stuck... I get an error message that I don't understand
+### 我被困住了…… 我收到一条我无法理解的错误消息
 
-Start by googling the error message. However, this doesn't always work very well
-because often, package developers rely on the error catching provided by R. You
-end up with general error messages that might not be very helpful to diagnose a
-problem (e.g. "subscript out of bounds"). If the message is very generic, you
-might also include the name of the function or package you're using in your
-query.
+首先通过谷歌搜索错误信息。 但是，这种方法并不总是能很好地发挥作用
+因为通常包开发人员依赖于 R 提供的错误捕获功能。您
+最终会得到一般错误消息，而这些消息可能对诊断
+问题（例如“下标越界”）没有多大帮助。 如果消息非常通用，您
+可能还会在
+查询中包含您正在使用的函数或包的名称。
 
-However, you should check Stack Overflow. Search using the `[r]` tag. Most
-questions have already been answered, but the challenge is to use the right
-words in the search to find the
-answers:
+但是，您应该检查一下 Stack Overflow。 使用 `[r]` 标签搜索。 大多数
+问题已经得到解答，但挑战在于在搜索中使用正确的
+词来找到
+答案：
 
 [http://stackoverflow.com/questions/tagged/r](https://stackoverflow.com/questions/tagged/r)
 
-The [Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.pdf) can
-also be dense for people with little programming experience but it is a good
-place to understand the underpinnings of the R language.
+[R 简介](https://cran.r-project.org/doc/manuals/R-intro.pdf) 对于编程经验较少的人来说可能
+比较难懂，但是它是
+了解 R 语言基础知识的好地方。
 
-The [R FAQ](https://cran.r-project.org/doc/FAQ/R-FAQ.html) is dense and technical
-but it is full of useful information.
+[R FAQ](https://cran.r-project.org/doc/FAQ/R-FAQ.html) 内容密集且技术性很强
+但其中包含大量有用信息。
 
-### Asking for help
+### 寻求帮助
 
-The key to receiving help from someone is for them to rapidly grasp
-your problem. You should make it as easy as possible to pinpoint where
+获得他人帮助的关键是让他们迅速掌握
+你的问题。 You should make it as easy as possible to pinpoint where
 the issue might be.
 
-Try to use the correct words to describe your problem. For instance, a
-package is not the same thing as a library. Most people will
-understand what you meant, but others have really strong feelings
-about the difference in meaning. The key point is that it can make
-things confusing for people trying to help you. Be as precise as
-possible when describing your problem.
+尝试使用正确的词语来描述你的问题。 例如，
+包与库不同。 大多数人会
+理解你的意思，但其他人对含义的差异有很强烈的感受
+。 The key point is that it can make
+things confusing for people trying to help you. 描述问题时请尽可能精确（
+）。
 
-If possible, try to reduce what doesn't work to a simple _reproducible
-example_. If you can reproduce the problem using a very small data
-frame instead of your 50000 rows and 10000 columns one, provide the
-small one with the description of your problem. When appropriate, try
-to generalise what you are doing so even people who are not in your
-field can understand the question. For instance instead of using a
-subset of your real dataset, create a small (3 columns, 5 rows)
-generic one. For more information on how to write a reproducible
-example see this article by Hadley
-Wickham.
+如果可能的话，尝试将不起作用的部分简化为一个简单的_可重现的
+示例_。 如果您可以使用非常小的数据
+框架而不是 50000 行和 10000 列的框架重现该问题，请提供
+小框架并描述您的问题。 在适当的时候，尝试
+来概括你正在做的事情，这样即使不在你的
+领域的人也能理解这个问题。 例如，不要使用真实数据集的
+子集，而是创建一个小的（3 列，5 行）
+通用数据集。 有关如何编写可重现的
+示例的更多信息，请参阅 Hadley
+Wickham 的这篇文章。
 
-To share an object with someone else, if it's relatively small, you
-can use the function `dput()`. It will output R code that can be used
-to recreate the exact same object as the one in memory:
+要与他人共享一个对象，如果它相对较小，您
+可以使用函数“dput()”。 它将输出可用于
+重新创建与内存中完全相同的对象：
 
 ```{r, results="show", purl=TRUE}
 ## iris is an example data frame that comes with R and head() is a
@@ -533,118 +533,117 @@ to recreate the exact same object as the one in memory:
 dput(head(iris))
 ```
 
-If the object is larger, provide either the raw file (i.e., your CSV
-file) with your script up to the point of the error (and after
-removing everything that is not relevant to your
-issue). Alternatively, in particular if your question is not related
+如果对象较大，请提供原始文件（即您的 CSV
+文件）以及您的脚本直到出现错误的位置（并且在
+之后删除与您的
+问题无关的所有内容）。 Alternatively, in particular if your question is not related
 to a data frame, you can save any R object to a file[^export]:
 
 ```{r, eval=FALSE, purl=FALSE}
 saveRDS(iris, file="/tmp/iris.rds")
 ```
 
-The content of this file is however not human readable and cannot be
-posted directly on Stack Overflow. Instead, it can be sent to someone
-by email who can read it with the `readRDS()` command (here it is
-assumed that the downloaded file is in a `Downloads` folder in the
-user's home directory):
+但是，该文件的内容不是人类可读的，并且无法
+直接发布在 Stack Overflow 上。 相反，它可以通过电子邮件发送给某个人
+，该人可以使用 `readRDS()` 命令阅读它（这里
+假设下载的文件位于
+用户主目录中的 `Downloads` 文件夹中）：
 
 ```{r, eval=FALSE, purl=FALSE}
 some_data <- readRDS(file="~/Downloads/iris.rds")
 ```
 
-Last, but certainly not least, **always include the output of `sessionInfo()`**
-as it provides critical information about your platform, the versions of R and
-the packages that you are using, and other information that can be very helpful
-to understand your problem.
+最后，但同样重要的一点是，**始终包含 `sessionInfo()`**
+的输出，因为它提供了有关您的平台、R 版本和
+您正在使用的软件包的重要信息，以及其他对
+理解您的问题非常有帮助的信息。
 
 ```{r, results="show", purl=TRUE}
 sessionInfo()
 ```
 
-### Where to ask for help?
+### 去哪里寻求帮助？
 
-- The person sitting next to you during the course. Don't hesitate to
-  talk to your neighbour during the workshop, compare your answers,
-  and ask for help.
-- Your friendly colleagues: if you know someone with more experience
-  than you, they might be able and willing to help you.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/r): if
-  your question hasn't been answered before and is well crafted,
-  chances are you will get an answer in less than 5 min. Remember to
+- 课程期间坐在您旁边的人。 不要犹豫，
+  在研讨会期间与你的邻居交谈，比较你的答案，
+  并寻求帮助。
+- 友好的同事：如果您认识某个比您更有经验
+  的人，他们也许能够并且愿意帮助您。
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/r): 如果
+  你的问题之前没有被回答过并且回答得很好，那么
+  你很有可能在 5 分钟内得到答案。 Remember to
   follow their guidelines on how to ask a good
   question.
-- The R-help mailing
-  list: it is read by a
-  lot of people (including most of the R core team), a lot of people
-  post to it, but the tone can be pretty dry, and it is not always
-  very welcoming to new users. If your question is valid, you are
+- R-help 邮件
+  列表：有
+  很多人 (包括大多数 R 核心团队成员) 阅读它，也有
+  很多人向其发帖，但其语气可能相当枯燥，并且对新用户并不总是
+  欢迎。 If your question is valid, you are
   likely to get an answer very fast but don't expect that it will come
-  with smiley faces. Also, here more than anywhere else, be sure to
-  use correct vocabulary (otherwise you might get an answer pointing
-  to the misuse of your words rather than answering your
-  question). You will also have more success if your question is about
-  a base function rather than a specific package.
-- If your question is about a specific package, see if there is a
-  mailing list for it. Usually it's included in the DESCRIPTION file
-  of the package that can be accessed using
-  `packageDescription("name-of-package")`. You may also want to try to
-  email the author of the package directly, or open an issue on the
-  code repository (e.g., GitHub).
-- There are also some topic-specific mailing lists (GIS,
-  phylogenetics, etc...), the complete list is
-  [here](https://www.r-project.org/mail.html).
+  with smiley faces. 此外，在这里比在其他地方更重要的是，一定要确保
+  使用正确的词汇（否则您可能会得到一个指向
+  用词不当的答案，而不是回答您的
+  问题）。 如果您的问题是关于
+  基本函数而不是特定的包，您也会获得更多的成功。
+- 如果您的问题是关于特定软件包的，请查看是否有该软件包的
+  邮件列表。 通常它包含在包的描述文件
+  中，可以使用
+  `packageDescription("name-of-package")` 来访问。 您可能还想尝试
+  直接给软件包的作者发送电子邮件，或者在
+  代码存储库（例如 GitHub）上打开一个问题。
+- 还有一些特定主题的邮件列表（GIS、
+  系统发育学等...），完整列表在
+  [这里](https://www.r-project.org/mail.html)。
 
-### More resources
+### 更多资源
 
-- The [Posting Guide](https://www.r-project.org/posting-guide.html) for
-  the R mailing lists.
+- R 邮件列表的 [发帖指南](https://www.r-project.org/posting-guide.html)。
 
-- How to ask for R
-  help
-  useful guidelines.
+- 如何寻求 R
+  帮助
+  有用的指南。
 
-- This blog post by Jon
-  Skeet
-  has quite comprehensive advice on how to ask programming questions.
+- Jon
+  Skeet 的这篇博客文章
+  对如何提出编程问题提供了相当全面的建议。
 
-- The [reprex](https://cran.rstudio.com/web/packages/reprex/) package
-  is very helpful to create reproducible examples when asking for
-  help. The rOpenSci community call "How to ask questions so they get
-  answered" (Github
-  link and video
-  recording) includes a presentation of
-  the reprex package and of its philosophy.
+- [reprex](https://cran.rstudio.com/web/packages/reprex/) 包
+  在寻求
+  帮助时对于创建可重现的示例非常有帮助。 rOpenSci 社区呼吁“如何提出问题以便得到
+  答案”（Github
+  链接 和 视频
+  录音）包括对
+  reprex 包及其理念的介绍。
 
-## R packages
+## R 包
 
-### Loading packages
+### 加载包
 
-As we have seen above, R packages play a fundamental role in R. The
-make use of a package's functionality, assuming it is installed, we
-first need to load it to be able to use it. This is done with the
-`library()` function. Below, we load `ggplot2`.
+正如我们上面看到的，R 包在 R 中起着基础性的作用。
+利用包的功能，假设它已安装，我们
+首先需要加载它才能使用它。 这是通过
+`library()` 函数完成的。 下面，我们加载“ggplot2”。
 
 ```{r loadp, eval=FALSE, purl=TRUE}
 library("ggplot2")
 ```
 
-### Installing packages
+### 安装软件包
 
 The default package repository is The _Comprehensive R Archive
 Network_ (CRAN), and any package that is available on CRAN can be
-installed with the `install.packages()` function. Below, for example,
-we install the `dplyr` package that we will learn about later.
+installed with the `install.packages()` function. 下面，例如，
+我们安装稍后将了解的 `dplyr` 包。
 
 ```{r craninstall, eval=FALSE, purl=TRUE}
 install.packages("dplyr")
 ```
 
-This command will install the `dplyr` package as well as all its
-dependencies, i.e. all the packages that it relies on to function.
+此命令将安装“dplyr”包及其所有
+依赖项，即它所依赖的所有包。
 
-Another major R package repository is maintained by Bioconductor. [Bioconductor packages](https://bioconductor.org/packages/release/BiocViews.html#___Software) are managed and installed using a dedicated package,
-namely `BiocManager`, that can be installed from CRAN with
+另一个主要的 R 包存储库由 Bioconductor 维护。 [Bioconductor 软件包](https://bioconductor.org/packages/release/BiocViews.html#___Software) 使用专用软件包
+即 `BiocManager` 进行管理和安装，可以使用以下命令从 CRAN 安装：
 
 ```{r, eval=FALSE, purl=TRUE}
 install.packages("BiocManager")
@@ -659,10 +658,10 @@ BiocManager::install("SummarizedExperiment")
 BiocManager::install("DESeq2")
 ```
 
-By default, `BiocManager::install()` will also check all your installed packages and see if there are newer versions available. If there are, it will show them to you and ask you if you want to `Update all/some/none? [a/s/n]:` and then wait for your answer. While you should strive to have the most up-to-date package versions, in practice we recommend only updating packages in a fresh R session before any packages are loaded.
+默认情况下，`BiocManager::install()` 还将检查所有已安装的软件包，查看是否有可用的新版本。 如果有，它会向您显示并询问您是否要“更新全部/部分/无？” [a/s/n]:\`然后等待您的答复。 虽然您应该努力获得最新的软件包版本，但实际上我们建议仅在加载任何包之前在新的 R 会话中更新包。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Start using R and RStudio
+- 开始使用 R 和 RStudio
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

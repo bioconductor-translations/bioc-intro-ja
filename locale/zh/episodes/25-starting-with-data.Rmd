@@ -1,8 +1,8 @@
 ---
-source: Rmd
-title: Starting with data
-teaching: 30
-exercises: 30
+source: 放射科
+title: 从数据开始
+teaching: 三十
+exercises: 三十
 ---
 
 ```{r, include=FALSE}
@@ -10,91 +10,91 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe what a `data.frame` is.
-- Load external data from a .csv file into a data frame.
-- Summarize the contents of a data frame.
-- Describe what a factor is.
-- Convert between strings and factors.
-- Reorder and rename factors.
-- Format dates.
-- Export and save data.
+- 描述什么是“data.frame”。
+- 将 .csv 文件中的外部数据加载到数据框中。
+- 总结数据框的内容。
+- 描述什么是因素。
+- 在字符串和因子之间转换。
+- 重新排序并重命名因素。
+- 格式化日期。
+- 导出并保存数据。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- First data analysis in R
+- 使用 R 进行首次数据分析
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> 本集基于 Data Carpentries 的_面向生态学家的 R 语言数据分析和
+> 可视化_课程。
 
-## Presentation of the gene expression data
+## 基因表达数据的呈现
 
-We are going to use part of the data published by Blackmore , _The
-effect of upper-respiratory infection on transcriptomic changes in the
-CNS_. The goal of the study was to determine the effect of an
-upper-respiratory infection on changes in RNA transcription occurring
-in the cerebellum and spinal cord post infection. Gender matched eight
-week old C57BL/6 mice were inoculated with saline or with Influenza A by
-intranasal route and transcriptomic changes in the cerebellum and
-spinal cord tissues were evaluated by RNA-seq at days 0
-(non-infected), 4 and 8.
+我们将使用 Blackmore  发布的部份数据，\*
+上呼吸道感染对
+中枢神经系统转录组变化的影响\*。 该研究的目的是确定
+上呼吸道感染对感染后小脑和脊髓中发生的
+RNA 转录变化的影响。 性别匹配的八只
+周龄 C57BL/6 小鼠通过
+鼻内途径接种盐水或甲型流感病毒，并在第 0
+（未感染）、第 4 和第 8 天通过 RNA-seq 评估小脑和
+脊髓组织中的转录组变化。
 
-The dataset is stored as a comma-separated values (CSV) file.  Each row
-holds information for a single RNA expression measurement, and the first eleven
-columns represent:
+数据集存储为逗号分隔值（CSV）文件。  每一行
+包含单个 RNA 表达测量的信息，前十一列
+代表：
 
-| Column     | Description                                                                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| gene       | The name of the gene that was measured                                                                                                       |
-| sample     | The name of the sample the gene expression was measured in                                                                                   |
-| expression | The value of the gene expression                                                                                                             |
-| organism   | The organism/species - here all data stem from mice                                                                                          |
-| age        | The age of the mouse (all mice were 8 weeks here)                                                                         |
-| sex        | The sex of the mouse                                                                                                                         |
-| infection  | The infection state of the mouse, i.e. infected with Influenza A or not infected.            |
-| strain     | The Influenza A strain.                                                                                                      |
-| time       | The duration of the infection (in days).                                                                  |
-| tissue     | The tissue that was used for the gene expression experiment, i.e. cerebellum or spinal cord. |
-| mouse      | The mouse unique identifier.                                                                                                 |
+| 柱子 | 描述                   |
+| -- | -------------------- |
+| 基因 | 被测量的基因名称             |
+| 样本 | 测量基因表达的样本名称          |
+| 表达 | 基因表达的价值              |
+| 生物 | 生物体/物种 - 此处所有数据均来自小鼠 |
+| 年龄 | 小鼠的年龄（这里所有的小鼠都是8周龄）  |
+| 性别 | 老鼠的性别                |
+| 感染 | 小鼠的感染状态，即感染甲型流感或未感染。 |
+| 拉紧 | A 型流感病毒株。            |
+| 时间 | 感染持续时间（以天为单位）。       |
+| 组织 | 用于基因表达实验的组织，即小脑或脊髓。  |
+| 老鼠 | 鼠标唯一标识符。             |
 
-We are going to use the R function `download.file()` to download the
-CSV file that contains the gene expression data, and we will use
-`read.csv()` to load into memory the content of the CSV file as an
-object of class `data.frame`.  Inside the `download.file` command, the
-first entry is a character string with the source URL. This source URL
-downloads a CSV file from a GitHub repository. The text after the
-comma (`"data/rnaseq.csv"`) is the destination of the file on your
-local machine. You'll need to have a folder on your machine called
-`"data"` where you'll download the file. So this command downloads the
-remote file, names it `"rnaseq.csv"` and adds it to a preexisting
-folder named `"data"`.
+我们将使用 R 函数 `download.file()` 下载包含基因表达数据的
+CSV 文件，并使用
+`read.csv()` 将 CSV 文件的内容作为
+类 `data.frame` 的对象加载到内存中。  在 `download.file` 命令中，
+第一个条目是带有源 URL 的字符串。 此源 URL
+从 GitHub 存储库下载 CSV 文件。
+逗号后面的文本（“data/rnaseq.csv”）是该文件在您
+本地机器上的目标位置。 您需要在您的机器上建立一个名为
+`“data”`的文件夹，您将在该文件夹中下载文件。 因此，此命令下载
+远程文件，将其命名为“rnaseq.csv”并将其添加到名为“data”的预先存在的
+文件夹中。
 
 ```{r, eval=TRUE}
 download.file(url = "https://github.com/carpentries-incubator/bioc-intro/raw/main/episodes/data/rnaseq.csv",
               destfile = "data/rnaseq.csv")
 ```
 
-You are now ready to load the data:
+您现在可以加载数据了：
 
 ```{r, eval=TRUE, purl=TRUE}
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-This statement doesn't produce any output because, as you might
-recall, assignments don't display anything. If we want to check that
-our data has been loaded, we can see the contents of the data frame by
-typing its name:
+此语句不会产生任何输出，因为您可能
+还记得，分配不会显示任何内容。 如果我们想检查
+我们的数据是否已加载，我们可以通过
+输入其名称来查看数据框的内容：
 
 ```{r, eval=FALSE}
 rna
 ```
 
-Wow... that was a lot of output. At least it means the data loaded
-properly. Let's check the top (the first 6 lines) of this data frame
-using the function `head()`:
+哇... 那是大量的输出。 至少这意味着数据已正确加载
+。 让我们使用函数“head()”检查这个数据框
+的顶部（前 6 行）：
 
 ```{r, purl=TRUE}
 head(rna)
@@ -102,21 +102,21 @@ head(rna)
 ## View(rna)
 ```
 
-**Note**
+**笔记**
 
-`read.csv()` assumes that fields are delineated by commas, however, in
-several countries, the comma is used as a decimal separator and the
-semicolon (;) is used as a field delineator. If you want to read in
-this type of files in R, you can use the `read.csv2()` function. It
-behaves exactly like `read.csv()` but uses different parameters for
-the decimal and the field separators. If you are working with another
-format, they can be both specified by the user. Check out the help for
-`read.csv()` by typing `?read.csv` to learn more. There is also the
-`read.delim()` function for reading tab separated data files. It is important to
-note that all of these functions are actually wrapper functions for
-the main `read.table()` function with different arguments.  As such,
-the data above could have also been loaded by using `read.table()`
-with the separation argument as `,`. The code is as follows:
+`read.csv()` 假定字段由逗号分隔，但是在
+几个国家/地区，逗号用作小数分隔符，而
+分号 (;) 用作字段分隔符。 如果您想在 R 中读取
+这种类型的文件，您可以使用 `read.csv2()` 函数。 它的
+行为与 `read.csv()` 完全相同，但对
+小数点和字段分隔符使用不同的参数。 如果您使用另一种
+格式，则用户可以同时指定它们。 通过输入 `?read.csv` 查看
+`read.csv()` 的帮助以了解更多信息。 还有
+`read.delim()` 函数用于读取制表符分隔的数据文件。 值得注意的是
+所有这些函数实际上都是
+主`read.table()`函数的包装函数，具有不同的参数。  因此，
+上述数据也可以通过使用 `read.table()`
+以分隔参数 `,` 来加载。 代码如下：
 
 ```{r, eval=TRUE, purl=TRUE}
 rna <- read.table(file = "data/rnaseq.csv",
@@ -124,98 +124,98 @@ rna <- read.table(file = "data/rnaseq.csv",
                   header = TRUE)
 ```
 
-The header argument has to be set to TRUE to be able to read the
-headers as by default `read.table()` has the header argument set to
-FALSE.
+必须将 header 参数设置为 TRUE 才能读取
+标题，因为默认情况下 `read.table()` 将 header 参数设置为
+FALSE。
 
-## What are data frames?
+## 什么是数据框？
 
-Data frames are the _de facto_ data structure for most tabular data,
-and what we use for statistics and plotting.
+数据框是大多数表格数据的_事实上的_数据结构，
+以及我们用于统计和绘图的数据结构。
 
 A data frame can be created by hand, but most commonly they are
 generated by the functions `read.csv()` or `read.table()`; in other
 words, when importing spreadsheets from your hard drive (or the web).
 
-A data frame is the representation of data in the format of a table
-where the columns are vectors that all have the same length. Because
-columns are vectors, each column must contain a single type of data
-(e.g., characters, integers, factors). For example, here is a figure
-depicting a data frame comprising a numeric, a character, and a
-logical vector.
+数据框是以表格
+格式表示的数据，其中列是所有具有相同长度的向量。 因为
+列是向量，所以每一列必须包含单一类型的数据
+（例如，字符、整数、因子）。 例如，这里有一个图
+，描绘了一个包含数字、字符和
+逻辑向量的数据框。
 
-![](./fig/data-frame.svg)
+![](./图/数据框.svg)
 
-We can see this when inspecting the <b>str</b>ucture of a data frame
-with the function `str()`:
+当我们用函数 `str()` 检查数据框
+的 <b>str</b>结构时，我们可以看到这一点：
 
 ```{r}
 str(rna)
 ```
 
-## Inspecting `data.frame` Objects
+## 检查 `data.frame` 对象
 
-We already saw how the functions `head()` and `str()` can be useful to
-check the content and the structure of a data frame. Here is a
-non-exhaustive list of functions to get a sense of the
-content/structure of the data. Let's try them out!
+我们已经看到了函数“head()”和“str()”如何有助于
+检查数据框的内容和结构。 这里有一个
+非详尽的函数列表，可以帮助您了解
+数据的内容/结构。 让我们尝试一下吧！
 
-**Size**:
+**尺寸**：
 
-- `dim(rna)` - returns a vector with the number of rows as the first
-  element, and the number of columns as the second element (the
-  **dim**ensions of the object).
-- `nrow(rna)` - returns the number of rows.
-- `ncol(rna)` - returns the number of columns.
+- `dim(rna)` - 返回一个向量，其行数作为第一个
+  元素，列数作为第二个元素（对象的
+  **维度**）。
+- `nrow(rna)`——返回行数。
+- `ncol(rna)`——返回列数。
 
-**Content**:
+**内容**：
 
-- `head(rna)` - shows the first 6 rows.
-- `tail(rna)` - shows the last 6 rows.
+- `head(rna)`-显示前 6 行。
+- `tail(rna)`-显示最后 6 行。
 
-**Names**:
+**姓名**：
 
-- `names(rna)` - returns the column names (synonym of `colnames()` for
-  `data.frame` objects).
-- `rownames(rna)` - returns the row names.
+- `names(rna)` - 返回列名（对于
+  `data.frame` 对象，`colnames()` 的同义词）。
+- `rownames(rna)` - 返回行名称。
 
-**Summary**:
+**概括**：
 
-- `str(rna)` - structure of the object and information about the
-  class, length and content of each column.
-- `summary(rna)` - summary statistics for each column.
+- `str(rna)`——对象的结构和有关
+  类、长度和每列内容的信息。
+- `summary(rna)`——每列的汇总统计数据。
 
-Note: most of these functions are "generic", they can be used on other types of
-objects besides `data.frame`.
+注意：这些函数大部分都是“通用的”，除了“data.frame”之外，它们还可以用于其他类型的
+对象。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Based on the output of `str(rna)`, can you answer the following
-questions?
+根据 `str(rna)` 的输出，你能回答以下
+个问题吗？
 
-- What is the class of the object `rna`?
-- How many rows and how many columns are in this object?
+- 对象“rna”的类别是什么？
+- 这个对象有多少行、多少列？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-- class: data frame
-- how many rows: `r nrow(rna)`, how many columns: `r ncol(rna)`
+- 类别：数据框
+- 行数：66465，列数：11
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Indexing and subsetting data frames
+## 索引和子集数据框
 
-Our `rna` data frame has rows and columns (it has 2 dimensions); if we
-want to extract some specific data from it, we need to specify the
-"coordinates" we want. Row numbers come first, followed by
-column numbers. However, note that different ways of specifying these
-coordinates lead to results with different classes.
+我们的 `rna` 数据框有行和列（它有 2 个维度）；如果我们
+想从中提取一些特定数据，我们需要指定我们想要的
+“坐标”。 行号在前，然后是
+列号。 但是，请注意，指定这些
+坐标的不同方式会导致不同类别的结果。
 
 ```{r, eval=FALSE, purl=TRUE}
 # first element in the first column of the data frame (as a vector)
@@ -235,19 +235,19 @@ head_rna <- rna[1:6, ]
 head_rna
 ```
 
-`:` is a special function that creates numeric vectors of integers in
-increasing or decreasing order, test `1:10` and `10:1` for
-instance. See section @ref(sec:genvec) for details.
+`:` 是一个特殊函数，它按
+的升序或降序创建整数数值向量，例如对
+实例测试 `1:10` 和 `10:1`。 有关详细信息，请参阅部分@ref(sec:genvec)。
 
-You can also exclude certain indices of a data frame using the "`-`" sign:
+您还可以使用“-”符号排除数据框的某些索引：
 
 ```{r, eval=FALSE, purl=TRUE}
 rna[, -1]          ## The whole data frame, except the first column
 rna[-c(7:66465), ] ## Equivalent to head(rna)
 ```
 
-Data frames can be subsetted by calling indices (as shown previously),
-but also by calling their column names directly:
+数据框可以通过调用索引（如前所示）
+进行子集化，也可以通过直接调用其列名进行子集化：
 
 ```{r, eval=FALSE, purl=TRUE}
 rna["gene"]       # Result is a data.frame
@@ -261,34 +261,34 @@ correct names of the columns.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-1. Create a `data.frame` (`rna_200`) containing only the data in
-  row 200 of the `rna` dataset.
+1. 创建一个 `data.frame` (`rna_200`)，其中仅包含 `rna` 数据集中
+  行 200 中的数据。
 
-2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
+2. 注意“nrow()”如何给出“data.frame”中的行数？
 
-- Use that number to pull out just that last row in the initial
-  `rna` data frame.
+- 使用该数字提取初始
+  `rna` 数据框中的最后一行。
 
-- Compare that with what you see as the last row using `tail()` to
-  make sure it's meeting expectations.
+- 将其与您看到的最后一行进行比较，使用`tail()`到
+  确保它符合预期。
 
-- Pull out that last row using `nrow()` instead of the row number.
+- 使用“nrow()”而不是行号来拉出最后一行。
 
-- Create a new data frame (`rna_last`) from that last row.
+- 从最后一行创建一个新的数据框（“rna_last”）。
 
-3. Use `nrow()` to extract the row that is in the middle of the
-  `rna` dataframe. Store the content of this row in an object
-  named `rna_middle`.
+3. 使用 `nrow()` 提取位于
+  `rna` 数据框中间的行。 将此行的内容存储在名为“rna_middle”的对象
+  中。
 
-4. Combine `nrow()` with the `-` notation above to reproduce the
-  behavior of `head(rna)`, keeping just the first through 6th
-  rows of the rna dataset.
+4. 将 `nrow()` 与上面的 `-` 符号结合起来，重现 `head(rna)` 的
+  行为，仅保留 rna 数据集的第一到第六个
+  行。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
 ## 1.
@@ -305,39 +305,39 @@ rna_head <- rna[-(7:n_rows), ]
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Factors
+## 因素
 
-Factors represent **categorical data**. They are stored as integers
-associated with labels and they can be ordered or unordered. While
+因素代表**分类数据**。 它们存储为与标签相关的整数
+，并且可以有序或无序。 While
 factors look (and often behave) like character vectors, they are
 actually treated as integer vectors by R. So you need to be very
 careful when treating them as strings.
 
-Once created, factors can only contain a pre-defined set of values,
-known as _levels_. By default, R always sorts levels in alphabetical
-order. For instance, if you have a factor with 2 levels:
+一旦创建，因素只能包含一组预定义的值，
+称为_级别_。 默认情况下，R 总是按字母顺序
+对级别进行排序。 例如，如果你有一个具有 2 个级别的因子：
 
 ```{r, purl=TRUE}
 sex <- factor(c("male", "female", "female", "male", "female"))
 ```
 
-R will assign `1` to the level `"female"` and `2` to the level
-`"male"` (because `f` comes before `m`, even though the first element
-in this vector is `"male"`). You can see this by using the function
-`levels()` and you can find the number of levels using `nlevels()`:
+R 将为级别“女性”分配“1”，为级别
+“男性”分配“2”（因为“f”位于“m”之前，即使此向量中的第一个元素
+是“男性”）。 您可以使用函数
+`levels()` 来看到这一点，并且可以使用 `nlevels()` 来找到级别的数量：
 
 ```{r, purl=TRUE}
 levels(sex)
 nlevels(sex)
 ```
 
-Sometimes, the order of the factors does not matter, other times you
-might want to specify the order because it is meaningful (e.g., "low",
-"medium", "high"), it improves your visualization, or it is required
-by a particular type of analysis. Here, one way to reorder our levels
-in the `sex` vector would be:
+有时，因素的顺序并不重要，有时你
+可能想要指定顺序，因为它很有意义（例如，“低”，
+，“中”，“高”），它可以改善你的可视化，或者它是特定类型的分析所必需的
+。 这里，重新排序“性别”向量中的级别
+的一种方法是：
 
 ```{r, purl=TRUE}
 sex ## current order
@@ -345,27 +345,27 @@ sex <- factor(sex, levels = c("male", "female"))
 sex ## after re-ordering
 ```
 
-In R's memory, these factors are represented by integers (1, 2, 3),
-but are more informative than integers because factors are self
-describing: `"female"`, `"male"` is more descriptive than `1`,
-`2`. Which one is "male"?  You wouldn't be able to tell just from the
-integer data. Factors, on the other hand, have this information built-in.
-It is particularly helpful when there are many levels (like the
-gene biotype in our example dataset).
+在 R 的内存中，这些因素由整数 (1, 2, 3) 表示，
+但比整数更具信息量，因为因素是自我
+描述的：“女性”、“男性”比 `1`、
+`2` 更具描述性。 哪一个是“男性”？  您无法仅从
+整数数据来判断。 另一方面，因素本身就包含这些信息。
+当存在多个级别时它特别有用（例如我们的示例数据集中的
+基因生物型）。
 
-When your data is stored as a factor, you can use the `plot()`
-function to get a quick glance at the number of observations
-represented by each factor level. Let's look at the number of males
-and females in our data.
+当您的数据被存储为一个因子时，您可以使用 `plot()`
+函数快速浏览每个因子级别所代表的观测值
+的数量。 让我们看看数据中的男性
+和女性的数量。
 
 ```{r firstfactorplot, fig.cap="Bar plot of the number of females and males.", purl=TRUE}
 plot(sex)
 ```
 
-### Converting to character
+### 转换为字符
 
-If you need to convert a factor to a character vector, you use
-`as.character(x)`.
+如果您需要将因子转换为字符向量，则可以使用
+`as.character(x)`。
 
 ```{r, purl=TRUE}
 as.character(sex)
@@ -409,10 +409,10 @@ as.character(sex)
 
 <!--   vector `year_fct` inside the square brackets -->
 
-### Renaming factors
+### 重命名因素
 
-If we want to rename these factor, it is sufficient to change its
-levels:
+如果我们想重命名这些因素，只需改变其
+级别即可：
 
 ```{r, purl=TRUE}
 levels(sex)
@@ -423,13 +423,13 @@ plot(sex)
 
 ::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-- Rename "F" and "M" to "Female" and "Male" respectively.
+- 将“F”和“M”分别重命名为“女性”和“男性”。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, purl=TRUE}
 levels(sex)
@@ -438,16 +438,16 @@ levels(sex) <- c("Male", "Female")
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-We have seen how data frames are created when using `read.csv()`, but
-they can also be created by hand with the `data.frame()` function.
-There are a few mistakes in this hand-crafted `data.frame`. Can you
-spot and fix them?  Don't hesitate to experiment!
+我们已经看到了使用“read.csv()”时如何创建数据框，但是
+也可以使用“data.frame()”函数手动创建它们。
+这个手工制作的“data.frame”中存在一些错误。 你能
+发现并修复它们吗？  不要犹豫去尝试吧！
 
 ```{r, eval=FALSE}
 animal_data <- data.frame(
@@ -458,31 +458,31 @@ animal_data <- data.frame(
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-- missing quotations around the names of the animals
-- missing one entry in the "feel" column (probably for one of the furry animals)
-- missing one comma in the weight column
+- 动物名称周围缺少引号
+- “感觉”栏中缺少一项（可能是针对其中一种毛茸茸的动物）
+- 体重栏缺少一个逗号
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Can you predict the class for each of the columns in the following
-example?
+您能预测以下
+示例中每一列的类别吗？
 
-Check your guesses using `str(country_climate)`:
+使用 `str(country_climate)` 检查你的猜测：
 
-- Are they what you expected?  Why? Why not?
+- 它们符合你的预期吗？  为什么？ 为什么不？
 
-- Try again by adding `stringsAsFactors = TRUE` after the last
-  variable when creating the data frame. What is happening now?
-  `stringsAsFactors` can also be set when reading text-based
-  spreadsheets into R using `read.csv()`.
+- 在创建数据框时，通过在最后一个
+  变量后添加 `stringsAsFactors = TRUE` 再试一次。 现在发生了什么事？
+  当使用“read.csv()”将基于文本的
+  电子表格读入 R 时，也可以设置“stringsAsFactors”。
 
 ```{r, eval=FALSE, purl=TRUE}
 country_climate <- data.frame(
@@ -496,7 +496,7 @@ country_climate <- data.frame(
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, purl=TRUE}
 country_climate <- data.frame(
@@ -511,49 +511,49 @@ str(country_climate)
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 The automatic conversion of data type is sometimes a blessing, sometimes an
-annoyance. Be aware that it exists, learn the rules, and double check that data
-you import in R are of the correct type within your data frame. If not, use it
-to your advantage to detect mistakes that might have been introduced during data
-entry (a letter in a column that should only contain numbers for instance).
+annoyance. 请注意它的存在，学习规则，并仔细检查您在 R 中导入的数据
+在您的数据框内是否属于正确类型。 如果没有，请利用它
+来检测在数据
+输入期间可能引入的错误（例如，某一列中应该只包含数字的字母）。
 
-Learn more in this RStudio
-tutorial
+欲了解更多信息，请参阅 RStudio
+教程
 
-## Matrices
+## 矩阵
 
-Before proceeding, now that we have learnt about data frames, let's
-recap package installation and learn about a new data type, namely the
-`matrix`. Like a `data.frame`, a matrix has two dimensions, rows and
-columns. But the major difference is that all cells in a `matrix` must
-be of the same type: `numeric`, `character`, `logical`, ... In that
-respect, matrices are closer to a `vector` than a `data.frame`.
+在继续之前，既然我们已经了解了数据框，让我们
+回顾一下包安装并了解一种新的数据类型，即
+“矩阵”。 与“数据框”类似，矩阵有两个维度：行和
+列。 但主要的区别在于“矩阵”中的所有单元格必须
+属于同一类型：“数字”、“字符”、“逻辑”…… 从
+方面来看，矩阵更接近于“向量”而不是“数据框”。
 
-The default constructor for a matrix is `matrix`. It takes a vector of
-values to populate the matrix and the number of row and/or
-columns[^ncol]. The values are sorted along the columns, as illustrated
-below.
+矩阵的默认构造函数是“矩阵”。 它采用
+值的向量来填充矩阵和行数和/或
+列数[^ncol]。 这些值按照列排序，如下图所示
+。
 
 ```{r mat1, purl=TRUE}
 m <- matrix(1:9, ncol = 3, nrow = 3)
 m
 ```
 
-[^ncol]: Either the number of rows or columns are enough, as the other one can be deduced from the length of the values. Try out what happens if the values and number of rows/columns don't add up.
+[^ncol]: 行数或列数就足够了，因为另一个可以从值的长度推断出来。 尝试一下如果值和行数/列数不相加会发生什么。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Using the function `installed.packages()`, create a `character` matrix
-containing the information about all packages currently installed on
-your computer. Explore it.
+使用函数“installed.packages()”，创建一个“字符”矩阵
+，其中包含有关当前安装在
+计算机上的所有包的信息。 探索它。
 
 :::::::::::::::  solution
 
-## Solution:
+## 解决方案：
 
 ```{r pkg_sln, eval=FALSE, purl=TRUE}
 ## create the matrix
@@ -570,23 +570,23 @@ colnames(ip)
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-It is often useful to create large random data matrices as test
-data. The exercise below asks you to create such a matrix with random
-data drawn from a normal distribution of mean 0 and standard deviation
-1, which can be done with the `rnorm()` function.
+创建大型随机数据矩阵作为测试
+数据通常很有用。 下面的练习要求你创建这样一个矩阵，其中包含从均值为 0、标准差为
+1 的正态分布中抽取的随机
+数据，这可以使用 `rnorm()` 函数完成。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## 挑战：
 
-Construct a matrix of dimension 1000 by 3 of normally distributed data
-(mean 0, standard deviation 1)
+构建一个维度为 1000、长度为 3 的正态分布数据矩阵
+（平均值为 0，标准差为 1）
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r rnormmat_sln, purl=TRUE}
 set.seed(123)
@@ -597,67 +597,67 @@ head(m)
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Formatting Dates
+## 格式化日期
 
-One of the most common issues that new (and experienced!) R users have
-is converting date and time information into a variable that is
-appropriate and usable during analyses.
+最常见的问题之一是新手（和经验丰富的人！） R 用户有
+将日期和时间信息转换为
+适当且可在分析期间使用的变量。
 
-### Note on dates in spreadsheet programs
+### 注意电子表格程序中的日期
 
-Dates in spreadsheets are generally stored in a single column. While
-this seems the most natural way to record dates, it actually is not
-best practice. A spreadsheet application will display the dates in a
-seemingly correct way (to a human observer) but how it actually
-handles and stores the dates may be problematic. It is often much
+电子表格中的日期通常存储在单个列中。 虽然
+这似乎是记录日期最自然的方式，但实际上它并不是
+最佳做法。 电子表格应用程序将以
+看似正确的方式（对于人类观察者而言）显示日期，但它实际
+处理和存储日期的方式可能会有问题。 It is often much
 safer to store dates with YEAR, MONTH and DAY in separate columns or
 as YEAR and DAY-OF-YEAR in separate columns.
 
-Spreadsheet programs such as LibreOffice, Microsoft Excel, OpenOffice,
-Gnumeric, ... have different (and often incompatible) ways of encoding
-dates (even for the same program between versions and operating
-systems). Additionally, Excel can turn things that aren't dates into
-dates
-(@Zeeberg:2004), for example names or identifiers like MAR1, DEC1,
-OCT4. So if you're avoiding the date format overall, it's easier to
-identify these issues.
+电子表格程序，例如 LibreOffice、Microsoft Excel、OpenOffice、
+Gnumeric、... 有不同的（并且通常不兼容的）方式来编码
+日期（即使对于同一程序，不同版本和操作系统也存在不同的
+）。 此外，Excel 可以 将非日期的内容转换为
+日期
+(@Zeeberg:2004)，例如 MAR1、DEC1、
+OCT4 等名称或标识符。 因此，如果您总体上避免使用日期格式，则
+更容易识别这些问题。
 
-The Dates as
-data
-section of the Data Carpentry lesson provides additional insights
-about pitfalls of dates with spreadsheets.
+数据木工课程的 日期为
+数据
+部分提供了有关电子表格中日期缺陷的额外见解
+。
 
-We are going to use the `ymd()` function from the package
-**`lubridate`** (which belongs to the **`tidyverse`**; learn more
-[here](https://www.tidyverse.org/)). . **`lubridate`** gets installed
-as part of the **`tidyverse`** installation. When you load the
-**`tidyverse`** (`library(tidyverse)`), the core packages (the
-packages used in most data analyses) get loaded. **`lubridate`**
-however does not belong to the core tidyverse, so you have to load it
-explicitly with `library(lubridate)`.
+我们将使用包
+**`lubridate`** 中的 `ymd()` 函数（属于 **`tidyverse`**；了解更多信息
+[这里](https://www.tidyverse.org/)）。 。 **`lubridate`** 作为 **`tidyverse`** 安装的一部分进行安装
+。 当你加载
+**`tidyverse`** (`library(tidyverse)`) 时，核心包（大多数数据分析中使用的
+包）也会被加载。 然而，**`lubridate`**
+不属于核心 tidyverse，因此您必须使用 `library(lubridate)` 明确加载它
+。
 
-Start by loading the required package:
+首先加载所需的包：
 
 ```{r loadlibridate, message=FALSE, purl=TRUE}
 library("lubridate")
 ```
 
-`ymd()` takes a vector representing year, month, and day, and converts
-it to a `Date` vector. `Date` is a class of data recognized by R as
-being a date and can be manipulated as such. The argument that the
-function requires is flexible, but, as a best practice, is a character
-vector formatted as "YYYY-MM-DD".
+`ymd()` 采用代表年、月、日的向量，并将
+转换为 `Date` 向量。 `日期` 是 R 识别的一类数据，
+表示日期，并且可以这样进行操作。
+函数所需的参数很灵活，但最佳实践是将字符
+向量格式化为“YYYY-MM-DD”。
 
-Let's create a date object and inspect the structure:
+让我们创建一个日期对象并检查其结构：
 
 ```{r, purl=TRUE}
 my_date <- ymd("2015-01-01")
 str(my_date)
 ```
 
-Now let's paste the year, month, and day separately - we get the same result:
+现在让我们分别粘贴年份、月份和日期——我们得到相同的结果：
 
 ```{r, purl=TRUE}
 # sep indicates the character to use to separate each component
@@ -665,8 +665,8 @@ my_date <- ymd(paste("2015", "1", "1", sep = "-"))
 str(my_date)
 ```
 
-Let's now familiarise ourselves with a typical date manipulation
-pipeline. The small data below has stored dates in different `year`,
+现在让我们熟悉典型的日期操作
+管道。 The small data below has stored dates in different `year`,
 `month` and `day` columns.
 
 ```{r, purl=TRUE}
@@ -677,97 +677,97 @@ x <- data.frame(year = c(1996, 1992, 1987, 1986, 2000, 1990, 2002, 1994, 1997, 1
 x
 ```
 
-Now we apply this function to the `x` dataset. We first create a
-character vector from the `year`, `month`, and `day` columns of `x`
-using `paste()`:
+现在我们将此函数应用于“x”数据集。 我们首先使用 `paste()` 从 `x`
+的 `year`、`month` 和 `day` 列创建一个
+字符向量：
 
 ```{r, purl=TRUE}
 paste(x$year, x$month, x$day, sep = "-")
 ```
 
-This character vector can be used as the argument for `ymd()`:
+该字符向量可用作 `ymd()` 的参数：
 
 ```{r, purl=TRUE}
 ymd(paste(x$year, x$month, x$day, sep = "-"))
 ```
 
-The resulting `Date` vector can be added to `x` as a new column called `date`:
+生成的 `Date` 向量可以添加到 `x` 作为名为 `date` 的新列：
 
 ```{r, purl=TRUE}
 x$date <- ymd(paste(x$year, x$month, x$day, sep = "-"))
 str(x) # notice the new column, with 'date' as the class
 ```
 
-Let's make sure everything worked correctly. One way to inspect the
-new column is to use `summary()`:
+让我们确保一切正常。 检查
+新列的一种方法是使用 `summary()`：
 
 ```{r, purl=TRUE}
 summary(x$date)
 ```
 
-Note that `ymd()` expects to have the year, month and day, in that
-order. If you have for instance day, month and year, you would need
-`dmy()`.
+请注意，`ymd()` 需要按
+的顺序显示年、月、日。 例如，如果您有日、月和年，您将需要
+`dmy()`。
 
 ```{r, purl=TRUE}
-dmy(paste(x$day, x$month, x$year, sep = "-"))
+dmy(粘贴(x$day, x$month, x$year, sep = "-"))
 ```
 
-`lubdridate` has many functions to address all date variations.
+`lubdridate` 有许多函数可以解决所有日期变化。
 
-## Summary of R objects
+## R 对象摘要
 
-So far, we have seen several types of R object varying in the number
-of dimensions and whether they could store a single or multiple data
-types:
+到目前为止，我们已经看到了几种类型的 R 对象，它们的维数
+不同，并且它们可以存储单个或多个数据
+类型：
 
-- **`vector`**: one dimension (they have a length), single type of data.
-- **`matrix`**: two dimensions, single type of data.
-- **`data.frame`**: two dimensions, one type per column.
+- **`向量`**：一维（有长度），单一类型的数据。
+- **`矩阵`**：二维，单一类型的数据。
+- **`data.frame`**：两个维度，每列一种类型。
 
-## Lists
+## 列表
 
-A data type that we haven't seen yet, but that is useful to know, and
-follows from the summary that we have just seen are lists:
+我们还没有见过这种数据类型，但了解它很有用，并且根据我们刚刚看到的总结，
+是列表：
 
-- **`list`**: one dimension, every item can be of a different data
-  type.
+- **`列表`**：一维，每个项目可以是不同的数据
+  类型。
 
-Below, let's create a list containing a vector of numbers, characters,
-a matrix, a dataframe and another list:
+下面，让我们创建一个包含数字、字符、
+矩阵、数据框和另一个列表的向量列表：
 
 ```{r list0, purl=TRUE}
-l <- list(1:10, ## numeric
-          letters, ## character
-          installed.packages(), ## a matrix
-          cars, ## a data.frame
-          list(1, 2, 3)) ## a list
-length(l)
+l <- list(1:10, ## 数字
+          字母, ## 字符
+          installed.packages(), ## 矩阵
+          汽车, ## 数据框
+          list(1, 2, 3)) ## 列表
+长度(l)
 str(l)
 ```
 
-List subsetting is done using `[]` to subset a new sub-list or `[[]]`
-to extract a single element of that list (using indices or names, if
-the list is named).
+列表子集化是使用 `[]` 来子集化新的子列表或使用 `[[]]`
+来提取该列表的单个元素（使用索引或名称，如果
+列表已命名）。
 
 ```{r, purl=TRUE}
-l[[1]] ## first element
-l[1:2] ## a list of length 2
-l[1]   ## a list of length 1
+l[[1]] ## 第一个元素
+l[1:2] ## 长度为 2 的列表
+l[1] ## 长度为 1 的列表
 ```
 
-## Exporting and saving tabular data {#sec:exportandsave}
+## 导出和保存表格数据 {#sec:exportandsave}
 
-We have seen how to read a text-based spreadsheet into R using the
-`read.table` family of functions. To export a `data.frame` to a
-text-based spreadsheet, we can use the `write.table` set of functions
-(`write.csv`, `write.delim`, ...). They all take the variable to be
-exported and the file to be exported to. For example, to export the
-`rna` data to the `my_rna.csv` file in the `data_output`
-directory, we would execute:
+我们已经了解了如何使用
+`read.table` 系列函数将基于文本的电子表格读入 R。 要将 `data.frame` 导出到
+基于文本的电子表格，我们可以使用 `write.table` 函数集
+(`write.csv`、`write.delim`，...)。 它们都将要导出的变量
+和要导出到的文件。 例如，要将
+`rna` 数据导出到 `data_output`
+目录中的 `my_rna.csv` 文件，我们可以执行：
 
 ```{r writecsv, eval=FALSE, purl=TRUE}
-write.csv(rna, file = "data_output/my_rna.csv")
+写入.csv（rna，文件 = “data_output/my_rna.csv”）
 ```
 
 This new csv file can now be shared with other collaborators who
@@ -779,6 +779,6 @@ separators.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Tabular data in R
+- R 中的表格数据
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::

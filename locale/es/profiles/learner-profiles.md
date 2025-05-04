@@ -1,5 +1,5 @@
 ---
-title: FIXME
+title: ARREGLARME
 ---
 
-This is a placeholder file. Please add content here.
+Este es un archivo de marcador de posición. Por favor agregue contenido aquí.
