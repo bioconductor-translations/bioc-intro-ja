@@ -54,9 +54,6 @@ R session when you need it.
 To learn more about **`dplyr`** and **`tidyr`** after the workshop,
 you may want to check out this handy data transformation with
 
-and this one about
-.
-
 - The **`tidyverse`** package is an "umbrella-package" that installs
  several useful packages for data analysis which work well together,
  such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
@@ -1804,7 +1801,7 @@ rna |>
 # ℹ 1,464 more rows
 ```
 
-To select the timepoint 4, we would have to quote the column name, with backticks "\\`"
+To select the timepoint 4, we would have to quote the column name, with backticks "\\\`"
 
 
 ``` r

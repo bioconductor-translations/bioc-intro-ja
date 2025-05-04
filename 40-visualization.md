@@ -82,7 +82,7 @@ customization of plots.
 
 > The idea behind the Grammar of Graphics it is that you can build every
 > graph from the same 3 components: (1) a data set, (2) a coordinate system,
-> and (3) geoms — i.e. visual marks that represent data points \[^three\\_comp\\_ggplot2]
+> and (3) geoms — i.e. visual marks that represent data points \\[^three\\\_comp\\\_ggplot2]
 
 [^three_comp_ggplot2]: Source: [Data Visualization Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
@@ -115,10 +115,11 @@ ggplot(data = rna, mapping = aes(x = expression))
  data in the plot (points, lines, bars). `ggplot2` offers many
  different geoms; we will use some common ones today, including:
 
-   \* `geom_point()` for scatter plots, dot plots, etc.
-   \* `geom_histogram()` for histograms
-   \* `geom_boxplot()` for, well, boxplots!
-   \* `geom_line()` for trend lines, time series, etc.
+ ```
+ \* `geom_point()` for scatter plots, dot plots, etc.
+    \* `geom_histogram()` for histograms
+    \* `geom_boxplot()` for, well, boxplots! \* `geom_line()` for trend lines, time series, etc.
+ ```
 
 To add a geom(etry) to the plot use the `+` operator. Let's use
 `geom_histogram()` first:
@@ -1014,7 +1015,7 @@ for inspiration. Here are some ideas:
  `scale_`)
 - Try using a different color palette or manually specifying the
  colors for the lines (see
- [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\\(ggplot2\\)/)).
+ [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\\\(ggplot2\\\)/)).
 
 :::::::::::::::  solution
 
