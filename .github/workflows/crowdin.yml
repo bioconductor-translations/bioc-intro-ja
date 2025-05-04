@@ -25,8 +25,8 @@ jobs:
           pull_request_body: 'New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)'
           pull_request_base_branch_name: 'main'
           crowdin_branch_name: 'main'
-          source: /episodes/*.md
-          translation: /locale/%two_letters_code%/episodes/%original_file_name%
+          source: episodes/*.md
+          translation: locale/%two_letters_code%/episodes/%original_file_name%
         env:
           # A classic GitHub Personal Access Token with the 'repo' scope selected (the user should have write access to the repository).
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
