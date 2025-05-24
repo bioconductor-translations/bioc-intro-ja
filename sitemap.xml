@@ -31,7 +31,13 @@
     <loc>https://carpentries-incubator.github.io/bioc-intro/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/discuss.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/images.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/index.html</loc>
@@ -67,16 +73,34 @@
     <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/discuss.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/profiles.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/bioc-intro/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/bioc-intro/profiles.html</loc>
