@@ -1,6 +1,6 @@
 ---
-source: Rmd
-title: Data visualization
+source: 放射科
+title: 数据可视化
 teaching: 60
 exercises: 60
 ---
@@ -13,127 +13,129 @@ download.file(url = "https://github.com/carpentries-incubator/bioc-intro/raw/mai
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Produce scatter plots, boxplots, line plots, etc. using ggplot.
-- Set universal plot settings.
-- Describe what faceting is and apply faceting in ggplot.
-- Modify the aesthetics of an existing ggplot plot (including axis labels and color).
-- Build complex and customized plots from data in a data frame.
+- 使用 ggplot 生成散点图、箱线图、线图等。
+- 设置通用情节设置。
+- 描述什么是分面并在 ggplot 中应用分面。
+- 修改现有 ggplot 图的美观度（包括轴标签和颜色）。
+- 根据数据框中的数据构建复杂且定制的图表。
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Visualization in R
+- R 中的可视化
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r vis_setup, echo=FALSE}
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> 本集基于 Data Carpentries 的_面向生态学家的 R 语言数据分析和
+> 可视化_课程。
 
-## Data Visualization
+## 数据可视化
 
-We start by loading the required packages. **`ggplot2`** is included in
-the **`tidyverse`** package.
+我们首先加载所需的包。 **`ggplot2`** 包含在
+**`tidyverse`** 包中。
 
 ```{r load-package, message=FALSE, purl=TRUE}
 library("tidyverse")
 ```
 
-If not still in the workspace, load the data we saved in the previous
-lesson.
+如果还不在工作区中，请加载我们在上一节
+课中保存的数据。
 
 ```{r load-data, eval=FALSE, purl=TRUE}
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-The Data Visualization Cheat
-Sheet
-will cover the basics and more advanced features of `ggplot2` and will
-help, in addition to serve as a reminder, getting an overview of the
-many data representations available in the package. The following video
-tutorials ([part 1](https://www.youtube.com/watch?v=h29g21z0a68) and
-[2](https://www.youtube.com/watch?v=0m4yywqNPVY)) by Thomas Lin Pedersen
-are also very instructive.
+数据可视化秘籍
+表
+将涵盖 `ggplot2` 的基础知识和更高级的功能，并且除了作为提醒之外，还将
+帮助您概览
+包中可用的许多数据表示。 以下由 Thomas Lin Pedersen
+制作的视频
+教程 ([第 1 部分](https://www.youtube.com/watch?v=h29g21z0a68) 和
+[2](https://www.youtube.com/watch?v=0m4yywqNPVY)) 也非常具有启发性。
 
-## Plotting with `ggplot2`
+## 使用 `ggplot2` 绘图
 
-`ggplot2` is a plotting package that makes it simple to create complex
-plots from data in a data frame. It provides a more programmatic
-interface for specifying what variables to plot, how they are displayed,
-and general visual properties. The theoretical foundation that supports
-the `ggplot2` is the _Grammar of Graphics_ (@Wilkinson:2005). Using this
-approach, we only need minimal changes if the underlying data change or
-if we decide to change from a bar plot to a scatterplot. This helps in
-creating publication quality plots with minimal amounts of adjustments
-and tweaking.
+`ggplot2` 是一个绘图包，可以很容易地从数据框中的数据创建复杂的
+图。 它提供了一个更具程序性的
+界面，用于指定要绘制的变量、如何显示它们、
+以及一般的视觉属性。 支持
+`ggplot2`的理论基础是_图形语法_（@Wilkinson:2005）。 使用这种
+方法，如果基础数据发生变化，我们只需要进行最少的更改；如果我们决定从条形图更改为散点图，则只需要进行
+更改。 这有助于
+以最少的调整
+和微调创建出版质量的图表。
 
-There is a book about `ggplot2` (@ggplot2book) that provides a good
-overview, but it is outdated. The 3rd edition is in preparation and will
-be [freely available online](https://ggplot2-book.org/). The `ggplot2`
-webpage ([https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org)) provides ample documentation.
+有一本关于“ggplot2”（@ggplot2book）的书提供了很好的
+概述，但它已经过时了。 第三版正在准备中，
+将[免费在线提供](https://ggplot2-book.org/)。 `ggplot2`
+网页 ([https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org)) 提供了充足的文档。
 
-`ggplot2` functions like data in the 'long' format, i.e., a column for
-every dimension, and a row for every observation. Well-structured data
-will save you lots of time when making figures with `ggplot2`.
+`ggplot2` 的功能类似于“长”格式的数据，即每个维度为
+一列，每个观察值为一行。 结构良好的数据
+将在使用“ggplot2”制作图形时为您节省大量时间。
 
-ggplot graphics are built step by step by adding new elements. Adding
-layers in this fashion allows for extensive flexibility and
-customization of plots.
+ggplot 图形是通过添加新元素一步步构建的。 以这种方式添加
+层可以实现广泛的灵活性和
+图的定制。
 
-> The idea behind the Grammar of Graphics it is that you can build every
-> graph from the same 3 components: (1) a data set, (2) a coordinate system,
-> and (3) geoms — i.e. visual marks that represent data points \[^three\\_comp\\_ggplot2]
+> 图形语法背后的想法是，你可以从相同的 3 个组件构建每个
+> 图形：(1) 数据集，(2) 坐标系，
+> 和 (3) 几何对象 - 即表示数据点的视觉标记 \[^three\\_comp\\_ggplot2]
 
-[^three_comp_ggplot2]: Source: [Data Visualization Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
+[^three_comp_ggplot2]: 来源：[数据可视化备忘单](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)。
 
-To build a ggplot, we will use the following basic template that can be
-used for different types of plots:
+为了构建 ggplot，我们将使用以下基本模板，该模板可以
+用于不同类型的绘图：
 
 ```
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
 
-- use the `ggplot()` function and bind the plot to a specific **data
- frame** using the `data` argument
+- 使用 `ggplot()` 函数并使用 `data` 参数将图绑定到特定的 **data
+ 框架**
 
 ```{r, eval=FALSE}
 ggplot(data = rna)
 ```
 
-- define a **mapping** (using the aesthetic (`aes`) function), by
- selecting the variables to be plotted and specifying how to present
- them in the graph, e.g. as x/y positions or characteristics such as
- size, shape, color, etc.
+- 定义一个**映射**（使用美学（`aes`）函数），通过
+ 选择要绘制的变量并指定如何在图形中呈现
+ 它们，例如作为 x/y 位置或特征，如
+ 大小、形状、颜色等。
 
 ```{r, eval=FALSE}
 ggplot(data = rna, mapping = aes(x = expression))
 ```
 
-- add '**geoms**' - geometries, or graphical representations of the
- data in the plot (points, lines, bars). `ggplot2` offers many
- different geoms; we will use some common ones today, including:
+- 添加'**geoms**' - 几何图形，或图中
+ 数据的图形表示（点、线、条）。 `ggplot2` 提供许多
+ 不同的几何对象；今天我们将使用一些常见的，包括：
 
-   \* `geom_point()` for scatter plots, dot plots, etc.
-   \* `geom_histogram()` for histograms
-   \* `geom_boxplot()` for, well, boxplots!
-   \* `geom_line()` for trend lines, time series, etc.
+ ```
+ * `geom_point()` 用于散点图、点图等。
+ * `geom_histogram()` 用于直方图！
+ * `geom_boxplot()` 用于箱线图！
+ * `geom_line()` 用于趋势线、时间序列等。
+ ```
 
-To add a geom(etry) to the plot use the `+` operator. Let's use
-`geom_histogram()` first:
+要向图中添加几何图形，请使用“+”运算符。 让我们首先使用
+`geom_histogram()`：
 
 ```{r first-ggplot, cache=FALSE, purl=TRUE}
 ggplot(data = rna, mapping = aes(x = expression)) +
   geom_histogram()
 ```
 
-The `+` in the `ggplot2` package is particularly useful because it
-allows you to modify existing `ggplot` objects. This means you can
-easily set up plot templates and conveniently explore different types of
-plots, so the above plot can also be generated with code like this:
+`ggplot2` 包中的 `+` 特别有用，因为它
+允许您修改现有的 `ggplot` 对象。 这意味着您可以
+轻松设置绘图模板并方便地探索不同类型的
+绘图，因此上述绘图也可以使用如下代码生成：
 
 ```{r, eval=FALSE, purl=TRUE}
 # Assign plot to a variable
@@ -146,22 +148,22 @@ rna_plot + geom_histogram()
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-You have probably noticed an automatic message that appears when
-drawing the histogram:
+您可能已经注意到，在
+绘制直方图时会出现一条自动消息：
 
 ```{r, echo=FALSE, fig.show="hide"}
 ggplot(rna, aes(x = expression)) +
   geom_histogram()
 ```
 
-Change the arguments `bins` or `binwidth` of `geom_histogram()` to
-change the number or width of the bins.
+将 `geom_histogram()` 的参数 `bins` 或 `binwidth` 更改为
+以更改箱的数量或宽度。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, purl=TRUE}
 # change bins
@@ -177,43 +179,43 @@ ggplot(rna, aes(x = expression)) +
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We can observe here that the data are skewed to the right. We can apply
-log2 transformation to have a more symmetric distribution. Note that we
-add here a small constant value (`+1`) to avoid having `-Inf` values
-returned for expression values equal to 0.
+我们可以在这里观察到数据向右倾斜。 我们可以应用
+log2 变换来获得更加对称的分布。 请注意，我们
+在这里添加一个小的常数值（`+1`）以避免当表达式值等于 0 时返回 `-Inf` 值
+。
 
 ```{r log-transfo, cache=FALSE, purl=TRUE}
-rna <- rna |>
+rna <- rna %>%
   mutate(expression_log = log2(expression + 1))
 ```
 
-If we now draw the histogram of the log2-transformed expressions, the
-distribution is indeed closer to a normal distribution.
+如果我们现在绘制 log2 变换表达式的直方图，
+分布确实更接近正态分布。
 
 ```{r second-ggplot, cache=FALSE, purl=TRUE}
 ggplot(rna, aes(x = expression_log)) + geom_histogram()
 ```
 
-From now on we will work on the log-transformed expression values.
+从现在开始我们将研究对数转换的表达值。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Another way to visualize this transformation is to consider the scale
-of the observations. For example, it may be worth changing the scale
-of the axis to better distribute the observations in the space of the
-plot. Changing the scale of the axes is done similarly to
-adding/modifying other components (i.e., by incrementally adding
-commands). Try making this modification:
+可视化这种转变的另一种方法是考虑观测的尺度
+。 例如，可能值得改变轴的比例
+以便更好地在
+图的空间中分布观测值。 改变轴的比例与
+添加/修改其他组件类似（即通过逐步添加
+命令）。 尝试做这样的修改：
 
-- Represent the un-transformed expression on the log10 scale; see
- `scale_x_log10()`. Compare it with the previous graph. Why do you
- now have warning messages appearing?
+- 表示 log10 尺度上未转换的表达式；参见
+ `scale_x_log10()`。 将其与之前的图表进行比较。 为什么
+ 现在出现警告信息？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, purl=TRUE, echo=TRUE}
 ggplot(data = rna,mapping = aes(x = expression))+
@@ -225,18 +227,18 @@ ggplot(data = rna,mapping = aes(x = expression))+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-**Notes**
+**笔记**
 
-- Anything you put in the `ggplot()` function can be seen by any geom
- layers that you add (i.e., these are global plot settings). This
- includes the x- and y-axis mapping you set up in `aes()`.
-- You can also specify mappings for a given geom independently of the
- mappings defined globally in the `ggplot()` function.
-- The `+` sign used to add new layers must be placed at the end of the
- line containing the _previous_ layer. If, instead, the `+` sign is
- added at the beginning of the line containing the new layer,
- `ggplot2` will not add the new layer and will return an error
- message.
+- 你在 `ggplot()` 函数中输入的任何内容都可以被你添加的任何 geom
+ 层看到（即，这些是全局绘图设置）。 这个
+ 包括你在 `aes()` 中设置的 x 轴和 y 轴映射。
+- 您还可以独立于 `ggplot()` 函数中全局定义的
+ 映射为给定的 geom 指定映射。
+- 用于添加新层的 `+` 符号必须放在包含_上一个_层的
+ 行末尾。 相反，如果在包含新层的行首添加 `+` 符号
+ ，
+ `ggplot2` 将不会添加新层，并将返回错误
+ 消息。
 
 ```{r, eval=FALSE}
 # This is the correct syntax for adding layers
@@ -248,58 +250,58 @@ rna_plot
   + geom_histogram()
 ```
 
-## Building your plots iteratively
+## 迭代构建你的图
 
-We will now draw a scatter plot with two continuous variables and the
-`geom_point()` function. This graph will represent the log2 fold changes
-of expression comparing time 8 versus time 0, and time 4 versus time 0.
-To this end, we first need to compute the means of the log-transformed
-expression values by gene and time, then the log fold changes by
-subtracting the mean log expressions between time 8 and time 0 and
-between time 4 and time 0. Note that we also include here the gene
-biotype that we will use later on to represent the genes. We will save
-the fold changes in a new data frame called `rna_fc.`
+我们现在将绘制一个包含两个连续变量和
+`geom_point()` 函数的散点图。 该图将表示时间 8 与时间 0 以及时间 4 与时间 0 相比的表达的 log2 倍数变化
+。
+为此，我们首先需要计算基因和时间对数转换的
+表达值的平均值，然后通过
+减去时间 8 和时间 0 之间的平均对数表达值和
+减去时间 4 和时间 0 之间的平均对数表达值来计算对数倍数变化。 请注意，我们还在这里包括了基因
+生物型，我们稍后会用它来表示基因。 我们将把
+倍数变化保存在名为“rna_fc”的新数据框中。
 
 ```{r rna_fc, cache=FALSE, purl=TRUE}
-rna_fc <- rna |> select(gene, time,
-                         gene_biotype, expression_log) |>
-  group_by(gene, time, gene_biotype) |>
-  summarize(mean_exp = mean(expression_log)) |>
+rna_fc <- rna %>% select(gene, time,
+                         gene_biotype, expression_log) %>%
+  group_by(gene, time, gene_biotype) %>%
+  summarize(mean_exp = mean(expression_log)) %>%
   pivot_wider(names_from = time,
-              values_from = mean_exp) |>
+              values_from = mean_exp) %>%
   mutate(time_8_vs_0 = `8` - `0`, time_4_vs_0 = `4` - `0`)
 
 ```
 
-We can then build a ggplot with the newly created dataset `rna_fc`.
-Building plots with `ggplot2` is typically an iterative process. We
-start by defining the dataset we'll use, lay out the axes, and choose a
-geom:
+然后我们可以使用新创建的数据集“rna_fc”构建一个 ggplot。
+使用“ggplot2”构建图表通常是一个迭代过程。 我们
+首先定义我们将使用的数据集、布置轴，然后选择一个
+几何对象：
 
 ```{r create-ggplot-object, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point()
 ```
 
-Then, we start modifying this plot to extract more information from it.
-For instance, we can add transparency (`alpha`) to avoid overplotting:
+然后，我们开始修改这个图以从中提取更多信息。
+例如，我们可以添加透明度（“alpha”）以避免过度绘图：
 
 ```{r adding-transparency, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point(alpha = 0.3)
 ```
 
-We can also add colors for all the points:
+我们还可以为所有点添加颜色：
 
 ```{r adding-colors, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point(alpha = 0.3, color = "blue")
 ```
 
-Or to color each gene in the plot differently, you could use a vector as
-an input to the argument **color**. `ggplot2` will provide a different
-color corresponding to different values in the vector. Here is an
-example where we color with `gene_biotype`:
+或者为了给图中每个基因赋予不同的颜色，你可以使用一个向量作为
+参数 **color** 的输入。 `ggplot2` 将提供与向量中的不同值相对应的不同的
+颜色。 这是一个
+示例，我们用 `gene_biotype` 进行着色：
 
 ```{r color-by-gene_biotype1, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
@@ -307,9 +309,9 @@ ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
 
 ```
 
-We can also specify the colors directly inside the mapping provided in
-the `ggplot()` function. This will be seen by any geom layers and the
-mapping will be determined by the x- and y-axis set up in `aes()`.
+我们还可以在
+`ggplot()`函数提供的映射中直接指定颜色。 任何 geom 层都可以看到这一点，并且
+映射将由 `aes()` 中设置的 x 轴和 y 轴决定。
 
 ```{r color-by-gene_biotype2, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
@@ -317,8 +319,8 @@ ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
   geom_point(alpha = 0.3)
 ```
 
-Finally, we could also add a diagonal line with the `geom_abline()`
-function:
+最后，我们还可以使用 `geom_abline()`
+函数添加对角线：
 
 ```{r adding-diag, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
@@ -327,8 +329,8 @@ ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
   geom_abline(intercept = 0)
 ```
 
-Notice that we can change the geom layer from `geom_point` to
-`geom_jitter` and colors will still be determined by `gene_biotype`.
+请注意，我们可以将 geom 层从 `geom_point` 更改为
+`geom_jitter`，颜色仍由 `gene_biotype` 决定。
 
 ```{r color-by-gene_biotype3, cache=FALSE, purl=TRUE}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
@@ -343,28 +345,28 @@ library("hexbin")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Scatter plots can be useful exploratory tools for small datasets. For
-data sets with large numbers of observations, such as the `rna_fc`
-data set, overplotting of points can be a limitation of scatter plots.
-One strategy for handling such settings is to use hexagonal binning of
-observations. The plot space is tessellated into hexagons. Each
-hexagon is assigned a color based on the number of observations that
-fall within its boundaries.
+散点图可以成为小数据集的有用的探索工具。 对于具有大量观测值的
+数据集，例如 `rna_fc`
+数据集，点的过度绘制可能是散点图的限制。
+处理此类设置的一种策略是使用
+观测值的六边形分箱。 地块空间被镶嵌成六边形。 每个
+六边形根据其边界内的
+观测值的数量被分配一种颜色。
 
-- To use hexagonal binning in `ggplot2`, first install the R package
- `hexbin` from CRAN and load it.
+- 要在 `ggplot2` 中使用六边形分箱，首先从 CRAN 安装 R 包
+ `hexbin` 并加载它。
 
-- Then use the `geom_hex()` function to produce the hexbin figure.
+- 然后使用“geom_hex()”函数生成六边形图。
 
-- What are the relative strengths and weaknesses of a hexagonal bin
- plot compared to a scatter plot? Examine the above scatter plot
- and compare it with the hexagonal bin plot that you created.
+- 与散点图相比，六边形箱
+ 图的相对优势和劣势是什么？ 检查上述散点图
+ 并将其与您创建的六边形箱图进行比较。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=FALSE, purl=TRUE}
 install.packages("hexbin")
@@ -385,15 +387,15 @@ ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Use what you just learned to create a scatter plot of `expression_log`
-over `sample` from the `rna` dataset with the time showing in
-different colors. Is this a good way to show this type of data?
+使用你刚刚学到的知识从“rna”数据集中创建一个“expression_log”
+在“sample”上的散点图，其中时间以
+不同的颜色显示。 这是显示此类数据的好方法吗？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, purl=TRUE}
 ggplot(data = rna, mapping = aes(y = expression_log, x = sample)) +
@@ -404,10 +406,10 @@ ggplot(data = rna, mapping = aes(y = expression_log, x = sample)) +
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Boxplot
+## 箱形图
 
-We can use boxplots to visualize the distribution of gene expressions
-within each sample:
+我们可以使用箱线图来可视化每个样本内基因表达的分布
+：
 
 ```{r boxplot, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -415,8 +417,8 @@ ggplot(data = rna,
   geom_boxplot()
 ```
 
-By adding points to boxplot, we can have a better idea of the number of
-measurements and of their distribution:
+通过向箱线图添加点，我们可以更好地了解
+测量的数量及其分布：
 
 ```{r boxplot-with-points, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -427,16 +429,16 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Note how the boxplot layer is in front of the jitter layer? What do
+请注意箱线图层是如何位于抖动图层前面的？ What do
 you need to change in the code to put the boxplot below the points?
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-We should switch the order of these two geoms:
+我们应该交换这两个几何对象的顺序：
 
 ```{r boxplot-with-points2, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -449,11 +451,11 @@ ggplot(data = rna,
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-You may notice that the values on the x-axis are still not properly
-readable. Let's change the orientation of the labels and adjust them
-vertically and horizontally so they don't overlap. You can use a
-90-degree angle, or experiment to find the appropriate angle for
-diagonally oriented labels:
+您可能会注意到 x 轴上的值仍然无法正确读取
+。 让我们改变标签的方向并垂直和水平调整它们
+以使它们不重叠。 您可以使用
+90 度角，或者试验找到适合
+对角线标签的角度：
 
 ```{r boxplot-xaxis-rotated, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -465,18 +467,18 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Add color to the data points on your boxplot according to the duration
-of the infection (`time`).
+根据感染的持续时间
+（“时间”），为箱线图上的数据点添加颜色。
 
-_Hint:_ Check the class for `time`. Consider changing the class of
-`time` from integer to factor directly in the ggplot mapping. Why does
-this change how R makes the graph?
+\*提示：\*检查类别中的“时间”。 考虑将
+`时间`类从整数直接更改为 ggplot 映射中的因子。 为什么
+会改变 R 绘制图形的方式？
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r boxplot-color-time, cache=FALSE, purl=TRUE}
 # time as integer
@@ -502,19 +504,19 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Boxplots are useful summaries, but hide the _shape_ of the
-distribution. For example, if the distribution is bimodal, we would
-not see it in a boxplot. An alternative to the boxplot is the violin
-plot, where the shape (of the density of points) is drawn.
+箱线图是有用的摘要，但隐藏了
+分布的_形状_。 For example, if the distribution is bimodal, we would
+not see it in a boxplot. 箱线图的替代方法是小提琴
+图，其中绘制了（点密度的）形状。
 
-- Replace the box plot with a violin plot; see `geom_violin()`. Fill
- in the violins according to the time with the argument `fill`.
+- 用小提琴图代替箱线图；参见“geom_violin()”。 使用参数“fill”根据时间在小提琴中填充
+ 。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -529,13 +531,13 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-- Modify the violin plot to fill in the violins by `sex`.
+- 修改小提琴图以按“性别”填充小提琴。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE}
 ggplot(data = rna,
@@ -548,40 +550,40 @@ ggplot(data = rna,
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Line plots
+## 线图
 
-Let's calculate the mean expression per duration of the infection for
-the 10 genes having the highest log fold changes comparing time 8 versus
-time 0. First, we need to select the genes and create a subset of `rna`
-called `sub_rna` containing the 10 selected genes, then we need to group
-the data and calculate the mean gene expression within each group:
+让我们计算一下
+感染持续时间内的平均表达量，其中 10 个基因的对数倍数变化最高，比较时间 8 与
+时间 0。 首先，我们需要选择基因并创建一个 `rna`
+的子集，称为 `sub_rna`，包含 10 个选定的基因，然后我们需要对数据进行分组
+并计算每个组内的平均基因表达：
 
 ```{r, purl=TRUE}
-rna_fc <- rna_fc |> arrange(desc(time_8_vs_0))
+rna_fc <- rna_fc %>% arrange(desc(time_8_vs_0))
 
 genes_selected <- rna_fc$gene[1:10]
 
-sub_rna <- rna |>
+sub_rna <- rna %>%
     filter(gene %in% genes_selected)
 
-mean_exp_by_time <- sub_rna |>
-  group_by(gene,time) |>
+mean_exp_by_time <- sub_rna %>%
+  group_by(gene,time) %>%
     summarize(mean_exp = mean(expression_log))
 
 mean_exp_by_time
 ```
 
-We can build the line plot with duration of the infection on the x-axis
-and the mean expression on the y-axis:
+我们可以绘制线图，x 轴为感染持续时间
+，y 轴为平均表达量：
 
 ```{r first-time-series, purl=TRUE}
 ggplot(data = mean_exp_by_time, mapping = aes(x = time, y = mean_exp)) +
   geom_line()
 ```
 
-Unfortunately, this does not work because we plotted data for all the
-genes together. We need to tell ggplot to draw a line for each gene by
-modifying the aesthetic function to include `group = gene`:
+不幸的是，这不起作用，因为我们将所有
+基因的数据绘制在一起。 我们需要告诉 ggplot 为每个基因画一条线，通过
+修改美学函数以包含 `group = gene`：
 
 ```{r time-series-by-gene, purl=TRUE}
 ggplot(data = mean_exp_by_time,
@@ -589,8 +591,8 @@ ggplot(data = mean_exp_by_time,
   geom_line()
 ```
 
-We will be able to distinguish genes in the plot if we add colors (using
-`color` also automatically groups the data):
+如果我们添加颜色，我们将能够区分图中的基因（使用
+`color` 也会自动对数据进行分组）：
 
 ```{r time-series-with-colors, purl=TRUE}
 ggplot(data = mean_exp_by_time,
@@ -598,13 +600,13 @@ ggplot(data = mean_exp_by_time,
   geom_line()
 ```
 
-## Faceting
+## 刻面
 
-`ggplot2` has a special technique called _faceting_ that allows the user
-to split one plot into multiple (sub) plots based on a factor included
-in the dataset. These different subplots inherit the same properties
-(axes limits, ticks, ...) to facilitate their direct comparison. We will
-use it to make a line plot across time for each gene:
+`ggplot2` 有一种称为 _faceting_ 的特殊技术，它允许用户
+根据数据集中包含的因素
+将一个图分成多个（子）图。 这些不同的子图继承了相同的属性
+（轴限制、刻度……） 以便于直接比较。 我们将
+使用它为每个基因绘制一条跨时间的线图：
 
 ```{r first-facet, purl=TRUE}
 ggplot(data = mean_exp_by_time,
@@ -612,9 +614,9 @@ ggplot(data = mean_exp_by_time,
   facet_wrap(~ gene)
 ```
 
-Here both x- and y-axis have the same scale for all the subplots. You
-can change this default behavior by modifying `scales` in order to allow
-a free scale for the y-axis:
+这里，所有子图的 x 轴和 y 轴具有相同的比例。 您
+可以通过修改 `scales` 来更改此默认行为，以允许
+y 轴自由缩放：
 
 ```{r first-facet-scales, purl=TRUE}
 ggplot(data = mean_exp_by_time,
@@ -623,20 +625,20 @@ ggplot(data = mean_exp_by_time,
   facet_wrap(~ gene, scales = "free_y")
 ```
 
-Now we would like to split the line in each plot by the sex of the mice.
-To do that we need to calculate the mean expression in the data frame
-grouped by `gene`, `time`, and `sex`:
+现在我们想根据小鼠的性别来分割每个图中的线。
+为此，我们需要计算数据框
+中按“基因”、“时间”和“性别”分组的平均表达：
 
 ```{r data-facet-by-gene-and-sex, purl=TRUE}
-mean_exp_by_time_sex <- sub_rna |>
-  group_by(gene, time, sex) |>
+mean_exp_by_time_sex <- sub_rna %>%
+  group_by(gene, time, sex) %>%
     summarize(mean_exp = mean(expression_log))
 
 mean_exp_by_time_sex
 ```
 
-We can now make the faceted plot by splitting further by sex using
-`color` (within a single plot):
+我们现在可以使用
+`color`（在单个图内）按性别进一步划分来制作分面图：
 
 ```{r facet-by-gene-and-sex, cache=FALSE, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -645,9 +647,9 @@ ggplot(data = mean_exp_by_time_sex,
   facet_wrap(~ gene, scales = "free_y")
 ```
 
-Usually plots with white background look more readable when printed. We
-can set the background to white using the function `theme_bw()`.
-Additionally, we can remove the grid:
+通常，带有白色背景的图表在打印时看起来更易读。 我们
+可以使用函数“theme_bw()”将背景设置为白色。
+此外，我们可以删除网格：
 
 ```{r facet-by-gene-and-sex-white-bg, cache=FALSE, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -660,19 +662,19 @@ ggplot(data = mean_exp_by_time_sex,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-Use what you just learned to create a plot that depicts how the
-average expression of each chromosome changes through the duration of
-infection.
+使用你刚刚学到的知识创建一个图表，描绘在
+感染持续期间，每个染色体的
+平均表达如何变化。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
 ```{r mean-exp-chromosome-time-series, purl=TRUE}
-mean_exp_by_chromosome <- rna |>
-  group_by(chromosome_name, time) |>
+mean_exp_by_chromosome <- rna %>%
+  group_by(chromosome_name, time) %>%
   summarize(mean_exp = mean(expression_log))
 
 ggplot(data = mean_exp_by_chromosome, mapping = aes(x = time,
@@ -685,14 +687,14 @@ ggplot(data = mean_exp_by_chromosome, mapping = aes(x = time,
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The `facet_wrap` geometry extracts plots into an arbitrary number of
-dimensions to allow them to cleanly fit on one page. On the other hand,
-the `facet_grid` geometry allows you to explicitly specify how you want
-your plots to be arranged via formula notation (`rows ~ columns`; a `.`
-can be used as a placeholder that indicates only one row or column).
+`facet_wrap` 几何将图提取到任意数量的
+维度中，以使它们能够整齐地放在一页上。 另一方面，
+`facet_grid` 几何允许您通过公式符号明确指定如何排列
+您的图表（`rows ~ columns`；`.`
+可用作仅表示一行或一列的占位符）。
 
-Let's modify the previous plot to compare how the mean gene expression
-of males and females has changed through time:
+让我们修改之前的图来比较男性和女性的平均基因表达
+随时间的变化：
 
 ```{r mean-exp-time-facet-sex-rows, purl=TRUE}
 # One column, facet by rows
@@ -710,31 +712,31 @@ ggplot(data = mean_exp_by_time_sex,
   facet_grid(. ~ sex)
 ```
 
-## `ggplot2` themes
+## `ggplot2` 主题
 
-In addition to `theme_bw()`, which changes the plot background to white,
-`ggplot2` comes with several other themes which can be useful to quickly
-change the look of your visualization. The complete list of themes is
-available at [https://ggplot2.tidyverse.org/reference/ggtheme.html](https://ggplot2.tidyverse.org/reference/ggtheme.html).
-`theme_minimal()` and `theme_light()` are popular, and `theme_void()`
-can be useful as a starting point to create a new hand-crafted theme.
+除了将绘图背景更改为白色的 `theme_bw()` 之外，
+`ggplot2` 还附带其他几个主题，可用于快速
+更改可视化的外观。 完整的主题列表在
+处可用，网址为 [https://ggplot2.tidyverse.org/reference/ggtheme.html](https://ggplot2.tidyverse.org/reference/ggtheme.html)。
+`theme_minimal()` 和 `theme_light()` 很流行，而 `theme_void()`
+可以作为创建新手工主题的起点。
 
-The [ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
-package provides a wide variety of options (including an Excel 2003
-theme). The ggplot2 provides a list of
-packages that extend the capabilities of `ggplot2`, including additional
-themes.
+[ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
+包提供了各种各样的选项（包括 Excel 2003
+主题）。 ggplot2 提供了扩展 `ggplot2` 功能的
+软件包列表，包括额外的
+主题。
 
-## Customisation
+## 定制
 
-Let's come back to the faceted plot of mean expression by time and gene,
-colored by sex.
+让我们回到按时间和基因划分的平均表达的多面图，
+按性别着色。
 
-Take a look at the ggplot2,
-and think of ways you could improve the plot.
+查看 ggplot2,
+并思考如何改进图表。
 
-Now, we can change names of axes to something more informative than
-'time' and 'mean\_exp', and add a title to the figure:
+现在，我们可以将轴的名称更改为比
+'time' 和 'mean\_exp' 更具信息量的名称，并为图形添加标题：
 
 ```{r mean_exp-time-with-right-labels, cache=FALSE, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -748,8 +750,7 @@ ggplot(data = mean_exp_by_time_sex,
        y = "Mean gene expression")
 ```
 
-The axes have more informative names, but their readability can be
-improved by increasing the font size:
+轴具有更多信息名称，但可以通过增加字体大小来提高其可读性：
 
 ```{r mean_exp-time-with-right-labels-xfont-size, cache=FALSE, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -764,12 +765,12 @@ ggplot(data = mean_exp_by_time_sex,
   theme(text = element_text(size = 16))
 ```
 
-Note that it is also possible to change the fonts of your plots. If you
-are on Windows, you may have to install the .
+请注意，您也可以更改图表的字体。 如果你
+使用的是 Windows，则可能必须安装 。
 
-We can further customize the color of x- and y-axis text, the color of
-the grid, etc. We can also for example move the legend to the top by
-setting `legend.position` to `"top"`.
+我们可以进一步自定义 x 轴和 y 轴文本的颜色、
+网格的颜色等。 例如，我们还可以通过
+将“legend.position”设置为“top”将图例移动到顶部。
 
 ```{r mean_exp-time-with-theme, cache=FALSE, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -788,10 +789,10 @@ ggplot(data = mean_exp_by_time_sex,
         legend.position = "top")
 ```
 
-If you like the changes you created better than the default theme, you
-can save them as an object to be able to easily apply them to other
-plots you may create. Here is an example with the histogram we have
-previously created.
+如果您比默认主题更喜欢您所做的更改，您可以
+将它们保存为对象，以便能够轻松地将它们应用到您可能创建的其他
+图中。 下面是我们之前创建的
+直方图的一个例子。
 
 ```{r mean_exp-time-with-right-labels-xfont, cache=FALSE, purl=TRUE}
 blue_theme <- theme(axis.text.x = element_text(colour = "royalblue4",
@@ -808,26 +809,26 @@ ggplot(rna, aes(x = expression_log)) +
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## 挑战
 
-With all of this information in hand, please take another five minutes
-to either improve one of the plots generated in this exercise or
-create a beautiful graph of your own. Use the RStudio ggplot2
-for inspiration. Here are some ideas:
+掌握了所有这些信息后，请再花五分钟
+来改进本练习中生成的其中一个图表或
+创建您自己的精美图表。 使用 RStudio ggplot2
+获取灵感。 以下是一些想法：
 
-- See if you can change the thickness of the lines.
-- Can you find a way to change the name of the legend? What about
- its labels? (hint: look for a ggplot function starting with
- `scale_`)
-- Try using a different color palette or manually specifying the
- colors for the lines (see
- [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\\(ggplot2\\)/)).
+- 看看是否可以改变线条的粗细。
+- 你能找到办法改变传奇的名字吗？ 那么
+ 它的标签怎么样？ （提示：寻找以
+ `scale_` 开头的 ggplot 函数）
+- 尝试使用不同的调色板或手动指定线条的
+ 颜色（参见
+ [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\\(ggplot2\\)/))。
 
 :::::::::::::::  solution
 
-## Solution
+## 解决方案
 
-For example, based on this plot:
+例如，基于此图：
 
 ```{r, purl=TRUE}
 ggplot(data = mean_exp_by_time_sex,
@@ -838,7 +839,7 @@ ggplot(data = mean_exp_by_time_sex,
   theme(panel.grid = element_blank())
 ```
 
-We can customize it the following ways:
+我们可以通过以下方式定制它：
 
 ```{r, purl=TRUE}
 # change the thickness of the lines
@@ -881,30 +882,29 @@ ggplot(data = mean_exp_by_time_sex,
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Composing plots
+## 创作情节
 
-Faceting is a great tool for splitting one plot into multiple subplots,
-but sometimes you may want to produce a single figure that contains
-multiple independent plots, i.e. plots that are based on different
-variables or even different data frames.
+分面是一种很好的工具，可以将一个图分割成多个子图，
+但有时您可能想要生成一个包含
+多个独立图的单个图形，即基于不同
+变量甚至不同数据框的图。
 
-Let's start by creating the two plots that we want to arrange next to
-each other:
+让我们首先创建两个想要排列在
+旁边的图：
 
-The first graph counts the number of unique genes per chromosome. We
-first need to reorder the levels of `chromosome_name` and filter the
-unique genes per chromosome. We also change the scale of the y-axis to a
-log10 scale for better readability.
+第一个图表计算了每个染色体上独特基因的数量。 我们
+首先需要重新排序 `chromosome_name` 的级别，并过滤每个染色体上的
+个独特基因。 我们还将 y 轴的比例更改为
+log10 比例，以提高可读性。
 
 ```{r sub1, purl=TRUE}
 rna$chromosome_name <- factor(rna$chromosome_name,
                                levels = c(1:19,"X","Y"))
 
-count_gene_chromosome <- rna |>
-  select(chromosome_name, gene) |>
-  distinct() |> ggplot() +
+count_gene_chromosome <- rna %>% select(chromosome_name, gene) %>%
+  distinct() %>% ggplot() +
   geom_bar(aes(x = chromosome_name), fill = "seagreen",
            position = "dodge", stat = "count") +
   labs(y = "log10(n genes)", x = "chromosome") +
@@ -913,8 +913,8 @@ count_gene_chromosome <- rna |>
 count_gene_chromosome
 ```
 
-Below, we also remove the legend altogether by setting the
-`legend.position` to `"none"`.
+下面，我们还通过将
+`legend.position` 设置为 `"none"` 来完全删除图例。
 
 ```{r sub2, purl=TRUE}
 exp_boxplot_sex <- ggplot(rna, aes(y=expression_log, x = as.factor(time),
@@ -926,11 +926,11 @@ exp_boxplot_sex <- ggplot(rna, aes(y=expression_log, x = as.factor(time),
 exp_boxplot_sex
 ```
 
-The [**patchwork**](https://github.com/thomasp85/patchwork) package
-provides an elegant approach to combining figures using the `+` to
-arrange figures (typically side by side). More specifically the `|`
-explicitly arranges them side by side and `/` stacks them on top of each
-other.
+[**patchwork**](https://github.com/thomasp85/patchwork) 包
+提供了一种优雅的方法来组合图形，使用 `+` 来
+排列图形（通常是并排）。 更具体地说，`|`
+明确地将它们并排排列，而 `/` 将它们堆叠在彼此的顶部
+。
 
 ```{r install-patchwork, message=FALSE, eval=FALSE, purl=TRUE}
 install.packages("patchwork")
@@ -943,14 +943,14 @@ count_gene_chromosome + exp_boxplot_sex
 ```
 
 ```{r patchwork2, purl=TRUE}
-count_gene_chromosome / exp_boxplot_sex
+计数基因染色体 / 指数箱线图性别
 ```
 
-We can combine further control the layout of the final composition with
-`plot_layout` to create more complex layouts:
+我们可以结合
+`plot_layout` 进一步控制最终构图的布局，以创建更复杂的布局：
 
 ```{r patchwork3, purl=TRUE}
-count_gene_chromosome + exp_boxplot_sex + plot_layout(ncol = 1)
+计数基因染色体 + 指数箱线图性别 + 绘图布局(ncol = 1)
 ```
 
 ```{r patchwork4, purl=TRUE}
@@ -960,7 +960,7 @@ count_gene_chromosome +
  plot_layout(ncol = 1)
 ```
 
-The last plot can also be created using the `|` and `/` composers:
+最后一个图也可以使用 `|` 和 `/` 组合器来创建：
 
 ```{r patchwork5, purl=TRUE}
 count_gene_chromosome /
@@ -968,15 +968,15 @@ count_gene_chromosome /
  exp_boxplot_sex
 ```
 
-Learn more about `patchwork` on its
-[webpage](https://patchwork.data-imaginist.com/) or in this
-[video](https://www.youtube.com/watch?v=0m4yywqNPVY).
+了解有关 `patchwork` 的更多信息，请访问其
+[网页](https://patchwork.data-imaginist.com/) 或此
+[视频](https://www.youtube.com/watch?v=0m4yywqNPVY)。
 
-Another option is the **`gridExtra`** package that allows to combine
-separate ggplots into a single figure using `grid.arrange()`:
+另一个选项是 **`gridExtra`** 包，它允许使用 `grid.arrange()` 将
+个单独的 ggplots 组合成一个图形：
 
 ```{r install-gridextra, message=FALSE, eval=FALSE, purl=TRUE}
-install.packages("gridExtra")
+安装.包(“gridExtra”)
 ```
 
 ```{r gridarrange-example, message=FALSE, fig.width=10, purl=TRUE}
@@ -984,22 +984,22 @@ library("gridExtra")
 grid.arrange(count_gene_chromosome, exp_boxplot_sex, ncol = 2)
 ```
 
-In addition to the `ncol` and `nrow` arguments, used to make simple
-arrangements, there are tools for constructing more complex
-layouts.
+除了用于进行简单
+排列的 `ncol` 和 `nrow` 参数之外，还有用于 构建更复杂的
+布局 的工具。
 
-## Exporting plots
+## 导出地块
 
-After creating your plot, you can save it to a file in your favorite
-format. The Export tab in the **Plot** pane in RStudio will save your
-plots at low resolution, which will not be accepted by many journals and
-will not scale well for posters.
+创建图表后，您可以将其保存为您喜欢的
+格式的文件。 RStudio 中 **Plot** 窗格中的“导出”选项卡将以低分辨率保存您的
+图，这种图不会被许多期刊接受，并且
+不适合作为海报缩放。
 
-Instead, use the `ggsave()` function, which allows you easily change the
-dimension and resolution of your plot by adjusting the appropriate
-arguments (`width`, `height` and `dpi`).
+相反，使用 `ggsave()` 函数，它允许您通过调整适当的
+参数（`width`、`height` 和 `dpi`）轻松更改图的
+维度和分辨率。
 
-Make sure you have the `fig_output/` folder in your working directory.
+确保你的工作目录中有“fig_output/”文件夹。
 
 ```{r ggsave-example, eval=FALSE, purl=TRUE}
 my_plot <- ggplot(data = mean_exp_by_time_sex,
@@ -1026,33 +1026,33 @@ ggsave("fig_output/combo_plot_chromosome_sex.png", combo_plot,
        width = 10, dpi = 300)
 ```
 
-Note: The parameters `width` and `height` also determine the font size
-in the saved plot.
+注意：参数“width”和“height”也决定了保存的图中的字体大小
+。
 
 ```{r final-challenge, eval=FALSE, purl=TRUE, echo=FALSE}
-### Final plotting challenge:
-##  With all of this information in hand, please take another five
-##  minutes to either improve one of the plots generated in this
-##  exercise or create a beautiful graph of your own. Use the RStudio
-##  ggplot2 cheat sheet for inspiration:
-##  https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf
+### 最终绘图挑战：
+## 掌握所有这些信息后，请再花五
+## 分钟来改进此
+## 练习中生成的图表之一，或创建您自己的精美图表。使用 RStudio
+## ggplot2 备忘单获取灵感：
+## https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf
 ```
 
-## Other packages for visualisation
+## 其他可视化包
 
-`ggplot2` is a very powerful package that fits very nicely in our _tidy
-data_ and _tidy tools_ pipeline. There are other visualization packages
-in R that shouldn't be ignored.
+`ggplot2` 是一个非常强大的包，非常适合我们的 _tidy
+数据_ 和 _tidy 工具_ 管道。 R 中还有其他可视化包
+不容忽视。
 
-### Base graphics
+### 基础图形
 
-The default graphics system that comes with R, often called _base R
-graphics_ is simple and fast. It is based on the _painter's or canvas
-model_, where different output are directly overlaid on top of each
-other (see figure @ref(fig:paintermodel)). This is a fundamental
-difference with `ggplot2` (and with `lattice`, described below), that
-returns dedicated objects, that are rendered on screen or in a file, and
-that can even be updated.
+R 自带的默认图形系统通常称为 _base R
+graphics_ ，简单而快速。 它基于_画家或画布
+模型_，其中不同的输出直接叠加在每个
+其他输出之上（参见图@ref(fig:paintermodel)）。 这是与 `ggplot2`（以及下面描述的 `lattice`）的一个根本的
+区别，即
+返回在屏幕或文件中呈现的专用对象，以及
+甚至可以更新。
 
 ```{r paintermodel, fig.width=12, fig.height=4, fig.cap="Successive layers added on top of each other."}
 par(mfrow = c(1, 3))
@@ -1066,11 +1066,11 @@ abline(h = 10, col = "red")
 rect(5, 5, 15, 15, lwd = 3)
 ```
 
-Another main difference is that base graphics' plotting function try to
-do _the right_ thing based on their input type, i.e. they will adapt
-their behaviour based on the class of their input. This is again very
-different from what we have in `ggplot2`, that only accepts dataframes
-as input, and that requires plots to be constructed bit by bit.
+另一个主要区别是，基本图形的绘图功能会尝试根据其输入类型
+做_正确_的事情，即，它们将根据其输入的类别调整
+其行为。 这与我们在 `ggplot2` 中所用的又非常
+不同，它仅接受数据框
+作为输入，并且需要一点一点地构建图表。
 
 ```{r plotmethod, fig.width=8, fig.height=8, fig.cap="Plotting boxplots (top) and histograms (bottom) vectors (left) or a matrices (right)."}
 par(mfrow = c(2, 2))
@@ -1082,24 +1082,24 @@ hist(rnorm(100))
 hist(matrix(rnorm(100), ncol = 10))
 ```
 
-The out-of-the-box approach in base graphics can be very efficient for
-simple, standard figures, that can be produced very quickly with a
-single line of code and a single function such as `plot`, or `hist`, or
-`boxplot`, ... The defaults are however not always the most appealing
-and tuning of figures, especially when they become more complex (for
-example to produce facets), can become lengthy and cumbersome.
+基础图形中的开箱即用方法对于
+简单标准图形非常有效，可以使用
+单行代码和一个函数（例如`plot`，`hist`，或
+`boxplot`）非常快速地生成... 然而，默认值并不总是最吸引人的
+，并且图形的调整，尤其是当它们变得更加复杂时（例如
+产生方面），可能会变得冗长而繁琐。
 
-### The lattice package
+### lattice 包
 
-The **`lattice`** package is similar to `ggplot2` in that is uses
-dataframes as input, returns graphical objects and supports faceting.
+**`lattice`** 包与 `ggplot2` 类似，它使用
+数据框作为输入，返回图形对象并支持分面。
 `lattice` however isn't based on the grammar of graphics and has a more
 convoluted interface.
 
-A good reference for the `lattice` package is @latticebook.
+`lattice` 包的一个很好的参考是@latticebook。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Visualization in R
+- R 中的可视化
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

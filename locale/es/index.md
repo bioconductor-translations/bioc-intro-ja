@@ -1,17 +1,17 @@
 ---
-permalink: index.html
-site: sandpaper::sandpaper_site
+permalink: índice.html
+site: papel de lija::sitio_papel de lija
 ---
 
-## About this course
+## Acerca de este curso
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+::::::::::::::::::::::::::::::::::::::::::::::: prerrequisito
 
-## Prerequisites
+## Requisitos previos
 
-- Familiarity with tabular data and spreadsheets.
+- Familiaridad con datos tabulares y hojas de cálculo.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 

@@ -8,7 +8,7 @@ exercises: 0
 ```{r, include=FALSE}
 ```
 
-::::::::::::::::::::::::::::::::::::::: objectives
+
 
 - Descreva a finalidade dos painéis do RStudio: Script, Console, Environment e Plots.
 - Organise files and directories for a set of analyses as an R project, and understand the purpose of the working directory.

@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Introduction to R
+title: R の紹介
 teaching: 60
 exercises: 60
 ---
@@ -10,98 +10,98 @@ exercises: 60
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Define the following terms as they relate to R: object, assign, call, function, arguments, options.
-- Assign values to objects in R.
-- Learn how to _name_ objects
-- Use comments to inform script.
-- Solve simple arithmetic operations in R.
-- Call functions and use arguments to change their default options.
-- Inspect the content of vectors and manipulate their content.
-- Subset and extract values from vectors.
-- Analyze vectors with missing data.
+- R に関連する次の用語を定義します: オブジェクト、代入、呼び出し、関数、引数、オプション。
+- R のオブジェクトに値を割り当てます。
+- オブジェクトに _名前を付ける_方法を学ぶ
+- コメントを使用してスクリプトに情報を与えます。
+- R で単純な算術演算を解きます。
+- 関数を呼び出し、引数を使用してデフォルトのオプションを変更します。
+- ベクトルの内容を検査し、その内容を操作します。
+- ベクトルから値をサブセット化して抽出します。
+- データが欠落しているベクトルを解析します。
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- First commands in R
+- R の最初のコマンド
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-> このエピソードは、Data Carpentriesの_Data Analysis and
-> Visualisation in R for Ecologists_レッスンに基づいています。
+> This episode is based on the Data Carpentries's _Data Analysis and
+> Visualisation in R for Ecologists_ lesson.
 
-## Creating objects in R
+## R でオブジェクトを作成する
 
-You can get output from R simply by typing math in the console:
+コンソールに math と入力するだけで、R から出力を取得できます。
 
 ```{r, purl=TRUE}
 3 + 5
 12 / 7
 ```
 
-However, to do useful and interesting things, we need to assign _values_ to
-_objects_. To create an object, we need to give it a name followed by the
-assignment operator `<-`, and the value we want to give it:
+ただし、便利で興味深いことを行うには、_値_を
+_オブジェクト_ に割り当てる必要があります。 オブジェクトを作成するには、オブジェクトに名前を付け、その後に
+代入演算子 `<-` と、それに付けたい値を付ける必要があります。
 
 ```{r, purl=TRUE}
 weight_kg <- 55
 ```
 
-`<-` is the assignment operator. It assigns values on the right to
-objects on the left. So, after executing `x <- 3`, the value of `x` is
-`3`. The arrow can be read as 3 **goes into** `x`.  For historical
-reasons, you can also use `=` for assignments, but not in every
-context. Because of the
-[slight differences](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
-in syntax, it is good practice to always use `<-` for assignments.
+`<-` は代入演算子です。 右側の値を左側の
+個のオブジェクトに割り当てます。 したがって、「x <- 3」を実行すると、「x」の値は
+`3` になります。 矢印は 3 **が `x` に入る** と読むことができます。  歴史的
+理由により、代入に `=` を使用することもできますが、
+のコンテキストで使用できるわけではありません。 構文に
+わずかな違い](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
+があるため、常に `< を使用することをお勧めします。 -` 割り当て用。
 
-In RStudio, typing <kbd>Alt</kbd> + <kbd>\-</kbd> (push <kbd>Alt</kbd>
-at the same time as the <kbd>\-</kbd> key) will write `<-` in a single
-keystroke in a PC, while typing <kbd>Option</kbd> + <kbd>\-</kbd> (push <kbd>Option</kbd> at the same time as the <kbd>\-</kbd> key) does the
-same in a Mac.
+RStudio では、 <kbd>オプション</kbd> を入力しながら、 <kbd>Alt</kbd> + <kbd>\-</kbd> を入力すると ( <kbd>\-</kbd> キーと同時に <kbd>Alt</kbd>
+を押すと)、PC で
+1 回のキーストロークで `<-` が書き込まれます。 + <kbd>\-</kbd> ( <kbd>オプション</kbd> <kbd>\-</kbd> キーと同時に押す) は、Mac でも
+と同じことを行います。
 
-### Naming variables
+### 変数に名前を付ける
 
-Objects can be given any name such as `x`, `current_temperature`, or
-`subject_id`. You want your object names to be explicit and not too
-long. They cannot start with a number (`2x` is not valid, but `x2`
-is). R is case sensitive (e.g., `weight_kg` is different from
-`Weight_kg`). There are some names that cannot be used because they
-are the names of fundamental functions in R (e.g., `if`, `else`,
-`for`, see
-[here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
-for a complete list). In general, even if it's allowed, it's best to
-not use other function names (e.g., `c`, `T`, `mean`, `data`, `df`,
-`weights`). If in doubt, check the help to see if the name is already
-in use. It's also best to avoid dots (`.`) within an object name as in
-`my.dataset`. There are many functions in R with dots in their names
-for historical reasons, but because dots have a special meaning in R
-(for methods) and other programming languages, it's best to avoid
-them. It is also recommended to use nouns for object names, and verbs
-for function names. It's important to be consistent in the styling of
-your code (where you put spaces, how you name objects, etc.). Using a
-consistent coding style makes your code clearer to read for your
-future self and your collaborators. In R, some popular style guides
-are [Google's](https://google.github.io/styleguide/Rguide.xml), the
-[tidyverse's](https://style.tidyverse.org/) style and the Bioconductor
-style
-guide. The
-tidyverse's is very comprehensive and may seem overwhelming at
-first. You can install the
-[**`lintr`**](https://github.com/jimhester/lintr) package to
-automatically check for issues in the styling of your code.
+オブジェクトには、「x」、「current_temperature」、または「subject_id」などの任意
+名前を付けることができます。 オブジェクト名は明示的で、長
+ないようにしたいと考えています。 数字で始めることはできません (「2x」は無効ですが、「x2」
+は有効です)。 R では大文字と小文字が区別されます (たとえば、`weight_kg` は
+の `Weight_kg` とは異なります)。 R の基本的な関数の名前であるため、使用でき
+名前が
+かあります (例: `if`、`else`、
+`for`。2 [こちら](https://stat.ethz.ch)を参照)完全なリストについては、/R-manual/R-devel/library/base/html/Reserved.html)
+)。 一般に、たとえ許可されていても、他の関数名 (例: `c`、`T`、`mean`、`data`、`df`、
+`weights`) は使用しないことが
+です。 疑問がある場合は、ヘルプを参照して、その名前がすでに
+で使用されているかどうかを確認してください。 また
+`my.dataset` のように、オブジェクト名内にドット (`.`) を使用しないことも最善です。 R には歴史的な理由から名前にドットが含まれる関数が多数あります
+が、R
+(メソッド) や他のプログラミング言語ではドットが特別な意味を持っているため、ドットは避けるのが最善です
+。 オブジェクト名には名詞を使用し、関数名には動詞
+を使用することもお勧めします。
+のスタイル (スペースを入れる場所、オブジェクトの名前など) に一貫性を持たせることが重要です。
+コーディング スタイルを使用すると、
+の自分や共同作業者にとって、コードがより明確に読みやすくなります。 R では、人気のあるスタイル ガイド
+には、[Google の](https://google.github.io/styleguide/Rguide.xml)、
+[tidyverse の](https://style.tidyverse.org/) スタイル、およびBioconductor
+スタイル
+ガイド。
+Tidyverse は非常に包括的であり、最初は
+では圧倒されるように思えるかもしれません。
+[**`lintr`**](https://github.com/jimhester/lintr) パッケージを
+にインストールすると、コードのスタイルの問題が自動的にチェックされます。
 
-> **Objects vs. variables**: What are known as `objects` in `R` are
-> known as `variables` in many other programming languages. Depending
-> on the context, `object` and `variable` can have drastically
-> different meanings. However, in this lesson, the two words are used
-> synonymously. For more information
-> [see here.](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
+> **オブジェクトと変数**: 「R」で「オブジェクト」として知られているものは、他の多くのプログラミング言語では「変数」として知られて
+> ます。
+> に応じて、「オブジェクト」と「変数」は
+> に異なる意味を持つ可能性があります。 ただし、このレッスンでは、2 つの単語は
+> 的に使用されます。 詳細については、
+> [ここを参照してください。](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
-When assigning a value to an object, R does not print anything. You
-can force R to print the value by using parentheses or by typing the
-object name:
+オブジェクトに値を割り当てるとき、R は何も出力しません。 かっこを使用するか
+名を入力することで、
+に値を強制的に出力させることができます。
 
 ```{r, purl=TRUE}
 weight_kg <- 55    # 何も出力しません
@@ -109,29 +109,29 @@ weight_kg <- 55    # 何も出力しません
 weight_kg          # オブジェクトの名前を入力しても同様に出力されます
 ```
 
-Now that R has `weight_kg` in memory, we can do arithmetic with it. For
-instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):
+R のメモリに「weight_kg」があるので、それを使って算術演算を行うことができます。
+、この重量をポンドに変換したい場合があります (ポンドでの重量は kg での重量の 2.2 倍です)。
 
 ```{r, purl=TRUE}
 2.2 * weight_kg
 ```
 
-We can also change an object's value by assigning it a new one:
+オブジェクトに新しい値を割り当てることで、オブジェクトの値を変更することもできます。
 
 ```{r, purl=TRUE}
 weight_kg <- 57.5
 2.2 * weight_kg
 ```
 
-This means that assigning a value to one object does not change the values of
-other objects  For example, let's store the animal's weight in pounds in a new
-object, `weight_lb`:
+これは、
+つのオブジェクトに値を割り当てても、他のオブジェクトの値は変更されないことを意味します。たとえば、動物の体重をポンド単位で新しい
+オブジェクト `weight_lb` に保存してみましょう。
 
 ```{r, purl=TRUE}
 weight_lb <- 2.2 * weight_kg
 ```
 
-and then change `weight_kg` to 100.
+次に「weight_kg」を 100 に変更します。
 
 ```{r}
 weight_kg <- 100
@@ -139,31 +139,30 @@ weight_kg <- 100
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-What do you think is the current content of the object `weight_lb`?
-126\.5 or 220?
+オブジェクト「weight_lb」の現在の内容は何だと思いますか?
+126\.5 それとも 220?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-## Comments
+## コメント
 
-The comment character in R is `#`, anything to the right of a `#` in a
-script will be ignored by R. It is useful to leave notes, and
-explanations in your scripts.
+のコメント文字は `#` です。0 スクリプトの `#` の右側にあるものはすべて R によって無視されます。スクリプトにメモ
+説明を残すと便利です。
 
-RStudio makes it easy to comment or uncomment a paragraph: after
-selecting the lines you want to comment, press at the same time on
-your keyboard <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>. If
-you only want to comment out one line, you can put the cursor at any
-location of that line (i.e. no need to select the whole line), then
-press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
+RStudio では、段落のコメントまたはコメント解除が簡単に行えます。
+コメントしたい行を選択した後、
+キーボード <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>を同時に押します。
+の場合、1 行だけをコメントアウトしたい場合は、その行の任意
+位置にカーソルを置きます (つまり、行全体を選択する必要はありません)。その後
+Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd><kbd>押します。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## チャレンジ
 
-What are the values after each statement in the following?
+次の各ステートメントの後の値は何ですか?
 
 ```{r, purl=TRUE}
 mass <- 47.5            # 質量?
@@ -173,51 +172,51 @@ age  <- age - 20        # 年齢?
 mass_index <- mass/age  # 質量指数?
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-## Functions and their arguments
+## 関数とその引数
 
-Functions are "canned scripts" that automate more complicated sets of commands
-including operations assignments, etc. Many functions are predefined, or can be
-made available by importing R _packages_ (more on that later). A function
-usually gets one or more inputs called _arguments_. Functions often (but not
-always) return a _value_. A typical example would be the function `sqrt()`. The
-input (the argument) must be a number, and the return value (in fact, the
-output) is the square root of that number. Executing a function ('running it')
-is called _calling_ the function. An example of a function call is:
+関数は、操作の割り当て
+を含む、より複雑なコマンド セットを自動化する「定型スクリプト」です。 多くの関数は事前定義されているか、R _パッケージ_ をインポートすることで
+可能になります (詳細は後ほど)。 関数
+は通常、_arguments_ と呼ばれる 1 つ以上の入力を取得します。 関数は多くの場合 (常に
+ではありませんが) _値_ を返します。 典型的な例は関数 `sqrt()` です。
+入力 (引数) は数値でなければならず、戻り値 (実際には
+出力) はその数値の平方根です。 関数の実行 (「実行中」)
+は関数の _呼び出し_ と呼ばれます。 関数呼び出しの例は次のとおりです。
 
 ```{r, eval=FALSE, purl=FALSE}
 b <- sqrt(a)
 ```
 
-Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
-calculates the square root, and returns the value which is then assigned to
-the object `b`. This function is very simple, because it takes just one argument.
+ここでは、`a` の値が `sqrt()` 関数に与えられ、`sqrt()` 関数は
+平方根を計算し、その値をオブジェクト \`
+に代入して返します。 この関数は引数を 1 つだけ取るため、非常に単純です。
 
-The return 'value' of a function need not be numerical (like that of `sqrt()`),
-and it also does not need to be a single item: it can be a set of things, or
-even a dataset. We'll see that when we read data files into R.
+関数の戻り値「値」は数値 (`sqrt()` のような) である必要はなく、
+である必要もありません。また、単一の項目である必要もありません。一連のものや
+、さらにはデータセットでも構いません。 データ ファイルを R に読み込むと、それがわかります。
 
-Arguments can be anything, not only numbers or filenames, but also other
-objects. Exactly what each argument means differs per function, and must be
-looked up in the documentation (see below). Some functions take arguments which
-may either be specified by the user, or, if left out, take on a _default_ value:
-these are called _options_. Options are typically used to alter the way the
-function operates, such as whether it ignores 'bad values', or what symbol to
-use in a plot.  However, if you want something specific, you can specify a value
-of your choice which will be used instead of the default.
+引数には、数値やファイル名だけでなく、他の
+も含めることができます。 各引数の正確な意味は関数ごとに異なるため、ドキュメントで調べて
+にする必要があります (下記を参照)。 一部の関数は引数を取ります
+はユーザーによって指定されるか、指定されなかった場合は _デフォルト_ 値を取ります:
+これらは _オプション_ と呼ばれます。 オプションは通常、「不正な値」を無視するかどうか、プロットでどのような記号を使用
+かなど、
+関数の動作方法を変更するために使用されます。  ただし、特定の値が必要な場合は、デフォルトの代わりに使用される値
+を選択して指定できます。
 
-Let's try a function that can take multiple arguments: `round()`.
+複数の引数を取ることができる関数 `round()` を試してみましょう。
 
 ```{r, results="show", purl=TRUE}
 round(3.14159)
 ```
 
-Here, we've called `round()` with just one argument, `3.14159`, and it has
-returned the value `3`.  That's because the default is to round to the nearest
-whole number. If we want more digits we can see how to do that by getting
-information about the `round` function.  We can use `args(round)` or look at the
-help for this function using `?round`.
+ここでは、1 つの引数 `3.14159` を指定して `round()` を呼び出しましたが、
+が値 `3` を返しました。  これは、デフォルトでは最も近い
+整数に丸められるためです。 さらに多くの桁が必要な場合は、「round」関数に関する
+情報を取得することでその方法がわかります。  `args(round)` を使用するか、`?round` を使用して
+関数のヘルプを参照することができます。
 
 ```{r, results="show", purl=TRUE}
 args(round)
@@ -227,86 +226,85 @@ args(round)
 ?round
 ```
 
-We see that if we want a different number of digits, we can
-type `digits=2` or however many we want.
+別の桁数が必要な場合は、`digits=2` または必要な桁数を入力
+ことがわかります。
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, digits = 2)
 ```
 
-If you provide the arguments in the exact same order as they are defined you
-don't have to name them:
+定義されているのとまったく同じ順序で引数を指定する場合は
+に名前を付ける必要はありません。
 
 ```{r, results="show", purl=TRUE}
 round(3.14159, 2)
 ```
 
-And if you do name the arguments, you can switch their order:
+引数に名前を付けた場合は、その順序を入れ替えることができます。
 
 ```{r, results="show", purl=TRUE}
 round(digits = 2, x = 3.14159)
 ```
 
-It's good practice to put the non-optional arguments (like the number you're
-rounding) first in your function call, and to specify the names of all optional
-arguments.  If you don't, someone reading your code might have to look up the
-definition of a function with unfamiliar arguments to understand what you're
-doing. By specifying the name of the arguments you are also safeguarding
-against possible future changes in the function interface, which may
-potentially add new arguments in between the existing ones.
+関数呼び出しの最初にオプションではない引数 (
+四捨五入する数値など) を置き、すべてのオプションの
+引数の名前を指定することをお勧めします。  そうしないと、コードを読む人が、
+をしているのかを理解するために、なじみのない引数を持つ関数の定義を調べなければなら
+可能性があります。 引数の名前を指定することで、関数インターフェースの将来の変更 (既存の引数の間に
+引数が追加される可能性) から
+することもできます。
 
-## Vectors and data types
+## ベクトルとデータ型
 
-A vector is the most common and basic data type in R, and is pretty much
-the workhorse of R. A vector is composed by a series of values, such as
-numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of animal weights and assign
-it to a new object `weight_g`:
+ベクトルは R で最も一般的かつ基本的なデータ型であり、ほぼ R の主力である
+です。ベクトルは、
+数字や文字などの一連の値で構成されます。
+の `c()` 関数を使用して、一連の値をベクトルに割り当てることができます。 たとえば、動物の体重のベクトルを作成し、それを新しいオブジェクト `weight_g` に
+に割り当てることができます。
 
 ```{r, purl=TRUE}
 weight_g <- c(50, 60, 65, 82)
 weight_g
 ```
 
-A vector can also contain characters:
+ベクトルには文字も含めることができます。
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein")
 molecules
 ```
 
-The quotes around "dna", "rna", etc. are essential here. Without the
-quotes R will assume there are objects called `dna`, `rna` and
-`protein`. As these objects don't exist in R's memory, there will be
-an error message.
+ここでは「dna」や「rna」などの引用符が重要です。 引用符
+がないと、R は `dna`、`rna`、および
+`protein` と呼ばれるオブジェクトがあると想定します。 これらのオブジェクトは R のメモリに存在しないため、エラー メッセージが
+されます。
 
-There are many functions that allow you to inspect the content of a
-vector. `length()` tells you how many elements are in a particular vector:
+ベクトルの内容を検査できる関数が多数あります。 `length()` は、特定のベクトルに含まれる要素の数を示します。
 
 ```{r, purl=TRUE}
 length(weight_g)
 length(molecules)
 ```
 
-An important feature of a vector, is that all of the elements are the
-same type of data.  The function `class()` indicates the class (the
-type of element) of an object:
+ベクトルの重要な特徴は、すべての要素が
+タイプのデータであることです。  関数 `class()` は、オブジェクトのクラス (
+型の要素) を示します。
 
 ```{r, purl=TRUE}
 class(weight_g)
 class(molecules)
 ```
 
-The function `str()` provides an overview of the structure of an
-object and its elements. It is a useful function when working with
-large and complex objects:
+関数 `str()` は、
+オブジェクトとその要素の構造の概要を提供します。 これは、
+て複雑なオブジェクトを扱う場合に便利な関数です。
 
 ```{r, purl=TRUE}
 str(weight_g)
 str(molecules)
 ```
 
-You can use the `c()` function to add other elements to your vector:
+`c()` 関数を使用して、ベクトルに他の要素を追加できます。
 
 ```{r}
 weight_g <- c(weight_g, 90) # ベクトルの最後に追加
@@ -314,59 +312,59 @@ weight_g <- c(30, weight_g) # ベクトルの先頭に追加
 weight_g
 ```
 
-In the first line, we take the original vector `weight_g`, add the
-value `90` to the end of it, and save the result back into
-`weight_g`. Then we add the value `30` to the beginning, again saving
-the result back into `weight_g`.
+最初の行では、元のベクトル `weight_g` を取得し、その末尾に
+値 `90` を追加し、結果を
+`weight_g` に保存します。 次に、値 `30` を先頭に追加し、結果を再び
+として `weight_g` に保存します。
 
-We can do this over and over again to grow a vector, or assemble a
-dataset.  As we program, this may be useful to add results that we are
-collecting or calculating.
+これを何度も繰り返してベクトルを成長させたり、
+データセットを組み立てたりすることができます。  これは、プログラムするときに、
+または計算している結果を追加するのに役立つ場合があります。
 
-An **atomic vector** is the simplest R **data type** and is a linear
-vector of a single type. Above, we saw 2 of the 6 main **atomic
-vector** types that R uses: `"character"` and `"numeric"` (or
-`"double"`). These are the basic building blocks that all R objects
-are built from. The other 4 **atomic vector** types are:
+**アトミック ベクトル**は最も単純な R **データ型**であり、単一型の線形
+ベクトルです。 上では、R が使用する 6 つの主な **アトミック
+ベクトル** タイプのうち 2 つ、つまり `"character"` と `"numeric"` (または
+`"double"`) を見てきました。 これらは、すべての R オブジェクト
+が構築される基本的な構成要素です。 他の 4 つの **原子ベクトル** タイプは次のとおりです。
 
-- `"logical"` for `TRUE` and `FALSE` (the boolean data type)
-- `"integer"` for integer numbers (e.g., `2L`, the `L` indicates to R
-  that it's an integer)
-- `"complex"` to represent complex numbers with real and imaginary
-  parts (e.g., `1 + 4i`) and that's all we're going to say about them
-- `"raw"` for bitstreams that we won't discuss further
+- `TRUE` および `FALSE` の場合は `"logical"` (ブール データ型)
+- 整数の場合は `"integer"` (たとえば、`2L`、`L` は R
+  にそれが整数であることを示します)
+- `"complex"` は、実数と虚数の
+  部分を持つ複素数を表します (例: 1 + 4i)。これについて説明するのはこれですべてです。
+- ビットストリームの「raw」\` (これ以上は説明しません)
 
-You can check the type of your vector using the `typeof()` function
-and inputting your vector as the argument.
+`typeof()` 関数
+を使用し、ベクトルを引数として入力することで、ベクトルの型をチェックできます。
 
-Vectors are one of the many **data structures** that R uses. Other
-important ones are lists (`list`), matrices (`matrix`), data frames
-(`data.frame`), factors (`factor`) and arrays (`array`).
+ベクトルは、R が使用する多くの **データ構造** の 1 つです。 その他
+重要なものは、リスト (`list`)、行列 (`matrix`)、データ フレーム
+(`data.frame`)、因子 (`factor`)、および配列 (`array`) です。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-We've seen that atomic vectors can be of type character, numeric (or
-double), integer, and logical. But what happens if we try to mix
-these types in a single vector?
+アトミック ベクトルの型は、文字、数値 (または
+double)、整数、および論理型であることがわかりました。 しかし、これらのタイプを
+つのベクトルに混在させようとするとどうなるでしょうか?
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
-R implicitly converts them to all be the same type
+R はそれらをすべて同じ型に暗黙的に変換します。
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-What will happen in each of these examples? (hint: use `class()` to
-check the data type of your objects and type in their names to see what happens):
+これらのそれぞれの例では何が起こるでしょうか? (ヒント: `class()` を使用してオブジェクトのデータ型を確認
+、名前を入力して何が起こるかを確認します):
 
 ```{r, eval=TRUE}
 num_char <- c(1, 2, 3, "a")
@@ -377,7 +375,7 @@ tricky <- c(1, 2, 3, "4")
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
 ```{r, purl=TRUE}
 class(num_char)
@@ -390,34 +388,34 @@ class(tricky)
 tricky
 ```
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-Why do you think it happens?
+なぜそれが起こると思いますか?
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
-Vectors can be of only one data type. R tries to convert (coerce)
-the content of this vector to find a _common denominator_ that
-doesn't lose any information.
+ベクトルのデータ型は 1 つだけです。 R は、
+が情報を失わないという _共通分母_ を見つけるために、このベクトルの内容を
+に変換 (強制) しようとします。
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-How many values in `combined_logical` are `"TRUE"` (as a character)
-in the following example:
+次の例では、`combined_logical` 内の `"TRUE"` (文字として)
+となる値はいくつありますか。
 
 ```{r, eval=TRUE}
 num_logical <- c(1, 2, 3, TRUE)
@@ -427,40 +425,40 @@ combined_logical <- c(num_logical, char_logical)
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
-Only one. There is no memory of past data types, and the coercion
-happens the first time the vector is evaluated. Therefore, the `TRUE`
-in `num_logical` gets converted into a `1` before it gets converted
-into `"1"` in `combined_logical`.
+唯一。 過去のデータ型の記憶はなく、ベクトルが初めて評価されるときに強制
+が発生します。 したがって、「num_logical」の「TRUE」
+「combined_logical」で
+「1」に変換される前に、「1」に変換されます。
 
 ```{r}
 combined_logical
 ```
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-In R, we call converting objects from one class into another class
-_coercion_. These conversions happen according to a hierarchy,
-whereby some types get preferentially coerced into other types. Can
-you draw a diagram that represents the hierarchy of how these data
-types are coerced?
+R では、オブジェクトをあるクラスから別のクラスに変換することを
+強制\* と呼びます。 これらの変換は階層
+に従って行われ、一部の型が優先的に他の型に強制されます。 これらのデータ
+がどのように強制されるかの階層を表す図を描いてもらえます
+?
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
-logical → numeric → character ← logical
+論理 → 数値 → 文字 ← 論理
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, echo=FALSE, eval=FALSE, purl=TRUE}
 ## アトミックベクトルは文字型、数値型、整数型、
@@ -487,10 +485,10 @@ tricky <- c(1, 2, 3, "4")
 ## これらのデータ型がどのように強制されるのか、その階層を表す図を描けますか?
 ```
 
-## Subsetting vectors
+## ベクトルのサブセット化
 
-If we want to extract one or several values from a vector, we must
-provide one or several indices in square brackets. For instance:
+ベクトルから 1 つまたは複数の値を抽出したい場合は、角括弧内に 1 つまたは複数のインデックスを指定する必要が
+ます。 例えば：
 
 ```{r, results="show", purl=TRUE}
 molecules <- c("dna", "rna", "peptide", "protein")
@@ -498,21 +496,21 @@ molecules[2]
 molecules[c(3, 2)]
 ```
 
-We can also repeat the indices to create an object with more elements
-than the original one:
+インデックスを繰り返して、元のオブジェクトよりも要素
+が多いオブジェクトを作成することもできます。
 
 ```{r, results="show", purl=TRUE}
 more_molecules <- molecules[c(1, 2, 3, 2, 1, 4)]
 more_molecules
 ```
 
-R indices start at 1. Programming languages like Fortran, MATLAB,
-Julia, and R start counting at 1, because that's what human beings
-typically do. Languages in the C family (including C++, Java, Perl,
-and Python) count from 0 because that's simpler for computers to do.
+R インデックスは 1 から始まります。 Fortran、MATLAB、
+Julia、R などのプログラミング言語は
+から数え始めます。これは人間が通常行うことだからです。 C ファミリの言語 (C++、Java、Perl、
+、Python を含む) は 0 からカウントします。これは、コンピュータにとってその方が簡単なためです。
 
-Finally, it is also possible to get all the elements of a vector
-except some specified elements using negative indices:
+最後に、負のインデックスを使用して、指定された一部の要素を除くベクトル
+のすべての要素を取得することもできます。
 
 ```{r}
 molecules ## all molecules
@@ -521,19 +519,19 @@ molecules[-c(1, 3)] ## all but 1st/3rd ones
 molecules[c(-1, -3)] ## all but 1st/3rd ones
 ```
 
-## Conditional subsetting
+## 条件付きサブセット化
 
-Another common way of subsetting is by using a logical vector. `TRUE` will
-select the element with the same index, while `FALSE` will not:
+サブセット化のもう 1 つの一般的な方法は、論理ベクトルを使用することです。 `TRUE` は同じインデックスを持つ要素を選択し
+が、`FALSE` は選択しません。
 
 ```{r, purl=TRUE}
 weight_g <- c(21, 34, 39, 54, 55)
 weight_g[c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 ```
 
-Typically, these logical vectors are not typed by hand, but are the
-output of other functions or logical tests. For instance, if you
-wanted to select only the values above 50:
+通常、これらの論理ベクトルは手動で入力されるのではなく、他の関数または論理テストの
+出力です。 たとえば、50 を超える値のみを選択したい場合は、
+のようにします。
 
 ```{r, purl=TRUE}
 ## will return logicals with TRUE for the indices that meet
@@ -543,24 +541,24 @@ weight_g > 50
 weight_g[weight_g > 50]
 ```
 
-You can combine multiple tests using `&` (both conditions are true,
-AND) or `|` (at least one of the conditions is true, OR):
+`&` (両方の条件が true、
+AND) または `|` (少なくとも 1 つの条件が true、OR) を使用して複数のテストを結合できます。
 
 ```{r, results="show", purl=TRUE}
 weight_g[weight_g < 30 | weight_g > 50]
 weight_g[weight_g >= 30 & weight_g == 21]
 ```
 
-Here, `<` stands for "less than", `>` for "greater than", `>=` for
-"greater than or equal to", and `==` for "equal to". The double equal
-sign `==` is a test for numerical equality between the left and right
-hand sides, and should not be confused with the single `=` sign, which
-performs variable assignment (similar to `<-`).
+ここで、「<」は「より小さい」、「>」は「より大きい」、「>=」は
+「以上」、「==」は「等しい」を表します。 2 つの等号
+記号「==」は、左側と
+の数値が等しいかどうかをテストするものであり、(「<-」と同様に) 変数の代入を
+する単一の `=` 記号と混同しないでください。 。
 
-A common task is to search for certain strings in a vector.  One could
-use the "or" operator `|` to test for equality to multiple values, but
-this can quickly become tedious. The function `%in%` allows you to
-test if any of the elements of a search vector are found:
+一般的なタスクは、ベクトル内の特定の文字列を検索することです。\
+「or」演算子 `|` を使用して複数の値が等しいかどうかをテストすることもできますが、
+これはすぐに面倒になります。 関数 `%in%` を使用すると、検索ベクトルの要素が見つかったかどうかを
+できます。
 
 ```{r, purl=TRUE}
 molecules <- c("dna", "rna", "protein", "peptide")
@@ -571,31 +569,31 @@ molecules[molecules %in% c("rna", "dna", "metabolite", "peptide", "glycerol")]
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-Can you figure out why `"four" > "five"` returns `TRUE`?
+なぜ `"four" > "five"` が `TRUE` を返すのか理解できますか?
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
 ```{r}
 "four" > "five"
 ```
 
-When using `>` or `<` on strings, R compares their alphabetical order.
-Here `"four"` comes after `"five"`, and therefore is _greater than_
-it.
+文字列で `>` または `<` を使用すると、R はそれらのアルファベット順を比較します。
+ここで、`"four"` は `"five"` の後に来るので、それは \*
+より大きい\* です。
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-## Names
+## 名前
 
-It is possible to name each element of a vector. The code chunk below
-shows an initial vector without any names, how names are set, and
-retrieved.
+ベクトルの各要素に名前を付けることができます。
+より下のコード チャンクは、名前のない初期ベクトル、名前の設定方法、および
+取得される様子を示しています。
 
 ```{r}
 x <- c(1, 5, 3, 5, 10)
@@ -604,25 +602,25 @@ names(x) <- c("A", "B", "C", "D", "E")
 names(x) ## now we have names
 ```
 
-When a vector has names, it is possible to access elements by their
-name, in addition to their index.
+ベクトルに名前がある場合、
+に加えて名前によって要素にアクセスすることができます。
 
 ```{r}
 x[c(1, 3)]
 x[c("A", "C")]
 ```
 
-## Missing data
+## データが欠落しています
 
-As R was designed to analyze datasets, it includes the concept of
-missing data (which is uncommon in other programming
-languages). Missing data are represented in vectors as `NA`.
+R はデータセットを分析するように設計されているため、欠損データが
+であるという概念が含まれています (これは
+のプログラミング言語では一般的ではありません)。 欠損データはベクトルで「NA」として表されます。
 
-When doing operations on numbers, most functions will return `NA` if
-the data you are working with include missing values. This feature
-makes it harder to overlook the cases where you are dealing with
-missing data.  You can add the argument `na.rm = TRUE` to calculate
-the result while ignoring the missing values.
+数値の演算を行う場合、扱っているデータに欠損値が含まれている場合
+ほとんどの関数は「NA」を返します。 この機能により、
+データを処理し
+いるケースを見逃しにくくなります。  引数 `na.rm = TRUE` を追加すると、欠損値を無視して結果を
+として計算できます。
 
 ```{r}
 heights <- c(2, 4, 4, NA, 6)
@@ -632,9 +630,9 @@ mean(heights, na.rm = TRUE)
 max(heights, na.rm = TRUE)
 ```
 
-If your data include missing values, you may want to become familiar
-with the functions `is.na()`, `na.omit()`, and `complete.cases()`. See
-below for examples.
+データに欠損値が含まれている場合は、関数 `is.na()`、`na.omit()`、および `complete.cases()` に
+ておくとよいでしょう。 例については、以下の
+を参照してください。
 
 ```{r}
 ## Extract those elements which are not missing values.
@@ -653,24 +651,24 @@ heights[complete.cases(heights)]
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-1. Using this vector of heights in inches, create a new vector with the NAs removed.
+1. このインチ単位の高さのベクトルを使用して、NA を削除した新しいベクトルを作成します。
 
 ```{r}
 heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 ```
 
-2. Use the function `median()` to calculate the median of the `heights` vector.
-3. Use R to figure out how many people in the set are taller than 67 inches.
+2. 関数 `median()` を使用して、`heights` ベクトルの中央値を計算します。
+3. R を使用して、セット内の身長が 67 インチを超える人が何人いるかを計算します。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
 ```{r, purl=TRUE}
 heights_no_na <- heights[!is.na(heights)]
-## or
+## または
 heights_no_na <- na.omit(heights)
 ```
 
@@ -683,78 +681,78 @@ heights_above_67 <- heights_no_na[heights_no_na > 67]
 length(heights_above_67)
 ```
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-## Generating vectors {#sec:genvec}
+## ベクトル {#sec:genvec}の生成
 
 ```{r, echo=FALSE}
 set.seed(1)
 ```
 
-### Constructors
+### コンストラクター
 
-There exists some functions to generate vectors of different type. To
-generate a vector of numerics, one can use the `numeric()`
-constructor, providing the length of the output vector as
-parameter. The values will be initialised with 0.
+異なるタイプのベクトルを生成する関数がいくつか存在します。 数値のベクトルを生成
+には、`numeric()`
+コンストラクターを使用し、出力ベクトルの長さを
+パラメーターとして指定します。 値は 0 で初期化されます。
 
 ```{r, purl=TRUE}
 numeric(3)
 numeric(10)
 ```
 
-Note that if we ask for a vector of numerics of length 0, we obtain
-exactly that:
+長さ 0 の数値ベクトルを要求すると、次のように
+が得られることに注意してください。
 
 ```{r, purl=TRUE}
 numeric(0)
 ```
 
-There are similar constructors for characters and logicals, named
-`character()` and `logical()` respectively.
+文字と論理に対しても同様のコンストラクターがあり、
+`character()` と `logical()` という名前が付けられます。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-What are the defaults for character and logical vectors?
+文字ベクトルと論理ベクトルのデフォルトは何ですか?
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
 ```{r, purl=TRUE}
 character(2) ## the empty character
 logical(2)   ## FALSE
 ```
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-### Replicate elements
+### 要素を複製する
 
-The `rep` function allow to repeat a value a certain number of
-times. If we want to initiate a vector of numerics of length 5 with
-the value -1, for example, we could do the following:
+`rep` 関数を使用すると、値を特定の回数 (
+回) 繰り返すことができます。 たとえば、長さ 5 の数値ベクトルを
+から値 -1 で開始したい場合は、次のようにすることができます。
 
 ```{r, purl=TRUE}
 rep(-1, 5)
 ```
 
-Similarly, to generate a vector populated with missing values, which
-is often a good way to start, without setting assumptions on the data
-to be collected:
+同様に、収集されるデータ
+に仮定を設定せずに、欠損値が入力されたベクトルを生成するには (多くの場合、
+から始めるのが良い方法です):
 
 ```{r, purl=TRUE}
 rep(NA, 5)
 ```
 
-`rep` can take vectors of any length as input (above, we used vectors
-of length 1) and any type. For example, if we want to repeat the
-values 1, 2 and 3 five times, we would do the following:
+`rep` は、入力として任意の長さのベクトル (上記では長さ 1 のベクトル
+を使用しました) および任意のタイプを受け取ることができます。 たとえば、
+値 1、2、3 を 5 回繰り返す場合は、次のようにします。
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), 5)
@@ -762,38 +760,38 @@ rep(c(1, 2, 3), 5)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-What if we wanted to repeat the values 1, 2 and 3 five times, but
-obtain five 1s, five 2s and five 3s in that order? There are two
-possibilities - see `?rep` or `?sort` for help.
+値 1、2、3 を 5 回繰り返したいのに、
+1 を 5 つ、2 を 5 つ、3 を 5 つこの順序で取得した場合はどうなるでしょうか。
+可能性は 2 つあります。ヘルプについては `?rep` または `?sort` を参照してください。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
 ```{r, purl=TRUE}
 rep(c(1, 2, 3), each = 5)
 sort(rep(c(1, 2, 3), 5))
 ```
 
-:::::::::::::::::::::::::
+::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::
 
-### Sequence generation
+### シーケンスの生成
 
-Another very useful function is `seq`, to generate a sequence of
-numbers. For example, to generate a sequence of integers from 1 to 20
-by steps of 2, one would use:
+もう 1 つの非常に便利な関数は、
+の数値シーケンスを生成する `seq` です。 たとえば、1 から 20
+までの整数のシーケンスを 2 ずつ生成するには、次のコマンドを使用します。
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, by = 2)
 ```
 
-The default value of `by` is 1 and, given that the generation of a
-sequence of one value to another with steps of 1 is frequently used,
-there's a shortcut:
+`by` のデフォルト値は 1 で、1 のステップで 1 つの値から別の値への
+シーケンスの生成が頻繁に使用されることを考えると、
+というショートカットがあります。
 
 ```{r, purl=TRUE}
 seq(1, 5, 1)
@@ -801,37 +799,37 @@ seq(1, 5) ## default by
 1:5
 ```
 
-To generate a sequence of numbers from 1 to 20 of final length of 3,
-one would use:
+最終長さが
+の 1 から 20 までの一連の数値を生成するには、次のコマンドを使用します。
 
 ```{r, purl=TRUE}
 seq(from = 1, to = 20, length.out = 3)
 ```
 
-### Random samples and permutations
+### ランダムなサンプルと順列
 
-A last group of useful functions are those that generate random
-data. The first one, `sample`, generates a random permutation of
-another vector. For example, to draw a random order to 10 students
-oral exam, I first assign each student a number from 1 to ten (for
-instance based on the alphabetic order of their name) and then:
+有用な関数の最後のグループは、ランダムな
+データを生成する関数です。 最初の `sample` は、
+のベクトルのランダムな置換を生成します。 たとえば、口頭試験を行わない
+人の生徒にランダムな順序を付けるには
+まず各生徒に 1 から 10 までの番号を割り当てます (たとえば、名前のアルファベット順に基づきます)。次に次のようにします。
 
 ```{r, purl=TRUE}
 sample(1:10)
 ```
 
-Without further arguments, `sample` will return a permutation of all
-elements of the vector. If I want a random sample of a certain size, I
-would set this value as the second argument. Below, I sample 5 random
-letters from the alphabet contained in the pre-defined `letters` vector:
+さらなる引数がなければ、`sample` はベクトルのすべての
+要素の順列を返します。 特定のサイズのランダムなサンプルが必要な場合、I
+はこの値を 2 番目の引数として設定します。 以下では、事前定義された `letters` ベクトルに含まれるアルファベットから 5 つのランダムな
+文字をサンプリングします。
 
 ```{r, purl=TRUE}
 sample(letters, 5)
 ```
 
-If I wanted an output larger than the input vector, or being able to
-draw some elements multiple times, I would need to set the `replace`
-argument to `TRUE`:
+入力ベクトルよりも大きな出力が必要な場合、または一部の要素を複数回
+できるようにしたい場合は、引数 `replace`
+を `TRUE` に設定する必要があります。
 
 ```{r, purl=TRUE}
 sample(1:5, 10, replace = TRUE)
@@ -839,35 +837,35 @@ sample(1:5, 10, replace = TRUE)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジだ：
+## チャレンジ：
 
-When trying the functions above out, you will have realised that the
-samples are indeed random and that one doesn't get the same
-permutation twice. To be able to reproduce these random draws, one can
-set the random number generation seed manually with `set.seed()`
-before drawing the random sample.
+上記の関数を試してみると、
+サンプルは実際にランダムであり、同じ
+順列が 2 回発生することはないことがわかるでしょう。 これらのランダムな描画を再現できるようにするには、ランダム サンプルを描画する前に
+`set.seed()` を使用
+て乱数生成シードを手動で設定します。
 
-Test this feature with your neighbour. First draw two random
-permutations of `1:10` independently and observe that you get
-different results.
+近所の人と一緒にこの機能をテストしてください。 まず、「1:10」のランダムな
+順列を 2 つ個別に描画し、
+の異なる結果が得られることを観察します。
 
-Now set the seed with, for example, `set.seed(123)` and repeat the
-random draw. Observe that you now get the same random draws.
+次に、たとえば `set.seed(123)` でシードを設定し、
+ランダムな描画を繰り返します。 同じランダムな抽選が行われることに注目してください。
 
-Repeat by setting a different seed.
+別のシードを設定して繰り返します。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解決
 
-Different permutations
+さまざまな順列
 
 ```{r, purl=TRUE}
 sample(1:10)
 sample(1:10)
 ```
 
-Same permutations with seed 123
+シード 123 と同じ順列
 
 ```{r, purl=TRUE}
 set.seed(123)
@@ -876,7 +874,7 @@ set.seed(123)
 sample(1:10)
 ```
 
-A different seed
+違う種
 
 ```{r, purl=TRUE}
 set.seed(1)
@@ -889,12 +887,12 @@ sample(1:10)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Drawing samples from a normal distribution
+### 正規分布からサンプルを抽出する
 
-The last function we are going to see is `rnorm`, that draws a random
-sample from a normal distribution. Two normal distributions of means 0
-and 100 and standard deviations 1 and 5, noted _N(0, 1)_ and
-_N(100, 5)_, are shown below.
+最後に説明する関数は `rnorm` で、正規分布からランダムな
+サンプルを抽出します。 平均
+および 100、標準偏差 1 および 5 の 2 つの正規分布 (_N(0, 1)_ および
+_N(100, 5)_ と表記) を以下に示します。
 
 ```{r, echo=FALSE, fig.width=12, fig.height=6, fig.cap="Two normal distributions: *N(0, 1)* on the left and *N(100, 5)* on the right."}
 par(mfrow = c(1, 2))
@@ -902,9 +900,9 @@ plot(density(rnorm(1000)), main = "", sub = "N(0, 1)")
 plot(density(rnorm(1000, 100, 5)), main = "", sub = "N(100, 5)")
 ```
 
-The three arguments, `n`, `mean` and `sd`, define the size of the
-sample, and the parameters of the normal distribution, i.e the mean
-and its standard deviation. The defaults of the latter are 0 and 1.
+3 つの引数「n」、「mean」、「sd」は、サンプル
+のサイズと、正規分布のパラメーター、つまり平均
+とその標準偏差を定義します。 後者のデフォルトは 0 と 1 です。
 
 ```{r, purl=TRUE}
 rnorm(5)
@@ -912,12 +910,12 @@ rnorm(5, 2, 2)
 rnorm(5, 100, 5)
 ```
 
-Now that we have learned how to write scripts, and the basics of R's
-data structures, we are ready to start working with larger data, and
-learn about data frames.
+スクリプトの書き方と
+のデータ構造の基本を学習したので、より大きなデータの操作を開始する準備が整い、データ フレームについて
+します。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- How to interact with R
+- Rと対話する方法
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

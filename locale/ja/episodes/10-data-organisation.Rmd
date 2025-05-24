@@ -1,6 +1,6 @@
 ---
-source: Rmd
-title: Data organisation with spreadsheets
+source: ＲＭＤ
+title: スプレッドシートを使用したデータ整理
 teaching: 30
 exercises: 30
 ---
@@ -10,292 +10,288 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Learn about spreadsheets, their strengths and weaknesses.
-- How do we format data in spreadsheets for effective data use?
-- Learn about common spreadsheet errors and how to correct them.
-- Organise your data according to tidy data principles.
-- Learn about text-based spreadsheet formats such as the comma-separated (CSV) or tab-separated (TSV) formats.
+- スプレッドシートとその長所と短所について学びます。
+- データを効果的に使用するには、スプレッドシート内のデータをどのようにフォーマットすればよいでしょうか?
+- 一般的なスプレッドシートのエラーとその修正方法について説明します。
+- きちんとしたデータの原則に従ってデータを整理します。
+- カンマ区切り (CSV) 形式やタブ区切り (TSV) 形式などのテキストベースのスプレッドシート形式について説明します。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How to organise tabular data?
+- 表形式のデータを整理するにはどうすればよいですか?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> このエピソードは、Data Carpentriesの_Data Analysis and
-> Visualisation in R for Ecologists_レッスンに基づいています。
+> This episode is based on the Data Carpentries's _Data Analysis and
+> Visualisation in R for Ecologists_ lesson.
 
-## Spreadsheet programs
+## 表計算プログラム
 
-**Question**
+**質問**
 
 - 優れたデータ統合用にスプレッドシートを使用するための基本的な原則は何でしょうか？
 
-**Objective**
+**客観的**
 
-- Describe best practices for organizing data so computers can make
-  the best use of datasets.
+- コンピューターがデータセットを
+  に活用できるようにデータを整理するためのベスト プラクティスについて説明します。
 
-**Keypoint**
+**キーポイント**
 
-- Good data organization is the foundation of any research project.
+- 適切なデータ構成は、あらゆる研究プロジェクトの基礎です。
 
-Good data organization is the foundation of your research
-project. Most researchers have data or do data entry in
-spreadsheets. Spreadsheet programs are very useful graphical
-interfaces for designing data tables and handling very basic data
-quality control functions. See also @Broman:2018.
+適切なデータ構成は、研究
+の基礎です。 ほとんどの研究者はデータを持っているか、
+シートにデータ入力を行っていません。 スプレッドシート プログラムは、データ テーブルを設計し、非常に基本的
+データ品質管理機能を処理するための非常に便利な
+インターフェイスです。 @Broman:2018 も参照してください。
 
-### Spreadsheet outline
+### スプレッドシートの概要
 
-Spreadsheets are good for data entry. Therefore we have a lot of data
-in spreadsheets.  Much of your time as a researcher will be spent in
-this 'data wrangling' stage.  It's not the most fun, but it's
-necessary. We'll teach you how to think about data organization and
-some practices for more effective data wrangling.
+スプレッドシートはデータ入力に適しています。 したがって、スプレッドシートにはデータ
+がたくさんあります。  研究者としての時間の多くは、この「データの検討」段階
+費やされることになります。  とても楽しいわけではありませんが、必要性は
+です。 データの編成について考える方法と、より効果的なデータ ラングリングのための
+かの実践方法を説明します。
 
-### What this lesson will not teach you
+### このレッスンで教えられないこと
 
-- How to do _statistics_ in a spreadsheet
-- How to do _plotting_ in a spreadsheet
-- How to _write code_ in spreadsheet programs
+- スプレッドシートで _統計_ を行う方法
+- スプレッドシートで _プロット_ を行う方法
+- スプレッドシート プログラムで _コードを記述する_方法
 
-If you're looking to do this, a good reference is Head First
-Excel,
-published by O'Reilly.
+これを実行したい場合は、O 発行の Head First
+Excel
+参考になります。 「ライリー。
 
-### Why aren't we teaching data analysis in spreadsheets
+### なぜスプレッドシートでのデータ分析を教えないのか
 
-- Data analysis in spreadsheets usually requires a lot of manual
-  work. If you want to change a parameter or run an analysis with a
-  new dataset, you usually have to redo everything by hand. (We do
-  know that you can create macros, but see the next point.)
+- スプレッドシートでのデータ分析には通常、多くの
+  作業が必要です。 パラメーターを変更したり、
+  データセットを使用して分析を実行したりする場合は、通常、すべてを手動でやり直す必要があります。 (マクロを作成できることはわかりませ
+  が、次の点を参照してください。)
 
-- It is also difficult to track or reproduce statistical or plotting
-  analyses done in spreadsheet programs when you want to go back to
-  your work or someone asks for details of your analysis.
+- また、
+  の作業に戻りたいときや、誰かが分析の詳細を尋ねたときに、スプレッドシート プログラムで行われた統計分析やプロット分析を追跡したり再現したりすること
+  困難です。
 
-Many spreadsheet programs are available. Since most participants
-utilise Excel as their primary spreadsheet program, this lesson will
-make use of Excel examples. で使用できる表計算プログラムは LibreOffice です。 Commands may differ a bit between programs,
-but the general idea is the same.
+多くの表計算プログラムが利用可能です。 ほとんどの参加者は主なスプレッドシート プログラムとして
+を使用するため、このレッスンで
+Excel の例を使用します。 で使用できる表計算プログラムは LibreOffice です。 コマンドはプログラム間
+少し異なる場合がありますが、一般的な考え方は同じです。
 
-Spreadsheet programs encompass a lot of the things we need to be able
-to do as researchers. We can use them for:
+スプレッドシート プログラムには、研究者としてできる
+にする必要のある多くのことが含まれています。 それらは次の目的で使用できます。
 
-- Data entry
-- Organizing data
-- Subsetting and sorting data
-- Statistics
-- Plotting
+- データ入力
+- データの整理
+- データのサブセット化と並べ替え
+- 統計
+- プロット
 
-Spreadsheet programs use tables to represent and display data. Data
-formatted as tables is also the main theme of this chapter, and we
-will see how to organise data into tables in a standardised way to
-ensure efficient downstream analysis.
+スプレッドシート プログラムはテーブルを使用してデータを表し、表示します。 テーブルとしてフォーマットされたデータ
+この章の主要テーマであり、効率的なダウンストリーム分析を
+にするために、標準化された方法でデータをテーブルに編成する方法
+見ていきます。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Discuss the following points with your neighbour
+## 課題: 隣人と次の点について話し合ってください。
 
-- Have you used spreadsheets, in your research, courses,
-  or at home?
-- What kind of operations do you do in spreadsheets?
-- Which ones do you think spreadsheets are good for?
-- Have you accidentally done something in a spreadsheet program that made you
-  frustrated or sad?
+- 研究や
+  、または自宅でスプレッドシートを使用したことがありますか?
+- スプレッドシートではどのような操作を行っていますか?
+- スプレッドシートは何に適していると思いますか?
+- スプレッドシート プログラムで誤ってイライラ
+  たり悲しくなったりするようなことをしたことがありますか?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Problems with spreadsheets
+### スプレッドシートの問題
 
-Spreadsheets are good for data entry, but in reality we tend to
-use spreadsheet programs for much more than data entry. We use them
-to create data tables for publications, to generate summary
-statistics, and make figures.
+スプレッドシートはデータ入力には適していますが、実際にはデータ入力以外の目的で
+シート プログラムを使用する傾向があります。 これら
+を使用して、出版物のデータ テーブルを作成し、概要
+統計を生成し、図を作成します。
 
-Generating tables for publications in a spreadsheet is not
-optimal - often, when formatting a data table for publication, we're
-reporting key summary statistics in a way that is not really meant to
-be read as data, and often involves special formatting
-(merging cells, creating borders, making it pretty). We advise you to
-do this sort of operation within your document editing software.
+スプレッドシートでパブリケーション用のテーブルを生成することは
+ではありません。多くの場合、パブリケーション用にデータ テーブルをフォーマットするとき、実際にはデータとして読み取ら
+ことを意図していない方法で重要な概要統計をレポートすることに
+、特殊なフォーマットが必要になることがよくあります。
+(セルを結合し、境界線を作成し、美しくする)。 この種の操作は文書編集ソフトウェア内で行う
+をお勧めします。
 
-The latter two applications, generating statistics and figures, should
-be used with caution: because of the graphical, drag and drop nature of
-spreadsheet programs, it can be very difficult, if not impossible, to
-replicate your steps (much less retrace anyone else's), particularly if your
-stats or figures require you to do more complex calculations. Furthermore,
-in doing calculations in a spreadsheet, it's easy to accidentally apply a
-slightly different formula to multiple adjacent cells. When using a
-command-line based statistics program like R or SAS, it's practically
-impossible to apply a calculation to one observation in your
-dataset but not another unless you're doing it on purpose.
+統計と数値を生成する後者の 2 つのアプリケーションは、
+して使用する必要があります。1 スプレッド
+プログラムのグラフィカルなドラッグ アンド ドロップの性質のため、
+手順を複製するのが不可能ではないにしても、非常に困難になる可能性があります (元に戻すことはさらに困難です)。特に
+の統計や数値により、より複雑な計算が必要な場合はそうです。 さらに、スプレッドシートで計算を行う場合、
+わずかに異なる数式を
+の隣接するセルに誤って適用してしまうことがよくあります。 R や SAS などのコマンドライン ベースの統計プログラムを使用する場合、意図的に実行しない限り、データセット内の観測値には計算を適用し、別の観測値には計算を適用しないことは事実上不可能です。
 
-### Using spreadsheets for data entry and cleaning
+### データ入力とクリーニングにスプレッドシートを使用する
 
-In this lesson, we will assume that you are most likely using Excel as
-your primary spreadsheet program - there are others (gnumeric, Calc
-from OpenOffice), and their functionality is similar, but Excel seems
-to be the program most used by biologists and biomedical researchers.
+このレッスンでは、
+なスプレッドシート プログラムとして Excel を使用している可能性が高いと仮定します。他にも (OpenOffice の gnumeric、Calc
+) があり、機能は似ていますが、Excel が
+よく使用されているプログラムであると思われます。生物学者や生物医学の研究者。
 
-In this lesson we're going to talk about:
+このレッスンでは次のことについて話します。
 
-1. Formatting data tables in spreadsheets
-2. Formatting problems
+1. スプレッドシートでのデータテーブルの書式設定
+2. フォーマットの問題
 3. データのエクスポート
 
-## Formatting data tables in spreadsheets
+## スプレッドシートでのデータテーブルの書式設定
 
-**Questions**
+**質問**
 
-- How do we format data in spreadsheets for effective data use?
+- データを効果的に使用するには、スプレッドシート内のデータをどのようにフォーマットすればよいでしょうか?
 
-**Objectives**
+**目的**
 
-- Describe best practices for data entry and formatting in
-  spreadsheets.
+- シートでのデータ入力と書式設定のベスト プラクティスについて説明します。
 
-- Apply best practices to arrange variables and observations in a
-  spreadsheet.
+- ベスト プラクティスを適用して、変数と観測値を
+  シートに配置します。
 
-**Keypoints**
+**キーポイント**
 
-- Never modify your raw data. Always make a copy before making any
-  changes.
+- 生データは決して変更しないでください。
+  を加える前に必ずコピーを作成してください。
 
-- Keep track of all of the steps you take to clean your data in a
-  plain text file.
+- データをクリーンアップするために実行したすべての手順を
+  テキスト ファイルに記録します。
 
-- Organise your data according to tidy data principles.
+- きちんとしたデータの原則に従ってデータを整理します。
 
-The most common mistake made is treating spreadsheet programs like lab
-notebooks, that is, relying on context, notes in the margin, spatial
-layout of data and fields to convey information. As humans, we can
-(usually) interpret these things, but computers don't view information
-the same way, and unless we explain to the computer what every single
-thing means (and that can be hard!), it will not be able to see how
-our data fits together.
+最もよくある間違いは、スプレッドシート プログラムを研究室の
+ブックのように扱うことです。つまり、情報を伝えるためにコンテキスト、余白のメモ、データとフィールドの空間
+レイアウトに依存していることです。 人間として、これらのことを (通常は) 解釈できますが、コンピューターは情報
+同じようには見ません。そして、すべての
+の意味をコンピューターに説明しない限り (それ
+難しい場合があります!)、理解できません。
+データがどのように組み合わされるかを確認できます。
 
-Using the power of computers, we can manage and analyse data in much
-more effective and faster ways, but to use that power, we have to set
-up our data for the computer to be able to understand it (and
-computers are very literal).
+コンピューターの力を利用すると、
+効果的かつ高速な方法でデータを管理および分析できますが、その力を使用するには、コンピューターが理解できるようにデータを
+する必要があります (
+コンピューターは非常に複雑です)。リテラル）。
 
-This is why it's extremely important to set up well-formatted tables
-from the outset - before you even start entering data from your very
-first preliminary experiment. Data organization is the foundation of
-your research project. It can make it easier or harder to work with
-your data throughout your analysis, so it's worth thinking about when
-you're doing your data entry or setting up your experiment. You can
-set things up in different ways in spreadsheets, but some of these
-choices can limit your ability to work with the data in other programs
-or have the you-of-6-months-from-now or your collaborator work with
-the data.
+このため、
+の予備実験からデータの入力を開始する前に、適切にフォーマットされた
+をセットアップすることが非常に重要です。 データの整理は研究プロジェクトの
+です。 分析全体を通じて
+の操作が容易になるか困難になる可能性があるため、データ入力を行う
+や実験を設定するときに考慮する価値があります。
+スプレッドシートではさまざまな方法で設定できますが、これらの
+選択の一部によっては、
+のプログラムでデータを操作する能力が制限されたり、6 か月後の自分や共同作業者が共同作業したりすることが制限される可能性があります。
+データ。
 
-**Note:** the best layouts/formats (as well as software and
-interfaces) for data entry and data analysis might be different. It is
-important to take this into account, and ideally automate the
-conversion from one to another.
+**注:** データ入力とデータ分析に最適なレイアウト/形式 (およびソフトウェアと
+) は異なる場合があります。 これを考慮し、理想的にはあるものから
+のものへの変換を自動化することが
+です。
 
-### Keeping track of your analyses
+### 分析を追跡する
 
-When you're working with spreadsheets, during data clean up or
-analyses, it's very easy to end up with a spreadsheet that looks very
-different from the one you started with. In order to be able to
-reproduce your analyses or figure out what you did when a reviewer or
-instructor asks for a different analysis, you should
+スプレッドシートを使用しているとき、データのクリーンアップ
+分析を行っているときに、最初のスプレッドシートとは
+異なる外観のスプレッドシートが完成することがよくあります。 分析を
+したり、査読者や講師が別の分析を要求したときに何をしたかを把握したりするには、次のこと
+行う必要があります。
 
-- create a new file with your cleaned or analysed data. Don't modify
-  the original dataset, or you will never know where you started!
+- クリーンアップまたは分析されたデータを含む新しいファイルを作成します。 元のデータセット
+  変更しないでください。変更すると、どこから始めたのかわからなくなります。
 
-- keep track of the steps you took in your clean up or analysis. You
-  should track these steps as you would any step in an experiment. We
-  recommend that you do this in a plain text file stored in the same
-  folder as the data file.
+- クリーンアップまたは分析で実行した手順を記録します。 実験の他のステップと同様に、これらのステップを追跡する必要があり
+  。 データ ファイルと同じフォルダーに保存された
+  テキスト ファイルでこれを行うことをお勧め
+  ます。
 
-This might be an example of a spreadsheet setup:
+これはスプレッドシート設定の例です。
 
 ![](fig/spreadsheet-setup-updated.png)
 
-Put these principles in to practice today during your exercises.
+今日の演習中にこれらの原則を実践してください。
 
-While versioning is out of scope for this course, you can look at the
-Carpentries lesson on
-['Git'](https://swcarpentry.github.io/git-novice/) to learn how to
-maintain **version control** over your data. See also this blog
-post for a quick tutorial or
-@Perez-Riverol:2016 for a more research-oriented use-case.
+バージョン管理はこのコースの範囲外ですが、**バージョンを維持
+方法については、
+['Git'](https://swcarpentry.github.io/git-novice/) の
+Carpentries レッスンを参照してください。データを制御**します。 簡単なチュートリアルについてはこの ブログ
+投稿 を、より研究指向のユースケースについては
+@Perez-Riverol:2016 も参照してください。
 
-### Structuring data in spreadsheets
+### スプレッドシートでのデータの構造化
 
-The cardinal rules of using spreadsheet programs for data:
+データにスプレッドシート プログラムを使用する際の基本ルールは次のとおりです。
 
-1. Put all your variables in columns - the thing you're measuring,
-  like 'weight' or 'temperature'.
-2. Put each observation in its own row.
-3. Don't combine multiple pieces of information in one cell. Sometimes
-  it just seems like one thing, but think if that's the only way
-  you'll want to be able to use or sort that data.
-4. Leave the raw data raw - don't change it!
-5. Export the cleaned data to a text-based format like CSV
-  (comma-separated values) format. This ensures that anyone can use
-  the data, and is required by most data repositories.
+1. すべての変数を列に入力します。測定対象は「重量」や「温度」
+  です。
+2. 各観測値を独自の行に配置します。
+3. 1 つのセルに複数の情報を組み合わせないでください。 場合によっては
+  それは単なる
+  つのことのように思えますが、それがそのデータを使用または並べ替えできるようにする唯一の方法であるかどうかを考えてください。
+4. 生データはそのままにしておきます。変更しないでください。
+5. クリーンアップされたデータを CSV
+  (カンマ区切り値) 形式などのテキストベースの形式にエクスポートします。 これにより、誰でも
+  を使用できるようになり、ほとんどのデータ リポジトリで必要になります。
 
-For instance, we have data from patients that visited several
-hospitals in Brussels, Belgium. They recorded the date of the visit,
-the hospital, the patients' gender, weight and blood group.
+たとえば、ベルギーのブリュッセルにあるいくつか
+病院を訪れた患者からのデータがあります。 彼らは、訪問日、
+、患者の性別、体重、血液型を記録しました。
 
-If we were to keep track of the data like this:
+次のようにデータを追跡するとします。
 
 ![](fig/multiple-info.png)
 
-the problem is that the ABO and Rhesus groups are in the same `Blood`
-type column. So, if they wanted to look at all observations of the A
-group or look at weight distributions by ABO group, it would be tricky
-to do this using this data setup. If instead we put the ABO and Rhesus
-groups in different columns, you can see that it would be much easier.
+問題は、ABO グループと Rhesus グループが同じ「Blood」
+タイプ列にあることです。 したがって、A
+グループのすべての観測値を調べたり、ABO グループごとの重み分布を調べたりしたい場合、このデータ設定を使用してこれを行うのは難しいでしょう
+。 代わりに、ABO グループと Rhesus
+グループを別の列に配置すると、はるかに簡単になることがわかります。
 
 ![](fig/single-info.png)
 
-An important rule when setting up a datasheet, is that **columns are
-used for variables** and **rows are used for observations**:
+データシートを設定する際の重要なルールは、**列は変数に
+され**、**行は観測に使用される**ということです。
 
-- columns are variables
-- rows are observations
-- cells are individual values
+- 列は変数です
+- 行は観測結果です
+- セルは個別の値です
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: We're going to take a messy dataset and describe how we would clean it up.
+## 課題: 乱雑なデータセットを取り上げ、それをクリーンアップする方法を説明します。
 
-1. Download a messy dataset by clicking
-  [here](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx).
+1. [ここ](https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx)
+  をクリックして、乱雑なデータセットをダウンロードします。
 
-2. Open up the data in a spreadsheet program.
+2. スプレッドシート プログラムでデータを開きます。
 
-3. You can see that there are two tabs. The data contains various
-  clinical variables recorded in various hospitals in Brussels during
-  the first and second COVID-19 waves in 2020. As you can see, the
-  data have been recorded differently during the March and November
-  waves. Now you're the person in charge of this project and you want
-  to be able to start analyzing the data.
+3. タブが 2 つあることがわかります。 このデータには、2020 年の新型コロナウイルス感染症 (COVID-19) の第
+  波と第 2 波の間にブリュッセルのさまざまな病院で記録されたさまざま
+  臨床変数が含まれています。 ご覧のとおり、
+  データは 3 月と 11 月
+  の波では異なる方法で記録されています。 あなたはこのプロジェクトの責任者となり、
+  データの分析を開始できるようにしたいと考えています。
 
-4. With the person next to you, identify what is wrong with this
-  spreadsheet. Also discuss the steps you would need to take to clean
-  up first and second wave tabs, and to put them all together in one
-  spreadsheet.
+4. 隣にいる人と一緒に、この
+  スプレッドシートのどこが間違っているのかを特定してください。 また、最初と 2 番目の Wave タブをクリーンアップし、それらをすべて
+  つのスプレッドシートにまとめるために必要な手順について
+  説明します。
 
-**Important:** Do not forget our first piece of advice: to create a
-new file (or tab) for the cleaned data, never modify your original
-(raw) data.
+**重要:** 最初のアドバイスを忘れないでください。クリーンアップされたデータ用に
+ファイル (またはタブ) を作成する場合は、元の
+(生の) データを決して変更しないでください。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-After you go through this exercise, we'll discuss as a group what was
-wrong with this data and how you would fix it.
+この演習を終えた後、このデータの
+が間違っていたのか、そしてそれをどのように修正するのかをグループで話し合います。
 
 <!-- - Take about 10 minutes to work on this exercise. -->
 
@@ -317,45 +313,45 @@ wrong with this data and how you would fix it.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: Once you have tidied up the data, answer the following questions:
+## 課題: データを整理したら、次の質問に答えてください。
 
-- How many men and women took part in the study?
-- How many A, AB, and B types have been tested?
-- As above, but disregarding the contaminated samples?
-- How many Rhesus + and - have been tested?
-- How many universal donors (O-) have been tested?
-- What is the average weight of AB men?
-- How many samples have been tested in the different hospitals?
+- 何人の男性と女性が研究に参加しましたか?
+- A、AB、B タイプは何人検査されましたか?
+- 上記と同様ですが、汚染されたサンプルは無視しますか?
+- アカゲザル + と - は何人検査されましたか?
+- 何人のユニバーサルドナー (O-) が検査されましたか?
+- AB型男性の平均体重はどれくらい？
+- さまざまな病院で何件のサンプルが検査されましたか?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-An **excellent reference**, in particular with regard to R scripting
-is the _Tidy Data_ paper @Wickham:2014.
+特に R スクリプト
+に関する **優れた参考文献**は、_Tidy Data_ 論文 @Wickham:2014 です。
 
-## Common spreadsheet errors
+## よくあるスプレッドシートのエラー
 
-**Questions**
+**質問**
 
-- What are some common challenges with formatting data in spreadsheets
-  and how can we avoid them?
+- スプレッドシート
+  のデータの書式設定に関する一般的な課題は何ですか?また、それらを回避するにはどうすればよいですか?
 
-**Objectives**
+**目的**
 
-- Recognise and resolve common spreadsheet formatting problems.
+- 一般的なスプレッドシートの書式設定の問題を認識して解決します。
 
-**Keypoints**
+**キーポイント**
 
-- Avoid using multiple tables within one spreadsheet.
-- Avoid spreading data across multiple tabs.
-- Record zeros as zeros.
-- Use an appropriate null value to record missing data.
-- Don't use formatting to convey information or to make your spreadsheet look pretty.
-- Place comments in a separate column.
-- Record units in column headers.
-- Include only one piece of information in a cell.
-- Avoid spaces, numbers and special characters in column headers.
-- Avoid special characters in your data.
-- Record metadata in a separate plain text file.
+- 1 つのスプレッドシート内で複数のテーブルを使用しないでください。
+- データが複数のタブに分散しないようにします。
+- ゼロはゼロとして記録します。
+- 欠落データを記録するには、適切な null 値を使用します。
+- 情報を伝えたり、スプレッドシートを美しく見せるために書式設定を使用しないでください。
+- コメントは別の列に配置します。
+- 列ヘッダーに単位を記録します。
+- セルには 1 つの情報のみを含めます。
+- 列ヘッダーにはスペース、数字、特殊文字を使用しないでください。
+- データ内では特殊文字を避けてください。
+- メタデータを別のプレーン テキスト ファイルに記録します。
 
 <!-- This lesson is meant to be used as a reference for discussion as -->
 
@@ -365,466 +361,461 @@ is the _Tidy Data_ paper @Wickham:2014.
 
 <!-- refer to responses to the exercise in the previous lesson. -->
 
-There are a few potential errors to be on the lookout for in your own
-data as well as data from collaborators or the Internet. If you are
-aware of the errors and the possible negative effect on downstream
-data analysis and result interpretation, it might motivate yourself
-and your project members to try and avoid them. Making small changes
-to the way you format your data in spreadsheets, can have a great
-impact on efficiency and reliability when it comes to data cleaning
-and analysis.
+自分自身のデータ
+でなく、共同作業者やインターネットからのデータにも、注意すべき潜在的なエラーがいくつかあります。 エラーや、下流
+データ分析
+結果の解釈に悪影響が及ぶ可能性があることを認識
+ていれば、自分やプロジェクト メンバーがエラーを回避しようとする動機になるかもしれません。 スプレッドシートでデータをフォーマットする方法に
+変更を加えると、データのクリーニング
+と分析の効率と信頼性に大きな影響
+を与える可能性があります。
 
-- [Using multiple tables](#tables)
-- [Using multiple tabs](#tabs)
-- [Not filling in zeros](#zeros)
-- [Using problematic null values](#null)
-- [Using formatting to convey information](#formatting)
-- [Using formatting to make the data sheet look pretty](#formatting_pretty)
-- [Placing comments or units in cells](#units)
-- [Entering more than one piece of information in a cell](#info)
-- [Using problematic field names](#field_name)
-- [Using special characters in data](#special)
-- [Inclusion of metadata in data table](#metadata)
+- [複数のテーブルの使用](#tables)
+- [複数のタブの使用](#tabs)
+- [ゼロを埋めない](#zeros)
+- [問題のある null 値の使用](#null)
+- [情報を伝えるために書式設定を使用する](#formatting)
+- [書式設定を使用してデータシートを美しく見せる](#formatting_pretty)
+- [セル内にコメントまたはユニットを配置する](#units)
+- [セルに複数の情報を入力する](#info)
+- [問題のあるフィールド名の使用](#field_name)
+- [データ内での特殊文字の使用](#special)
+- [データテーブルへのメタデータの組み込み](#metadata)
 
-### Using multiple tables {#tables}
+### 複数のテーブルの使用 {#tables}
 
-A common strategy is creating multiple data tables within one
-spreadsheet. This confuses the computer, so don't do this!  When you
-create multiple tables within one spreadsheet, you're drawing false
-associations between things for the computer, which sees each row as
-an observation. You're also potentially using the same field name in
-multiple places, which will make it harder to clean your data up into
-a usable form. The example below depicts the problem:
+一般的な戦略は、1 つ
+スプレッドシート内に複数のデータ テーブルを作成することです。 これはコンピュータを混乱させるので、行わないでください。\
+1 つのスプレッドシート内に複数のテーブルを作成すると、コンピュータにとっては、各行を観測
+として認識するため、物事の間に
+た関連付けが描画されることになります。 また、同じフィールド名を
+の場所で使用している可能性があり、データを使用可能な形式に
+アップすることが困難になります。 以下の例は問題を示しています。
 
 ![](fig/2_datasheet_example.jpg)
 
-In the example above, the computer will see (for example) row 4 and
-assume that all columns A-AF refer to the same sample. This row
-actually represents four distinct samples (sample 1 for each of four
-different collection dates - May 29th, June 12th, June 19th, and June
-26th), as well as some calculated summary statistics (an average (avr)
-and standard error of measurement (SEM)) for two of those
-samples. Other rows are similarly problematic.
+上の例では、コンピュータは、(たとえば) 行 4 と
+、すべての列 A ～ A F が同じサンプルを参照しているとみなして表示します。 この行
+、実際には 4 つの異なるサンプル (5 月 29 日、6 月 12 日、6 月 19 日、および 6 月
+26 日の
+つの異なる収集日のそれぞれのサンプル 1) と、計算されたいくつかの概要統計 (平均 (avr)
+およびこれら
+のサンプルのうち 2 つの標準測定誤差 (SEM))。 他の行にも同様に問題があります。
 
-### Using multiple tabs {#tabs}
+### 複数のタブの使用 {#tabs}
 
-But what about workbook tabs? That seems like an easy way to organise
-data, right? Well, yes and no. When you create extra tabs, you fail to
-allow the computer to see connections in the data that are there (you
-have to introduce spreadsheet application-specific functions or
-scripting to ensure this connection). Say, for instance, you make a
-separate tab for each day you take a measurement.
+しかし、ワークブックのタブはどうでしょうか?
+データを整理する簡単な方法のように思えますよね? まあ、はい、いいえです。 追加のタブを作成すると、そこにあるデータの接続をコンピュータに認識させることができなく
+ます (この接続を確保するには、
+スプレッドシート アプリケーション固有の関数を導入するか、
+スクリプトを導入する必要があります)。 たとえば、測定を行う日ごとに
+のタブを作成するとします。
 
-This isn't good practice for two reasons:
+これは次の 2 つの理由から良い習慣ではありません。
 
-1. you are more likely to accidentally add inconsistencies to your
-  data if each time you take a measurement, you start recording data
-  in a new tab, and
+1. 測定を行うたびに新しいタブでデータ
+  の記録を開始すると、誤って
+  データに不一致が追加される可能性が高くなります。
 
-2. even if you manage to prevent all inconsistencies from creeping in,
-  you will add an extra step for yourself before you analyse the data
-  because you will have to combine these data into a single
-  datatable. You will have to explicitly tell the computer how to
-  combine tabs - and if the tabs are inconsistently formatted, you
-  might even have to do it manually.
+2. たとえすべての不一致が忍び寄るのを防ぐことができたとしても、
+  これらのデータを単一
+  データテーブルに結合する必要があるため、
+  データを分析する前に余分な手順を追加することになります。 タブ
+  結合する方法をコンピュータに明示的に指示する必要があります。また、タブの形式が一貫していない場合は、
+  で結合する必要がある場合もあります。
 
-The next time you're entering data, and you go to create another tab
-or table, ask yourself if you could avoid adding this tab by adding
-another column to your original spreadsheet. We used multiple tabs in
-our example of a messy data file, but now you've seen how you can
-reorganise your data to consolidate across tabs.
+次回データを入力するときに、別のタブ
+またはテーブルを作成するときは、元のスプレッドシートに別の列を
+追加することで、このタブの追加を回避できるかどうか自問してください。 乱雑なデータ ファイルの
+では複数のタブを使用しましたが、データを
+編成してタブ間で統合する方法がわかりました。
 
-Your data sheet might get very long over the course of the
-experiment. This makes it harder to enter data if you can't see your
-headers at the top of the spreadsheet. But don't repeat your header
-row. These can easily get mixed into the data, leading to problems
-down the road. Instead you can freeze the column
-headers
-so that they remain visible even when you have a spreadsheet with many
-rows.
+の過程でデータシートが非常に長くなる可能性があります。 これにより、スプレッドシートの上部に
+ヘッダーが表示されない場合、データの入力が困難になります。 ただし、ヘッダー
+行を繰り返さないでください。 これらは簡単にデータに混入し、
+的に問題が発生する可能性があります。 代わりに、列
+ヘッダーを固定する
+ことができます。これにより、多くの
+行を含むスプレッドシートがある場合でも、それらの行が表示されたままになります。
 
-### Not filling in zeros {#zeros}
+### ゼロを埋めない {#zeros}
 
-It might be that when you're measuring something, it's usually a zero,
-say the number of times a rabbit is observed in the survey. Why bother
-writing in the number zero in that column, when it's mostly zeros?
+何かを測定するとき、調査でウサギが観察された回数は通常
+である可能性があります。 その列にはほとんどゼロがあるのに、なぜわざわざ
+という数字のゼロを書き込むのでしょうか?
 
-However, there's a difference between a zero and a blank cell in a
-spreadsheet. To the computer, a zero is actually data. You measured or
-counted it. A blank cell means that it wasn't measured and the
-computer will interpret it as an unknown value (also known as a null
-or missing value).
+ただし、
+スプレッドシートのゼロと空白のセルには違いがあります。 コンピューターにとって、ゼロは実際にはデータです。 あなたが測ったか、
+なかった。 空白のセルは、測定されていないことを意味し、
+はそれを未知の値 (ヌル
+または欠損値とも呼ばれます) として解釈します。
 
-The spreadsheets or statistical programs will likely misinterpret
-blank cells that you intend to be zeros. By not entering the value of
-your observation, you are telling your computer to represent that data
-as unknown or missing (null). This can cause problems with subsequent
-calculations or analyses. For example, the average of a set of numbers
-which includes a single null value is always null (because the
-computer can't guess the value of the missing observations). Because
-of this, it's very important to record zeros as zeros and truly
-missing data as nulls.
+スプレッドシートや統計プログラムでは、ゼロであるつもりの
+の空白セルが誤って解釈される可能性があります。 観測値
+入力しないことにより、そのデータ
+を不明または欠落 (null) として表すようにコンピュータに指示することになります。 これにより、後続の
+の計算または分析で問題が発生する可能性があります。 たとえば、単一の null 値を含む一連の数値
+の平均は常に null です (
+は欠落している観測値を推測できないため)。 このうち
+であるため、ゼロをゼロとして記録し、真に
+欠損データをヌルとして記録することが非常に重要です。
 
-### Using problematic null values {#null}
+### 問題のある null 値 {#null}の使用
 
-**Example**: using -999 or other numerical values (or zero) to
-represent missing data.
+**例**: -999 またはその他の数値 (またはゼロ) を
+に使用すると、欠損データを表します。
 
-**Solutions**:
+**解決策**:
 
-There are a few reasons why null values get represented differently
-within a dataset. Sometimes confusing null values are automatically
-recorded from the measuring device. If that's the case, there's not
-much you can do, but it can be addressed in data cleaning with a tool
-like
+データセット内で null 値が異なる
+で表現される理由はいくつかあります。 紛らわしいヌル値が測定装置から自動的に
+として記録される場合があります。 その場合、できることは
+ではありませんが、ツール
+を使用してデータ クリーニングで対処できます 1
 [OpenRefine](https://www.datacarpentry.org/OpenRefine-ecology-lesson/)
-before analysis. Other times different null values are used to convey
-different reasons why the data isn't there. This is important
-information to capture, but is in effect using one column to capture
-two pieces of information. Like for using formatting to convey
-information it would be good here to create a new
-column like 'data\_missing' and use that column to capture the
-different reasons.
+前分析。 また、データが存在しないさまざまな理由を伝えるために、
+な null 値が使用されることもあります。 これは取得すべき重要
+情報ですが、実際には 1 つの列を使用して
+2 つの情報を取得することになります。 フォーマットを使用して
+情報を伝える と同様に、ここでは「data\_missing」のような新しい
+列を作成し、その列を使用して
+の異なる理由をキャプチャすると良いでしょう。
 
-Whatever the reason, it's a problem if unknown or missing data is
-recorded as -999, 999, or 0.
+理由が何であれ、不明または欠落しているデータが
+として -999、999、または 0 として記録されている場合は問題です。
 
-Many statistical programs will not recognise that these are intended
-to represent missing (null) values. How these values are interpreted
-will depend on the software you use to analyse your data. It is
-essential to use a clearly defined and consistent null indicator.
+多くの統計プログラムは、これらが欠損 (NULL) 値を表す
+であることを認識しません。 これらの値
+がどのように解釈されるかは、データの分析に使用するソフトウェアによって異なります。 明確に定義された一貫性のある null インジケーターを使用することが
+です。
 
-Blanks (most applications) and NA (for R) are good
-choices. @White:2013 explain good choices for indicating null values
-for different software applications in their article:
+空白 (ほとんどのアプリケーション) と NA (R の場合) が
+選択肢として適しています。 @White:2013 は、記事の中で、さまざまなソフトウェア アプリケーションに対して null 値
+を示すための適切な選択肢について説明しています。
 
 ![](fig/3_white_table_1.jpg)
 
-### Using formatting to convey information {#formatting}
+### フォーマットを使用して情報を伝える {#formatting}
 
-**Example**: highlighting cells, rows or columns that should be
-excluded from an analysis, leaving blank rows to indicate
-separations in data.
+**例**: 分析から
+必要があるセル、行、または列を強調表示し、空白の行を残してデータの
+分離を示します。
 
 ![](fig/formatting.png)
 
-**Solution**: create a new field to encode which data should be
-excluded.
+**解決策**: 新しいフィールドを作成して、
+データをエンコードします。
 
 ![](fig/good_formatting.png)
 
-### Using formatting to make the data sheet look pretty {#formatting\_pretty}
+### 書式設定を使用してデータシートを美しく見せる {#formatting\_pretty}
 
-**Example**: merging cells.
+**例**: セルを結合します。
 
-**Solution**: If you're not careful, formatting a worksheet to be more
-aesthetically pleasing can compromise your computer's ability to see
-associations in the data. Merged cells will make your data unreadable
-by statistics software. Consider restructuring your data in such a way
-that you will not need to merge cells to organise your data.
+**解決策**: 注意しないと、ワークシートを
+より美しく見えるように書式設定すると、データ内の
+関連付けを認識するコンピュータの機能が損なわれる可能性があります。 セルを結合すると、統計ソフトウェアで
+を読み取ることができなくなります。 データを整理する
+にセルを結合する必要がないような方法でデータを再構築することを検討してください。
 
-### Placing comments or units in cells {#units}
+### セル {#units}にコメントまたはユニットを配置する
 
-Most analysis software can't see Excel or LibreOffice comments, and
-would be confused by comments placed within your data cells. As
-described above for formatting, create another field if you need to
-add notes to cells. Similarly, don't include units in cells: ideally,
-all the measurements you place in one column should be in the same
-unit, but if for some reason they aren't, create another field and
-specify the units the cell is in.
+ほとんどの分析ソフトウェアは Excel や LibreOffice のコメントを表示できないため、
+データ セル内に配置されたコメントによって混乱する可能性があります。 書式設定について
+で説明したように、セルに
+を追加する必要がある場合は、別のフィールドを作成します。 同様に、セルに単位を含めないでください。理想的には、1 つの列に配置する
+の測定値が同じ
+単位内にある必要がありますが、何らかの理由でそうでない場合は、別のフィールドを作成し、
+セルの単位を指定します。で。
 
-### Entering more than one piece of information in a cell {#info}
+### セル {#info}に複数の情報を入力する
 
-**Example**: Recording ABO and Rhesus groups in one cell, such as A+,
-B+, A-, ...
+**例**: A+、
+B+、A- などの ABO グループとアカゲザル グループを 1 つのセルに記録する
 
-**Solution**: Don't include more than one piece of information in a
-cell. This will limit the ways in which you can analyse your data.  If
-you need both these measurements, design your data sheet to include
-this information. For example, include one column for the ABO group and
-one for the Rhesus group.
+**解決策**:
+セルに複数の情報を含めないでください。 これにより、データを分析できる方法が制限されます。\
+の場合、これらの測定値の両方が必要な場合は、
+この情報を含めるようにデータシートを設計します。 たとえば、ABO グループには 1 つの列を含め、Rhesus グループには
+つの列を含めます。
 
-### Using problematic field names {#field\_name}
+### 問題のあるフィールド名 {#field\_name} の使用
 
-Choose descriptive field names, but be careful not to include spaces,
-numbers, or special characters of any kind. Spaces can be
-misinterpreted by parsers that use whitespace as delimiters and some
-programs don't like field names that are text strings that start with
-numbers.
+説明的なフィールド名を選択しますが、スペース、
+数字、またはいかなる種類の特殊文字も含めないように注意してください。 スペースは、空白を区切り文字として使用するパーサーによって
+て解釈される可能性があり、一部の
+プログラムは
+数字で始まるテキスト文字列であるフィールド名を好みません。
 
-Underscores (`_`) are a good alternative to spaces. Consider writing
-names in camel case (like this: ExampleFileName) to improve
-readability. Remember that abbreviations that make sense at the moment
-may not be so obvious in 6 months, but don't overdo it with names that
-are excessively long. Including the units in the field names avoids
-confusion and enables others to readily interpret your fields.
+アンダースコア (`_`) はスペースの代わりに使用できます。
+読みやすさを向上させるために、
+名前をキャメルケースで記述することを検討してください (例: ExampleFileName)。 現時点では意味のある略語
+も、6 か月後にはそれほど明確ではなくなる可能性があることに注意してください。ただし、
+が長すぎる名前を付けすぎないでください。 フィールド名に
+を含めることで混乱が回避され、他の人がフィールドを簡単に解釈できるようになります。
 
-**Examples**
+**例**
 
-| Good Name                                                      | Good Alternative                         | Avoid                                |
-| -------------------------------------------------------------- | ---------------------------------------- | ------------------------------------ |
-| Max\_temp\_C       | MaxTemp                                  | Maximum Temp (°C) |
-| Precipitation\_mm                        | Precipitation                            | precmm                               |
-| Mean\_year\_growth | MeanYearGrowth                           | Mean growth/year                     |
-| sex                                                            | sex                                      | M/F                                  |
-| weight                                                         | weight                                   | w.                   |
-| cell\_type                               | CellType                                 | Cell Type                            |
-| Observation\_01                          | first\_observation | 1st Obs                              |
+| いい名前                                                  | 良い代替品                         | 避ける                          |
+| ----------------------------------------------------- | ----------------------------- | ---------------------------- |
+| 最高\_温度\_C | 最大温度                          | 最高温度 (°C) |
+| 降水量\_mm                         | 降水量                           | プレcmm                        |
+| 平均\_年\_成長 | 平均年成長                         | 平均成長率/年                      |
+|                                                       | セックス                          | 男/女                          |
+|                                                       | 重さ                            | w。                           |
+| セル\_タイプ                         | セルタイプ                         | 細胞の種類                        |
+| 観察\_01                          | 最初の\_観察 | 1回目の観測                       |
 
-### Using special characters in data {#special}
+### データ {#special}での特殊文字の使用
 
-**Example**: You treat your spreadsheet program as a word processor
-when writing notes, for example copying data directly from Word or
-other applications.
+**例**: たとえば、Word または
+のアプリケーションからデータを直接コピーするなど、メモを書くときにスプレッドシート プログラムをワード プロセッサ
+として扱います。
 
-**Solution**: This is a common strategy. For example, when writing
-longer text in a cell, people often include line breaks, em-dashes,
-etc. in their spreadsheet. Also, when copying data in from
-applications such as Word, formatting and fancy non-standard
-characters (such as left- and right-aligned quotation marks) are
-included. When exporting this data into a coding/statistical
-environment or into a relational database, dangerous things may occur,
-such as lines being cut in half and encoding errors being thrown.
+**解決策**: これは一般的な戦略です。 たとえば、セルに
+の長いテキストを書き込む場合、スプレッドシートに改行、全角ダッシュ、
+などを含めることがよくあります。 また、Word など
+アプリケーションからデータをコピーする場合、書式設定や派手な
+標準文字 (左揃えと右揃えの引用符など)
+が含まれます。 このデータをコーディング/
+環境またはリレーショナル データベースにエクスポートすると、行が半分に切断されたり、エンコード エラーが発生したりする
+、危険なことが発生する可能性があります。
 
-General best practice is to avoid adding characters such as newlines,
-tabs, and vertical tabs. In other words, treat a text cell as if it
-were a simple web form that can only contain text and spaces.
+一般的なベスト プラクティスは、改行、
+タブ、垂直タブなどの文字の追加を避けることです。 言い換えれば、テキスト セルを、テキストとスペースのみを含めることができる単純な Web フォームで
+かのように扱います。
 
-### Inclusion of metadata in data table {#metadata}
+### データテーブル {#metadata}へのメタデータの組み込み
 
-**Example**: You add a legend at the top or bottom of your data table
-explaining column meaning, units, exceptions, etc.
+**例**: データ テーブル
+の上部または下部に、列の意味、単位、例外などを説明する凡例を追加します。
 
-**Solution**: Recording data about your data ("metadata") is
-essential. You may be on intimate terms with your dataset while you
-are collecting and analysing it, but the chances that you will still
-remember that the variable "sglmemgp" means single member of group,
-for example, or the exact algorithm you used to transform a variable
-or create a derived one, after a few months, a year, or more are slim.
+**解決策**: データに関するデータ (「メタデータ」) を記録することは
+ではありません。 データセットを
+して分析している間は、データセットと親密な関係にあるかもしれませんが、変数「sglmemgp」がグループの単一のメンバー (たとえば
+を意味すること、または以前に使用した正確なアルゴリズムを意味することをまだ覚えている可能性は
+ありません。変数
+変換するか、派生変数を作成すると、数か月後、1 年後、またはそれ以上かかります。
 
-As well, there are many reasons other people may want to examine or
-use your data - to understand your findings, to verify your findings,
-to review your submitted publication, to replicate your results, to
-design a similar study, or even to archive your data for access and
-re-use by others. While digital data by definition are
-machine-readable, understanding their meaning is a job for human
-beings. The importance of documenting your data during the collection
-and analysis phase of your research cannot be overestimated,
-especially if your research is going to be part of the scholarly
-record.
+また、他の人があなたのデータを調べたり、使用したりする理由はたくさんあります。あなたの発見を理解するため、
+を検証するため、
+提出された出版物をレビューするため、結果を再現するため、
+同様の研究を計画するため、さらには他の人がアクセスしたり
+利用できるようにデータをアーカイブします。 デジタルデータは定義上、
+可読ではありませんが、その意味を理解することは
+の仕事です。 研究の収集段階および分析段階でデータを文書化することの重要性は、特に研究が
+記録の一部となる場合には
+過大評価することはできません
+。
 
-However, metadata should not be contained in the data file
-itself. Unlike a table in a paper or a supplemental file, metadata (in
-the form of legends) should not be included in a data file since this
-information is not data, and including it can disrupt how computer
-programs interpret your data file. Rather, metadata should be stored
-as a separate file in the same directory as your data file, preferably
-in plain text format with a name that clearly associates it with your
-data file. Because metadata files are free text format, they also
-allow you to encode comments, units, information about how null values
-are encoded, etc. that are important to document but can disrupt the
-formatting of your data file.
+ただし、データファイル
+自体にはメタデータを含めないでください。 論文や補足ファイルの表とは異なり、メタデータ (
+形式) はデータ ファイルに含めるべきではありません。この情報はデータではなく、
+データを含めるとコンピューター プログラムがデータ ファイルを解釈する
+が混乱する可能性があるためです。 むしろ、メタデータは、データ ファイルと同じディレクトリに別のファイルとして保存する必要があります。できればファイルと明確に関連付けられる名前を付けてプレーン テキスト形式で保存する必要があります。 メタデータ ファイルはフリー テキスト形式であるため、コメント、単位、
+値のエンコード方法に関する情報などをエンコードすることも
+ます。これらの情報は文書化するには重要ですが、データ ファイルの
+設定を混乱させる可能性があります。
 
-Additionally, file or database level metadata describes how files that
-make up the dataset relate to each other; what format they are in; and
-whether they supercede or are superceded by previous files. A
-folder-level readme.txt file is the classic way of accounting for all
-the files and folders in a project.
+さらに、ファイルまたはデータベース レベルのメタデータは、データセットを構成するファイルが相互に
+ように関連するかを記述します。どのような形式であるか。
+は、以前のファイルに優先されるか、または以前のファイルによって置き換えられるか。
+フォルダー レベルの readme.txt ファイルは、プロジェクト内のすべて
+ファイルとフォルダーを説明する古典的な方法です。
 
-(Text on metadata adapted from the online course Research Data
-[MANTRA](https://datalib.edina.ac.uk/mantra) by EDINA and Data Library,
-University of Edinburgh. MANTRA is licensed under a Creative Commons
-Attribution 4.0 International
-License.)
+(メタデータに関するテキストは、EDINA および
+大学データ ライブラリによるオンライン コース Research Data
+[MANTRA](https://datalib.edina.ac.uk/mantra) から改変されました。 MANTRA は クリエイティブ コモンズ
+表示 4.0 国際
+ライセンス に基づいてライセンスされています。
 
 ## データのエクスポート
 
-**Question**
+**質問**
 
-- How can we export data from spreadsheets in a way that is useful for
-  downstream applications?
+- ストリーム アプリケーションに役立つ方法でスプレッドシートからデータをエクスポートするにはどうすればよいでしょうか?
 
-**Objectives**
+**目的**
 
-- Store spreadsheet data in universal file formats.
-- Export data from a spreadsheet to a CSV file.
+- スプレッドシート データをユニバーサル ファイル形式で保存します。
+- スプレッドシートから CSV ファイルにデータをエクスポートします。
 
-**Keypoints**
+**キーポイント**
 
-- Data stored in common spreadsheet formats will often not be read
-  correctly into data analysis software, introducing errors into your
-  data.
+- 一般的なスプレッドシート形式で保存されたデータは、データ分析ソフトウェアに
+  読み込まれないことが多く、
+  にエラーが生じます。
 
-- Exporting data from spreadsheets to formats like CSV or TSV puts it
-  in a format that can be used consistently by most programs.
+- スプレッドシートから CSV や TSV などの形式にデータをエクスポートすると、ほとんどのプログラムで一貫して使用できる形式でデータが
+  になります。
 
-Storing the data you're going to work with for your analyses in Excel
-default file format (`*.xls` or `*.xlsx` - depending on the Excel
-version) isn't a good idea. Why?
+分析に使用するデータを Excel
+既定のファイル形式 (Excel
+バージョンに応じて `*.xls` または `*.xlsx`) で保存することはお勧めできません。 なぜ？
 
-- Because it is a proprietary format, and it is possible that in the
-  future, technology won't exist (or will become sufficiently rare) to
-  make it inconvenient, if not impossible, to open the file.
+- これは独自の形式であり、
+  的にはファイルを開くことが不可能では
+  にしても不便になる技術が存在しなくなる (または十分にまれになる) 可能性があるためです。
 
-- Other spreadsheet software may not be able to open files saved in a
-  proprietary Excel format.
+- 他の表計算ソフトウェアでは、
+  の Excel 形式で保存されたファイルを開くことができない場合があります。
 
-- Different versions of Excel may handle data differently, leading to
-  inconsistencies. [Dates](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
-  is a well-documented example of inconsistencies in data storage.
+- Excel のバージョンが異なるとデータの処理方法が異なる場合があり、
+  整合が発生する可能性があります。 [日付](https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html)
+  は、データ ストレージにおける不整合の十分に文書化された例です。
 
-- Finally, more journals and grant agencies are requiring you to
-  deposit your data in a data repository, and most of them don't
-  accept Excel format. It needs to be in one of the formats discussed
-  below.
+- 最後に、データをデータ リポジトリに
+  することを要求するジャーナルや補助金機関が増えています。また、そのほとんどは Excel 形式を受け入れ
+  ん。
+  で説明する形式のいずれかである必要があります。
 
-- The above points also apply to other formats such as open data
-  formats used by LibreOffice / Open Office. These formats are not
-  static and do not get parsed the same way by different software
-  packages.
+- 上記の点は、LibreOffice / Open Office で使用されるオープン データ
+  形式などの他の形式にも当てはまります。 これらの形式は
+  ではなく、
+  ソフトウェア パッケージによって同じ方法で解析されません。
 
-Storing data in a universal, open, and static format will help deal
-with this problem. Try tab-delimited (tab separated values or TSV) or
-comma-delimited (comma separated values or CSV). CSV files are plain
-text files where the columns are separated by commas, hence 'comma
-separated values' or CSV. The advantage of a CSV file over an
-Excel/SPSS/etc. file is that we can open and read a CSV file using
-just about any software, including plain text editors like TextEdit or
-NotePad. Data in a CSV file can also be easily imported into other
-formats and environments, such as SQLite and R. We're not tied to a
-certain version of a certain expensive program when we work with CSV
-files, so it's a good format to work with for maximum portability and
-endurance. Most spreadsheet programs can save to delimited text
-formats like CSV easily, although they may give you a warning during
-the file export.
+データを汎用的でオープンな静的形式で保存すると、この問題に
+するのに役立ちます。 タブ区切り (タブ区切り値または TSV) または
+カンマ区切り (カンマ区切り値または CSV) を試してください。 CSV ファイルは、列がカンマで区切られたプレーン
+テキスト ファイルです。したがって、「カンマ
+で区切られた値」または CSV と呼ばれます。 Excel/SPSS/などと
+した CSV ファイルの利点ファイルは、TextEdit や
+などのプレーン テキスト エディタを含む、ほぼすべてのソフトウェア
+を使用して CSV ファイルを開いて読み取ることができるということです。 CSV ファイル内のデータは、SQLite や R などの他
+形式や環境にも簡単にインポートできます。CSV
+ファイルを使用する場合、特定の高価なプログラムの
+のバージョンに縛られることがないので、最大限の移植性と
+性を実現するために使用するフォーマット。 ほとんどのスプレッドシート プログラムは
+などの区切りテキスト形式で簡単に保存できますが、ファイルのエクスポート
+に警告が表示される場合があります。
 
-To save a file you have opened in Excel in CSV format:
+Excel で開いたファイルを CSV 形式で保存するには:
 
-1. From the top menu select 'File' and 'Save as'.
-2. In the 'Format' field, from the list, select 'Comma Separated
-  Values' (`*.csv`).
-3. Double check the file name and the location where you want to save
-  it and hit 'Save'.
+1. 上部のメニューから「ファイル」と「名前を付けて保存」を選択します。
+2. [形式] フィールドのリストから、[カンマ区切りの
+  値] (`*.csv`) を選択します。
+3. ファイル名と
+  する場所を再確認し、「保存」をクリックします。
 
-An important note for backwards compatibility: you can open CSV files
-in Excel!
+下位互換性に関する重要な注意:
+ファイルは Excel で開くことができます。
 
 ```{r, results="markup", fig.cap="Saving an Excel file to CSV.", echo=FALSE, purl=FALSE, out.width="70%", fig.align="center"}
 knitr::include_graphics("fig/excel-to-csv.png")
 ```
 
-**A note on R and `xls`**: There are R packages that can read `xls`
-files (as well as Google spreadsheets). It is even possible to access
-different worksheets in the `xls` documents.
+**R と `xls` に関するメモ**: `xls`
+ファイル (および Google スプレッドシート) を読み取ることができる R パッケージがあります。 「xls」ドキュメント内の
+ワークシートにアクセスすることも可能です。
 
-**But**
+**しかし**
 
-- some of these only work on Windows.
-- this equates to replacing a (simple but manual) export to `csv` with
-  additional complexity/dependencies in the data analysis R code.
-- data formatting best practice still apply.
-- Is there really a good reason why `csv` (or similar) is not
-  adequate?
+- これらの中には Windows でのみ動作するものもあります。
+- これは、データ分析 R コードの追加の複雑さ/依存性を
+  して、(単純だが手動の) `csv` へのエクスポートを置き換えることに相当します。
+- データ形式のベスト プラクティスは引き続き適用されます。
+- `csv` (または類似のもの) が
+  では不十分である正当な理由は本当にあるのでしょうか?
 
-### Caveats on commas
+### カンマに関する注意事項
 
-In some datasets, the data values themselves may include commas
-(,). In that case, the software which you use (including Excel) will
-most likely incorrectly display the data in columns. This is because
-the commas which are a part of the data values will be interpreted as
-delimiters.
+一部のデータセットでは、データ値自体にカンマ
+(,) が含まれる場合があります。 その場合、使用しているソフトウェア (Excel を含む) により、列内のデータが誤って表示される可能性が
+ます。 これは、データ値の一部であるカンマの
+が
+区切り文字として解釈されるためです。
 
-For example, our data might look like this:
+たとえば、データは次のようになります。
 
 ```
-species_id,genus,species,taxa
-AB,Amphispiza,bilineata,Bird
-AH,Ammospermophilus,harrisi,Rodent, not censused
-AS,Ammodramus,savannarum,Bird
-BA,Baiomys,taylori,Rodent
+種 ID、属、種、分類群
+AB、Amphispiza、bilineata、鳥類
+AH、Ammospermophilus、harrisi、げっ歯類、国勢調査されていない
+AS、Ammodramus、savannarum、鳥類
+BA、Baiomys、taylori、げっ歯類
 ```
 
-In the record `AH,Ammospermophilus,harrisi,Rodent, not censused` the
-value for `taxa` includes a comma (`Rodent, not censused`).  If we try
-to read the above into Excel (or other spreadsheet program), we will
-get something like this:
+レコード「AH,Ammospermophilus,harrisi,Rodent, not censused」では、「taxa」の値
+コンマが含まれています (「Rodent, not censused」)。  上記を Excel (または他のスプレッドシート プログラム) に読み込むために
+を試みると、
+のような結果が得られます。
 
 ```{r, results="markup", fig.cap="The risks of having commas inside comma-separated data.", echo=FALSE, purl=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("fig/csv-mistake.png")
 ```
 
-The value for `taxa` was split into two columns (instead of being put
-in one column `D`). This can propagate to a number of further
-errors. For example, the extra column will be interpreted as a column
-with many missing values (and without a proper header). In addition to
-that, the value in column `D` for the record in row 3 (so the one
-where the value for 'taxa' contained the comma) is now incorrect.
+`taxa` の値は (1 つの列 `D` に
+を入れる代わりに) 2 つの列に分割されました。 これはさらに多数の
+エラーに伝播する可能性があります。 たとえば、追加の列は、欠損値が多数ある (適切なヘッダーがない) 列
+として解釈されます。
+に加えて、行 3 のレコードの列 `D` の値 (つまり、'taxa' の値にカンマが含まれている
+の値) も正しくなくなりました。
 
-If you want to store your data in `csv` format and expect that your
-data values may contain commas, you can avoid the problem discussed
-above by putting the values in quotes (""). Applying this rule, our
-data might look like this:
+データを「csv」形式で保存し、
+データ値にカンマが含まれる可能性があることが予想される場合は、値を引用符 ("") で囲むことで、上記
+で説明した問題を回避できます。 このルールを適用すると、
+データは次のようになります。
 
 ```
-species_id,genus,species,taxa
-"AB","Amphispiza","bilineata","Bird"
-"AH","Ammospermophilus","harrisi","Rodent, not censused"
-"AS","Ammodramus","savannarum","Bird"
-"BA","Baiomys","taylori","Rodent"
+種 ID、属、種、分類群
+"AB"、"Amphispiza"、"bilineata"、"Bird"
+"AH"、"Ammospermophilus"、"harrisi"、"げっ歯類、国勢調査されていない"
+"AS"、"Ammodramus" 、"サバンナルム"、"鳥"
+"BA"、"バイオミス"、"テイロリ"、"げっ歯類"
 ```
 
-Now opening this file as a `csv` in Excel will not lead to an extra
-column, because Excel will only use commas that fall outside of
-quotation marks as delimiting characters.
+Excel では
+引用符の外側にあるカンマのみが区切り文字として使用されるため、このファイルを Excel で「csv」として開いても、余分な
+列は生成されません。
 
-Alternatively, if you are working with data that contains commas, you
-likely will need to use another delimiter when working in a
-spreadsheet[^decsep]. In this case, consider using tabs as your delimiter and
-working with TSV files. TSV files can be exported from spreadsheet
-programs in the same way as CSV files.
+あるいは、カンマを含むデータを操作している場合、
+シートで作業するときに別の区切り文字を使用する必要がある可能
+があります[^decsep]。 この場合、区切り文字としてタブを使用し、TSV ファイルを扱う場合は
+使用することを検討してください。 TSV ファイルは、CSV ファイルと同じ方法でスプレッドシート
+プログラムからエクスポートできます。
 
-[^decsep]: This is particularly relevant in European
-    countries where the comma is used as a decimal
-    separator. In such cases, the default value separator in a
-    csv file will be the semi-colon (;), or values will be
-    systematically quoted.
+[^decsep]: これは、カンマが小数点の
+    として使用されるヨーロッパの
+    諸国に特に関係します。 このような場合、
+    csv ファイルのデフォルト値の区切り文字はセミコロン (;) になるか、値は体系的に引用符で囲まれた
+    になります。
 
-If you are working with an already existing dataset in which the data
-values are not included in "" but which have commas as both delimiters
-and parts of data values, you are potentially facing a major problem
-with data cleaning. If the dataset you're dealing with contains
-hundreds or thousands of records, cleaning them up manually (by either
-removing commas from the data values or putting the values into
-quotes - "") is not only going to take hours and hours but may
-potentially end up with you accidentally introducing many errors.
+データ
+の値が "" に含まれていないものの、区切り文字
+とデータ値の一部としてカンマが含まれている既存のデータセットを操作している場合は、データ クリーニングに関する重大な問題
+に直面する可能性があります。 扱っているデータセットに
+百または数千のレコードが含まれている場合、それらを手動でクリーンアップする (
+データ値からカンマを削除するか、値を
+引用符 ("") で囲む) と、何時間もかかるだけではありません。ただし、誤って
+のエラーが発生する可能性があります。
 
-Cleaning up datasets is one of the major problems in many scientific
-disciplines. The approach almost always depends on the particular
-context. However, it is a good practice to clean the data in an
-automated fashion, for example by writing and running a script. The
-Python and R lessons will give you the basis for developing skills to
-build relevant scripts.
+データセットのクリーンアップは、多くの
+分野における主要な問題の 1 つです。 このアプローチは、ほとんどの場合、特定
+コンテキストに依存します。 ただし、スクリプトを作成して実行するなど、
+化された方法でデータをクリーンアップすることをお勧めします。
+Python と R のレッスンは、
+するスクリプトを構築するためのスキルを開発するための基礎を提供します。
 
-## Summary
+## まとめ
 
 ```{r analysis, results="asis", fig.margin=TRUE, fig.cap="A typical data analysis workflow.", fig.width=7, fig.height=4, echo=FALSE, purl=FALSE}
 knitr::include_graphics("fig/analysis.png")
 ```
 
-A typical data analysis workflow is illustrated in the figure above,
-where data is repeatedly transformed, visualised, and modelled. This
-iteration is repeated multiple times until the data is understood. In
-many real-life cases, however, most time is spent cleaning up and
-preparing the data, rather than actually analysing and understanding
-it.
+典型的なデータ分析ワークフローは、上の図
+に示されており、データは繰り返し変換、視覚化、モデル化されます。 この
+の繰り返しは、データが理解されるまで複数回繰り返されます。 ただし、
+の実際のケースでは、実際にデータを分析して理解すること
+ではなく、データのクリーンアップと準備
+にほとんどの時間が費やされます。
 
-An agile data analysis workflow, with several fast iterations of the
-transform/visualise/model cycle is only feasible if the data is
-formatted in a predictable way and one can reason about the data
-without having to look at it and/or fix it.
+変換/視覚化/モデルのサイクルを高速で
+回繰り返すアジャイルなデータ分析ワークフローは、データが予測可能な方法で
+されており、データを調べたり
+したりすることなく推論できる場合にのみ実現可能です。それ。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Good data organization is the foundation of any research project.
+- 適切なデータ構成は、あらゆる研究プロジェクトの基礎です。
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::

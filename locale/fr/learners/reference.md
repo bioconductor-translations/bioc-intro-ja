@@ -2,7 +2,7 @@
 title: Reference
 ---
 
-## Glossary
+## Glossaire
 
 FIXME
 

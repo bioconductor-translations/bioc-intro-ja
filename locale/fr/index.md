@@ -3,13 +3,13 @@ permalink: index.html
 site: sandpaper::sandpaper_site
 ---
 
-## About this course
+## A propos de ce cours
 
 ::::::::::::::::::::::::::::::::::::::::::  prereq
 
-## Prerequisites
+## Prérequis
 
-- Familiarity with tabular data and spreadsheets.
+- Familiarité avec les données tabulaires et les feuilles de calcul.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

@@ -1,8 +1,8 @@
 ---
-title: Discussion
+title: Discusión
 ---
 
-FIXME
+ARREGLARME
 
 
 

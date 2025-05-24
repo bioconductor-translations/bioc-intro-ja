@@ -1,75 +1,75 @@
-# Introduction to genomic data analysis with R and Bioconductor
+# Introducción al análisis de datos genómicos con R y Bioconductor
 
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
+[![Crea una cuenta de Slack con nosotros](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
 
-## Contributing
+## Contribuyendo
 
-We welcome all contributions to improve the lesson! Maintainers will
-do their best to help you if you have any questions, concerns, or
-experience any difficulties along the way.
+¡Agradecemos todas las contribuciones para mejorar la lección! Los mantenedores
+harán todo lo posible para ayudarlo si tiene alguna pregunta, inquietud o
+experimenta alguna dificultad en el camino.
 
-We'd like to ask you to familiarize yourself with our Contribution
-Guide and have a look at the [more detailed
-guidelines][lesson-example] on proper formatting, ways to render the
-lesson locally, and even how to write new episodes.
+Nos gustaría pedirle que se familiarice con nuestra Guía de contribución
+&#x20;y eche un vistazo a las \[directrices
+más detalladas]\[ejemplo de lección] sobre el formato adecuado. , formas de renderizar la lección
+localmente e incluso cómo escribir nuevos episodios.
 
-Please see the current list of [issues][FIXME] for ideas for
-contributing to this repository. For making your contribution, we use
-the GitHub flow, which is nicely explained in the chapter
-Contributing to a
-Project
-in Pro Git by Scott Chacon.
+Consulte la lista actual de [problemas][FIXME] para obtener ideas sobre cómo
+contribuir a este repositorio. Para hacer tu contribución, utilizamos
+el flujo de GitHub, que está muy bien explicado en el capítulo
+[Contribuyendo a un proyecto
+](http://git-scm.com/ book/en/v2/GitHub-Contributing-to-a-Project)
+en Pro Git por Scott Chacon.
 
-Look for the tag
-![good\_first\_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This
-indicates that the maintainers will welcome a pull request fixing this
-issue.
+Busque la etiqueta
+![good\_first\_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). Este
+indica que los mantenedores agradecerán una solicitud de extracción que solucione este problema
+.
 
-## Useful links
+## Enlaces útiles
 
-- If you're going to be developing lesson material for the first time
-  according to our design principles, consider reading the
-  [Carpentries Curriculum Development Handbook][cdh]
-- Consult the [Lesson Example][lesson-example] website to find out more about
-  working with the lesson template
+- Si va a desarrollar material didáctico por primera vez
+  de acuerdo con nuestros principios de diseño, considere leer el
+  [Manual de desarrollo curricular de carpintería][cdh]
+- Consulte el sitio web \[Ejemplo de lección] \[ejemplo de lección] para obtener más información sobre
+  trabajar con la plantilla de lección
 
-## Lesson team
+## equipo de lección
 
-This lesson has been developed and is current maintained by
+Esta lección ha sido desarrollada y mantenida actualmente por
 
-- Laurent Gatto (maintainer)
-- Charlotte Soneson
+- Laurent Gatto (mantenedor)
+- Charlotte Sonson
 - Jenny Drnevich
-- Robert Castelo
-- Kevin Rue-Albert
+- Roberto Castelo
+- Kevin Rue Albert
 
-We would also like to acknowledge the contributions of:
+También nos gustaría reconocer las contribuciones de:
 
-- Oliver Crook, Sarah Kaspar, Nick Hirschmueller, Lisa Breckels and Maria Doyle for their contributions during the Bioconductor introduction workshop in Heidelberg, as part of EuroBioc2021 |> 2022.
-- Axelle Loriot, Marco Chiapelle, Manon Martin and Toby Hodges for various contributions and discussions.
-- lmsimp, alorot, manonmartin, mchiapello, stavares843, JennyZadeh, csdaw, ninja-1337, fursham-h, lagerratrobe, fmichonneau, federicomarini, tobyhodges for pull requests.
+- Oliver Crook, Sarah Kaspar, Nick Hirschmueller, Lisa Breckels y Maria Doyle por sus contribuciones durante el taller de introducción de bioconductores en Heidelberg, como parte de EuroBioc2021 |> 2022.
+- Axelle Loriot, Marco Chiapelle, Manon Martin y Toby Hodges por sus diversas contribuciones y debates.
+- lmsimp, alorot, manonmartin, mchiapello, stavares843, JennyZadeh, csdaw, ninja-1337, fursham-h, lagerratrobe, fmichonneau, federicomarini, tobyhodges para solicitudes de extracción.
 
-If we have contributed but we missed you, apologies, and feel free to add yourself with a PR.
+Si hemos contribuido pero te extrañamos, disculpas y no dudes en agregarte con un PR.
 
-## Authors
+## Autores
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
+Puede encontrar una lista de contribuyentes a la lección en [AUTORES](AUTORES)
 
-## Citation
+## Citación
 
-To cite this lesson, please consult with [CITATION](CITATION)
+Para citar esta lección, consulte con [CITACIÓN](CITACIÓN)
 
 [lesson-example]: https://carpentries.github.io/lesson-example
 [cdh]: https://cdh.carpentries.org
 
-## Testing locally
+## Pruebas localmente
 
-To test locally, run the following in the lessons directory:
+Para realizar la prueba localmente, ejecute lo siguiente en el directorio de lecciones:
 
 ```r
-sandpaper::serve()
+papel de lija::servir()
 ```
 
-For more details, see the [workbench installation
-instructions](https://carpentries.github.io/workbench/#installation].
+Para obtener más detalles, consulte las [instrucciones de instalación del banco de trabajo
+] (https://carpentries.github.io/workbench/#installation).
 

@@ -12,89 +12,89 @@ exercises: 30
 
 - Describir un objeto de tipo `data.frame`.
 - Cargar datos externos desde un archivo .csv a un objecto `data.frame`.
-- Summarize the contents of a data frame.
-- Describe what a factor is.
-- Convert between strings and factors.
-- Reorder and rename factors.
-- Format dates.
-- Export and save data.
+- Resumir el contenido de un marco de datos.
+- Describe qué es un factor.
+- Convertir entre cadenas y factores.
+- Reordenar y cambiar el nombre de los factores.
+- Dar formato a las fechas.
+- Exportar y guardar datos.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- First data analysis in R
+- Primer análisis de datos en R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> This episode is based on the Data Carpentries's _Data Analysis and
-> Visualisation in R for Ecologists_ lesson.
+> Este episodio se basa en la lección _Análisis de datos y
+> Visualización en R para ecologistas_ de Data Carpentries.
 
-## Presentation of the gene expression data
+## Presentación de los datos de expresión génica.
 
-We are going to use part of the data published by Blackmore , _The
-effect of upper-respiratory infection on transcriptomic changes in the
-CNS_. The goal of the study was to determine the effect of an
-upper-respiratory infection on changes in RNA transcription occurring
-in the cerebellum and spinal cord post infection. Gender matched eight
-week old C57BL/6 mice were inoculated with saline or with Influenza A by
-intranasal route and transcriptomic changes in the cerebellum and
-spinal cord tissues were evaluated by RNA-seq at days 0
-(non-infected), 4 and 8.
+Vamos a utilizar parte de los datos publicados por Blackmore , _El efecto
+de la infección de las vías respiratorias superiores sobre los cambios transcriptómicos en el
+SNC_. El objetivo del estudio fue determinar el efecto de una
+infección de las vías respiratorias superiores sobre los cambios en la transcripción del ARN que ocurren
+en el cerebelo y la médula espinal después de la infección. Se inocularon ocho ratones C57BL/6 de
+semanas de edad de sexo coincidente con solución salina o con Influenza A por
+vía intranasal y se evaluaron los cambios transcriptómicos en el cerebelo y
+tejidos de la médula espinal mediante ARN- seq en los días 0
+(no infectados), 4 y 8.
 
-The dataset is stored as a comma-separated values (CSV) file.  Each row
-holds information for a single RNA expression measurement, and the first eleven
-columns represent:
+El conjunto de datos se almacena como un archivo de valores separados por comas (CSV).  Cada fila
+contiene información para una única medición de expresión de ARN, y las primeras once columnas
+representan:
 
-| Column     | Description                                                                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| gene       | The name of the gene that was measured                                                                                                       |
-| sample     | The name of the sample the gene expression was measured in                                                                                   |
-| expression | The value of the gene expression                                                                                                             |
-| organism   | The organism/species - here all data stem from mice                                                                                          |
-| age        | The age of the mouse (all mice were 8 weeks here)                                                                         |
-| sex        | The sex of the mouse                                                                                                                         |
-| infection  | The infection state of the mouse, i.e. infected with Influenza A or not infected.            |
-| strain     | The Influenza A strain.                                                                                                      |
-| time       | The duration of the infection (in days).                                                                  |
-| tissue     | The tissue that was used for the gene expression experiment, i.e. cerebellum or spinal cord. |
-| mouse      | The mouse unique identifier.                                                                                                 |
+| Columna   | Descripción                                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| gene      | El nombre del gen que se midió.                                                                              |
+| muestra   | El nombre de la muestra en la que se midió la expresión genética.                                            |
+| expresión | El valor de la expresión genética.                                                                           |
+| organismo | El organismo/especie: aquí todos los datos provienen de ratones.                             |
+| edad      | La edad del ratón (aquí todos los ratones tenían 8 semanas)                                               |
+| sexo      | El sexo del ratón                                                                                                            |
+| infección | El estado de infección del ratón, es decir, infectado con gripe A o no infectado.                            |
+| cepa      | La cepa de influenza A.                                                                                      |
+| tiempo    | La duración de la infección (en días).                                                    |
+| tejido    | El tejido que se utilizó para el experimento de expresión génica, es decir, el cerebelo o la médula espinal. |
+| ratón     | El identificador único del mouse.                                                                            |
 
-We are going to use the R function `download.file()` to download the
-CSV file that contains the gene expression data, and we will use
-`read.csv()` to load into memory the content of the CSV file as an
-object of class `data.frame`.  Inside the `download.file` command, the
-first entry is a character string with the source URL. This source URL
-downloads a CSV file from a GitHub repository. The text after the
-comma (`"data/rnaseq.csv"`) is the destination of the file on your
-local machine. You'll need to have a folder on your machine called
-`"data"` where you'll download the file. So this command downloads the
-remote file, names it `"rnaseq.csv"` and adds it to a preexisting
-folder named `"data"`.
+Usaremos la función R `download.file()` para descargar el
+archivo CSV que contiene los datos de expresión genética, y usaremos
+`read.csv()` para cargar en la memoria el contenido del archivo CSV como un
+objeto de clase `data.frame`.  Dentro del comando `download.file`, la primera entrada
+es una cadena de caracteres con la URL de origen. Esta URL de origen
+descarga un archivo CSV desde un repositorio de GitHub. El texto después de la coma
+("data/rnaseq.csv"`) es el destino del archivo en su máquina local
+. Necesitará tener una carpeta en su máquina llamada
+`"data"`donde descargará el archivo. Entonces, este comando descarga el archivo remoto
+, lo llama`"rnaseq.csv"`y lo agrega a una carpeta
+preexistente llamada`"data"\`.
 
 ```{r, eval=TRUE}
 download.file(url = "https://github.com/carpentries-incubator/bioc-intro/raw/main/episodes/data/rnaseq.csv",
               destfile = "data/rnaseq.csv")
 ```
 
-You are now ready to load the data:
+Ahora está listo para cargar los datos:
 
 ```{r, eval=TRUE, purl=TRUE}
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-This statement doesn't produce any output because, as you might
-recall, assignments don't display anything. If we want to check that
-our data has been loaded, we can see the contents of the data frame by
-typing its name:
+Esta declaración no produce ningún resultado porque, como
+recordarás, las asignaciones no muestran nada. Si queremos comprobar que
+nuestros datos han sido cargados, podemos ver el contenido del marco de datos
+escribiendo su nombre:
 
 ```{r, eval=FALSE}
 rna
 ```
 
-Wow... that was a lot of output. At least it means the data loaded
-properly. Let's check the top (the first 6 lines) of this data frame
-using the function `head()`:
+Guau... eso fue mucho resultado. Al menos significa que los datos se cargaron
+correctamente. Revisemos la parte superior (las primeras 6 líneas) de este marco de datos
+usando la función `head()`:
 
 ```{r, purl=TRUE}
 head(rna)
@@ -102,21 +102,21 @@ head(rna)
 ## View(rna)
 ```
 
-**Note**
+**Nota**
 
-`read.csv()` assumes that fields are delineated by commas, however, in
-several countries, the comma is used as a decimal separator and the
-semicolon (;) is used as a field delineator. If you want to read in
-this type of files in R, you can use the `read.csv2()` function. It
-behaves exactly like `read.csv()` but uses different parameters for
-the decimal and the field separators. If you are working with another
-format, they can be both specified by the user. Check out the help for
-`read.csv()` by typing `?read.csv` to learn more. There is also the
-`read.delim()` function for reading tab separated data files. It is important to
-note that all of these functions are actually wrapper functions for
-the main `read.table()` function with different arguments.  As such,
-the data above could have also been loaded by using `read.table()`
-with the separation argument as `,`. The code is as follows:
+`read.csv()` asume que los campos están delimitados por comas; sin embargo, en
+varios países, la coma se usa como separador decimal y el
+punto y coma (;) se usa como campo delineador. Si desea leer en
+este tipo de archivos en R, puede usar la función `read.csv2()`.
+se comporta exactamente como `read.csv()` pero usa diferentes parámetros para
+los separadores decimales y de campo. Si está trabajando con otro formato
+, el usuario puede especificar ambos. Consulte la ayuda para
+`read.csv()` escribiendo `?read.csv` para obtener más información. También existe la función
+`read.delim()` para leer archivos de datos separados por tabulaciones. Es importante
+tener en cuenta que todas estas funciones son en realidad funciones contenedoras para
+la función principal `read.table()` con diferentes argumentos.  Como tal,
+los datos anteriores también podrían haberse cargado usando `read.table()`
+con el argumento de separación como `,`. El código es el siguiente:
 
 ```{r, eval=TRUE, purl=TRUE}
 rna <- read.table(file = "data/rnaseq.csv",
@@ -124,98 +124,98 @@ rna <- read.table(file = "data/rnaseq.csv",
                   header = TRUE)
 ```
 
-The header argument has to be set to TRUE to be able to read the
-headers as by default `read.table()` has the header argument set to
-FALSE.
+El argumento del encabezado debe establecerse en VERDADERO para poder leer los encabezados
+ya que, de forma predeterminada, `read.table()` tiene el argumento del encabezado establecido en
+FALSO.
 
-## What are data frames?
+## ¿Qué son los marcos de datos?
 
-Data frames are the _de facto_ data structure for most tabular data,
-and what we use for statistics and plotting.
+Los marcos de datos son la estructura de datos _de facto_ para la mayoría de los datos tabulares,
+y lo que usamos para estadísticas y gráficos.
 
-A data frame can be created by hand, but most commonly they are
-generated by the functions `read.csv()` or `read.table()`; in other
-words, when importing spreadsheets from your hard drive (or the web).
+Un marco de datos se puede crear a mano, pero lo más común es que
+se generen mediante las funciones `read.csv()` o `read.table()`; en otras
+palabras, al importar hojas de cálculo desde su disco duro (o la web).
 
-A data frame is the representation of data in the format of a table
-where the columns are vectors that all have the same length. Because
-columns are vectors, each column must contain a single type of data
-(e.g., characters, integers, factors). For example, here is a figure
-depicting a data frame comprising a numeric, a character, and a
-logical vector.
+Un marco de datos es la representación de datos en el formato de una tabla
+donde las columnas son vectores que tienen la misma longitud. Debido a que las columnas
+son vectores, cada columna debe contener un único tipo de datos
+(por ejemplo, caracteres, números enteros, factores). Por ejemplo, aquí hay una figura
+que representa un marco de datos que comprende un vector numérico, un carácter y un vector lógico
+.
 
 ![](./fig/data-frame.svg)
 
-We can see this when inspecting the <b>str</b>ucture of a data frame
-with the function `str()`:
+Podemos ver esto al inspeccionar la estructura <b>str</b>de un marco de datos
+con la función `str()`:
 
 ```{r}
 str(rna)
 ```
 
-## Inspecting `data.frame` Objects
+## Inspeccionando objetos `data.frame`
 
-We already saw how the functions `head()` and `str()` can be useful to
-check the content and the structure of a data frame. Here is a
-non-exhaustive list of functions to get a sense of the
-content/structure of the data. Let's try them out!
+Ya vimos cómo las funciones `head()` y `str()` pueden ser útiles para
+comprobar el contenido y la estructura de un marco de datos. Aquí hay una
+lista no exhaustiva de funciones para tener una idea del
+contenido/estructura de los datos. ¡Probémoslos!
 
-**Size**:
+**Tamaño**:
 
-- `dim(rna)` - returns a vector with the number of rows as the first
-  element, and the number of columns as the second element (the
-  **dim**ensions of the object).
-- `nrow(rna)` - returns the number of rows.
-- `ncol(rna)` - returns the number of columns.
+- `dim(rna)` - devuelve un vector con el número de filas como el primer elemento
+  y el número de columnas como el segundo elemento (las
+  **dim**ensiones del objeto ).
+- `nrow(rna)` - devuelve el número de filas.
+- `ncol(rna)` - devuelve el número de columnas.
 
-**Content**:
+**Contenido**:
 
-- `head(rna)` - shows the first 6 rows.
-- `tail(rna)` - shows the last 6 rows.
+- `head(rna)` - muestra las primeras 6 filas.
+- `tail(rna)` - muestra las últimas 6 filas.
 
-**Names**:
+**Nombres**:
 
-- `names(rna)` - returns the column names (synonym of `colnames()` for
-  `data.frame` objects).
-- `rownames(rna)` - returns the row names.
+- `names(rna)` - devuelve los nombres de las columnas (sinónimo de `colnames()` para
+  objetos `data.frame`).
+- `rownames(rna)` - devuelve los nombres de las filas.
 
-**Summary**:
+**Resumen**:
 
-- `str(rna)` - structure of the object and information about the
-  class, length and content of each column.
-- `summary(rna)` - summary statistics for each column.
+- `str(rna)` - estructura del objeto e información sobre la clase
+  , longitud y contenido de cada columna.
+- `summary(rna)`: resumen de estadísticas para cada columna.
 
-Note: most of these functions are "generic", they can be used on other types of
-objects besides `data.frame`.
+Nota: la mayoría de estas funciones son "genéricas", se pueden usar en otros tipos de objetos
+además de `data.frame`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-Based on the output of `str(rna)`, can you answer the following
-questions?
+Según el resultado de `str(rna)`, ¿puedes responder las siguientes
+preguntas?
 
-- What is the class of the object `rna`?
-- How many rows and how many columns are in this object?
+- ¿Cuál es la clase del objeto `rna`?
+- ¿Cuántas filas y cuántas columnas hay en este objeto?
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
-- class: data frame
-- how many rows: `r nrow(rna)`, how many columns: `r ncol(rna)`
+- clase: marco de datos
+- cuantas filas: 66465, cuantas columnas: 11
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Indexing and subsetting data frames
+## Indexación y subconjunto de marcos de datos
 
-Our `rna` data frame has rows and columns (it has 2 dimensions); if we
-want to extract some specific data from it, we need to specify the
-"coordinates" we want. Row numbers come first, followed by
-column numbers. However, note that different ways of specifying these
-coordinates lead to results with different classes.
+Nuestro marco de datos `rna` tiene filas y columnas (tiene 2 dimensiones); Si
+queremos extraer algunos datos específicos de él, debemos especificar las
+"coordenadas" que queremos. Los números de fila van primero, seguidos de
+números de columna. Sin embargo, tenga en cuenta que diferentes formas de especificar estas coordenadas
+conducen a resultados con diferentes clases.
 
 ```{r, eval=FALSE, purl=TRUE}
 # first element in the first column of the data frame (as a vector)
@@ -235,19 +235,19 @@ head_rna <- rna[1:6, ]
 head_rna
 ```
 
-`:` is a special function that creates numeric vectors of integers in
-increasing or decreasing order, test `1:10` and `10:1` for
-instance. See section @ref(sec:genvec) for details.
+`:` es una función especial que crea vectores numéricos de números enteros en
+orden creciente o decreciente, pruebe `1:10` y `10:1` para la instancia
+. Consulte la sección @ref(sec:genvec) para obtener más detalles.
 
-You can also exclude certain indices of a data frame using the "`-`" sign:
+También puedes excluir ciertos índices de un marco de datos usando el signo "`-`":
 
 ```{r, eval=FALSE, purl=TRUE}
 rna[, -1]          ## The whole data frame, except the first column
 rna[-c(7:66465), ] ## Equivalent to head(rna)
 ```
 
-Data frames can be subsetted by calling indices (as shown previously),
-but also by calling their column names directly:
+Los marcos de datos se pueden subconjuntos llamando a índices (como se mostró anteriormente),
+pero también llamando directamente a sus nombres de columnas:
 
 ```{r, eval=FALSE, purl=TRUE}
 rna["gene"]       # Result is a data.frame
@@ -256,39 +256,39 @@ rna[["gene"]]     # Result is a vector
 rna$gene          # Result is a vector
 ```
 
-In RStudio, you can use the autocompletion feature to get the full and
-correct names of the columns.
+En RStudio, puede utilizar la función de autocompletar para obtener los nombres completos y
+correctos de las columnas.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## Desafío
 
-1. Create a `data.frame` (`rna_200`) containing only the data in
-  row 200 of the `rna` dataset.
+1. Cree un `data.frame` (`rna_200`) que contenga solo los datos en
+  fila 200 del conjunto de datos `rna`.
 
-2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
+2. ¿Observó cómo `nrow()` le dio el número de filas en un `data.frame`?
 
-- Use that number to pull out just that last row in the initial
-  `rna` data frame.
+- Use ese número para extraer solo la última fila en el marco de datos inicial
+  `rna`.
 
-- Compare that with what you see as the last row using `tail()` to
-  make sure it's meeting expectations.
+- Compare eso con lo que ve como la última fila usando `tail()` para
+  y asegúrese de que cumpla con las expectativas.
 
-- Pull out that last row using `nrow()` instead of the row number.
+- Saque la última fila usando `nrow()` en lugar del número de fila.
 
-- Create a new data frame (`rna_last`) from that last row.
+- Cree un nuevo marco de datos (`rna_last`) a partir de esa última fila.
 
-3. Use `nrow()` to extract the row that is in the middle of the
-  `rna` dataframe. Store the content of this row in an object
-  named `rna_middle`.
+3. Utilice `nrow()` para extraer la fila que está en el medio del marco de datos
+  `rna`. Almacene el contenido de esta fila en un objeto
+  llamado `rna_middle`.
 
-4. Combine `nrow()` with the `-` notation above to reproduce the
-  behavior of `head(rna)`, keeping just the first through 6th
-  rows of the rna dataset.
+4. Combine `nrow()` con la notación `-` anterior para reproducir el comportamiento
+  de `head(rna)`, manteniendo solo la primera a la sexta
+  filas del conjunto de datos de rna.
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
 ```{r, purl=TRUE}
 ## 1.
@@ -307,17 +307,17 @@ rna_head <- rna[-(7:n_rows), ]
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Factors
+## Factores
 
-Factors represent **categorical data**. They are stored as integers
-associated with labels and they can be ordered or unordered. While
-factors look (and often behave) like character vectors, they are
-actually treated as integer vectors by R. So you need to be very
-careful when treating them as strings.
+Los factores representan **datos categóricos**. Se almacenan como números enteros
+asociados con etiquetas y pueden estar ordenados o desordenados. Si bien los factores
+parecen (y a menudo se comportan) como vectores de caracteres, en realidad R los trata
+como vectores enteros. Por lo tanto, debe tener mucho cuidado
+al tratarlos como cadenas.
 
-Once created, factors can only contain a pre-defined set of values,
-known as _levels_. By default, R always sorts levels in alphabetical
-order. For instance, if you have a factor with 2 levels:
+Una vez creados, los factores solo pueden contener un conjunto predefinido de valores,
+conocidos como _niveles_. De forma predeterminada, R siempre ordena los niveles en orden alfabético
+. Por ejemplo, si tienes un factor con 2 niveles:
 
 ```{r, purl=TRUE}
 sex <- factor(c("male", "female", "female", "male", "female"))
@@ -325,19 +325,19 @@ sex <- factor(c("male", "female", "female", "male", "female"))
 
 R will assign `1` to the level `"female"` and `2` to the level
 `"male"` (because `f` comes before `m`, even though the first element
-in this vector is `"male"`). You can see this by using the function
-`levels()` and you can find the number of levels using `nlevels()`:
+in this vector is `"male"`). Puedes ver esto usando la función
+`levels()` y puedes encontrar el número de niveles usando `nlevels()`:
 
 ```{r, purl=TRUE}
 levels(sex)
 nlevels(sex)
 ```
 
-Sometimes, the order of the factors does not matter, other times you
-might want to specify the order because it is meaningful (e.g., "low",
-"medium", "high"), it improves your visualization, or it is required
-by a particular type of analysis. Here, one way to reorder our levels
-in the `sex` vector would be:
+A veces, el orden de los factores no importa, otras veces
+es posible que desee especificar el orden porque es significativo (por ejemplo, "bajo",
+"medio", "alto"), mejora su visualización, o es requerido
+por un tipo particular de análisis. Aquí, una forma de reordenar nuestros niveles
+en el vector `sex` sería:
 
 ```{r, purl=TRUE}
 sex ## current order
@@ -345,26 +345,26 @@ sex <- factor(sex, levels = c("male", "female"))
 sex ## after re-ordering
 ```
 
-In R's memory, these factors are represented by integers (1, 2, 3),
-but are more informative than integers because factors are self
-describing: `"female"`, `"male"` is more descriptive than `1`,
-`2`. Which one is "male"?  You wouldn't be able to tell just from the
-integer data. Factors, on the other hand, have this information built-in.
-It is particularly helpful when there are many levels (like the
-gene biotype in our example dataset).
+En la memoria de R, estos factores están representados por números enteros (1, 2, 3),
+pero son más informativos que los números enteros porque los factores son auto
+y describen: `"femenino"`, `"masculino" ` es más descriptivo que `1`,
+`2`. ¿Cuál es "masculino"?  No podrías saberlo solo por los datos enteros
+. Los factores, por otro lado, tienen esta información incorporada.
+Es particularmente útil cuando hay muchos niveles (como el biotipo del gen
+en nuestro conjunto de datos de ejemplo).
 
-When your data is stored as a factor, you can use the `plot()`
-function to get a quick glance at the number of observations
-represented by each factor level. Let's look at the number of males
-and females in our data.
+Cuando sus datos se almacenan como un factor, puede usar la función `plot()`
+para obtener un vistazo rápido al número de observaciones
+representadas por cada nivel de factor. Veamos la cantidad de hombres
+y mujeres en nuestros datos.
 
 ```{r firstfactorplot, fig.cap="Bar plot of the number of females and males.", purl=TRUE}
 plot(sex)
 ```
 
-### Converting to character
+### Convertirse en personaje
 
-If you need to convert a factor to a character vector, you use
+Si necesita convertir un factor en un vector de caracteres, utilice
 `as.character(x)`.
 
 ```{r, purl=TRUE}
@@ -409,10 +409,10 @@ as.character(sex)
 
 <!--   vector `year_fct` inside the square brackets -->
 
-### Renaming factors
+### Factores de cambio de nombre
 
-If we want to rename these factor, it is sufficient to change its
-levels:
+Si queremos cambiar el nombre de estos factores, basta con cambiar sus
+niveles:
 
 ```{r, purl=TRUE}
 levels(sex)
@@ -423,13 +423,13 @@ plot(sex)
 
 ::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-- Rename "F" and "M" to "Female" and "Male" respectively.
+- Cambie el nombre de "F" y "M" a "Mujer" y "Masculino" respectivamente.
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
 ```{r, eval=TRUE, purl=TRUE}
 levels(sex)
@@ -442,12 +442,12 @@ levels(sex) <- c("Male", "Female")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-We have seen how data frames are created when using `read.csv()`, but
-they can also be created by hand with the `data.frame()` function.
-There are a few mistakes in this hand-crafted `data.frame`. Can you
-spot and fix them?  Don't hesitate to experiment!
+Hemos visto cómo se crean los marcos de datos cuando se usa `read.csv()`, pero
+también se pueden crear a mano con la función `data.frame()`.
+Hay algunos errores en este "data.frame" hecho a mano. ¿Puedes
+detectarlos y solucionarlos?  ¡No dudes en experimentar!
 
 ```{r, eval=FALSE}
 animal_data <- data.frame(
@@ -458,11 +458,11 @@ animal_data <- data.frame(
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
-- missing quotations around the names of the animals
-- missing one entry in the "feel" column (probably for one of the furry animals)
-- missing one comma in the weight column
+- Faltan citas alrededor de los nombres de los animales.
+- falta una entrada en la columna "sensación" (probablemente para uno de los animales peludos)
+- falta una coma en la columna de peso
 
 :::::::::::::::::::::::::
 
@@ -470,19 +470,19 @@ animal_data <- data.frame(
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-Can you predict the class for each of the columns in the following
-example?
+¿Puedes predecir la clase para cada una de las columnas en el siguiente ejemplo
+?
 
-Check your guesses using `str(country_climate)`:
+Comprueba tus conjeturas usando `str(country_climate)`:
 
-- Are they what you expected?  Why? Why not?
+- ¿Son lo que esperabas?  ¿Por qué? ¿Por qué no?
 
-- Try again by adding `stringsAsFactors = TRUE` after the last
-  variable when creating the data frame. What is happening now?
-  `stringsAsFactors` can also be set when reading text-based
-  spreadsheets into R using `read.csv()`.
+- Intente nuevamente agregando `stringsAsFactors = TRUE` después de la última variable
+  al crear el marco de datos. ¿Qué está pasando ahora?
+  `stringsAsFactors` también se puede configurar al leer
+  hojas de cálculo basadas en texto en R usando `read.csv()`.
 
 ```{r, eval=FALSE, purl=TRUE}
 country_climate <- data.frame(
@@ -496,7 +496,7 @@ country_climate <- data.frame(
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
 ```{r, eval=TRUE, purl=TRUE}
 country_climate <- data.frame(
@@ -513,47 +513,47 @@ str(country_climate)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The automatic conversion of data type is sometimes a blessing, sometimes an
-annoyance. Be aware that it exists, learn the rules, and double check that data
-you import in R are of the correct type within your data frame. If not, use it
-to your advantage to detect mistakes that might have been introduced during data
-entry (a letter in a column that should only contain numbers for instance).
+La conversión automática de tipos de datos es a veces una bendición, a veces una
+molestia. Tenga en cuenta que existe, aprenda las reglas y verifique que los datos
+que importe en R sean del tipo correcto dentro de su marco de datos. De lo contrario, úselo
+a su favor para detectar errores que podrían haberse introducido durante la entrada de datos
+(una letra en una columna que solo debe contener números, por ejemplo).
 
-Learn more in this RStudio
-tutorial
+Obtenga más información en este tutorial de RStudio
 
-## Matrices
 
-Before proceeding, now that we have learnt about data frames, let's
-recap package installation and learn about a new data type, namely the
-`matrix`. Like a `data.frame`, a matrix has two dimensions, rows and
-columns. But the major difference is that all cells in a `matrix` must
-be of the same type: `numeric`, `character`, `logical`, ... In that
-respect, matrices are closer to a `vector` than a `data.frame`.
+## matrices
 
-The default constructor for a matrix is `matrix`. It takes a vector of
-values to populate the matrix and the number of row and/or
-columns[^ncol]. The values are sorted along the columns, as illustrated
-below.
+Antes de continuar, ahora que hemos aprendido sobre los marcos de datos, recapitulemos
+la instalación del paquete y aprendamos sobre un nuevo tipo de datos, a saber, la
+`matriz`. Al igual que un `data.frame`, una matriz tiene dos dimensiones, filas y
+columnas. Pero la principal diferencia es que todas las celdas de una `matriz` deben
+ser del mismo tipo: `numérica`, `carácter`, `lógica`, ... En ese
+respecto, las matrices están más cerca de un "vector" que de un "marco.de.datos".
+
+El constructor predeterminado para una matriz es "matriz". Se necesita un vector de
+valores para poblar la matriz y el número de filas y/o
+columnas[^ncol]. Los valores se ordenan a lo largo de las columnas, como se ilustra
+a continuación.
 
 ```{r mat1, purl=TRUE}
 m <- matrix(1:9, ncol = 3, nrow = 3)
 m
 ```
 
-[^ncol]: Either the number of rows or columns are enough, as the other one can be deduced from the length of the values. Try out what happens if the values and number of rows/columns don't add up.
+[^ncol]: O el número de filas o columnas es suficiente, ya que el otro se puede deducir de la longitud de los valores. Pruebe qué sucede si los valores y el número de filas/columnas no cuadran.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-Using the function `installed.packages()`, create a `character` matrix
-containing the information about all packages currently installed on
-your computer. Explore it.
+Usando la función `installed.packages()`, cree una matriz de `caracteres`
+que contenga la información sobre todos los paquetes actualmente instalados en
+su computadora. Explorarlo.
 
 :::::::::::::::  solution
 
-## Solution:
+## Solución:
 
 ```{r pkg_sln, eval=FALSE, purl=TRUE}
 ## create the matrix
@@ -572,21 +572,21 @@ colnames(ip)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-It is often useful to create large random data matrices as test
-data. The exercise below asks you to create such a matrix with random
-data drawn from a normal distribution of mean 0 and standard deviation
-1, which can be done with the `rnorm()` function.
+A menudo resulta útil crear grandes matrices de datos aleatorios como datos de prueba
+. El siguiente ejercicio le pide que cree dicha matriz con datos aleatorios
+extraídos de una distribución normal de media 0 y desviación estándar
+1, lo cual se puede hacer con la función `rnorm()`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## Desafío:
 
-Construct a matrix of dimension 1000 by 3 of normally distributed data
-(mean 0, standard deviation 1)
+Construya una matriz de dimensión 1000 por 3 de datos distribuidos normalmente
+(media 0, desviación estándar 1)
 
 :::::::::::::::  solution
 
-## Solution
+## Solución
 
 ```{r rnormmat_sln, purl=TRUE}
 set.seed(123)
@@ -599,65 +599,65 @@ head(m)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Formatting Dates
+## Formato de fechas
 
-One of the most common issues that new (and experienced!) R users have
-is converting date and time information into a variable that is
-appropriate and usable during analyses.
+Uno de los problemas más comunes que los nuevos (¡y experimentados!) Los usuarios de R
+convierten la información de fecha y hora en una variable que es
+apropiada y utilizable durante los análisis.
 
-### Note on dates in spreadsheet programs
+### Nota sobre fechas en programas de hojas de cálculo
 
-Dates in spreadsheets are generally stored in a single column. While
-this seems the most natural way to record dates, it actually is not
-best practice. A spreadsheet application will display the dates in a
-seemingly correct way (to a human observer) but how it actually
-handles and stores the dates may be problematic. It is often much
-safer to store dates with YEAR, MONTH and DAY in separate columns or
-as YEAR and DAY-OF-YEAR in separate columns.
+Las fechas en las hojas de cálculo generalmente se almacenan en una sola columna. Si bien
+esta parece la forma más natural de registrar fechas, en realidad no es
+la mejor práctica. Una aplicación de hoja de cálculo mostrará las fechas de una manera
+aparentemente correcta (para un observador humano), pero la forma en que realmente
+maneja y almacena las fechas puede ser problemática. A menudo es mucho más seguro
+almacenar fechas con AÑO, MES y DÍA en columnas separadas o
+como AÑO y DÍA DEL AÑO en columnas separadas.
 
-Spreadsheet programs such as LibreOffice, Microsoft Excel, OpenOffice,
-Gnumeric, ... have different (and often incompatible) ways of encoding
-dates (even for the same program between versions and operating
-systems). Additionally, Excel can turn things that aren't dates into
-dates
-(@Zeeberg:2004), for example names or identifiers like MAR1, DEC1,
-OCT4. So if you're avoiding the date format overall, it's easier to
-identify these issues.
+Programas de hojas de cálculo como LibreOffice, Microsoft Excel, OpenOffice,
+Gnumeric,... tienen formas diferentes (y a menudo incompatibles) de codificar
+fechas (incluso para el mismo programa entre versiones y sistemas operativos
+). Además, Excel puede [convertir cosas que no son fechas en
+fechas](https://nsaunders.wordpress.com/2012/10/22/gene-name-errors-and-excel-lessons-not -aprendido/)
+(@Zeeberg:2004), por ejemplo nombres o identificadores como MAR1, DEC1,
+OCT4. Entonces, si evitas el formato de fecha en general, es más fácil
+identificar estos problemas.
 
-The Dates as
-data
-section of the Data Carpentry lesson provides additional insights
-about pitfalls of dates with spreadsheets.
+La sección Fechas como
+datos
+de la lección Carpintería de datos proporciona Ideas adicionales
+sobre los peligros de las fechas con hojas de cálculo.
 
-We are going to use the `ymd()` function from the package
-**`lubridate`** (which belongs to the **`tidyverse`**; learn more
-[here](https://www.tidyverse.org/)). . **`lubridate`** gets installed
-as part of the **`tidyverse`** installation. When you load the
-**`tidyverse`** (`library(tidyverse)`), the core packages (the
-packages used in most data analyses) get loaded. **`lubridate`**
-however does not belong to the core tidyverse, so you have to load it
-explicitly with `library(lubridate)`.
+Vamos a utilizar la función `ymd()` del paquete
+**`lubridate`** (que pertenece al **`tidyverse`**; aprende más
+[aquí] (https://www.tidyverse.org/)). . **`lubridate`** se instala
+como parte de la instalación de **`tidyverse`**. Cuando cargas
+**`tidyverse`** (`library(tidyverse)`), los paquetes principales (los
+paquetes utilizados en la mayoría de los análisis de datos) se cargan. **`lubridate`**
+sin embargo no pertenece al tidyverse principal, por lo que debes cargarlo
+explícitamente con `library(lubridate)`.
 
-Start by loading the required package:
+Comience cargando el paquete requerido:
 
 ```{r loadlibridate, message=FALSE, purl=TRUE}
 library("lubridate")
 ```
 
-`ymd()` takes a vector representing year, month, and day, and converts
-it to a `Date` vector. `Date` is a class of data recognized by R as
-being a date and can be manipulated as such. The argument that the
-function requires is flexible, but, as a best practice, is a character
-vector formatted as "YYYY-MM-DD".
+`ymd()` toma un vector que representa año, mes y día, y lo convierte
+en un vector `Date`. `Date` es una clase de datos reconocida por R como
+siendo una fecha y puede manipularse como tal. El argumento que requiere la función
+es flexible, pero, como práctica recomendada, es un vector de caracteres
+con el formato "AAAA-MM-DD".
 
-Let's create a date object and inspect the structure:
+Creemos un objeto de fecha e inspeccionemos la estructura:
 
 ```{r, purl=TRUE}
 my_date <- ymd("2015-01-01")
 str(my_date)
 ```
 
-Now let's paste the year, month, and day separately - we get the same result:
+Ahora peguemos el año, el mes y el día por separado; obtenemos el mismo resultado:
 
 ```{r, purl=TRUE}
 # sep indicates the character to use to separate each component
@@ -665,9 +665,9 @@ my_date <- ymd(paste("2015", "1", "1", sep = "-"))
 str(my_date)
 ```
 
-Let's now familiarise ourselves with a typical date manipulation
-pipeline. The small data below has stored dates in different `year`,
-`month` and `day` columns.
+Familiaricémonos ahora con una canalización típica de manipulación de fechas
+. Los pequeños datos a continuación han almacenado fechas en diferentes columnas "año",
+"mes" y "día".
 
 ```{r, purl=TRUE}
 x <- data.frame(year = c(1996, 1992, 1987, 1986, 2000, 1990, 2002, 1994, 1997, 1985),
@@ -677,64 +677,64 @@ x <- data.frame(year = c(1996, 1992, 1987, 1986, 2000, 1990, 2002, 1994, 1997, 1
 x
 ```
 
-Now we apply this function to the `x` dataset. We first create a
-character vector from the `year`, `month`, and `day` columns of `x`
-using `paste()`:
+Ahora aplicamos esta función al conjunto de datos `x`. Primero creamos un vector de caracteres
+a partir de las columnas `año`, `mes` y `día` de `x`
+usando `paste()`:
 
 ```{r, purl=TRUE}
 paste(x$year, x$month, x$day, sep = "-")
 ```
 
-This character vector can be used as the argument for `ymd()`:
+Este vector de caracteres se puede utilizar como argumento para `ymd()`:
 
 ```{r, purl=TRUE}
 ymd(paste(x$year, x$month, x$day, sep = "-"))
 ```
 
-The resulting `Date` vector can be added to `x` as a new column called `date`:
+El vector "Fecha" resultante se puede agregar a "x" como una nueva columna llamada "fecha":
 
 ```{r, purl=TRUE}
 x$date <- ymd(paste(x$year, x$month, x$day, sep = "-"))
 str(x) # notice the new column, with 'date' as the class
 ```
 
-Let's make sure everything worked correctly. One way to inspect the
-new column is to use `summary()`:
+Asegurémonos de que todo funcionó correctamente. Una forma de inspeccionar la
+nueva columna es usar `summary()`:
 
 ```{r, purl=TRUE}
 summary(x$date)
 ```
 
-Note that `ymd()` expects to have the year, month and day, in that
-order. If you have for instance day, month and year, you would need
+Tenga en cuenta que `ymd()` espera tener el año, mes y día, en ese orden
+. Si tiene, por ejemplo, día, mes y año, necesitará
 `dmy()`.
 
 ```{r, purl=TRUE}
 dmy(paste(x$day, x$month, x$year, sep = "-"))
 ```
 
-`lubdridate` has many functions to address all date variations.
+`lubdridate` tiene muchas funciones para abordar todas las variaciones de fechas.
 
-## Summary of R objects
+## Resumen de objetos R
 
-So far, we have seen several types of R object varying in the number
-of dimensions and whether they could store a single or multiple data
-types:
+Hasta ahora, hemos visto varios tipos de objetos R que varían en el número
+de dimensiones y si pueden almacenar uno o varios tipos de datos
+:
 
-- **`vector`**: one dimension (they have a length), single type of data.
-- **`matrix`**: two dimensions, single type of data.
-- **`data.frame`**: two dimensions, one type per column.
+- **`vector`**: una dimensión (tienen una longitud), un solo tipo de datos.
+- **`matriz`**: dos dimensiones, un solo tipo de datos.
+- **`data.frame`**: dos dimensiones, un tipo por columna.
 
-## Lists
+## Liza
 
-A data type that we haven't seen yet, but that is useful to know, and
-follows from the summary that we have just seen are lists:
+Un tipo de datos que aún no hemos visto, pero que es útil conocer, y
+se desprende del resumen que acabamos de ver son listas:
 
-- **`list`**: one dimension, every item can be of a different data
-  type.
+- **`lista`**: una dimensión, cada elemento puede ser de un tipo de datos
+  diferente.
 
-Below, let's create a list containing a vector of numbers, characters,
-a matrix, a dataframe and another list:
+A continuación, creemos una lista que contiene un vector de números, caracteres,
+una matriz, un marco de datos y otra lista:
 
 ```{r list0, purl=TRUE}
 l <- list(1:10, ## numeric
@@ -746,9 +746,9 @@ length(l)
 str(l)
 ```
 
-List subsetting is done using `[]` to subset a new sub-list or `[[]]`
-to extract a single element of that list (using indices or names, if
-the list is named).
+El subconjunto de listas se realiza usando `[]` para crear subconjuntos de una nueva sublista o `[[]]`
+para extraer un solo elemento de esa lista (usando índices o nombres, si
+la lista es nombrado).
 
 ```{r, purl=TRUE}
 l[[1]] ## first element
@@ -756,15 +756,15 @@ l[1:2] ## a list of length 2
 l[1]   ## a list of length 1
 ```
 
-## Exporting and saving tabular data {#sec:exportandsave}
+## Exportar y guardar datos tabulares {#sec:exportandsave}
 
-We have seen how to read a text-based spreadsheet into R using the
-`read.table` family of functions. To export a `data.frame` to a
-text-based spreadsheet, we can use the `write.table` set of functions
-(`write.csv`, `write.delim`, ...). They all take the variable to be
-exported and the file to be exported to. For example, to export the
-`rna` data to the `my_rna.csv` file in the `data_output`
-directory, we would execute:
+Hemos visto cómo leer una hoja de cálculo basada en texto en R usando la familia de funciones
+`read.table`. Para exportar un `data.frame` a una
+hoja de cálculo basada en texto, podemos usar el conjunto de funciones `write.table`
+(`write.csv`, `write.delim`, ...). Todos toman la variable que se exportará
+y el archivo al que se exportará. Por ejemplo, para exportar los datos
+`rna` al archivo `my_rna.csv` en el directorio `data_output`
+, ejecutaríamos:
 
 ```{r writecsv, eval=FALSE, purl=TRUE}
 write.csv(rna, file = "data_output/my_rna.csv")
@@ -779,6 +779,6 @@ separators.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Tabular data in R
+- Datos tabulares en R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
