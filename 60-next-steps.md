@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Next steps
+title: 次のステップ
 teaching: 45
 exercises: 45
 ---
@@ -9,94 +9,91 @@ exercises: 45
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Introduce the Bioconductor project.
-- Introduce the notion of data containers.
-- Give an overview of the `SummarizedExperiment`, extensively used in
-  omics analyses.
+- Bioconductorプロジェクトを紹介してみましょう。
+- データコンテナの概念を紹介してみましょう。
+- オミックス解析で多用される `SummarizedExperiment` の概要を説明する。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What is a `SummarizedExperiment`?
-- What is Bioconductor?
+- `SummarizedExperiment` とは何でしょうか？
+- Bioconductor と何でしょうか？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Next steps
+## 次のステップ
 
 
 
-Data in bioinformatics is often complex.  To deal with this,
-developers define specialised data containers (termed classes) that
-match the properties of the data they need to handle.
+バイオインフォマティクスのデータはしばしば複雑です。  これに対処するため、
+開発者は、扱う必要のあるデータのプロパティに
+マッチする、特別なデータコンテナ（クラスと呼ばれる）を定義する。
 
-This aspect is central to the **Bioconductor**[^Bioconductor] project
-which uses the same **core data infrastructure** across packages. This
-certainly contributed to Bioconductor's success. Bioconductor package
-developers are advised to make use of existing infrastructure to
-provide coherence, interoperability, and stability to the project as a
-whole.
+この側面は、パッケージ間で同じ**コア・データ・インフラ**を使用する**バイオコンダクター**\[^バイオコンダクター]プロジェクト
+。 この
+、Bioconductorの成功に貢献したことは間違いない。 Bioconductor パッケージ
+開発者は、
+プロジェクト全体に一貫性、相互運用性、安定性を提供するために、既存のインフラストラクチャを利用することをお勧めします
+。
 
-[^Bioconductor]: The [Bioconductor](https://www.bioconductor.org) was
-    initiated by Robert Gentleman, one of the two creators of the R
-    language. Bioconductor provides tools dedicated to omics data
-    analysis. Bioconductor uses the R statistical programming language
-    and is open source and open development.
+[^Bioconductor]: Bioconductor](https://www.bioconductor.org)は、
+    、
+    R言語の生みの親の一人であるロバート・ジェントルマンによって始められた。 Bioconductorは、オミックスデータ
+    分析に特化したツールを提供している。 Bioconductorは統計プログラミング言語R（
+    ）を使用しており、オープンソース、オープン開発である。
 
-To illustrate such an omics data container, we'll present the
-`SummarizedExperiment` class.
+このようなオミックス・データ・コンテナを説明するために、
+`SummarizedExperiment`クラスを紹介する。
 
-## SummarizedExperiment
+## 実験概要
 
-The figure below represents the anatomy of the SummarizedExperiment class.
+下図は、SummarizedExperimentクラスの構造を表しています。
 
 <img src="https://uclouvain-cbio.github.io/WSBIM1322/figs/SE.svg" width="80%" style="display: block; margin: auto;" />
 
-Objects of the class SummarizedExperiment contain :
+SummarizedExperimentクラスのオブジェクトには、：
 
-- **One (or more) assay(s)** containing the quantitative omics data
-  (expression data), stored as a matrix-like object. Features (genes,
-  transcripts, proteins, ...) are defined along the rows, and samples
-  along the columns.
+- \*\*定量的オミックスデータ
+  （発現データ）を含む1つ（または複数）のアッセイ \*\*、マトリックス状のオブジェクトとして格納されている。 特徴（遺伝子、
+  転写物、タンパク質、...） は行に沿って定義され、
+  は列に沿って定義される。
 
-- A **sample metadata** slot containing sample co-variates, stored as a
-  data frame. Rows from this table represent samples (rows match exactly the
-  columns of the expression data).
+- データフレームとして格納された、サンプルの共変量を含む **sample metadata** スロット。 この表の行はサンプルを表す（行は発現データの
+  列と正確に一致する）。
 
-- A **feature metadata** slot containing feature co-variates, stored as
-  a data frame. The rows of this data frame match exactly the rows of the
-  expression data.
+- データフレームとして格納される、特徴共変量を含む **特徴メタデータ** スロット。 このデータフレームの行は、
+  式データの行と完全に一致する。
 
-The coordinated nature of the `SummarizedExperiment` guarantees that
-during data manipulation, the dimensions of the different slots will
-always match (i.e the columns in the expression data and then rows in
-the sample metadata, as well as the rows in the expression data and
-feature metadata) during data manipulation. For example, if we had to
-exclude one sample from the assay, it would be automatically removed
-from the sample metadata in the same operation.
+SummarizedExperiment\`の調整された性質は、データ操作中に
+、異なるスロットの次元が
+、常に一致することを保証する（すなわち、発現データの列と
+サンプルメタデータの行、および発現データと
+特徴メタデータの行）。 例えば、
+、アッセイから1つのサンプルを除外しなければならない場合、同じ操作でサンプルメタデータから
+、自動的に除外される。
 
-The metadata slots can grow additional co-variates
-(columns) without affecting the other structures.
+メタデータ・スロットは、他の構造に影響を与えることなく、
+（カラム）の共変数を追加で増やすことができる。
 
-### Creating a SummarizedExperiment
+### SummarizedExperimentの作成
 
-In order to create a `SummarizedExperiment`, we will create the
-individual components, i.e the count matrix, the sample and gene
-metadata from csv files. These are typically how RNA-Seq data are
-provided (after raw data have been processed).
+SummarizedExperiment\`を作成するために、
+の各コンポーネント、すなわちカウントマトリックス、サンプル、遺伝子
+のメタデータをcsvファイルから作成する。 これらは通常、RNA-Seqデータが
+（生データが処理された後）提供される方法である。
 
 
 
-- **An expression matrix**: we load the count matrix, specifying that
-  the first columns contains row/gene names, and convert the
-  `data.frame` to a `matrix`. You can download it
-  [here](https://carpentries-incubator.github.io/bioc-intro/data/count_matrix.csv).
+- **An expression matrix**: カウント行列をロードし、
+  最初の列が行/遺伝子名を含むことを指定し、
+  `data.frame` を `matrix` に変換する。 ダウンロードは
+  [こちら](https://carpentries-incubator.github.io/bioc-intro/data/count_matrix.csv)。
 
 
 ``` r
 count_matrix <- read.csv("data/count_matrix.csv",
-                         row.names = 1) |>
+                         row.names = 1) %>%
     as.matrix()
 
 count_matrix[1:5, ]
@@ -137,8 +134,8 @@ dim(count_matrix)
 [1] 1474   22
 ```
 
-- **A table describing the samples**, available
-  [here](https://carpentries-incubator.github.io/bioc-intro/data/sample_metadata.csv).
+- **サンプルを説明する表**、
+  [こちら](https://carpentries-incubator.github.io/bioc-intro/data/sample_metadata.csv)。
 
 
 ``` r
@@ -180,8 +177,8 @@ dim(sample_metadata)
 [1] 22  9
 ```
 
-- **A table describing the genes**, available
-  [here](https://carpentries-incubator.github.io/bioc-intro/data/gene_metadata.csv).
+- **遺伝子を説明する表**、
+  [こちら](https://carpentries-incubator.github.io/bioc-intro/data/gene_metadata.csv)。
 
 
 ``` r
@@ -233,18 +230,18 @@ dim(gene_metadata)
 [1] 1474    9
 ```
 
-We will create a `SummarizedExperiment` from these tables:
+これらのテーブルから `SummarizedExperiment` を作成する：
 
-- The count matrix that will be used as the **`assay`**
+- として使用されるカウント行列。
 
-- The table describing the samples will be used as the **sample
-  metadata** slot
+- サンプルを記述したテーブルは、**サンプル
+  メタデータ**スロットとして使用される。
 
-- The table describing the genes will be used as the **features
-  metadata** slot
+- 遺伝子を記述したテーブルは、**features
+  メタデータ**スロットとして使用される。
 
-To do this we can put the different parts together using the
-`SummarizedExperiment` constructor:
+これを行うには、
+`SummarizedExperiment` コンストラクタを使って、異なるパーツをまとめることができる：
 
 
 ``` r
@@ -252,9 +249,9 @@ To do this we can put the different parts together using the
 library("SummarizedExperiment")
 ```
 
-First, we make sure that the samples are in the same order in the
-count matrix and the sample annotation, and the same for the genes in
-the count matrix and the gene annotation.
+まず、
+カウントマトリックスとサンプルアノテーションにおいて、サンプルの順番が同じであることを確認する。また、
+カウントマトリックスと遺伝子アノテーションにおいて、遺伝子の順番が同じであることを確認する。
 
 
 ``` r
@@ -282,20 +279,20 @@ colnames(22): GSM2545336 GSM2545337 ... GSM2545363 GSM2545380
 colData names(9): sample organism ... tissue mouse
 ```
 
-### Saving data
+### データの保存
 
-Exporting data to a spreadsheet, as we did in a previous episode, has
-several limitations, such as those described in the first chapter
-(possible inconsistencies with `,` and `.` for decimal separators and
-lack of variable type definitions). Furthermore, exporting data to a
-spreadsheet is only relevant for rectangular data such as dataframes
-and matrices.
+以前のエピソードで行ったように、データをスプレッドシートにエクスポートするには、
+、第1章
+（小数点以下の区切り文字に`,`と`.`を使った場合の不整合の可能性、
+変数型の定義の欠如）で説明したようないくつかの制限がある。 さらに、
+スプレッドシートへのデータエクスポートは、データフレーム
+や行列のような長方形のデータにのみ関係する。
 
-A more general way to save data, that is specific to R and is
-guaranteed to work on any operating system, is to use the `saveRDS`
-function. Saving objects like this will generate a binary
-representation on disk (using the `rds` file extension here), which
-can be loaded back into R using the `readRDS` function.
+データを保存するより一般的な方法は、Rに特有であり、
+どのオペレーティングシステムでも動作することが保証されている `saveRDS`
+関数を使用することである。 このようにオブジェクトを保存すると、ディスク上にバイナリ
+表現が生成されます（ここでは `rds` ファイル拡張子を使用します）。
+`readRDS` 関数を使用して R にロードし直すことができます。
 
 
 ``` r
@@ -305,14 +302,14 @@ se <- readRDS("data_output/se.rds")
 head(se)
 ```
 
-To conclude, when it comes to saving data from R that will be loaded
-again in R, saving and loading with `saveRDS` and `readRDS` is the
-preferred approach. If tabular data need to be shared with somebody
-that is not using R, then exporting to a text-based spreadsheet is a
-good alternative.
+結論として、Rからデータを保存し、
+Rで再度ロードする場合、`saveRDS`と`readRDS`で保存とロードを行うのが
+。 表形式のデータを、Rを使用していない誰か（
+）と共有する必要がある場合は、テキストベースのスプレッドシートにエクスポートするのが、
+良い選択肢である。
 
-Using this data structure, we can access the expression matrix with
-the `assay` function:
+このデータ構造を使って、
+`assay`関数で発現行列にアクセスすることができる：
 
 
 ``` r
@@ -358,7 +355,7 @@ dim(assay(se))
 [1] 1474   22
 ```
 
-We can access the sample metadata using the `colData` function:
+colData\`関数を使ってサンプルのメタデータにアクセスすることができる：
 
 
 ``` r
@@ -403,7 +400,7 @@ dim(colData(se))
 [1] 22  9
 ```
 
-We can also access the feature metadata using the `rowData` function:
+また、`rowData`関数を使ってフィーチャーのメタデータにアクセスすることもできる：
 
 
 ``` r
@@ -446,13 +443,13 @@ dim(rowData(se))
 [1] 1474    9
 ```
 
-### Subsetting a SummarizedExperiment
+### SummarizedExperimentをサブセットする
 
-SummarizedExperiment can be subset just like with data frames, with
-numerics or with characters of logicals.
+SummarizedExperiment は、データフレームと同じように、
+数値または論理の文字でサブセットできる。
 
-Below, we create a new instance of class SummarizedExperiment that
-contains only the 5 first features for the 3 first samples.
+以下では、
+、3つの最初のサンプルの5つの最初の特徴のみを含む、SummarizedExperimentクラスの新しいインスタンスを作成します。
 
 
 ``` r
@@ -520,10 +517,10 @@ Klk6                                     KLK6
 Fcrls                                   FCRL2
 ```
 
-We can also use the `colData()` function to subset on something from
-the sample metadata or the `rowData()` to subset on something from the
-feature metadata.  For example, here we keep only miRNAs and the non
-infected samples:
+また、`colData()` 関数を使用して、
+サンプルメタデータから何かをサブセットしたり、`rowData()` 関数を使用して、
+フィーチャーメタデータから何かをサブセットすることもできます。  例えば、ここではmiRNAと
+に感染していないサンプルだけを残している：
 
 
 ``` r
@@ -644,14 +641,14 @@ function.-->
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## チャレンジ
 
-Extract the gene expression levels of the 3 first genes in samples
-at time 0 and at time 8.
+時刻0と時刻8のサンプル
+、最初の3遺伝子の遺伝子発現レベルを抽出する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -699,20 +696,19 @@ Cyp2d22       1821       4019
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## チャレンジ
 
-Verify that you get the same values using the long `rna` table.
+長い`rna`テーブルを使用して同じ値が得られることを確認する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
 rna |>
-    filter(gene %in% c("Asl", "Apod", "Cyd2d22")) |>
-    filter(time != 4) |>
-    select(expression)
+    filter(gene %in% c("Asl", "Apod", "Cyd2d22"))|>
+    filter(time != 4) |> select(expression)
 ```
 
 ``` output
@@ -736,17 +732,17 @@ rna |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The long table and the `SummarizedExperiment` contain the same
-information, but are simply structured differently. Each approach has its
-own advantages: the former is a good fit for the `tidyverse` packages,
-while the latter is the preferred structure for many bioinformatics and
-statistical processing steps. For example, a typical RNA-Seq analyses using
-the `DESeq2` package.
+長いテーブルと`SummarizedExperiment`は同じ
+情報を含むが、単に構造が異なるだけである。 各アプローチにはそれぞれ
+独自の利点がある。前者は `tidyverse` パッケージに適しており、
+一方、後者は多くのバイオインフォマティクスと
+統計処理ステップに適した構造である。 例えば、
+`DESeq2`パッケージを使用した典型的なRNA-Seq分析である。
 
-#### Adding variables to metadata
+#### メタデータに変数を追加する
 
-We can also add information to the metadata.
-Suppose that you want to add the center where the samples were collected...
+メタデータに情報を追加することもできる。
+サンプルが採取されたセンターを追加したいとします...
 
 
 ``` r
@@ -784,36 +780,27 @@ GSM2545363     C57BL/6         4  Cerebellum        12 University of Illinois
 GSM2545380     C57BL/6         8  Cerebellum        19 University of Illinois
 ```
 
-This illustrates that the metadata slots can grow indefinitely without
-affecting the other structures!
+これは、メタデータ・スロットが、
+、他の構造に影響を与えることなく、無限に成長できることを示している！
 
 ### tidySummarizedExperiment
 
-You may be wondering, can we use tidyverse commands to interact with
-`SummarizedExperiment` objects? The answer is yes, we can with the
-`tidySummarizedExperiment` package.
+`SummarizedExperiment` オブジェクトを操作するために tidyverse コマンドを使うことはできるのだろうか？
+`tidySummarizedExperiment` パッケージを使えば可能です。
 
-Remember what our SummarizedExperiment object looks like:
+SummarizedExperimentオブジェクトがどのようなものか思い出してください：
 
 
 ``` r
-se
+シー
 ```
 
-``` output
-class: SummarizedExperiment 
-dim: 1474 22 
-metadata(0):
-assays(1): counts
-rownames(1474): Asl Apod ... Lmx1a Pbx1
-rowData names(9): gene ENTREZID ... phenotype_description
-  hsapiens_homolog_associated_gene_name
-colnames(22): GSM2545336 GSM2545337 ... GSM2545363 GSM2545380
-colData names(10): sample organism ... mouse center
+``` error
+Error: object 'シー' not found
 ```
 
-Load `tidySummarizedExperiment` and then take a look at the se object
-again.
+tidySummarizedExperiment\`をロードし、seオブジェクト
+。
 
 
 ``` r
@@ -845,14 +832,14 @@ se
 #   phenotype_description <chr>, hsapiens_homolog_associated_gene_name <chr>
 ```
 
-It's still a `SummarizedExperiment` object, so maintains the efficient
-structure, but now we can view it as a tibble. Note the first line of
-the output says this, it's a `SummarizedExperiment`\-`tibble`
-abstraction. We can also see in the second line of the output the
-number of transcripts and samples.
+これはまだ`SummarizedExperiment`オブジェクトなので、効率的な
+構造を維持しているが、これでティブルとして見ることができる。
+の最初の行に注目してほしい。出力にはこう書いてあるが、これは `SummarizedExperiment`-`tibble`
+の抽象化である。 また、出力の2行目には、
+のトランスクリプトとサンプルの数を見ることができる。
 
-If we want to revert to the standard `SummarizedExperiment` view, we
-can do that.
+標準の`SummarizedExperiment`ビューに戻したい場合は、
+。
 
 
 ``` r
@@ -872,7 +859,7 @@ colnames(22): GSM2545336 GSM2545337 ... GSM2545363 GSM2545380
 colData names(10): sample organism ... mouse center
 ```
 
-But here we use the tibble view.
+しかし、ここではティブル・ビューを使う。
 
 
 ``` r
@@ -902,15 +889,14 @@ se
 #   phenotype_description <chr>, hsapiens_homolog_associated_gene_name <chr>
 ```
 
-We can now use tidyverse commands to interact with the
-`SummarizedExperiment` object.
+`SummarizedExperiment` オブジェクトと対話するために、tidyverse コマンドを使用できるようになりました。
 
-We can use `filter` to filter for rows using a condition e.g. to view
-all rows for one sample.
+filter\`を使用すると、条件を使って行をフィルタリングすることができる。例えば、
+、あるサンプルのすべての行を表示することができる。
 
 
 ``` r
-se |> filter(.sample == "GSM2545336")
+se %>% filter(.sample == "GSM2545336")
 ```
 
 ``` output
@@ -935,11 +921,11 @@ se |> filter(.sample == "GSM2545336")
 #   phenotype_description <chr>, hsapiens_homolog_associated_gene_name <chr>
 ```
 
-We can use `select` to specify columns we want to view.
+select\`を使って表示したいカラムを指定することができる。
 
 
 ``` r
-se |> select(.sample)
+se %>% select(.sample)
 ```
 
 ``` output
@@ -963,11 +949,11 @@ tidySummarizedExperiment says: Key columns are missing. A data frame is returned
 # ℹ 32,418 more rows
 ```
 
-We can use `mutate` to add metadata info.
+mutate\`を使ってメタデータ情報を追加することができる。
 
 
 ``` r
-se |> mutate(center = "Heidelberg University")
+se %>% mutate(center = "ハイデルベルク大学")
 ```
 
 ``` output
@@ -992,14 +978,14 @@ se |> mutate(center = "Heidelberg University")
 #   phenotype_description <chr>, hsapiens_homolog_associated_gene_name <chr>
 ```
 
-We can also combine commands with the tidyverse pipe `|>`. For
-example, we could combine `group_by` and `summarise` to get the total
-counts for each sample.
+tidyverseパイプ `%>%` を使ってコマンドを組み合わせることもできます。
+の例では、`group_by` と `summarise` を組み合わせて、各サンプルの
+カウントの合計を得ることができる。
 
 
 ``` r
-se |>
-    group_by(.sample) |>
+se %>%
+    group_by(.sample) %>%
     summarise(total_counts=sum(counts))
 ```
 
@@ -1024,15 +1010,15 @@ tidySummarizedExperiment says: A data frame is returned for independent data ana
 # ℹ 12 more rows
 ```
 
-We can treat the tidy SummarizedExperiment object as a normal tibble
-for plotting.
+整頓されたSummarizedExperimentオブジェクトを、プロット用の通常のtibble
+として扱うことができる。
 
-Here we plot the distribution of counts per sample.
+ここでは、サンプルごとのカウント数分布をプロットしている。
 
 
 ``` r
-se |>
-    ggplot(aes(counts + 1, group=.sample, color=infection)) +
+se %>%
+    ggplot(aes(counts + 1, group=.sample, color=infection))+
     geom_density() +
     scale_x_log10() +
     theme_bw()
@@ -1040,27 +1026,26 @@ se |>
 
 <img src="fig/60-next-steps-rendered-tidySE-plot-1.png" style="display: block; margin: auto;" />
 
-For more information on tidySummarizedExperiment, see the package
-website
-[here](https://stemangiola.github.io/tidySummarizedExperiment/).
+tidySummarizedExperimentの詳細については、パッケージ
+ウェブサイト
+[こちら](https://stemangiola.github.io/tidySummarizedExperiment/)を参照してください。
 
-**Take-home message**
+\*\*テイクホーム・メッセージ
 
-- `SummarizedExperiment` represents an efficient way to store and
-  handle omics data.
+- SummarizedExperiment\`は、オミックスデータを効率的に保存し、
+  。
 
-- They are used in many Bioconductor packages.
+- これらは多くのBioconductorパッケージで使用されている。
 
-If you follow the next training focused on RNA sequencing analysis,
-you will learn to use the Bioconductor `DESeq2` package to do some
-differential expression analyses.  The whole analysis of the `DESeq2`
-package is handled in a `SummarizedExperiment`.
+RNAシーケンス解析に焦点を当てた次のトレーニング、
+、Bioconductor `DESeq2`パッケージを使って、
+差分発現解析を行う方法を学ぶ。  DESeq2`パッケージの全解析は`SummarizedExperiment\` で処理される。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Bioconductor is a project provide support and packages for the
-  comprehension of high high-throughput biology data.
-- A `SummarizedExperiment` is a type of object useful to store and
-  manage high-throughput omics data.
+- Bioconductorは、ハイスループットな生物学データの理解（
+  ）のためのサポートとパッケージを提供するプロジェクトである。
+- SummarizedExperiment\`は、ハイスループットのオミックスデータを保存し、
+  管理するのに便利なオブジェクトの一種である。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

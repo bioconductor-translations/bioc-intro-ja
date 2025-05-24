@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: Manipulating and analysing data with dplyr
+title: dplyrによるデータの操作と分析
 teaching: 75
 exercises: 75
 ---
@@ -9,88 +9,95 @@ exercises: 75
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe the purpose of the **`dplyr`** and **`tidyr`** packages.
-- Describe several of their functions that are extremely useful to
- manipulate data.
-- Describe the concept of a wide and a long table format, and see
- how to reshape a data frame from one format to the other one.
-- Demonstrate how to join tables.
+- dplyr`** と **tidyr`\*\* パッケージの目的を説明する。
+- データを操作するのに非常に便利な関数をいくつか説明する。
+- ワイド表形式とロング表形式の概念を説明し、
+ 、データ・フレームを一方の形式から他方の形式に変更する方法を見る。
+- テーブルの結合方法を示す。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Data analysis in R using the tidyverse meta-package
+- tidyverseメタパッケージを用いたRでのデータ分析
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-> Cet épisode est basé sur la leçon _Analyse des données et
-> Visualisation dans R pour les écologistes_ de Data Carpentries.
+> このエピソードは、Data Carpentriesの_Data Analysis and
+> Visualisation in R for Ecologists_レッスンに基づいています。
 
-## Data manipulation using **`dplyr`** and **`tidyr`**
+## dplyr`**と**tidyr`\*\*を使ったデータ操作
 
-Bracket subsetting is handy, but it can be cumbersome and difficult to
-read, especially for complicated operations.
+ブラケット・サブセットは便利だが、煩雑で
+、特に複雑な操作では読みにくい。
 
-Some packages can greatly facilitate our task when we manipulate data.
-Packages in R are basically sets of additional functions that let you
-do more stuff. The functions we've been using so far, like `str()` or
-`data.frame()`, come built into R; Loading packages can give you access to other
-specific functions. Before you use a package for the first time you need to install
-it on your machine, and then you should import it in every subsequent
-R session when you need it.
+いくつかのパッケージは、データを操作する際に私たちの作業を大いに助けてくれる。
+Rのパッケージは基本的に、
+、より多くのことができるようにする追加関数のセットである。 いくつかのパッケージは、データを操作する際に私たちの作業を大いに助けてくれる。
+Rのパッケージは基本的に、
+、より多くのことができるようにする追加関数のセットである。 これまで使ってきた `str()` や
+`data.frame()` などの関数は、Rに組み込まれています。パッケージをロードすることで、その他の
+固有の関数にアクセスできるようになります。 初めてパッケージを使用する前に、
+をマシンにインストールする必要がある。その後、
+R セッションでパッケージが必要になったら、毎回インポートする必要がある。 初めてパッケージを使用する前に、
+をマシンにインストールする必要がある。その後、
+R セッションでパッケージが必要になったら、毎回インポートする必要がある。
 
-- The package **`dplyr`** provides powerful tools for data manipulation tasks.
- It is built to work directly with data frames, with many manipulation tasks
- optimised.
+- dplyr\\`\*\* パッケージは、データ操作タスクのための強力なツールを提供します。
+ データフレームを直接操作できるように構築されており、多くの操作タスクが
+ に最適化されている。
+ データフレームを直接操作できるように構築されており、多くの操作タスクが
+ に最適化されている。
 
-- As we will see latter on, sometimes we want a data frame to be reshaped to be able
- to do some specific analyses or for visualisation. The package **`tidyr`** addresses
- this common problem of reshaping data and provides tools for manipulating
- data in a tidy way.
+- 後述するように、
+ 、特定の分析や視覚化を行うために、データフレームの形を変えたいことがある。 tidyr\`\*\*パッケージは、
+ 、データの形を変えるというこの一般的な問題に対処し、
+ データを整然と操作するためのツールを提供する。
 
-To learn more about **`dplyr`** and **`tidyr`** after the workshop,
-you may want to check out this handy data transformation with
+ワークショップの後、\*\*dplyr`**と**tidyr`\*\*についてもっと知りたい方は、
+、こちらのhandy data transformation with
+をご覧ください。
 
-- The **`tidyverse`** package is an "umbrella-package" that installs
- several useful packages for data analysis which work well together,
- such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
- These packages help us to work and interact with the data.
- They allow us to do many things with your data, such as subsetting, transforming,
- visualising, etc.
+- tidyverse`**パッケージは "umbrella-package "であり、
+     、データ解析のためのいくつかの便利なパッケージがインストールされます。
+     には、**tidyr`\*\*, **dplyr`**, **ggplot2`**, \*\*tibble\\`\*\*などがあります。
+ これらのパッケージは、データを操作したり対話したりするのに役立ちます。
+ サブセット化、変換、
+ ビジュアライズなど、データを使ってさまざまなことができる。
+ サブセット化、変換、
+ ビジュアライズなど、データを使ってさまざまなことができる。
 
-If you did the set up, you should have already installed the tidyverse package.
-Check to see if you have it by trying to load in from the library:
+セットアップを行ったのであれば、すでにtidyverseパッケージがインストールされているはずです。
+ライブラリから読み込んでみて、それがあるかどうか確認してください：
+ライブラリから読み込んでみて、それがあるかどうか確認してください：
 
 
 ``` r
-## load the tidyverse packages, incl. dplyr
+## dplyr を含む tidyverse パッケージをロード
 library("tidyverse")
 ```
 
-If you got an error message `there is no package called ‘tidyverse’` then you have not
-installed the package yet for this version of R. To install the **`tidyverse`** package type:
+tidyverse\\`\*\* パッケージをインストールするには、以下のようにタイプしてください：
 
 
 ``` r
 BiocManager::install("tidyverse")
 ```
 
-If you had to install the **`tidyverse`** package, do not forget to load it in this R session by using the `library()` command above!
+もし、\*\*tidyverse`**パッケージをインストールしなければならなかったなら、上記の`library()\\`コマンドを使って、このRセッションでロードすることを忘れないでください！
 
-## Loading data with tidyverse
+## tidyverseでデータをロードする
 
-Instead of `read.csv()`, we will read in our data using the `read_csv()`
-function (notice the `_` instead of the `.`), from the tidyverse package
-**`readr`**.
+read.csv()`の代わりに、tidyverseパッケージ **readr`\*\*の `read_csv()`
+関数（`.`の代わりに`_`があることに注意）を使ってデータを読み込みます。
 
 
 ``` r
 rna <- read_csv("data/rnaseq.csv")
 
-## view the data
+## データを見る
 rna
 ```
 
@@ -115,33 +122,39 @@ rna
 #   hsapiens_homolog_associated_gene_name <chr>
 ```
 
-Notice that the class of the data is now referred to as a "tibble".
+データのクラスが "tibble "と呼ばれていることに注目してほしい。
 
-Tibbles tweak some of the behaviors of the data frame objects we introduced in the
-previously. The data structure is very similar to a data frame. For our purposes
-the only differences are that:
+Tibblesは、以前
+で紹介したデータ・フレーム・オブジェクトの動作の一部を微調整している。 データ構造はデータフレームによく似ている。
+我々の目的にとって、唯一の違いはそれだ：
 
-1. It displays the data type of each column under its name.
- Note that \<`dbl`\> is a data type defined to hold numeric values with
- decimal points.
+1. 各列のデータ型が列名の下に表示される。
+ <`dbl`\> は
+ の小数点を持つ数値を保持するために定義されたデータ型である。
+ データで作業するとき、我々はしばしば、各因子または因子の組み合わせについて
+ 見つかったオブザベーションの数を知りたい。 このタスクのために、\*\*dplyr`** は
+ `count()\\` を提供している。 例えば、感染したサンプルと感染していないサンプルそれぞれについて、
+ 、データの行数をカウントしたい場合、次のようにする：
 
-2. It only prints the first few rows of data and only as many columns as fit on
- one screen.
+2. これは、データの最初の数行と、
+ 1画面に収まるだけの列数だけを印刷する。
 
-We are now going to learn some of the most common **`dplyr`** functions:
+これから、最も一般的な **dplyr\\`** 関数のいくつかを学びます：
 
-- `select()`: subset columns
-- `filter()`: subset rows on conditions
-- `mutate()`: create new columns by using information from other columns
-- `group_by()` and `summarise()`: create summary statistics on grouped data
-- `arrange()`: sort results
-- `count()`: count discrete values
+- select()\\`: カラムのサブセット
+- `filter()`: 条件で行をサブセットする。
+- mutate()\\`: 他のカラムの情報を使って新しいカラムを作成する。
+- group_by()`と`summarise()\\`: グループ化されたデータの要約統計量を作成する。
+- arrange()\\`：結果の並べ替え
+- count()\\`: 離散値を数える
 
-## Selecting columns and filtering rows
+## 列の選択と行のフィルタリング
 
-To select columns of a data frame, use `select()`. The first argument
-to this function is the data frame (`rna`), and the subsequent
-arguments are the columns to keep.
+データフレームの列を選択するには `select()` を使う。 この関数の最初の引数
+はデータフレーム (`rna`) で、続く
+の引数は保持する列です。 Tibblesは、以前
+で紹介したデータ・フレーム・オブジェクトの動作の一部を微調整している。 データ構造はデータフレームによく似ている。
+我々の目的にとって、唯一の違いはそれだ：
 
 
 ``` r
@@ -165,8 +178,8 @@ select(rna, gene, sample, tissue, expression)
 # ℹ 32,418 more rows
 ```
 
-To select all columns _except_ certain ones, put a "-" in front of
-the variable to exclude it.
+特定の列を除く\*すべての列を選択するには、
+その変数の前に"-"を付けて除外する。
 
 
 ``` r
@@ -193,10 +206,10 @@ select(rna, -tissue, -organism)
 #   phenotype_description <chr>, hsapiens_homolog_associated_gene_name <chr>
 ```
 
-This will select all the variables in `rna` except `tissue`
-and `organism`.
+これは `rna` の中の、
+`tissue` と `organism` 以外のすべての変数を選択する。
 
-To choose rows based on a specific criteria, use `filter()`:
+特定の条件に基づいて行を選択するには、`filter()` を使用する：
 
 
 ``` r
@@ -249,12 +262,15 @@ filter(rna, sex == "Male" & infection == "NonInfected")
 #   hsapiens_homolog_associated_gene_name <chr>
 ```
 
-Now let's imagine we are interested in the human homologs of the mouse
-genes analysed in this dataset. This information can be found in the
-last column of the `rna` tibble, named
-`hsapiens_homolog_associated_gene_name`.  To visualise it easily, we
-will create a new table containing just the 2 columns `gene` and
-`hsapiens_homolog_associated_gene_name`.
+ここで、このデータセットで解析されたマウス
+遺伝子のヒトホモログに興味があるとしよう。 この情報は、
+`hsapiens_homolog_associated_gene_name` という名前の `rna` tibbleの
+最後のカラムにある。  ここで、このデータセットで解析されたマウス
+遺伝子のヒトホモログに興味があるとしよう。 この情報は、
+`hsapiens_homolog_associated_gene_name` という名前の `rna` tibbleの
+最後のカラムにある。  簡単に視覚化するために、
+、2つの列`gene`と
+`hsapiens_homolog_associated_gene_name`だけを含む新しいテーブルを作成する。
 
 
 ``` r
@@ -279,9 +295,9 @@ genes
 # ℹ 32,418 more rows
 ```
 
-Some mouse genes have no human homologs. These can be retrieved using
-`filter()` and the `is.na()` function, that determines whether
-something is an `NA`.
+マウス遺伝子の中にはヒトにホモログがないものもある。 これらは、
+`filter()` と、
+何かが `NA` かどうかを判定する `is.na()` 関数を使って取得することができる。
 
 
 ``` r
@@ -305,10 +321,10 @@ filter(genes, is.na(hsapiens_homolog_associated_gene_name))
 # ℹ 4,280 more rows
 ```
 
-If we want to keep only mouse genes that have a human homolog, we can
-insert a "!" symbol that negates the result, so we're asking for
-every row where hsapiens\_homolog\_associated\_gene\_name _is not_ an
-`NA`.
+ヒトのホモログを持つマウス遺伝子だけを保持したい場合、
+、結果を否定する"!"記号を挿入することができる。したがって、
+、hsapiens_homolog_associated_gene_name _is not_ an
+`NA` となるすべての行を求めることになる。
 
 
 ``` r
@@ -332,13 +348,14 @@ filter(genes, !is.na(hsapiens_homolog_associated_gene_name))
 # ℹ 28,128 more rows
 ```
 
-## Pipes
+## パイプ
 
-What if you want to select and filter at the same time? There are three
-ways to do this: use intermediate steps, nested functions, or pipes.
+選択とフィルタを同時に行いたい場合は？ これを行うには、
+、中間ステップ、ネストされた関数、パイプの3つの方法がある。 これを行うには、
+、中間ステップ、ネストされた関数、パイプの3つの方法がある。
 
-With intermediate steps, you create a temporary data frame and use
-that as input to the next function, like this:
+中間ステップでは、一時的なデータフレームを作成し、
+、次の関数の入力として使用する：
 
 
 ``` r
@@ -364,16 +381,26 @@ rna3
 # ℹ 14,730 more rows
 ```
 
-This is readable, but can clutter up your workspace with lots of
-intermediate objects that you have to name individually. With multiple
-steps, that can be hard to keep track of.
+これは読みやすいが、
+、個別に名前を付けなければならない中間オブジェクトがたくさんあるため、ワークスペースが散らかる可能性がある。 複数の
+、それを把握するのは難しいかもしれない。 複数の
+、それを把握するのは難しいかもしれない。
 
-You can also nest functions (i.e. one function inside of another),
-like this:
+、関数を入れ子にすることもできる：
 
 
 ``` r
-rna3 <- select(filter(rna, sex == "Male"), gene, sample, tissue, expression)
+rna3 <- select(filter(rna, sex == "Male", gene, sample, tissue, expression))
+```
+
+``` error
+Error in `filter()`:
+ℹ In argument: `gene`.
+Caused by error:
+! `..2` must be a logical vector, not a character vector.
+```
+
+``` r
 rna3
 ```
 
@@ -394,28 +421,28 @@ rna3
 # ℹ 14,730 more rows
 ```
 
-This is handy, but can be difficult to read if too many functions are nested, as
-R evaluates the expression from the inside out (in this case, filtering, then selecting).
+これは便利だが、
+Rは式を内側から外側へと評価する（この場合、フィルタリングしてから選択する）ため、関数が入れ子になりすぎると読みにくくなることがある。
 
-The last option, _pipes_, are a recent addition to R. Pipes let you take
-the output of one function and send it directly to the next, which is useful
-when you need to do many things to the same dataset.
+最後のオプションである_パイプ_は、Rに最近追加されたものである。パイプを使うと、ある関数の出力を
+、次の関数に直接送ることができる。これは、同じデータセットに対して多くの処理を行う必要がある場合に便利である
+。
 
-Pipes in R look like `%>%` (made available via the **`magrittr`**
-package) or `|>` (through base R). If you use RStudio, you can type
-the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you
-have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you
-have a Mac.
+ミューテート R のパイプは `%>%` (**`magrittr`**
+パッケージで利用可能) または `|>` (ベース R で利用可能) のように見えます。 RStudioを使用する場合は、
+PCをお持ちの場合は<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>、
+Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイプを
+。
 
-In the above code, we use the pipe to send the `rna` dataset first
-through `filter()` to keep rows where `sex` is Male, then through
-`select()` to keep only the `gene`, `sample`, `tissue`, and
-`expression`columns.
+上記のコードでは、パイプを使って `rna` データセットをまず
+`filter()` を通して `sex` が Male である行を残し、次に
+`select()` を通して `gene`, `sample`, `tissue`,
+`expression`columns だけを残すように送っている。
 
-The pipe `|>` takes the object on its left and passes it directly as
-the first argument to the function on its right, we don't need to
-explicitly include the data frame as an argument to the `filter()` and
-`select()` functions any more.
+パイプ `%>%` はその左側にあるオブジェクトを受け取り、
+その右側にある関数の最初の引数として直接渡します。
+`filter()` と
+`select()` 関数の引数として明示的にデータフレームを含める必要はもうありません。
 
 
 ``` r
@@ -441,17 +468,17 @@ rna |>
 # ℹ 14,730 more rows
 ```
 
-Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we took the data frame `rna`, _then_ we `filter`ed
-for rows with `sex == "Male"`, _then_ we `select`ed columns `gene`, `sample`,
-`tissue`, and `expression`.
+パイプを "then "のように読むことが役に立つと思う人もいるだろう。 パイプを "then "のように読むことが役に立つと思う人もいるだろう。 例えば、
+上の例では、データフレーム `rna` を取得し、`sex=="Male"` の行を
+で `フィルター`し、`gene`, `sample`,
+`tissue`, `expression` の列を `選択` した。
 
-The **`dplyr`** functions by themselves are somewhat simple, but by
-combining them into linear workflows with the pipe, we can accomplish
-more complex manipulations of data frames.
+dplyr\\`\*\*関数はそれ自体ではやや単純だが、
+、パイプを使った線形ワークフローに組み合わせることで、
+、データフレームのより複雑な操作を行うことができる。
 
-If we want to create a new object with this smaller version of the data, we
-can assign it a new name:
+この小さいバージョンのデータで新しいオブジェクトを作りたい場合、
+、新しい名前を割り当てることができる：
 
 
 ``` r
@@ -481,15 +508,15 @@ rna3
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## チャレンジだ：
 
-Using pipes, subset the `rna` data to keep observations in female mice at time 0,
-where the gene has an expression higher than 50000, and retain only the columns
-`gene`, `sample`, `time`, `expression` and `age`.
+パイプを使用して、時間0、
+、遺伝子の発現が50000より高い雌マウスのオブザベーションを保持するように`rna`データをサブセットし、
+`gene`、`sample`、`time`、`expression`、`age`の列のみを保持する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -519,13 +546,13 @@ rna |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Mutate
+## ミューテート
 
-Frequently you'll want to create new columns based on the values of existing
-columns, for example to do unit conversions, or to find the ratio of values in two
-columns. For this we'll use `mutate()`.
+例えば、単位変換をしたり、2つの
+列の値の比率を求めたりするために、既存の
+列の値に基づいて新しい列を作成したいことがよくあります。 これには `mutate()` を使う。 これには `mutate()` を使う。
 
-To create a new column of time in hours:
+時間単位の新しい列を作成する：
 
 
 ``` r
@@ -551,7 +578,7 @@ rna |>
 # ℹ 32,418 more rows
 ```
 
-You can also create a second new column based on the first new column within the same call of `mutate()`:
+また、`mutate()`の同じ呼び出しの中で、最初の新しいカラムに基づいて2番目の新しいカラムを作成することもできる：
 
 
 ``` r
@@ -580,21 +607,25 @@ rna |>
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## チャレンジ
 
-Create a new data frame from the `rna` data that meets the following
-criteria: contains only the `gene`, `chromosome_name`,
-`phenotype_description`, `sample`, and `expression` columns. The expression
-values should be log-transformed. This data frame must
-only contain genes located on sex chromosomes, associated with a
-phenotype\_description, and with a log expression higher than 5.
+後述するように、
+、特定の分析や視覚化を行うために、データフレームの形を変えたいことがある。 tidyr\`\*\*パッケージは、
+  、データの形を変えるというこの一般的な問題に対処し、
+  データを整然と操作するためのツールを提供する。 
+の値は対数変換する。 以下の
+条件を満たす `rna`データから新しいデータフレームを作成する：`gene`、`chromosome_name`、
+`phenotype_description`、`sample`、`expression\` 列のみを含む。
+の値は対数変換する。 このデータフレームは、
+、性染色体に位置し、
+phenotype_descriptionに関連し、log expressionが5より高い遺伝子のみを含んでいなければならない。
 
-**Hint**: think about how the commands should be ordered to produce
-this data frame!
+**ヒント**：このデータフレームを
+、どのようにコマンドを並べるべきか考えてみよう！
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -627,12 +658,13 @@ rna |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Split-apply-combine data analysis
+## 分割-適用-結合データ分析
 
-Many data analysis tasks can be approached using the
-_split-apply-combine_ paradigm: split the data into groups, apply some
-analysis to each group, and then combine the results. **`dplyr`**
-makes this very easy through the use of the `group_by()` function.
+多くのデータ分析タスクは、
+_split-apply-combine_パラダイムを使ってアプローチすることができる：データをグループに分割し、各グループにいくつかの
+分析を適用し、その結果を組み合わせる。 \*\*dplyr`**
+は `group_by()\` 関数を使って、これを非常に簡単にしている。 **dplyr`\*\*
+は `group_by()` 関数を使って、これを非常に簡単にしている。
 
 
 ``` r
@@ -662,12 +694,11 @@ rna |>
 #   hsapiens_homolog_associated_gene_name <chr>
 ```
 
-The `group_by()` function doesn't perform any data processing, it
-groups the data into subsets: in the example above, our initial
-`tibble` of 32428 observations is split into
-1474 groups based on the `gene` variable.
+group_by()`関数はデータ処理を行わず、
+データをサブセットにグループ化する。上の例では、
+32428オブザベーションの最初の`tibble`は、1474グループに`gene\\` 変数に基づいて分割される。
 
-We could similarly decide to group the tibble by the samples:
+同様に、ティブルをサンプルごとにグループ分けすることもできる：
 
 
 ``` r
@@ -697,20 +728,21 @@ rna |>
 #   hsapiens_homolog_associated_gene_name <chr>
 ```
 
-Here our initial `tibble` of 32428 observations is split into
-22 groups based on the `sample` variable.
+ここで、最初の 32428 オブザベーションの `tibble` は、`sample` 変数に基づいて、
+22 グループに分割される。
 
-Once the data has been grouped, subsequent operations will be
-applied on each group independently.
+いったんデータがグループ化されると、その後の操作は各グループに独立して
+。
 
-### The `summarise()` function
+### summarise()\`関数
 
-`group_by()` is often used together with `summarise()`, which
-collapses each group into a single-row summary of that group.
+group_by()`は`summarise()\\` と一緒に使われることが多く、
+は各グループを1行の要約に折りたたむ。
 
-`group_by()` takes as arguments the column names that contain the
-**categorical** variables for which you want to calculate the summary
-statistics. So to compute the mean `expression` by gene:
+group_by()` は、 **カテゴリー** 変数を含むカラム名を引数として取り、
+統計のサマリーを計算します。 group_by()\` は、
+**カテゴリー** 変数を含むカラム名を引数として取り、
+統計のサマリーを計算します。 そこで、遺伝子ごとの平均「発現」を計算する：
 
 
 ``` r
@@ -736,7 +768,7 @@ rna |>
 # ℹ 1,464 more rows
 ```
 
-We could also want to calculate the mean expression levels of all genes in each sample:
+また、各サンプルの全遺伝子の平均発現量を計算することもできる：
 
 
 ``` r
@@ -762,7 +794,7 @@ rna |>
 # ℹ 12 more rows
 ```
 
-But we can can also group by multiple columns:
+しかし、複数の列でグループ化することもできる：
 
 
 ``` r
@@ -794,9 +826,10 @@ the `.groups` argument.
 # ℹ 4,412 more rows
 ```
 
-Once the data is grouped, you can also summarise multiple variables at the same
-time (and not necessarily on the same variable). For instance, we could add a
-column indicating the median `expression` by gene and by condition:
+いったんデータがグループ化されると、同じ
+（必ずしも同じ変数でなくてもよい）時間に複数の変数を要約することもできる。 例えば、遺伝子別、条件別の「発現」の中央値を示す
+列を追加することができる： 例えば、遺伝子別、条件別の「発現」の中央値を示す
+列を追加することができる：
 
 
 ``` r
@@ -831,13 +864,13 @@ the `.groups` argument.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## チャレンジ
 
-Calculate the mean expression level of gene "Dok3" by timepoints.
+遺伝子 "Dok3 "のタイムポイントごとの平均発現量を計算する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -860,12 +893,12 @@ rna |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Counting
+### カウント
 
-When working with data, we often want to know the number of observations found
-for each factor or combination of factors. For this task, **`dplyr`** provides
-`count()`. For example, if we wanted to count the number of rows of data for
-each infected and non-infected samples, we would do:
+データで作業するとき、我々はしばしば、各因子または因子の組み合わせについて
+見つかったオブザベーションの数を知りたい。 このタスクのために、\*\*dplyr`** は
+`count()\` を提供している。 例えば、感染したサンプルと感染していないサンプルそれぞれについて、
+、データの行数をカウントしたい場合、次のようにする：
 
 
 ``` r
@@ -881,7 +914,7 @@ rna |>
 2 NonInfected 10318
 ```
 
-The `count()` function is shorthand for something we've already seen: grouping by a variable, and summarising it by counting the number of observations in that group. In other words, `rna |> count(infection)` is equivalent to:
+count()`関数は、すでに見たことのある、変数でグループ化し、そのグループ内のオブザベーションの数をカウントして要約する、ということの省略記法です。 言い換えれば、`rna %>% count(infection)\`は次のものと等価である： 言い換えれば、`rna %>% count(infection)\`は次のものと等価である：
 
 
 ``` r
@@ -898,14 +931,16 @@ rna |>
 2 NonInfected 10318
 ```
 
-The previous example shows the use of `count()` to count the number of rows/observations
-for _one_ factor (i.e., `infection`).
-If we wanted to count a _combination of factors_, such as `infection` and `time`,
-we would specify the first and the second factor as the arguments of `count()`:
+先ほどの例では、`count()` を使って、_1つの_要因（つまり`感染`）について
+、行数/観察数を数えている。
+先ほどの例では、`count()` を使って、_1つの_要因（つまり`感染`）について
+、行数/観察数を数えている。
+もし、`感染`と`時間`のような_要因の組み合わせ_をカウントしたいのであれば、
+、`count()`の引数として1つ目と2つ目の要因を指定することになる：
 
 
 ``` r
-rna |>
+rna %>%
     count(infection, time)
 ```
 
@@ -918,7 +953,7 @@ rna |>
 3 NonInfected     0 10318
 ```
 
-which is equivalent to this:
+これと等価である：
 
 
 ``` r
@@ -942,9 +977,9 @@ rna |>
 3 NonInfected     0 10318
 ```
 
-It is sometimes useful to sort the result to facilitate the comparisons.
-We can use `arrange()` to sort the table.
-For instance, we might want to arrange the table above by time:
+比較を容易にするために、結果を並べ替えると便利なことがある。
+arrange()\`を使って表を並べ替えることができる。
+例えば、上の表を時間順に並べたいとする：
 
 
 ``` r
@@ -962,7 +997,7 @@ rna |>
 3 InfluenzaA      8 10318
 ```
 
-or by counts:
+あるいは回数で：
 
 
 ``` r
@@ -980,7 +1015,7 @@ rna |>
 3 InfluenzaA      4 11792
 ```
 
-To sort in descending order, we need to add the `desc()` function:
+降順にソートするには、`desc()`関数を追加する必要がある：
 
 
 ``` r
@@ -1000,16 +1035,16 @@ rna |>
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+## チャレンジ
 
-1. How many genes were analysed in each sample?
-2. Use `group_by()` and `summarise()` to evaluate the sequencing depth (the sum of all counts) in each sample. Which sample has the highest sequencing depth?
-3. Pick one sample and evaluate the number of genes by biotype.
-4. Identify genes associated with the "abnormal DNA methylation" phenotype description, and calculate their mean expression (in log) at time 0, time 4 and time 8.
+1. 各サンプルで分析された遺伝子の数は？
+2. group_by()`と `summarise()\\`を使用して、各サンプルのシーケンス深度（全カウントの合計）を評価する。 シーケンス深度が最も深いサンプルはどれですか？ シーケンス深度が最も深いサンプルはどれですか？
+3. サンプルを1つ選び、バイオタイプ別に遺伝子数を評価する。
+4. DNAメチル化異常」という表現型に関連する遺伝子を特定し、時間0、時間4、時間8における平均発現量（対数）を計算する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -1118,14 +1153,16 @@ rna |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Reshaping data
+## データの再構築
 
-In the `rna` tibble, the rows contain expression values (the unit) that are
-associated with a combination of 2 other variables: `gene` and `sample`.
+rna`tibble の行には、`gene`と`sample\\` という2つの変数の組み合わせに関連付けられた発現値（単位）が格納されている。
 
-All the other columns correspond to variables describing either
-the sample (organism, age, sex, ...) or the gene (gene\_biotype, ENTREZ\_ID, product, ...).
-The variables that don't change with genes or with samples will have the same value in all the rows.
+比較を容易にするために、結果を並べ替えると便利なことがある。
+arrange()\\`を使って表を並べ替えることができる。
+例えば、上の表を時間順に並べたいとする： または遺伝子(gene_biotype, ENTREZ_ID, product, ...)。
+その他の列はすべて、
+（生物、年齢、性別、...）のいずれかを記述する変数に対応している。 または遺伝子(gene_biotype, ENTREZ_ID, product, ...)。
+遺伝子やサンプルによって変化しない変数は、すべての行で同じ値を持つ。
 
 
 ``` r
@@ -1154,17 +1191,19 @@ rna |>
 #   hsapiens_homolog_associated_gene_name <chr>
 ```
 
-This structure is called a `long-format`, as one column contains all the values,
-and other column(s) list(s) the context of the value.
+この構造は`long-format`と呼ばれ、1つのカラムにはすべての値、
+、もう1つのカラムには値のコンテキストが列挙されている。
 
-In certain cases, the `long-format` is not really "human-readable", and another format,
-a `wide-format` is preferred, as a more compact way of representing the data.
-This is typically the case with gene expression values that scientists are used to
-look as matrices, were rows represent genes and columns represent samples.
+場合によっては、`long-format`は実際には "human-readable "ではなく、別のフォーマット、
+`wide-format`がよりコンパクトにデータを表現する方法として好まれる。
+これは通常、科学者が
+、行が遺伝子、列がサンプルを表す行列として見るのに慣れている遺伝子発現値の場合である。
+これは通常、科学者が
+、行が遺伝子、列がサンプルを表す行列として見るのに慣れている遺伝子発現値の場合である。
 
-In this format, it would therefore become straightforward
-to explore the relationship between the gene expression levels within, and
-between, the samples.
+このフォーマットでは、
+、サンプル内の遺伝子発現レベルとサンプル間の遺伝子発現レベル
+の関係を調べることができる。
 
 
 ``` output
@@ -1189,27 +1228,26 @@ between, the samples.
 #   GSM2545380 <dbl>
 ```
 
-To convert the gene expression values from `rna` into a wide-format,
-we need to create a new table where the values of the `sample` column would
-become the names of column variables.
+rna`の遺伝子発現値をワイドフォーマットに変換するには、
+、`sample\\`カラムの値が
+、カラム変数の名前になる新しいテーブルを作成する必要がある。
 
-The key point here is that we are still following
-a tidy data structure, but we have **reshaped** the data according to
-the observations of interest: expression levels per gene instead
-of recording them per gene and per sample.
+ここでの重要なポイントは、我々はまだ
+、整然としたデータ構造に従っているが、
+、興味のある観察に従ってデータを**整形**したということである：遺伝子ごと、サンプルごとに記録する代わりに、遺伝子ごとの発現レベル
+。
 
-The opposite transformation would be to transform column names into
-values of a new variable.
+逆の変換は、列名を新しい変数の値（
+）に変換することである。
 
-We can do both these of transformations with two `tidyr` functions,
-`pivot_longer()` and `pivot_wider()` (see
-[here](https://tidyr.tidyverse.org/dev/articles/pivot.html) for
-details).
+`pivot_longer()` と `pivot_wider()` の2つの `tidyr` 関数を使って、これらの変換を行うことができます（
+[こちら](https://tidyr.tidyverse.org/dev/articles/pivot.html) を参照してください）(
+)。
 
-### Pivoting the data into a wider format
+### より広いフォーマットへのデータのピボット
 
-Let's select the first 3 columns of `rna` and use `pivot_wider()`
-to transform the data into a wide-format.
+rna`の最初の3列を選択し、`pivot_wider()\\`
+を使ってデータをワイドフォーマットに変換してみよう。
 
 
 ``` r
@@ -1235,13 +1273,13 @@ rna_exp
 # ℹ 32,418 more rows
 ```
 
-`pivot_wider` takes three main arguments:
+pivot_wider\\`は主に3つの引数を取る：
 
-1. the data to be transformed;
-2. the `names_from` : the column whose values will become new column
- names;
-3. the `values_from`: the column whose values will fill the new
- columns.
+1. 変換されるデータ；
+2. the `names_from` : その値が新しいカラム
+ の名前になるカラム；
+3. value_from\\`: 新しいカラム
+ を埋める値。
 
 <div class="figure" style="text-align: center">
 <img src="fig/pivot_wider.png" alt="Wide pivot of the `rna` data."  />
@@ -1278,11 +1316,12 @@ rna_wide
 #   GSM2545380 <dbl>
 ```
 
-Note that by default, the `pivot_wider()` function will add `NA` for missing values.
+デフォルトでは、`pivot_wider()` 関数は欠損値に対して `NA` を追加することに注意してください。
 
-Let's imagine that for some reason, we had some missing expression values for some
-genes in certain samples. In the following fictive example, the gene Cyp2d22 has only
-one expression value, in GSM2545338 sample.
+何らかの理由で、あるサンプルで
+、いくつかの遺伝子の発現値が欠落していたとしよう。 何らかの理由で、あるサンプルで
+、いくつかの遺伝子の発現値が欠落していたとしよう。 以下の架空の例では、遺伝子Cyp2d22の発現値はGSM2545338サンプルの
+。
 
 
 ``` r
@@ -1308,9 +1347,9 @@ rna_with_missing_values
 7 Cyp2d22 GSM2545338       1603
 ```
 
-By default, the `pivot_wider()` function will add `NA` for missing
-values. This can be parameterised with the `values_fill` argument of
-the `pivot_wider()` function.
+デフォルトでは、`pivot_wider()`関数は、
+の値が見つからない場合に `NA` を追加する。 これは、
+`pivot_wider()` 関数の `values_fill` 引数でパラメータ化できる。 summarise()\\`関数
 
 
 ``` r
@@ -1344,26 +1383,28 @@ rna_with_missing_values |>
 3 Cyp2d22          0          0       1603
 ```
 
-### Pivoting data into a longer format
+### データを長いフォーマットにピボットする
 
-In the opposite situation we are using the column names and turning them into
-a pair of new variables. One variable represents the column names as
-values, and the other variable contains the values previously
-associated with the column names.
+逆の状況では、カラム名を使い、
+、新しい変数のペアに変えている。 一方の変数はカラム名を
+の値で表し、もう一方の変数にはカラム名に関連付けられている以前の値
+が格納されている。 一方の変数はカラム名を
+の値で表し、もう一方の変数にはカラム名に関連付けられている以前の値
+が格納されている。
 
-`pivot_longer()` takes four main arguments:
+pivot_longer()\\`は主に4つの引数を取る：
 
-1. the data to be transformed;
-2. the `names_to`: the new column name we wish to create and populate with the
- current column names;
-3. the `values_to`: the new column name we wish to create and populate with
- current values;
-4. the names of the columns to be used to populate the `names_to` and
- `values_to` variables (or to drop).
+1. 変換されるデータ；
+2. names_to\\`:
+ の現在のカラム名で作成したい新しいカラム名；
+3. value_to\\`: 作成したい新しいカラム名で、
+ の現在の値を格納する；
+4. 変数 `names_to` と
+ `values_to` に格納する（または削除する）列の名前。
 
 <div class="figure" style="text-align: center">
-<img src="fig/pivot_longer.png" alt="Long pivot of the `rna` data."  />
-<p class="caption">Long pivot of the `rna` data.</p>
+<img src="fig/pivot_longer.png" alt="`rna`データのロングピボット。"  />
+<p class="caption">`rna`データのロングピボット。</p>
 </div>
 
 To recreate `rna_long` from `rna_wide` we would create a key
@@ -1399,12 +1440,16 @@ rna_long
 # ℹ 32,418 more rows
 ```
 
-We could also have used a specification for what columns to
-include. This can be useful if you have a large number of identifying
-columns, and it's easier to specify what to gather than what to leave
-alone. Here the `starts_with()` function can help to retrieve sample
-names without having to list them all!
-Another possibility would be to use the `:` operator!
+また、
+、どのようなカラムを含めるかという指定も使えたはずだ。 これは、
+のカラムが多数あり、
+のままにしておくよりも、何を集めるかを指定する方が簡単な場合に便利である。 また、
+、どのようなカラムを含めるかという指定も使えたはずだ。 これは、
+のカラムが多数あり、
+のままにしておくよりも、何を集めるかを指定する方が簡単な場合に便利である。 ここで、`starts_with()`関数を使えば、
+のサンプル名をすべてリストアップすることなく取得することができる！
+もう一つの可能性は `:` 演算子を使うことである！
+もう一つの可能性は `:` 演算子を使うことである！
 
 
 ``` r
@@ -1455,10 +1500,10 @@ rna_wide |>
 # ℹ 32,418 more rows
 ```
 
-Note that if we had missing values in the wide-format, the `NA` would be
-included in the new long format.
+ワイドフォーマットで欠損値があった場合、新しいロングフォーマットでは`NA`が
+。
 
-Remember our previous fictive tibble containing missing values:
+前回の欠損値を含む架空のティブルを思い出してほしい：
 
 
 ``` r
@@ -1516,20 +1561,23 @@ wide_with_NA |>
 9 Cyp2d22 GSM2545338       1603
 ```
 
-Pivoting to wider and longer formats can be a useful way to balance out a dataset
-so every replicate has the same composition.
+より幅の広い、より長いフォーマットへの移行は、データセットのバランスをとるのに有効な方法である。
+、どの複製も同じ構成になる。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Question
+## 質問
 
-Starting from the rna table, use the `pivot_wider()` function to create
-a wide-format table giving the gene expression levels in each mouse.
-Then use the `pivot_longer()` function to restore a long-format table.
+マウス遺伝子の中にはヒトにホモログがないものもある。 これらは、
+`filter()` と、
+何かが `NA` かどうかを判定する `is.na()` 関数を使って取得することができる。
+rnaテーブルから始めて、`pivot_wider()`関数を使用して、
+、各マウスの遺伝子発現レベルを示すワイドフォーマットのテーブルを作成する。
+そして、`pivot_longer()`関数を使って、ロングフォーマットの表を復元する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -1586,23 +1634,22 @@ pivot_longer(names_to = "mouse_id", values_to = "counts", -gene)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Question
+## 質問
 
-Subset genes located on X and Y chromosomes from the `rna` data frame and
-spread the data frame with `sex` as columns, `chromosome_name` as
-rows, and the mean expression of genes located in each chromosome as the values,
-as in the following tibble:
+rna`データフレームから X 染色体と Y 染色体に位置する遺伝子をサブセットし、`sex` を列、`chromosome_name\\` を
+行、各染色体に位置する遺伝子の平均発現量を値として、
+以下のようにデータフレームを広げる：
 
 <img src="fig/Exercise_pivot_W.png" style="display: block; margin: auto;" />
 
-You will need to summarise before reshaping!
+整形する前にまとめる必要がある！
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
-Let's first calculate the mean expression level of X and Y linked genes from
-male and female samples...
+まず、
+男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう...
 
 
 ``` r
@@ -1628,7 +1675,7 @@ argument.
 4 Male   Y               2117.
 ```
 
-And pivot the table to wide format
+そして、表をワイドフォーマットにピボットする
 
 
 ``` r
@@ -1657,8 +1704,7 @@ rna_1
 2 Y                   3  2117.
 ```
 
-Now take that data frame and transform it with `pivot_longer()` so
-each row is a unique `chromosome_name` by `gender` combination.
+各行が一意な `chromosome_name` と `gender` の組み合わせになるように、このデータフレームを `pivot_longer()` で変換する。
 
 
 ``` r
@@ -1684,17 +1730,17 @@ rna_1 |>
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Question
+## 質問
 
-Use the `rna` dataset to create an expression matrix where each row
-represents the mean expression levels of genes and columns represent
-the different timepoints.
+rna\\`データセットを使って、
+各行が遺伝子の平均発現量を表し、
+各列が異なるタイムポイントを表す発現行列を作成する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
-Let's first calculate the mean expression by gene and by time
+まず、遺伝子別、時間別の平均発現量を計算してみよう。
 
 
 ``` r
@@ -1726,7 +1772,7 @@ rna |>
 # ℹ 4,412 more rows
 ```
 
-before using the pivot\_wider() function
+pivot_wider()関数を使用する前に
 
 
 ``` r
@@ -1764,9 +1810,10 @@ rna_time
 # ℹ 1,464 more rows
 ```
 
-Notice that this generates a tibble with some column names starting by a number.
-If we wanted to select the column corresponding to the timepoints,
-we could not use the column names directly... What happens when we select the column 4?
+これにより、数字で始まるカラム名を持つティブルが生成されることに注意。
+これにより、数字で始まるカラム名を持つティブルが生成されることに注意。
+タイムポイントに対応するカラムを選択したい場合、
+、カラム名を直接使うことはできない。 列4を選択するとどうなるか？ 列4を選択するとどうなるか？
 
 
 ``` r
@@ -1801,15 +1848,15 @@ rna |>
 # ℹ 1,464 more rows
 ```
 
-To select the timepoint 4, we would have to quote the column name, with backticks "\\\`"
+タイムポイント4を選択するには、"˶\\`" というバックスティックを付けたカラム名を引用しなければならない。
 
 
 ``` r
-rna |>
-  group_by(gene, time) |>
-  summarise(mean_exp = mean(expression)) |>
+rna %>%
+  group_by(gene, time) %>%
+  summarise(mean_exp = mean(expression)) %>%
   pivot_wider(names_from = time,
-              values_from = mean_exp) |>
+              values_from = mean_exp) %>%
   select(gene, `4`)
 ```
 
@@ -1836,8 +1883,7 @@ rna |>
 # ℹ 1,464 more rows
 ```
 
-Another possibility would be to rename the column,
-choosing a name that doesn't start by a number :
+、数字で始まらない名前を選択する：
 
 
 ``` r
@@ -1879,18 +1925,19 @@ rna |>
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Question
+## 質問
 
-Use the previous data frame containing mean expression levels per timepoint and create
-a new column containing fold-changes between timepoint 8 and timepoint 0, and fold-changes
-between timepoint 8 and timepoint 4.
-Convert this table into a long-format table gathering the fold-changes calculated.
+タイムポイントごとの平均発現レベルを含む前のデータフレームを使用し、
+、タイムポイント8とタイムポイント0の間のfold-changes、およびタイムポイント8とタイムポイント4の間のfold-changes
+を含む新しい列を作成する。
+この表を、計算されたフォールド・チェンジを集めたロングフォーマットの表に変換する。
+この表を、計算されたフォールド・チェンジを集めたロングフォーマットの表に変換する。
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
-Starting from the rna\_time tibble:
+rna_time tibbleから開始する：
 
 
 ``` r
@@ -1915,7 +1962,7 @@ rna_time
 # ℹ 1,464 more rows
 ```
 
-Calculate fold-changes:
+フォールドチェンジを計算する：
 
 
 ``` r
@@ -1941,7 +1988,7 @@ rna_time |>
 # ℹ 1,464 more rows
 ```
 
-And use the pivot\_longer() function:
+そして、pivot_longer()関数を使用する：
 
 
 ``` r
@@ -1974,28 +2021,35 @@ rna_time |>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Joining tables
+## テーブルの結合
 
-In many real life situations, data are spread across multiple tables.
-Usually this occurs because different types of information are
-collected from different sources.
+実生活の多くの場面で、データは複数のテーブルにまたがっている。
+通常このようなことが起こるのは、異なる情報源から異なるタイプの情報が
+収集されるからである。
+通常このようなことが起こるのは、異なる情報源から異なるタイプの情報が
+収集されるからである。
 
-It may be desirable for some analyses to combine data from two or more
-tables into a single data frame based on a column that would be common
-to all the tables.
+分析によっては、2つ以上のテーブル（
+）のデータを、すべてのテーブルに共通するカラム（
+）に基づいて1つのデータフレームにまとめることが望ましい場合がある。
 
-The `dplyr` package provides a set of join functions for combining two
-data frames based on matches within specified columns. Here, we
-provide a short introduction to joins. For further reading, please
-refer to the chapter about table
-joins. The
-Data Transformation Cheat
-Sheet
-also provides a short overview on table joins.
+dplyr\\` パッケージは、指定されたカラム内のマッチに基づいて、2つの
+データフレームを結合するための結合関数のセットを提供する。 ここでは、
+、結合について簡単に紹介する。 詳しくは、
+テーブル
+ジョインの章を参照されたい。
+データ変換チート
+シート
+、テーブル結合に関する簡単な概要も提供している。 ここでは、
+、結合について簡単に紹介する。 詳しくは、
+テーブル
+ジョインの章を参照されたい。
+データ変換チート
+シート
+、テーブル結合に関する簡単な概要も提供している。
 
-We are going to illustrate join using a small table, `rna_mini` that
-we will create by subsetting the original `rna` table, keeping only 3
-columns and 10 lines.
+、元の`rna`テーブルをサブセットして作成し、
+、3つのカラムと10行だけを残す。
 
 
 ``` r
@@ -2021,11 +2075,12 @@ rna_mini
 10 Gnb4    GSM2545336       1071
 ```
 
-The second table, `annot1`, contains 2 columns, gene and
-gene\_description. You can either
+2番目のテーブル`annot1`には、遺伝子と
+gene_descriptionの2つのカラムがある。 2番目のテーブル`annot1`には、遺伝子と
+gene_descriptionの2つのカラムがある。
 [download annot1.csv](https://carpentries-incubator.github.io/bioc-intro/data/annot1.csv)
-by clicking on the link and then moving it to the `data/` folder, or
-you can use the R code below to download it directly to the folder.
+リンクをクリックして`data/`フォルダに移動するか、
+以下のRコードを使って直接フォルダにダウンロードすることができる。
 
 
 ``` r
@@ -2051,12 +2106,16 @@ annot1
 10 Gjc2    gap junction protein, gamma 2 [Source:MGI Symbol;Acc:MGI:2153060]    
 ```
 
-We now want to join these two tables into a single one containing all
-variables using the `full_join()` function from the `dplyr` package. The
-function will automatically find the common variable to match columns
-from the first and second table.  In this case, `gene` is the common
-variable. Such variables are called keys. Keys are used to match
-observations across different tables.
+ここで、`dplyr` パッケージの `full_join()` 関数を使用して、これら2つのテーブルを、すべての
+変数を含む1つのテーブルに結合したいと思います。
+関数は、最初のテーブルと2番目のテーブルの列
+に一致する共通変数を自動的に見つける。  この場合、`gene`は共通の
+。 このような変数をキーと呼ぶ。 キーは、
+オブザベーションを異なるテーブル間でマッチさせるために使用される。
+関数は、最初のテーブルと2番目のテーブルの列
+に一致する共通変数を自動的に見つける。  この場合、`gene`は共通の
+。 このような変数をキーと呼ぶ。 キーは、
+オブザベーションを異なるテーブル間でマッチさせるために使用される。
 
 
 ``` r
@@ -2083,12 +2142,12 @@ Joining with `by = join_by(gene)`
 10 Gnb4    GSM2545336       1071 guanine nucleotide binding protein (G protein)…
 ```
 
-In real life, gene annotations are sometimes labelled differently.
+実生活では、遺伝子アノテーションのラベルが異なることがある。
 
-The `annot2` table is exactly the same than `annot1` except that the
-variable containing gene names is labelled differently. Again, either
-[download annot2.csv](https://carpentries-incubator.github.io/bioc-intro/data/annot2.csv)
-yourself and move it to `data/` or use the R code below.
+annot2`テーブルは、遺伝子名を含む
+変数のラベルが異なる以外は、`annot1`と全く同じである。 この場合も、 [download annot2.csv](https://carpentries-incubator.github.io/bioc-intro/data/annot2.csv)
+、自分で`data/\`に移動するか、以下のRコードを使う。 この場合も、 [download annot2.csv](https://carpentries-incubator.github.io/bioc-intro/data/annot2.csv)
+、自分で`data/\`に移動するか、以下のRコードを使う。
 
 
 ``` r
@@ -2114,9 +2173,10 @@ annot2
 10 Gjc2               gap junction protein, gamma 2 [Source:MGI Symbol;Acc:MGI:…
 ```
 
-In case none of the variable names match, we can set manually the
-variables to use for the matching.  These variables can be set using
-the `by` argument, as shown below with `rna_mini` and `annot2` tables.
+どの変数名も一致しない場合、マッチングに使用する
+変数を手動で設定することができる。  どの変数名も一致しない場合、マッチングに使用する
+変数を手動で設定することができる。  これらの変数は、`rna_mini` と `annot2` テーブルを使用して以下に示すように、
+`by` 引数を使用して設定することができる。
 
 
 ``` r
@@ -2139,22 +2199,22 @@ full_join(rna_mini, annot2, by = c("gene" = "external_gene_name"))
 10 Gnb4    GSM2545336       1071 guanine nucleotide binding protein (G protein)…
 ```
 
-As can be seen above, the variable name of the first table is retained
-in the joined one.
+上で見たように、最初のテーブルの変数名は、結合されたテーブルでも
+。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge:
+## チャレンジだ：
 
-Download the `annot3` table by clicking
-[here](https://carpentries-incubator.github.io/bioc-intro/data/annot3.csv)
-and put the table in your data/ repository.  Using the `full_join()`
-function, join tables `rna_mini` and `annot3`. What has happened for
-genes _Klk6_, _mt-Tf_, _mt-Rnr1_, _mt-Tv_, _mt-Rnr2_, and _mt-Tl1_ ?
+[こちら](https://carpentries-incubator.github.io/bioc-intro/data/annot3.csv)
+をクリックして `annot3` テーブルをダウンロードし、そのテーブルをあなたの data/ リポジトリに置いてください。  full_join()`関数を使用して、テーブル`rna_mini`と`annot3\` を結合する。
+、遺伝子_Klk6_、_mt-Tf_、_mt-Rnr1_、_mt-Tv_、_mt-Rnr2_、_mt-Tl1_はどうなったのか？  full_join()`
+関数を使用して、テーブル `rna_mini` と `annot3` を結合する。
+、遺伝子_Klk6_、_mt-Tf_、_mt-Rnr1_、_mt-Tv_、_mt-Rnr2_、_mt-Tl1_はどうなったのか？
 
 :::::::::::::::  solution
 
-## Solution
+## ソリューション
 
 
 ``` r
@@ -2183,33 +2243,40 @@ full_join(rna_mini, annot3)
 15 mt-Tl1  <NA>               NA mitochondrially encoded tRNA leucine 1 [Source…
 ```
 
-Genes _Klk6_ is only present in `rna_mini`, while genes _mt-Tf_, _mt-Rnr1_, _mt-Tv_,
-_mt-Rnr2_, and _mt-Tl1_ are only present in `annot3` table. Their respective values for the
-variables of the table have been encoded as missing.
+遺伝子_Klk6_は`rna_mini`にのみ存在し、遺伝子_mt-Tf_、_mt-Rnr1_、_mt-Tv_、
+_mt-Rnr2_、_mt-Tl1_は`annot3`テーブルにのみ存在する。 表の
+変数のそれぞれの値は、欠損として符号化されている。 表の
+変数のそれぞれの値は、欠損として符号化されている。
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Exporting data
+## データのエクスポート
 
-Now that you have learned how to use `dplyr` to extract information from
-or summarise your raw data, you may want to export these new data sets to share
-them with your collaborators or for archival.
+dplyr\\`を使って、
+から情報を抽出したり、生データを要約したりする方法を学んだので、これらの新しいデータセットをエクスポートして、
+を共同研究者と共有したり、アーカイブしたりしたいと思うかもしれない。
 
-Similar to the `read_csv()` function used for reading CSV files into R, there is
-a `write_csv()` function that generates CSV files from data frames.
+RにCSVファイルを読み込むために使用される `read_csv()` 関数と同様に、
+、データフレームからCSVファイルを生成する `write_csv()` 関数があります。
 
-Before using `write_csv()`, we are going to create a new folder, `data_output`,
-in our working directory that will store this generated dataset. We don't want
-to write generated datasets in the same directory as our raw data.
-It's good practice to keep them separate. The `data` folder should only contain
-the raw, unaltered data, and should be left alone to make sure we don't delete
-or modify it. In contrast, our script will generate the contents of the `data_output`
-directory, so even if the files it contains are deleted, we can always
-re-generate them.
+write_csv()`を使う前に、生成されたデータセットを格納する新しいフォルダ `data_output`
+を作業ディレクトリに作成する。 
+、生成されたデータセットを生データと同じディレクトリに書き込みたくない。
+別々にするのは良い習慣だ。 data`フォルダーには、
+、変更されていない生のデータだけを入れておく。
+、削除したり変更したりしないように、そのままにしておく。 対照的に、このスクリプトは`data_output`
+ディレクトリの内容を生成するので、そこに含まれるファイルが削除されても、
+再生成することができる。
+、生成されたデータセットを生データと同じディレクトリに書き込みたくない。
+別々にするのは良い習慣だ。 data`フォルダーには、
+、変更されていない生のデータだけを入れておく。
+、削除したり変更したりしないように、そのままにしておく。 対照的に、このスクリプトは`data_output\`
+ディレクトリの内容を生成するので、そこに含まれるファイルが削除されても、
+再生成することができる。
 
-Let's use `write_csv()` to save the rna\_wide table that we have created previously.
+write_csv()\\`を使用して、以前に作成したrna_wideテーブルを保存しよう。
 
 
 ``` r
@@ -2218,6 +2285,6 @@ write_csv(rna_wide, file = "data_output/rna_wide.csv")
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Tabular data in R using the tidyverse meta-package
+- tidyverseメタパッケージを使用したRでの表形式データ
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

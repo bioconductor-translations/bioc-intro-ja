@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: R et RStudio
+title: RとRStudio
 teaching: 30
 exercises: 0
 ---
@@ -9,336 +9,327 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe the purpose of the RStudio Script, Console, Environment, and Plots panes.
-- Organise files and directories for a set of analyses as an R project, and understand the purpose of the working directory.
-- Use the built-in RStudio help interface to search for more information on R functions.
-- Demonstrate how to provide sufficient information for troubleshooting with the R user community.
+- RStudio スクリプト、コンソール、環境、およびプロットペインの目的について説明します。
+- Rプロジェクトとして一連の分析のためのファイルとディレクトリを整理し、作業ディレクトリの目的を理解する。
+- RStudio 組み込みのヘルプインターフェイスを使用して、R 関数の詳細情報を検索します。
+- Rのユーザーコミュニティとトラブルシューティングのために十分な情報を提供する方法を示す。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What are R and RStudio?
+- RとRStudioとは何ですか？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-> Cet épisode est basé sur la leçon _Analyse des données et
-> Visualisation dans R pour les écologistes_ de Data Carpentries.
+> このエピソードは、Data Carpentriesの_Data Analysis and
+> Visualisation in R for Ecologists_レッスンに基づいています。
 
-## What is R? What is RStudio?
+## Rとは？ RStudioとは何ですか?
 
-The term [R](https://www.r-project.org/) is used to refer to the
-_programming language_, the _environment for statistical computing_
-and _the software_ that interprets the scripts written using it.
+R](https://www.r-project.org/)という用語は、
+_プログラミング言語_、統計計算_のための_環境
+、それを使って書かれたスクリプトを解釈する_ソフトウェア_を指すのに使われる。
 
-[RStudio](https://rstudio.com) is currently a very popular way to not
-only write your R scripts but also to interact with the R
-software[^plainr]. To function correctly, RStudio needs R and
-therefore both need to be installed on your computer.
+[RStudio](https://rstudio.com)は現在、Rスクリプトを書くだけでなく、R
+ソフトウェア[^plainr]と対話するための非常に人気のある方法です。 RStudio を正しく機能させるには、R と
+が必要です。
 
-[^plainr]: As opposed to using R directly from the command line
-    console. There exist other software that interface and integrate
-    with R, but RStudio is particularly well suited for beginners
-    while providing numerous very advanced features.
+[^plainr]: コマンドライン
+    コンソールから直接Rを使うのとは対照的だ。
+    、Rとインターフェイスし統合するソフトウェアは他にもあるが、RStudioは非常に高度な機能を数多く備えながら、特に初心者向け
+    。
 
-The RStudio IDE Cheat
-Sheet
-provides much more information than will be covered here, but can be
-useful to learn keyboard shortcuts and discover new features.
+RStudio IDE Cheat
+Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+、ここで説明するよりもはるかに多くの情報を提供していますが、キーボードショートカットを学んだり、新しい機能を発見したりするのに便利です。
 
-## Why learn R?
+## なぜRを学ぶのか？
 
-### R does not involve lots of pointing and clicking, and that's a good thing
+### Rはポインティングやクリックを多用しない。
 
-The learning curve might be steeper than with other software, but with
-R, the results of your analysis do not rely on remembering a
-succession of pointing and clicking, but instead on a series of
-written commands, and that's a good thing! So, if you want to redo
-your analysis because you collected more data, you don't have to
-remember which button you clicked in which order to obtain your
-results; you just have to run your script again.
+学習曲線は他のソフトウェアよりも急かもしれないが、
+Rを使えば、分析結果は
+のポインティングとクリックの連続を覚えることに依存するのではなく、代わりに
+の一連のコマンドを書くことに依存する！
+そのため、より多くのデータを収集したため、
+分析をやり直したい場合、
+結果を得るためにどのボタンをどの順番でクリックしたかを覚えておく必要はない。スクリプトを再度実行するだけでよい。
 
-Working with scripts makes the steps you used in your analysis clear,
-and the code you write can be inspected by someone else who can give
-you feedback and spot mistakes.
+スクリプトを使用することで、分析で使用したステップが明確になり、
+、書いたコードを他の誰かが検査することができ、
+フィードバックを与え、間違いを発見することができる。
 
-Working with scripts forces you to have a deeper understanding of what
-you are doing, and facilitates your learning and comprehension of the
-methods you use.
+スクリプトを使って仕事をすることで、自分がやっている
+の内容をより深く理解することになり、自分が使っている
+メソッドの学習と理解が容易になる。
 
-### R code is great for reproducibility
+### Rコードは再現性に優れている
 
-Reproducibility means that someone else (including your future self) can
-obtain the same results from the same dataset when using the same
-analysis code.
+再現性とは、同じデータセットから同じ解析コード（
+）を使ったときに、他の誰か（未来の自分を含む）が
+、同じ結果を得られることを意味する。
 
-R integrates with other tools to generate manuscripts or reports from your
-code. If you collect more data, or fix a mistake in your dataset, the
-figures and the statistical tests in your manuscript or report are updated
-automatically.
+Rは他のツールと統合し、
+のコードから原稿やレポートを作成することができる。 さらにデータを集めたり、データセットの誤りを修正したりすると、原稿や報告書の
+図や統計検定が自動的に更新されます。
+。
 
-An increasing number of journals and funding agencies expect analyses
-to be reproducible, so knowing R will give you an edge with these
-requirements.
+ジャーナルや研究助成機関では、
+、再現性のある分析を求めるところが増えている。Rを知っていれば、このような
+。
 
-### R is interdisciplinary and extensible
+### Rは学際的で拡張性がある
 
-With 10000+ packages[^whatarepkgs] that can be installed to extend its
-capabilities, R provides a framework that allows you to combine
-statistical approaches from many scientific disciplines to best suit
-the analytical framework you need to analyse your data. For instance,
-R has packages for image analysis, GIS, time series, population
-genetics, and a lot more.
+機能を拡張するためにインストールできる10000以上のパッケージ[^whatarepkgs]により、Rは、
+多くの科学分野からの統計的アプローチを組み合わせることができるフレームワークを提供し、
+データの分析に必要な分析フレームワークに最適です。 例えば、
+Rには画像分析、GIS、時系列、集団
+遺伝学、その他多くのパッケージがある。
 
-[^whatarepkgs]: i.e. add-ons that confer R with new functionality,
-    such as bioinformatics data analysis.
+[^whatarepkgs]: すなわち、バイオインフォマティクスのデータ解析など、Rに新しい機能を付与するアドオンである。
+    。
 
 <div class="figure" style="text-align: center">
 <img src="fig/cran.png" alt="Exponential increase of the number of packages available on [CRAN](https://cran.r-project.org/), the Comprehensive R Archive Network. From the R Journal, Volume 10/2, December 2018."  />
 <p class="caption">Exponential increase of the number of packages available on [CRAN](https://cran.r-project.org/), the Comprehensive R Archive Network. From the R Journal, Volume 10/2, December 2018.</p>
 </div>
 
-### R works on data of all shapes and sizes
+### Rはあらゆる形や大きさのデータを扱う
 
-The skills you learn with R scale easily with the size of your
-dataset. Whether your dataset has hundreds or millions of lines, it
-won't make much difference to you.
+Rで学ぶスキルは、
+データセットの大きさに合わせて簡単にスケールアップできる。 データセットの行数が数百行であろうと数百万行であろうと、
+、大差はないだろう。
 
-R is designed for data analysis. It comes with special data structures
-and data types that make handling of missing data and statistical
-factors convenient.
+Rはデータ分析用に設計されている。 欠損データや統計的
+因子の取り扱いを便利にする特別なデータ構造
+とデータ型が付属している。
 
-R can connect to spreadsheets, databases, and many other data formats,
-on your computer or on the web.
+Rは、スプレッドシート、データベース、その他多くのデータ形式、
+、コンピュータ上またはウェブ上に接続することができます。
 
-### R produces high-quality graphics
+### Rは高品質のグラフィックを作成する
 
-The plotting functionalities in R are extensive, and allow you to adjust
-any aspect of your graph to convey most effectively the message from
-your data.
+Rのプロット機能は充実しており、
+データからのメッセージを最も効果的に伝えるために、グラフのあらゆる面を調整することができる。
 
-### R has a large and welcoming community
+### Rは大きく歓迎されるコミュニティ
 
-Thousands of people use R daily. Many of them are willing to help you
-through mailing lists and websites such as Stack
-Overflow, or on the RStudio
-community. These broad user communities
-extend to specialised areas such as bioinformatics. One such subset of the R community is [Bioconductor](https://bioconductor.org/), a scientific project for analysis and comprehension "of data from current and emerging biological assays." This workshop was developed by members of the Bioconductor community; for more information on Bioconductor, please see the companion workshop ["The Bioconductor Project"](https://carpentries-incubator.github.io/bioc-project/).
+何千人もの人々が毎日Rを利用している。 彼らの多くは、メーリングリストやStack
+Overflowのようなウェブサイト、またはRStudio
+communityを通じて、
+。 こうした広範なユーザー・コミュニティは、
+、バイオインフォマティクスのような専門分野にも広がっている。 Rコミュニティのそのようなサブセットの1つが、[Bioconductor](https://bioconductor.org/)である。"現在および将来の生物学的アッセイからのデータの "分析と理解のための科学的プロジェクトである。 このワークショップは、Bioconductor コミュニティのメンバーによって開発されました。Bioconductor についての詳細は、関連ワークショップ ["The Bioconductor Project"](https://carpentries-incubator.github.io/bioc-project/) をご覧ください。
 
-### Not only is R free, but it is also open-source and cross-platform
+### Rは無料であるだけでなく、オープンソースでクロスプラットフォームである。
 
-Anyone can inspect the source code to see how R works. Because of this
-transparency, there is less chance for mistakes, and if you (or
-someone else) find some, you can report and fix bugs.
+Rがどのように動作するかは、誰でもソースコードを調べることができる。 この
+の透明性により、ミスが発生する可能性は低くなり、もしあなた（または
+他の誰か）がミスを発見したら、バグを報告して修正することができる。
 
-## Knowing your way around RStudio
+## RStudioを使いこなす
 
-Let's start by learning about [RStudio](https://www.rstudio.com/),
-which is an Integrated Development Environment (IDE) for working with
-R.
+まずは[RStudio](https://www.rstudio.com/)について学んでみよう。
+は
+R を扱うための統合開発環境(IDE)だ。
 
-The RStudio IDE open-source product is free under the Affero General
-Public License (AGPL) v3.
-The RStudio IDE is also available with a commercial license and
-priority email support from Posit, Inc.
+RStudio IDE オープンソース製品は、Affero General
+Public License (AGPL) v3の下でフリーです。
+RStudio IDE は、Posit, Inc.の商用ライセンスおよび
+優先メールサポートでもご利用いただけます。
 
-We will use the RStudio IDE to write code, navigate the files on our
-computer, inspect the variables we are going to create, and visualise
-the plots we will generate. RStudio can also be used for other things
-(e.g., version control, developing packages, writing Shiny apps) that
-we will not cover during the workshop.
+RStudio IDE を使ってコードを書き、
+コンピュータ上のファイルを操作し、これから作成する変数を検査し、
+生成するプロットを視覚化する。 RStudioは他にも
+（例：バージョン管理、パッケージの開発、Shynyアプリの作成）にも使えます。
+ワークショップでは取り上げません。
 
 <div class="figure" style="text-align: center">
 <img src="fig/rstudio-screenshot.png" alt="RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console." width="100%" />
 <p class="caption">RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console.</p>
 </div>
 
-The RStudio window is divided into 4 "Panes":
+RStudio ウィンドウは 4 つの「ペイン」に分かれています：
 
-- the **Source** for your scripts and documents (top-left, in the
-  default layout)
-- your **Environment/History** (top-right),
-- your **Files/Plots/Packages/Help/Viewer** (bottom-right), and
-- the R **Console** (bottom-left).
+- スクリプトとドキュメントの **ソース** (
+  のデフォルトレイアウトでは左上)
+- あなたの**環境/歴史**（右上）、
+- あなたの**Files/Plots/Packages/Help/Viewer**（右下）、そして
+- R **コンソール**（左下）。
 
-The placement of these panes and their content can be customised (see
-menu, `Tools -> Global Options -> Pane Layout`).
+これらのペインの配置とその内容はカスタマイズすることができます（
+メニューの `Tools -> Global Options -> Pane Layout` を参照してください）。
 
-One of the advantages of using RStudio is that all the information you
-need to write code is available in a single window. Additionally, with
-many shortcuts, **autocompletion**, and **highlighting** for the major
-file types you use while developing in R, RStudio will make typing
-easier and less error-prone.
+RStudioを使う利点の1つは、コードを書くために必要なすべての情報（
+）が1つのウィンドウで利用できることです。 さらに、
+多くのショートカット、**オートコンプリート**、およびRでの開発中に使用する主な
+ファイルタイプの**ハイライト**により、RStudioは
+の入力を容易にし、エラーを少なくします。
 
-## Getting set up
+## セットアップ
 
-It is good practice to keep a set of related data, analyses, and text
-self-contained in a single folder, called the **working
-directory**. All of the scripts within this folder can then use
-**relative paths** to files that indicate where inside the project a
-file is located (as opposed to absolute paths, which point to where a
-file is on a specific computer). Working this way makes it a lot
-easier to move your project around on your computer and share it with
-others without worrying about whether or not the underlying scripts
-will still work.
+関連するデータ、分析、テキスト（
+）のセットは、**working
+directory**と呼ばれる1つのフォルダに自己完結させておくのがよい習慣である。 このフォルダー内のすべてのスクリプトは、
+**相対パス** を使用して、
+ファイルがプロジェクト内のどこにあるかを示すことができます（
+ファイルが特定のコンピューター上のどこにあるかを示す絶対パスとは異なります）。 この方法で作業することで、
+、自分のコンピュータ上でプロジェクトを移動したり、
+他の人と共有したりすることが、基盤となるスクリプト
+がまだ動くかどうかを心配することなく、とても簡単になる。
 
-RStudio provides a helpful set of tools to do this through its "Projects"
-interface, which not only creates a working directory for you, but also remembers
-its location (allowing you to quickly navigate to it) and optionally preserves
-custom settings and open files to make it easier to resume work after a
-break. Go through the steps for creating an "R Project" for this
-tutorial below.
+RStudioは、"Projects"
+インターフェイスを通じて、このような作業を行うための便利なツールセットを提供しています。このツールは、作業ディレクトリを作成するだけでなく、
+その場所を記憶し（すぐに移動できるようになります）、
+カスタム設定や開いているファイルを保存して、
+休憩後に作業を再開しやすくすることもできます。 この
+チュートリアルのための "Rプロジェクト "の作成手順を以下に示す。
 
-1. Start RStudio.
-2. Under the `File` menu, click on `New project`. Choose `New directory`, then
-  `New project`.
-3. Enter a name for this new folder (or "directory"), and choose a
-  convenient location for it. This will be your **working directory**
-  for this session (or whole course) (e.g., `bioc-intro`).
-4. Click on `Create project`.
-5. (Optional) Set Preferences to 'Never' save workspace in RStudio.
+1. RStudioを起動します。
+2. File`メニューの下にある`New project`をクリックする。 新規ディレクトリ`を選択し、
+  `新規プロジェクト`を選択する。
+3. この新しいフォルダ（または「ディレクトリ」）の名前を入力し、
+  便利な場所を選択します。 これはこのセッション (またはコース全体) の **作業ディレクトリ**
+  になります (例 `bioc-intro`)。
+4. Create project\`をクリックする。
+5. (オプション）RStudio でワークスペースを保存しない設定にします。
 
-RStudio's default preferences generally work well, but saving a workspace to
-.RData can be cumbersome, especially if you are working with larger datasets.
-To turn that off, go to Tools --> 'Global Options' and select the 'Never' option
-for 'Save workspace to .RData' on exit.
+RStudioのデフォルトの環境設定は一般的にうまく機能しますが、ワークスペースを
+.RDataに保存するのは、特に大きなデータセットを扱う場合は面倒です。
+これをオフにするには、「ツール」→「グローバル・オプション」で、終了時に「ワークスペースを.RDataに保存する」
+「決してしない」オプションを選択します。
 
 <div class="figure" style="text-align: center">
 <img src="fig/rstudio-preferences.png" alt="Set 'Save workspace to .RData on exit' to 'Never'" width="70%" />
 <p class="caption">Set 'Save workspace to .RData on exit' to 'Never'</p>
 </div>
 
-To avoid character encoding issues between Windows and other operating
-systems, we are
-going to set UTF-8 by default:
+ウィンドウズと他のオペレーティング・システム間の文字エンコーディングの問題](https://yihui.name/en/2018/11/biggest-regret-knitr/)を避けるため、
+、デフォルトでUTF-8を設定します：
 
 <div class="figure" style="text-align: center">
 <img src="fig/utf8.png" alt="Set the default text encoding to UTF-8 to save us headache in the coming future. (Figure from the link above)." width="70%" />
 <p class="caption">Set the default text encoding to UTF-8 to save us headache in the coming future. (Figure from the link above).</p>
 </div>
 
-### Organizing your working directory
+### 作業ディレクトリの整理
 
-Using a consistent folder structure across your projects will help keep things
-organised, and will also make it easy to find/file things in the future. This
-can be especially helpful when you have multiple projects. In general, you may
-create directories (folders) for **scripts**, **data**, and **documents**.
+プロジェクト全体で一貫性のあるフォルダ構造を使うことで、
+、整理整頓がしやすくなり、将来的に探し出したりファイルしたりするのも簡単になります。 この
+、複数のプロジェクトを抱えているときには特に役立つ。 一般的に、
+、\***スクリプト**、\***データ**、\***ドキュメント**用のディレクトリ（フォルダ）を作成することができます。
 
-- **`data/`** Use this folder to store your raw data and intermediate
-  datasets you may create for the need of a particular analysis. For
-  the sake of transparency and
-  [provenance](https://en.wikipedia.org/wiki/Provenance), you should
-  _always_ keep a copy of your raw data accessible and do as much of
-  your data cleanup and preprocessing programmatically (i.e., with
-  scripts, rather than manually) as possible. Separating raw data
-  from processed data is also a good idea. For example, you could
-  have files `data/raw/tree_survey.plot1.txt` and `...plot2.txt` kept
-  separate from a `data/processed/tree.survey.csv` file generated by
-  the `scripts/01.preprocess.tree_survey.R` script.
-- **`documents/`** This would be a place to keep outlines, drafts,
-  and other text.
-- **`scripts/`** (or `src`) This would be the location to keep your R
-  scripts for different analyses or plotting, and potentially a
-  separate folder for your functions (more on that later).
+- **data/**\* このフォルダは、生データと、特定の分析に必要な中間データセット（
+  ）を保存するために使用します。
+  透明性と
+  [出所](https://en.wikipedia.org/wiki/Provenance)のために、
+  _常に_ 生データのコピーにアクセスできるようにしておき、
+  データのクリーンアップと前処理をできるだけプログラム的に（つまり、手作業ではなく
+  スクリプトで）行うべきである。 生データ
+  、加工データから切り離すのも良いアイデアだ。 例えば、
+  `data/raw/tree_survey.plot1.txt`と`...plot2.txt`のファイルを、
+  `scripts/01.preprocess.tree_survey.R`スクリプトによって生成された`data/processed/tree.survey.csv`ファイルとは別に
+  。
+- **`documents/`** ここは、アウトライン、下書き、
+  、その他のテキストを保管する場所になります。
+- \*\*scripts/`** (または `src\`) この場所には、さまざまな分析やプロット用の R
+  スクリプトを保存し、
+  関数用の別フォルダを作成することもできます（詳しくは後述します）。
 
-You may want additional directories or subdirectories depending on
-your project needs, but these should form the backbone of your working
-directory.
+あなたのプロジェクトの必要性に応じて、追加のディレクトリやサブディレクトリが必要になるかもしれないが、これらはあなたの作業用
+ディレクトリのバックボーンを形成するはずである。
 
 <div class="figure" style="text-align: center">
 <img src="fig/working-directory-structure.png" alt="Example of a working directory structure." width="100%" />
 <p class="caption">Example of a working directory structure.</p>
 </div>
 
-For this course, we will need a `data/` folder to store our raw data,
-and we will use `data_output/` for when we learn how to export data as
-CSV files, and `fig_output/` folder for the figures that we will save.
+このコースでは、生データを保存するために `data/` フォルダが必要です。
+、データを
+CSV ファイルとしてエクスポートする方法を学ぶために `data_output/` フォルダを使用し、図を保存するために `fig_output/` フォルダを使用します。
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge: create your project directory structure
+## 課題：プロジェクトのディレクトリ構造を作る
 
-Under the `Files` tab on the right of the screen, click on `New Folder` and
-create a folder named `data` within your newly created working directory
-(e.g., `~/bioc-intro/data`). (Alternatively, type `dir.create("data")` at
-your R console.) Repeat these operations to create a `data_output/` and a
-`fig_output` folders.
+画面右側の`Files`タブで、`New Folder`をクリックし、
+、新しく作成した作業ディレクトリー
+（例：`~/bioc-intro/data`）の中に`data`という名前のフォルダーを作成します。 (あるいは、Rのコンソール
+で `dir.create("data")` とタイプする)。 これらの操作を繰り返して、`data_output/` と
+`fig_output` フォルダーを作成する。
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We are going to keep the script in the root of our working directory
-because we are only going to use one file and it will make things
-easier.
+スクリプトは作業ディレクトリのルート
+に置くことにする。使用するのは1つのファイルだけだし、
+事が簡単になるからだ。
 
-Your working directory should now look like this:
+作業ディレクトリはこのようになっているはずだ：
 
 <div class="figure" style="text-align: center">
 <img src="fig/r-starting-how-it-should-look-like.png" alt="How it should look like at the beginning of this lesson" width="100%" />
 <p class="caption">How it should look like at the beginning of this lesson</p>
 </div>
 
-**Project management** is also applicable to bioinformatics projects,
-of course[^bioindatascience]. William Noble (@Noble:2009) proposes the
-following directory structure:
+**プロジェクト管理**は、バイオインフォマティクス・プロジェクトにも適用できる。
+[^bioindatascience]。 William Noble (@Noble:2009)は、
+以下のディレクトリ構造を提案している：
 
-[^bioindatascience]: In this course, we consider bioinformatics as
-    data science applied to biological or bio-medical data.
+[^bioindatascience]: このコースでは、バイオインフォマティクスを、
+    、生物学的または生物医学的データに適用されるデータサイエンスと考える。
 
-> Directory names are in large typeface, and filenames are in smaller
-> typeface. Only a subset of the files are shown here. Note that the
-> dates are formatted `<year>-<month>-<day>` so that they can be
-> sorted in chronological order. The source code `src/ms-analysis.c`
-> is compiled to create `bin/ms-analysis` and is documented in
-> `doc/ms-analysis.html`. The `README` files in the data directories
-> specify who downloaded the data files from what URL on what
-> date. The driver script `results/2009-01-15/runall` automatically
-> generates the three subdirectories split1, split2, and split3,
-> corresponding to three cross-validation splits. The
-> `bin/parse-sqt.py` script is called by both of the `runall` driver
-> scripts.
+> ディレクトリ名は大きな書体で、ファイル名は小さな
+> 。 ここに掲載したのは、その一部である。 なお、
+> の日付は、<year>-<month>-<day>`というフォーマットになっているので、
+> 時系列順に並べ替えることができる。 ソースコード`src/ms-analysis.c`がコンパイルされて`bin/ms-analysis`が作成され、`doc/ms-analysis.html`に文書化されている。 データ・ディレクトリ
+> にある`README`ファイルには、誰がどの URL から
+> の日付にデータ・ファイルをダウンロードしたかが明記されている。 ドライバスクリプト`results/2009-01-15/runall`は自動的に
+> 3つのサブディレクトリ split1、split2、split3 を生成する。
+> は3つのクロスバリデーション分割に対応する。 `bin/parse-sqt.py`スクリプトは`runall\` ドライバ
+> スクリプトの両方から呼び出される。
 
 <div class="figure" style="text-align: center">
 <img src="fig/noble-bioinfo-project.png" alt="Directory structure for a sample bioinformatics project." width="100%" />
 <p class="caption">Directory structure for a sample bioinformatics project.</p>
 </div>
 
-The most important aspect of a well defined and well documented
-project directory is to enable someone unfamiliar with the
-project[^futureself] to
+よく定義され、よく文書化された
+プロジェクトのディレクトリの最も重要な側面は、
+プロジェクト[^futureself]をよく知らない人が、次のことをできるようにすることである。
 
-1. understand what the project is about, what data are available, what
-  analyses were run, and what results were produced and, most
-  importantly to
+1. どのようなプロジェクトなのか、どのようなデータが入手可能なのか、どのような
+  分析が行われ、どのような結果が出たのかを理解すること、そして最も重要なことは、
+  を理解することである。
 
-2. repeat the analysis over again - with new data, or changing some
-  analysis parameters.
+2. 新しいデータで、あるいは
+  分析パラメーターの一部を変更して、分析を繰り返す。
 
-[^futureself]: That someone could be, and very likely will be your
-    future self, a couple of months or years after the analyses were
-    run.
+[^futureself]: その誰かとは、
+    、分析が実行された数カ月後、あるいは数年後に、
+    、未来のあなた自身である可能性が高い。
 
-### The working directory
+### 作業ディレクトリ
 
-The working directory is an important concept to understand. It is the
-place from where R will be looking for and saving the files. When you
-write code for your project, it should refer to files in relation to
-the root of your working directory and only need files within this
-structure.
+作業ディレクトリは理解すべき重要な概念である。 Rがファイルを探して保存する
+。
+プロジェクトのコードを書くときは、作業ディレクトリのルート
+に関連するファイルを参照し、この
+構造内のファイルだけが必要です。
 
-Using RStudio projects makes this easy and ensures that your working
-directory is set properly. If you need to check it, you can use
-`getwd()`. If for some reason your working directory is not what it
-should be, you can change it in the RStudio interface by navigating in
-the file browser where your working directory should be, and clicking
-on the blue gear icon `More`, and select `Set As Working Directory`.
-Alternatively you can use `setwd("/path/to/working/directory")` to
-reset your working directory. However, your scripts should not include
-this line because it will fail on someone else's computer.
+RStudioプロジェクトを使用すると、この作業が簡単になり、
+ディレクトリが適切に設定されます。 もし確認する必要があれば、
+`getwd()` を使うことができる。 何らかの理由で作業ディレクトリが
+のようになっていない場合は、RStudio のインターフェイスで
+ファイルブラウザーで作業ディレクトリがあるべき場所に移動し、
+青い歯車のアイコン `More` をクリックし、`Set As Working Directory` を選択して変更することができます。
+あるいは、`setwd("/path/to/working/directory")`を使って、
+作業ディレクトリをリセットすることもできる。 しかし、あなたのスクリプトには、
+、この行を含めるべきではありません。なぜなら、他の誰かのコンピューターで失敗してしまうからです。
 
-**Example**
+\*\*例
 
-The schema below represents the working directory `bioc-intro` with the
-`data` and `fig_output` sub-directories, and 2 files in the latter:
+以下のスキーマは作業ディレクトリ `bioc-intro` と
+`data` と `fig_output` のサブディレクトリ、そして後者にある2つのファイルを表しています：
 
 ```
 bioc-intro/data/
@@ -346,199 +337,198 @@ bioc-intro/data/
           /fig_output/fig2.png
 ```
 
-If we were in the working directory, we could refer to the `fig1.pdf`
-file using the relative path `bioc-intro/fig_output/fig1.pdf` or the
-absolute path `/home/user/bioc-intro/fig_output/fig1.pdf`.
+もし作業ディレクトリにいれば、相対パス `bioc-intro/fig_output/fig1.pdf` か、
+絶対パス `/home/user/bioc-intro/fig_output/fig1.pdf` を使って `fig1.pdf`
+ファイルを参照することができます。
 
-If we were in the `data` directory, we would use the relative path
-`../fig_output/fig1.pdf` or the same absolute path
-`/home/user/bioc-intro/fig_output/fig1.pdf`.
+もし `data` ディレクトリにいたとしたら、相対パス
+`../fig_output/fig1.pdf` か、同じ絶対パス
+`/home/user/bioc-intro/fig_output/fig1.pdf` を使うことになる。
 
-## Interacting with R
+## Rとの対話
 
-The basis of programming is that we write down instructions for the
-computer to follow, and then we tell the computer to follow those
-instructions. We write, or _code_, instructions in R because it is a
-common language that both the computer and we can understand. We call
-the instructions _commands_ and we tell the computer to follow the
-instructions by _executing_ (also called _running_) those commands.
+プログラミングの基本は、私たちが
+、コンピュータが従うべき命令を書き記し、その
+命令に従うようコンピュータに指示することである。 私たちがRで命令を書く、つまり_コード_を書くのは、それが
+、コンピューターも私たちも理解できる共通言語だからだ。 私たちは
+を_コマンド_と呼び、それらのコマンドを_実行_（_実行_とも呼ぶ）することによって、
+の指示に従うようにコンピュータに指示する。
 
-There are two main ways of interacting with R: by using the
-**console** or by using **scripts** (plain text files that contain
-your code). The console pane (in RStudio, the bottom left panel) is
-the place where commands written in the R language can be typed and
-executed immediately by the computer. It is also where the results
-will be shown for commands that have been executed. You can type
-commands directly into the console and press `Enter` to execute those
-commands, but they will be forgotten when you close the session.
+Rと対話する主な方法は2つある：
+**コンソール**を使う方法と、**スクリプト**（
+あなたのコードを含むプレーンテキストファイル）を使う方法である。 コンソールペイン（RStudioでは左下のパネル）は、
+、R言語で書かれたコマンドを入力し、
+、コンピュータによって即座に実行される場所です。 また、
+、実行されたコマンドの結果が表示される場所でもある。 コンソールに直接
+コマンドを入力し、`Enter`を押すことで、それらの
+コマンドを実行することができますが、セッションを閉じると忘れてしまいます。
 
-Because we want our code and workflow to be reproducible, it is better
-to type the commands we want in the script editor, and save the
-script. This way, there is a complete record of what we did, and
-anyone (including our future selves!) can easily replicate the
-results on their computer. Note, however, that merely typing the commands
-in the script does not automatically _run_ them - they still need to
-be sent to the console for execution.
+コードとワークフローを再現できるようにしたいので、
+、スクリプトエディターで必要なコマンドを入力し、
+スクリプトを保存する方がよい。 こうすることで、私たちがしたことの完全な記録が残る。
+、誰にでも（未来の自分も含めて！）。 は、
+の結果を自分のコンピューターで簡単に再現できる。 ただし、スクリプトに
+、単にコマンドを入力しただけでは自動的に_実行_されないことに注意してほしい。
+、コンソールに送信して実行させる必要がある。
 
-RStudio allows you to execute commands directly from the script editor
-by using the `Ctrl` + `Enter` shortcut (on Macs, `Cmd` + `Return` will
-work, too). The command on the current line in the script (indicated
-by the cursor) or all of the commands in the currently selected text
-will be sent to the console and executed when you press `Ctrl` +
-`Enter`. You can find other keyboard shortcuts in this RStudio
-cheatsheet about the RStudio
-IDE.
+RStudio ではスクリプトエディター
+から `Ctrl` + `Enter` ショートカット（Mac では `Cmd` + `Return` で
+も可）で直接コマンドを実行できます。 Ctrl`+`Enter\`を押すと、スクリプトの現在の行のコマンド（カーソルで
+を示す）、または現在選択されているテキスト
+のすべてのコマンドがコンソールに送られ、実行される。 その他のキーボードショートカットはRStudio
+cheatsheet about RStudio
+IDEを参照してください。
 
-At some point in your analysis you may want to check the content of a
-variable or the structure of an object, without necessarily keeping a
-record of it in your script. You can type these commands and execute
-them directly in the console.  RStudio provides the `Ctrl` + `1` and
-`Ctrl` + `2` shortcuts allow you to jump between the script and the
-console panes.
+分析のある時点で、
+変数の内容やオブジェクトの構造をチェックしたくなるかもしれない。必ずしもスクリプトに
+の記録を残しておく必要はない。 これらのコマンドを入力し、コンソールで直接
+。  RStudio には `Ctrl` + `1` と
+`Ctrl` + `2` のショートカットがあり、スクリプトと
+のコンソールペイン間をジャンプすることができます。
 
-If R is ready to accept commands, the R console shows a `>` prompt. If
-it receives a command (by typing, copy-pasting or sending from the script
-editor using `Ctrl` + `Enter`), R will try to execute it, and when
-ready, will show the results and come back with a new `>` prompt to
-wait for new commands.
+Rがコマンドを受け付ける準備ができたら、Rコンソールに `>` プロンプトが表示される。
+コマンドを受信すると（タイプ、コピーペースト、またはスクリプト
+エディターから `Ctrl` + `Enter` を使って送信）、R はそれを実行しようとします。
+準備ができると、結果を表示し、
+新しいコマンドを待つために新しい `>` プロンプトで戻ってきます。
 
-If R is still waiting for you to enter more data because it isn't
-complete yet, the console will show a `+` prompt. It means that you
-haven't finished entering a complete command. This is because you have
-not 'closed' a parenthesis or quotation, i.e. you don't have the same
-number of left-parentheses as right-parentheses, or the same number of
-opening and closing quotation marks.  When this happens, and you
-thought you finished typing your command, click inside the console
-window and press `Esc`; this will cancel the incomplete command and
-return you to the `>` prompt.
+Rがまだ
+、データの入力を待っている場合は、コンソールに`+`プロンプトが表示されます。 これは、
+、完全なコマンドの入力が終わっていないことを意味する。 これは、
+、括弧や引用符を「閉じて」いないからです。つまり、
+、左括弧と右括弧の数や、
+、開閉引用符の数が同じではないからです。  このようなことが起こり、
+、コマンドを入力し終わったと思った場合、コンソール
+ウィンドウ内をクリックし、`Esc`を押してください。これにより、不完全なコマンドがキャンセルされ、
+`>`プロンプトに戻ります。
 
-## How to learn more during and after the course?
+## コース中やコース終了後にさらに学ぶには？
 
-The material we cover during this course will give you an initial
-taste of how you can use R to analyse data for your own
-research. However, you will need to learn more to do advanced
-operations such as cleaning your dataset, using statistical methods,
-or creating beautiful graphics[^inthiscoure]. The best way to become
-proficient and efficient at R, as with any other tool, is to use it to
-address your actual research questions. As a beginner, it can feel
-daunting to have to write a script from scratch, and given that many
-people make their code available online, modifying existing code to
-suit your purpose might make it easier for you to get started.
+このコースで扱う内容は、あなた自身の
+研究のためにデータを分析するために R をどのように使うことができるかを、
+初めに体験していただくものです。 しかし、データセットのクリーニング、統計的手法の使用、
+、美しいグラフィックスの作成[^inthiscoure]など、
+の高度な操作を行うには、さらに学ぶ必要がある。
+Rに習熟し、効率的に使えるようになるための最良の方法は、他のツールと同様、Rを使って
+実際の研究課題に取り組むことである。 初心者の場合、ゼロからスクリプトを書かなければならないのは、
+困難に感じるかもしれない。
+多くの人が自分のコードをオンラインで公開していることを考えると、
+自分の目的に合うように既存のコードを修正することで、簡単に始めることができるかもしれない。
 
-[^inthiscoure]: We will introduce most of these (except statistics)
-    here, but will only manage to scratch the surface of the wealth of
-    what is possible to do with R.
+[^inthiscoure]: ここでは、これらのほとんど（統計学を除く）
+    を紹介するが、Rで可能なこと
+    の富の表面をかすめることしかできない。
 
 <img src="fig/kitten-try-things.jpg" width="400px" style="display: block; margin: auto;" />
 
-## Seeking help
+## 助けを求める
 
-### Use the built-in RStudio help interface to search for more information on R functions
+### RStudio 組み込みのヘルプインターフェイスを使用して、R 関数の詳細情報を検索します。
 
 <div class="figure" style="text-align: center">
 <img src="fig/rstudiohelp.png" alt="RStudio help interface." width="70%" />
 <p class="caption">RStudio help interface.</p>
 </div>
 
-One of the fastest ways to get help, is to use the RStudio help
-interface. This panel by default can be found at the lower right hand
-panel of RStudio. As seen in the screenshot, by typing the word
-"Mean", RStudio tries to also give a number of suggestions that you
-might be interested in. The description is then shown in the display
-window.
+RStudio ヘルプ
+インターフェイスを使用するのが、ヘルプを得る最も早い方法の1つです。 このパネルはデフォルトで RStudio の右下
+パネルにあります。 スクリーンショットに見られるように、
+"Mean "という単語を入力すると、RStudioは
+、あなたが興味を持ちそうな候補もいくつか出そうとする。 説明文は
+ウィンドウに表示される。
 
-### I know the name of the function I want to use, but I'm not sure how to use it
+### 使いたい関数の名前はわかっているが、その使い方がわからない。
 
-If you need help with a specific function, let's say `barplot()`, you
-can type:
-
-
-``` r
-?barplot
-```
-
-If you just need to remind yourself of the names of the arguments, you can use:
+特定の関数、例えば`barplot()`のヘルプが必要な場合は、
+：
 
 
 ``` r
-args(lm)
+バープロット
 ```
 
-### I want to use a function that does X, there must be a function for it but I don't know which one...
-
-If you are looking for a function to do a particular task, you can use the
-`help.search()` function, which is called by the double question mark `??`.
-However, this only looks through the installed packages for help pages with a
-match to your search request
+引数の名前を思い出す必要がある場合は、次のようにすればよい：
 
 
 ``` r
-??kruskal
+引数(lm)
 ```
 
-If you can't find what you are looking for, you can use
-the [rdocumentation.org](https://www.rdocumentation.org) website that searches
-through the help files across all packages available.
+### Xを行う関数を使いたい。そのための関数があるはずだが、どれがあるのかわからない...。
 
-Finally, a generic Google or internet search "R \<task>" will often either send
-you to the appropriate package documentation or a helpful forum where someone
-else has already asked your question.
+特定のタスクを実行する関数を探している場合は、
+`help.search()`関数を使用することができます。この関数は二重の疑問符 \`?
+しかし、これはインストールされているパッケージの中から、検索リクエストと
+一致するヘルプページを探すだけです。
 
-### I am stuck... I get an error message that I don't understand
 
-Start by googling the error message. However, this doesn't always work very well
-because often, package developers rely on the error catching provided by R. You
-end up with general error messages that might not be very helpful to diagnose a
-problem (e.g. "subscript out of bounds"). If the message is very generic, you
-might also include the name of the function or package you're using in your
-query.
+``` r
+クルスカル
+```
 
-However, you should check Stack Overflow. Search using the `[r]` tag. Most
-questions have already been answered, but the challenge is to use the right
-words in the search to find the
-answers:
+探しているものが見つからない場合は、
+[rdocumentation.org](https://www.rdocumentation.org)のウェブサイトを使うことができます。このウェブサイトは、利用可能なすべてのパッケージのヘルプファイルから
+を検索します。
+
+最後に、一般的なグーグルやインターネット検索で "R \<task>" を検索すると、多くの場合、
+適切なパッケージ・ドキュメントにたどり着くか、
+他の誰かがすでに質問している有益なフォーラムにたどり着く。
+
+### 動けないんだ...。 理解できないエラーメッセージが表示されます。
+
+エラーメッセージをググることから始めよう。
+というのも、多くの場合、パッケージ開発者はRが提供するエラー・キャッチに依存しているからである。
+、一般的なエラー・メッセージが表示されることになるが、これは
+の問題を診断するのにあまり役に立たないかもしれない（例えば、"subscript out of bounds"）。 メッセージが非常に一般的なものであれば、
+、使用している関数やパッケージの名前を
+クエリに含めることもできる。
+
+しかし、Stack Overflowをチェックする必要がある。 r]\`タグを使って検索する。 ほとんどの
+の質問にはすでに答えが出されているが、
+の答えを見つけるために、検索で適切な
+の言葉を使うことが課題である：
 
 [http://stackoverflow.com/questions/tagged/r](https://stackoverflow.com/questions/tagged/r)
 
-The [Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.pdf) can
-also be dense for people with little programming experience but it is a good
-place to understand the underpinnings of the R language.
+R言語入門](https://cran.r-project.org/doc/manuals/R-intro.pdf)
+も、プログラミング経験の少ない人にとっては内容が濃いかもしれないが、R言語の基礎を理解するには良い
+場所である。
 
-The [R FAQ](https://cran.r-project.org/doc/FAQ/R-FAQ.html) is dense and technical
-but it is full of useful information.
+R FAQ](https://cran.r-project.org/doc/FAQ/R-FAQ.html)は密度が濃く、技術的である。
+、しかし有用な情報が満載である。
 
-### Asking for help
+### 助けを求める
 
-The key to receiving help from someone is for them to rapidly grasp
-your problem. You should make it as easy as possible to pinpoint where
-the issue might be.
+誰かに助けてもらうために重要なのは、相手があなたの問題（
+）を素早く把握することだ。
+、どこに問題がありそうかをできるだけ簡単に特定できるようにすべきだ。
 
-Try to use the correct words to describe your problem. For instance, a
-package is not the same thing as a library. Most people will
-understand what you meant, but others have really strong feelings
-about the difference in meaning. The key point is that it can make
-things confusing for people trying to help you. Be as precise as
-possible when describing your problem.
+あなたの問題を説明するために、正しい言葉を使うようにしてください。 例えば、
+パッケージはライブラリとは違う。 ほとんどの人は、
+、あなたが言いたかったことを理解するだろうが、意味の違いについて本当に強い感情を持つ人もいる
+。 重要なのは、
+、あなたを助けようとする人々を混乱させる可能性があるということだ。
+できるだけ正確に問題を説明してください。
 
-If possible, try to reduce what doesn't work to a simple _reproducible
-example_. If you can reproduce the problem using a very small data
-frame instead of your 50000 rows and 10000 columns one, provide the
-small one with the description of your problem. When appropriate, try
-to generalise what you are doing so even people who are not in your
-field can understand the question. For instance instead of using a
-subset of your real dataset, create a small (3 columns, 5 rows)
-generic one. For more information on how to write a reproducible
-example see this article by Hadley
-Wickham.
+可能であれば、うまくいかないことを単純な例（再現可能な
+）にまで落とし込むようにする。 もし、あなたが50000行10000列のデータではなく、非常に小さなデータ
+フレームを使って問題を再現できるのであれば、
+その小さなデータを問題の説明とともに提供してください。 適切な場合には、
+、あなたのやっていることを一般化して、
+分野に関係のない人でも質問を理解できるようにする。 例えば、
+実際のデータセットのサブセットを使う代わりに、
+小さな（3列、5行）一般的なものを作成する。 再現可能な
+例の書き方については、Hadley
+Wickhamによるこの記事を参照のこと。
 
-To share an object with someone else, if it's relatively small, you
-can use the function `dput()`. It will output R code that can be used
-to recreate the exact same object as the one in memory:
+オブジェクトを他の人と共有するには、それが比較的小さければ、
+、関数 `dput()` を使うことができる。
+、メモリ上のオブジェクトとまったく同じオブジェクトを再作成するために使用できるRコードが出力される：
 
 
 ``` r
-## iris is an example data frame that comes with R and head() is a
-## function that returns the first part of the data frame
+## irisはRに付属するデータフレームの例であり、 head()はデータフレームの最初の部分を返す
+## 関数である
 dput(head(iris))
 ```
 
@@ -551,32 +541,29 @@ structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4),
 6L), class = "data.frame")
 ```
 
-If the object is larger, provide either the raw file (i.e., your CSV
-file) with your script up to the point of the error (and after
-removing everything that is not relevant to your
-issue). Alternatively, in particular if your question is not related
-to a data frame, you can save any R object to a file[^export]:
+オブジェクトのサイズが大きい場合は、生ファイル（つまり、CSV
+ファイル）と、エラーが発生した時点までのスクリプト（およびの問題に関係ないものをすべて削除した後のファイル）を提供してください。 あるいは、特にあなたの質問が
+データフレームに関連していない場合は、任意のRオブジェクトをファイルに保存することができます[^export]：
 
 
 ``` r
 saveRDS(iris, file="/tmp/iris.rds")
 ```
 
-The content of this file is however not human readable and cannot be
-posted directly on Stack Overflow. Instead, it can be sent to someone
-by email who can read it with the `readRDS()` command (here it is
-assumed that the downloaded file is in a `Downloads` folder in the
-user's home directory):
+しかし、このファイルの内容は人間が読めるものではないので、
+Stack Overflowに直接投稿することはできません。 その代わりに、
+。その人は`readRDS()`コマンドでそのファイルを読むことができます（ここでは、
+、ダウンロードされたファイルは
+、そのユーザーのホームディレクトリの`Downloads`フォルダにあると仮定しています）：
 
 
 ``` r
 some_data <- readRDS(file="~/Downloads/iris.rds")
 ```
 
-Last, but certainly not least, **always include the output of `sessionInfo()`**
-as it provides critical information about your platform, the versions of R and
-the packages that you are using, and other information that can be very helpful
-to understand your problem.
+最後になりますが、**必ず`sessionInfo()`**
+の出力を含めるようにしてください。プラットフォーム、使用しているRと
+パッケージのバージョン、その他問題を理解するのに非常に役立つ情報を提供してくれるからです。
 
 
 ``` r
@@ -605,111 +592,110 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] assertthat_0.2.1       R6_2.6.1               xfun_0.51             
+ [1] assertthat_0.2.1       R6_2.6.1               xfun_0.52             
  [4] magrittr_2.0.3         glue_1.8.0             knitr_1.50            
- [7] sandpaper_0.16.12.9000 lifecycle_1.0.4        xml2_1.3.8            
+ [7] sandpaper_0.16.13.9000 lifecycle_1.0.4        xml2_1.3.8            
 [10] ps_1.9.1               cli_3.6.5              processx_3.8.6        
 [13] callr_3.7.6            vctrs_0.6.5            renv_1.1.4            
 [16] withr_3.0.2            compiler_4.5.0         purrr_1.0.4           
-[19] tools_4.5.0            tinkr_0.2.0.9002       evaluate_1.0.3        
+[19] tools_4.5.0            tinkr_0.3.0            evaluate_1.0.3        
 [22] yaml_2.3.10            BiocManager_1.30.25    pegboard_0.7.9        
 [25] rlang_1.1.6           
 ```
 
-### Where to ask for help?
+### どこに助けを求めればいいのか？
 
-- The person sitting next to you during the course. Don't hesitate to
-  talk to your neighbour during the workshop, compare your answers,
-  and ask for help.
-- Your friendly colleagues: if you know someone with more experience
-  than you, they might be able and willing to help you.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/r): if
-  your question hasn't been answered before and is well crafted,
-  chances are you will get an answer in less than 5 min. Remember to
-  follow their guidelines on how to ask a good
-  question.
-- The R-help mailing
-  list: it is read by a
-  lot of people (including most of the R core team), a lot of people
-  post to it, but the tone can be pretty dry, and it is not always
-  very welcoming to new users. If your question is valid, you are
-  likely to get an answer very fast but don't expect that it will come
-  with smiley faces. Also, here more than anywhere else, be sure to
-  use correct vocabulary (otherwise you might get an answer pointing
-  to the misuse of your words rather than answering your
-  question). You will also have more success if your question is about
-  a base function rather than a specific package.
-- If your question is about a specific package, see if there is a
-  mailing list for it. Usually it's included in the DESCRIPTION file
-  of the package that can be accessed using
-  `packageDescription("name-of-package")`. You may also want to try to
-  email the author of the package directly, or open an issue on the
-  code repository (e.g., GitHub).
-- There are also some topic-specific mailing lists (GIS,
-  phylogenetics, etc...), the complete list is
-  [here](https://www.r-project.org/mail.html).
+- コース中、あなたの隣に座っている人。
+  、ワークショップ中に隣の人と話し、自分の答えを比較し、
+  、助けを求めることをためらわないでください。
+- 友好的な同僚：もしあなたより経験豊富な人を知っていれば、
+  、あなたを助けてくれるかもしれない。
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/r):
+  あなたの質問が過去に回答されたことがなく、よく練られたものであれば、
+  5分以内に回答が得られる可能性があります。
+  How to ask good
+  questionのガイドラインに従うことを忘れずに。
+- R-helpメーリングリスト
+  ](https://stat.ethz.ch/mailman/listinfo/r-help):
+  多くの人に読まれていて（Rコアチームのほとんどを含む）、多くの人が
+  投稿していますが、口調はかなり辛口で、
+  新しいユーザーを必ずしも歓迎しているとは限りません。 あなたの質問が正当なものであれば、
+  、すぐに回答が返ってくる可能性が高いが、
+  、スマイルマーク付きで返ってくるとは思わないこと。 また、ここでは他のどこよりも、
+  正しい語彙を使うようにしましょう（そうしないと、
+  の質問に答えるのではなく、
+  あなたの言葉の誤用を指摘する答えが返ってくるかもしれません）。 また、質問内容が特定のパッケージではなく、
+  ベースとなる関数に関するものであれば、より成功しやすいでしょう。
+- 質問が特定のパッケージに関するものであれば、そのパッケージのメーリングリスト(
+  )があるかどうか確認してください。 通常は
+  `packageDescription("name-of-package")` を使ってアクセスできるパッケージのDESCRIPTIONファイル
+  に含まれています。 また、
+  そのパッケージの作者に直接メールを送ってみたり、
+  コードリポジトリ（例：GitHub）にissueを開いてみるのもよいだろう。
+- また、トピックに特化したメーリングリスト（GIS、
+  系統遺伝学など）もある。全リストは
+  [こちら](https://www.r-project.org/mail.html)。
 
-### More resources
+### その他のリソース
 
-- The [Posting Guide](https://www.r-project.org/posting-guide.html) for
-  the R mailing lists.
+- Rメーリングリストの[投稿ガイド](https://www.r-project.org/posting-guide.html)。
 
 - How to ask for R
   help
-  useful guidelines.
+  役立つガイドライン。
 
-- This blog post by Jon
-  Skeet
-  has quite comprehensive advice on how to ask programming questions.
+- Jon
+  Skeetによるこのブログ記事
+  プログラミングの質問の仕方について、かなり包括的なアドバイスがある。
 
-- The [reprex](https://cran.rstudio.com/web/packages/reprex/) package
-  is very helpful to create reproducible examples when asking for
-  help. The rOpenSci community call "How to ask questions so they get
-  answered" (Github
+- reprex](https://cran.rstudio.com/web/packages/reprex/)パッケージ
+  は、
+  ヘルプを求めるときに、再現可能な例を作成するのに非常に役立ちます。
+  rOpenSciコミュニティコール "How to ask questions so they get answered" (Github
   link and video
-  recording) includes a presentation of
-  the reprex package and of its philosophy.
+  recording) には、
+  reprexパッケージとその哲学のプレゼンテーションが含まれています。
 
-## R packages
+## Rパッケージ
 
-### Loading packages
+### 荷物の積み込み
 
-As we have seen above, R packages play a fundamental role in R. The
-make use of a package's functionality, assuming it is installed, we
-first need to load it to be able to use it. This is done with the
-`library()` function. Below, we load `ggplot2`.
+上で見てきたように、RパッケージはRの基本的な役割を担っている。
+、パッケージがインストールされていることを前提に、パッケージの機能を利用する。
+、それを利用できるようにするには、まずパッケージをロードする必要がある。 これは
+`library()`関数で行う。 以下に `ggplot2` をロードする。
 
 
 ``` r
 library("ggplot2")
 ```
 
-### Installing packages
+### パッケージのインストール
 
-The default package repository is The _Comprehensive R Archive
-Network_ (CRAN), and any package that is available on CRAN can be
-installed with the `install.packages()` function. Below, for example,
-we install the `dplyr` package that we will learn about later.
+デフォルトのパッケージリポジトリは The _Comprehensive R Archive
+Network_ (CRAN) で、CRAN で利用可能なパッケージは `install.packages()` 関数で
+インストールできます。 例えば、
+、後で説明する `dplyr` パッケージをインストールする。
 
 
 ``` r
 install.packages("dplyr")
 ```
 
-This command will install the `dplyr` package as well as all its
-dependencies, i.e. all the packages that it relies on to function.
+このコマンドは、`dplyr` パッケージと、その
+依存パッケージ、つまり、そのパッケージが機能するために依存しているすべてのパッケージをインストールします。
 
-Another major R package repository is maintained by Bioconductor. [Bioconductor packages](https://bioconductor.org/packages/release/BiocViews.html#___Software) are managed and installed using a dedicated package,
-namely `BiocManager`, that can be installed from CRAN with
+もう一つの主要なRパッケージのリポジトリは、Bioconductorによって管理されている。 [Bioconductorパッケージ](https://bioconductor.org/packages/release/BiocViews.html#___Software) は、専用のパッケージ、
+すなわち `BiocManager` を使用して管理およびインストールされます。
 
 
 ``` r
 install.packages("BiocManager")
 ```
 
-Individual packages such as `SummarizedExperiment` (we will use it
-later), `DESeq2` (for RNA-Seq analysis), and any others from either Bioconductor or CRAN can then be
-installed with `BiocManager::install`.
+SummarizedExperiment`（後で
+）、`DESeq2`（RNA-Seq解析用）、その他BioconductorやCRANにあるパッケージは、`BiocManager::install\`で
+。
 
 
 ``` r
@@ -717,10 +703,10 @@ BiocManager::install("SummarizedExperiment")
 BiocManager::install("DESeq2")
 ```
 
-By default, `BiocManager::install()` will also check all your installed packages and see if there are newer versions available. If there are, it will show them to you and ask you if you want to `Update all/some/none? [a/s/n]:` and then wait for your answer. While you should strive to have the most up-to-date package versions, in practice we recommend only updating packages in a fresh R session before any packages are loaded.
+デフォルトでは、`BiocManager::install()` はインストールされているすべてのパッケージをチェックし、新しいバージョンがあるかどうかも確認します。 もしあれば、それが表示され、「すべて/いくつか/なしを更新しますか？ [a/s/n]:\`、そしてあなたの答えを待つ。 パッケージのバージョンは最新のものを用意するよう努力すべきですが、実際には、パッケージがロードされる前の新鮮なRセッションでのみパッケージを更新することをお勧めします。
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Start using R and RStudio
+- RとRStudioを使い始める
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
