@@ -571,7 +571,7 @@ sessionInfo()
 ```
 
 ``` output
-R version 4.5.0 (2025-04-11)
+R version 4.5.1 (2025-06-13)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.5 LTS
 
@@ -597,8 +597,8 @@ loaded via a namespace (and not attached):
  [7] sandpaper_0.16.13.9000 lifecycle_1.0.4        xml2_1.3.8            
 [10] ps_1.9.1               cli_3.6.5              processx_3.8.6        
 [13] callr_3.7.6            vctrs_0.6.5            renv_1.1.4            
-[16] withr_3.0.2            compiler_4.5.0         purrr_1.0.4           
-[19] tools_4.5.0            tinkr_0.3.0            evaluate_1.0.3        
+[16] withr_3.0.2            compiler_4.5.1         purrr_1.0.4           
+[19] tools_4.5.1            tinkr_0.3.0            evaluate_1.0.3        
 [22] yaml_2.3.10            BiocManager_1.30.25    pegboard_0.7.9        
 [25] rlang_1.1.6           
 ```
