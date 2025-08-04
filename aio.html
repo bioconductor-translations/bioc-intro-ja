@@ -576,41 +576,26 @@ RやSASのようなコマンドラインベースの統計処理プログラム�
 <li>行は観測データを表す</li>
 <li>セルは個々の値を表す</li>
 </ul>
-<div id="課題-乱雑なデータセットを取り上げそれをクリーンアップする方法を説明します" class="callout discussion">
+<div id="課題整理されていないデータセットを扱いそれをどのようにクリーニングするか説明してください" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="課題-乱雑なデータセットを取り上げそれをクリーンアップする方法を説明します" class="callout-inner">
-<h3 class="callout-title">課題:
-乱雑なデータセットを取り上げ、それをクリーンアップする方法を説明します。</h3>
+<div id="課題整理されていないデータセットを扱いそれをどのようにクリーニングするか説明してください" class="callout-inner">
+<h3 class="callout-title">課題：整理されていないデータセットを扱い、それをどのようにクリーニングするか説明してください。</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
-<li><p><a href="https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx" class="external-link">ここ</a>
-をクリックして、乱雑なデータセットをダウンロードします。</p></li>
-<li><p>スプレッドシート プログラムでデータを開きます。</p></li>
-<li><p>タブが 2 つあることがわかります。 このデータには、2020
-年の新型コロナウイルス感染症 (COVID-19) の第 波と第 2
-波の間にブリュッセルのさまざまな病院で記録されたさまざま
-臨床変数が含まれています。 ご覧のとおり、 データは 3 月と 11 月
-の波では異なる方法で記録されています。
-あなたはこのプロジェクトの責任者となり、
-データの分析を開始できるようにしたいと考えています。</p></li>
-<li><p>隣にいる人と一緒に、この
-スプレッドシートのどこが間違っているのかを特定してください。
-また、最初と 2 番目の Wave タブをクリーンアップし、それらをすべて
-つのスプレッドシートにまとめるために必要な手順について
-説明します。</p></li>
+<li><p><a href="https://github.com/UCLouvain-CBIO/WSBIM1207/raw/master/data/messy_covid.xlsx" class="external-link">このリンク</a>をクリックして、整理されていないデータセットをダウンロードしてください。</p></li>
+<li><p>スプレッドシートソフトウェアでデータを開いてください。</p></li>
+<li><p>データには2つのタブがあることがわかります。このデータセットには、2020年の第1波と第2波の期間中にブリュッセルの様々な病院で記録された多様な臨床変数が含まれています。ご覧の通り、データは2020年3月と11月の波で異なる形式で記録されています。あなたは現在このプロジェクトの責任者であり、データの分析を開始できるようにしたいと考えています。</p></li>
+<li><p>隣にいる人と協力して、このスプレッドシートの問題点を特定してください。また、第1波と第2波のタブをクリーニングするために必要な手順、およびそれらを1つのスプレッドシートに統合する方法についても議論してください。</p></li>
 </ol>
-<p><strong>重要:</strong>
-最初のアドバイスを忘れないでください。クリーンアップされたデータ用に
-ファイル (またはタブ) を作成する場合は、元の (生の)
-データを決して変更しないでください。</p>
+<p><strong>重要事項:</strong>
+最初のアドバイスを必ず守ってください：クリーニング済みデータ用の新しいファイル（またはタブ）を作成する際には、元の生データを一切変更しないでください。</p>
 </div>
 </div>
 </div>
-<p>この演習を終えた後、このデータの
-が間違っていたのか、そしてそれをどのように修正するのかをグループで話し合います。</p>
+<p>この演習を終えた後、グループでこのデータの問題点とそれを修正する方法について議論します。</p>
 <!-- - Take about 10 minutes to work on this exercise. -->
 <!-- - All the mistakes in the *common mistakes* section below are present -->
 <!--   in the messy dataset. If the exercise is done during a workshop, ask -->
@@ -2436,7 +2421,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>R はそれらをすべて同じ型に暗黙的に変換します。</p>
 </div>
@@ -2473,7 +2458,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2586,7 +2571,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>ベクトルのデータ型は 1 つだけです。 R は、 が情報を失わないという
 <em>共通分母</em> を見つけるために、このベクトルの内容を に変換 (強制)
@@ -2623,7 +2608,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>唯一。
 過去のデータ型の記憶はなく、ベクトルが初めて評価されるときに強制
@@ -2666,7 +2651,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>論理 → 数値 → 文字 ← 論理</p>
 </div>
@@ -2902,7 +2887,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3116,7 +3101,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3220,7 +3205,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb133">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3316,7 +3301,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb143">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3491,7 +3476,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <p>さまざまな順列</p>
 <div class="codewrapper sourceCode" id="cb163">
@@ -3957,7 +3942,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li>クラス: データ・フレーム</li>
@@ -4057,7 +4042,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4288,7 +4273,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4345,7 +4330,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul>
 <li>動物の名前の周りに引用符がない</li>
@@ -4395,7 +4380,7 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4479,7 +4464,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   解決策
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4523,7 +4508,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
