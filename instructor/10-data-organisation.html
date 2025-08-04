@@ -630,54 +630,41 @@ Data』が挙げられます。</p>
 <p>ほとんどの解析ソフトウェアはExcelやLibreOfficeのコメントを認識できず、データセル内に配置されたコメントに混乱する可能性があります。前述のフォーマットの場合と同様に、セルに注釈を追加する必要がある場合は別のフィールドを作成してください。同様に、単位をセル内に記載することも避けてください。理想的には、1つの列に配置するすべての測定値は同じ単位であるべきです。何らかの理由で単位が異なる場合は、別のフィールドを作成し、セルの単位を明確に指定してください。</p>
 </div>
 <div class="section level3">
-<h3 id="セル-infoに複数の情報を入力する">セル {#info}に複数の情報を入力する<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%AB-info%E3%81%AB%E8%A4%87%E6%95%B0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B"></a></h3>
-<p><strong>例</strong>: A+、 B+、A- などの ABO グループとアカゲザル
-グループを 1 つのセルに記録する</p>
-<p><strong>解決策</strong>: セルに複数の情報を含めないでください。
-これにより、データを分析できる方法が制限されます。<br>
-の場合、これらの測定値の両方が必要な場合は、
-この情報を含めるようにデータシートを設計します。 たとえば、ABO
-グループには 1 つの列を含め、Rhesus グループには つの列を含めます。</p>
+<h3 id="info">セルに複数の情報を混在させる場合<a class="anchor" aria-label="anchor" href="#info"></a></h3>
+<p><strong>具体例</strong>:
+ABO血液型とRh因子を一つのセルに記録する場合（例：A+、B+、A-など）</p>
+<p><strong>解決策</strong>:
+一つのセルに複数の情報を混在させないようにしてください。これにより、データ分析の方法が制限されてしまいます。これらの測定値の両方が必要な場合は、これらの情報を記録するための専用のデータシートを設計してください。例えば、ABOグループ用とRh因子用の2つの列を設けるといった方法が考えられます。</p>
 </div>
 <div class="section level3">
-<h3 id="問題のあるフィールド名-field_name-の使用">問題のあるフィールド名 {#field_name} の使用<a class="anchor" aria-label="anchor" href="#%E5%95%8F%E9%A1%8C%E3%81%AE%E3%81%82%E3%82%8B%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E5%90%8D-field_name-%E3%81%AE%E4%BD%BF%E7%94%A8"></a></h3>
-<p>説明的なフィールド名を選択しますが、スペース、
-数字、またはいかなる種類の特殊文字も含めないように注意してください。
-スペースは、空白を区切り文字として使用するパーサーによって
-て解釈される可能性があり、一部の プログラムは
-数字で始まるテキスト文字列であるフィールド名を好みません。</p>
-<p>アンダースコア (<code>_</code>) はスペースの代わりに使用できます。
-読みやすさを向上させるために、
-名前をキャメルケースで記述することを検討してください (例:
-ExampleFileName)。 現時点では意味のある略語 も、6
-か月後にはそれほど明確ではなくなる可能性があることに注意してください。ただし、
-が長すぎる名前を付けすぎないでください。 フィールド名に
-を含めることで混乱が回避され、他の人がフィールドを簡単に解釈できるようになります。</p>
-<p><strong>例</strong></p>
-<table style="width:100%;" class="table"><colgroup><col width="48%"><col width="26%"><col width="25%"></colgroup><thead><tr class="header"><th>いい名前</th>
-<th>良い代替品</th>
-<th>避ける</th>
-</tr></thead><tbody><tr class="odd"><td>最高_温度_C</td>
-<td>最大温度</td>
-<td>最高温度 (°C)</td>
-</tr><tr class="even"><td>降水量_mm</td>
-<td>降水量</td>
-<td>プレcmm</td>
-</tr><tr class="odd"><td>平均_年_成長</td>
-<td>平均年成長</td>
-<td>平均成長率/年</td>
-</tr><tr class="even"><td></td>
-<td>セックス</td>
-<td>男/女</td>
-</tr><tr class="odd"><td></td>
-<td>重さ</td>
-<td>w。</td>
-</tr><tr class="even"><td>セル_タイプ</td>
-<td>セルタイプ</td>
-<td>細胞の種類</td>
-</tr><tr class="odd"><td>観察_01</td>
-<td>最初の_観察</td>
-<td>1回目の観測</td>
+<h3 id="fieldname">問題のあるフィールド名の使用<a class="anchor" aria-label="anchor" href="#fieldname"></a></h3>
+<p>説明的なフィールド名を使用することは重要ですが、スペース、数字、特殊文字を含めないように注意してください。スペースは区切り文字としてスペースを使用するパーサーによって誤解釈される可能性があり、一部のプログラムでは数字で始まるテキスト文字列のフィールド名を受け付けない場合があります。</p>
+<p>アンダースコア（<code>_</code>）はスペースの代わりとして有効です。読みやすさを向上させるため、キャメルケース表記（例：ExampleFileName）を使用することも検討してください。ただし、現時点で意味が通じる略語も、6ヶ月後には理解しづらくなる可能性があることに留意してください。一方で、名前が過度に長くなりすぎないようにすることも大切です。フィールド名に単位を含めることで、混乱を防ぎ、他者がデータの意味を容易に理解できるようになります。</p>
+<p><strong>具体例</strong></p>
+<table class="table"><thead><tr class="header"><th>適切な名前</th>
+<th>代替案</th>
+<th>避けるべき例</th>
+</tr></thead><tbody><tr class="odd"><td>Max_temp_C</td>
+<td>MaxTemp</td>
+<td>Maximum Temp (°C)</td>
+</tr><tr class="even"><td>Precipitation_mm</td>
+<td>Precipitation</td>
+<td>precmm</td>
+</tr><tr class="odd"><td>Mean_year_growth</td>
+<td>MeanYearGrowth</td>
+<td>Mean growth/year</td>
+</tr><tr class="even"><td>sex</td>
+<td>sex</td>
+<td>M/F</td>
+</tr><tr class="odd"><td>weight</td>
+<td>weight</td>
+<td>w.</td>
+</tr><tr class="even"><td>cell_type</td>
+<td>CellType</td>
+<td>Cell Type</td>
+</tr><tr class="odd"><td>Observation_01</td>
+<td>first_observation</td>
+<td>1st Obs</td>
 </tr></tbody></table></div>
 <div class="section level3">
 <h3 id="データ-specialでの特殊文字の使用">データ {#special}での特殊文字の使用<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF-special%E3%81%A7%E3%81%AE%E7%89%B9%E6%AE%8A%E6%96%87%E5%AD%97%E3%81%AE%E4%BD%BF%E7%94%A8"></a></h3>
