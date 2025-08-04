@@ -688,89 +688,50 @@ Data』が挙げられます。</p>
 <p>実験が進むにつれ、データシートは非常に長くなることがあります。これにより、スプレッドシートの上部にあるヘッダーが見えにくくなり、データ入力が困難になる場合があります。ただし、ヘッダー行を繰り返し入力することは避けてください。ヘッダー行はデータと混ざってしまい、後々問題を引き起こす可能性があります。代わりに、<a href="https://support.office.com/en-ca/article/Freeze-column-headings-for-easy-scrolling-57ccce0c-cf85-4725-9579-c5d13106ca6a" class="external-link">列ヘッダーを固定</a>することで、多くの行があるスプレッドシートでも常に表示されるようにすることができます。</p>
 </div>
 <div class="section level3">
-<h3 id="zeros">ゼロを埋めない<a class="anchor" aria-label="anchor" href="#zeros"></a>
+<h3 id="zeros">ゼロ値の入力を省略する場合<a class="anchor" aria-label="anchor" href="#zeros"></a>
 </h3>
-<p>何かを測定するとき、調査でウサギが観察された回数は通常
-である可能性があります。 その列にはほとんどゼロがあるのに、なぜわざわざ
-という数字のゼロを書き込むのでしょうか?</p>
-<p>ただし、 スプレッドシートのゼロと空白のセルには違いがあります。
-コンピューターにとって、ゼロは実際にはデータです。 あなたが測ったか、
-なかった。 空白のセルは、測定されていないことを意味し、 はそれを未知の値
-(ヌル または欠損値とも呼ばれます) として解釈します。</p>
-<p>スプレッドシートや統計プログラムでは、ゼロであるつもりの
-の空白セルが誤って解釈される可能性があります。 観測値
-入力しないことにより、そのデータ を不明または欠落 (null)
-として表すようにコンピュータに指示することになります。
-これにより、後続の の計算または分析で問題が発生する可能性があります。
-たとえば、単一の null 値を含む一連の数値 の平均は常に null です (
-は欠落している観測値を推測できないため)。 このうち
-であるため、ゼロをゼロとして記録し、真に
-欠損データをヌルとして記録することが非常に重要です。</p>
+<p>測定対象の数値が通常ゼロである場合――例えば調査でウサギの目撃回数を記録する場合など――その列にわざわざ「0」と入力する必要はあるでしょうか？</p>
+<p>ただし、スプレッドシートにおけるゼロ値と空欄セルには重要な違いがあります。コンピュータにとってゼロは実際に測定・カウントされたデータ値です。一方、空欄セルは「未測定」であることを意味し、コンピュータはこれを「不明値」（null値または欠損値）として解釈します。</p>
+<p>スプレッドシートや統計解析ソフトは、ゼロ値として意図した空欄セルを誤って解釈する可能性があります。観測値の値を入力しないことは、そのデータを「不明」または「欠損」（null）として扱うようコンピュータに指示することになります。これは後続の計算や分析に問題を引き起こす可能性があります。例えば、数値データセットに1つのnull値が含まれている場合、その平均値は常にnull値となります（コンピュータは欠損値の正確な値を推測できないため）。このため、ゼロ値は確実に「0」として記録し、真の欠損データのみをnull値として扱うことが極めて重要です。</p>
 </div>
 <div class="section level3">
-<h3 id="問題のある-null-値-nullの使用">問題のある null 値 {#null}の使用<a class="anchor" aria-label="anchor" href="#%E5%95%8F%E9%A1%8C%E3%81%AE%E3%81%82%E3%82%8B-null-%E5%80%A4-null%E3%81%AE%E4%BD%BF%E7%94%A8"></a>
+<h3 id="null">問題のあるnull値の使用<a class="anchor" aria-label="anchor" href="#null"></a>
 </h3>
-<p><strong>例</strong>: -999 またはその他の数値 (またはゼロ) を
-に使用すると、欠損データを表します。</p>
+<p><strong>具体例</strong>:
+-999などの数値やゼロ値を用いて欠損データを表現する場合。</p>
 <p><strong>解決策</strong>:</p>
-<p>データセット内で null 値が異なる で表現される理由はいくつかあります。
-紛らわしいヌル値が測定装置から自動的に として記録される場合があります。
-その場合、できることは ではありませんが、ツール を使用してデータ
-クリーニングで対処できます 1 <a href="https://www.datacarpentry.org/OpenRefine-ecology-lesson/" class="external-link">OpenRefine</a>
-前分析。 また、データが存在しないさまざまな理由を伝えるために、 な null
-値が使用されることもあります。 これは取得すべき重要 情報ですが、実際には
-1 つの列を使用して 2 つの情報を取得することになります。
-フォーマットを使用して 情報を伝える
-と同様に、ここでは「data_missing」のような新しい
-列を作成し、その列を使用して
-の異なる理由をキャプチャすると良いでしょう。</p>
-<p>理由が何であれ、不明または欠落しているデータが として
--999、999、または 0 として記録されている場合は問題です。</p>
-<p>多くの統計プログラムは、これらが欠損 (NULL) 値を表す
-であることを認識しません。 これらの値
-がどのように解釈されるかは、データの分析に使用するソフトウェアによって異なります。
-明確に定義された一貫性のある null インジケーターを使用することが
-です。</p>
-<p>空白 (ほとんどのアプリケーション) と NA (R の場合) が
-選択肢として適しています。 <span class="citation">@White:2013</span>
-は、記事の中で、さまざまなソフトウェア アプリケーションに対して null 値
-を示すための適切な選択肢について説明しています。</p>
-<figure><img src="fig/3_white_table_1.jpg" class="figure mx-auto d-block"></figure>
+<p>データセット内でnull値が異なった形で表現される背景には、いくつかの理由があります。測定機器から自動的に記録される際に混乱を招くnull値が生成される場合もあります。この場合、対処の余地はあまりありませんが、<a href="https://www.datacarpentry.org/OpenRefine-ecology-lesson/" class="external-link">OpenRefine</a>などのデータクリーニングツールを使用して分析前に処理することが可能です。また、データが存在しない理由が異なることを示すために、異なるnull値が使用されることもあります。これは重要な情報ではありますが、実質的に1つの列で2種類の情報を表現していることになります。<a href="#formatting">フォーマットによる情報伝達</a>の場合と同様に、「data_missing」などの新しい列を作成し、この列を用いて異なる理由を記録するのが適切です。</p>
+<p>いずれの場合も、不明値や欠損データが-999、999、あるいは0として記録されている場合は問題が生じます。</p>
+<p>多くの統計解析ソフトは、これらの値が欠損値（null値）として意図されたものであることを認識できません。これらの値がどのように解釈されるかは、使用する分析ソフトウェアによって異なります。明確で一貫性のあるnull値の指標を使用することが不可欠です。</p>
+<p>空白セル（ほとんどのアプリケーションで使用）やNA値（R言語の場合）は良い選択肢です。<span class="citation">@White:2013の論文では</span>、各種ソフトウェアアプリケーションにおけるnull値の適切な表示方法について詳しく解説しています：</p>
+<figure style="text-align: center"><img src="fig/3_white_table_1.jpg" alt="論文から抜粋した、一般的に使用されているnull値を示す表" width="70%" class="figure mx-auto d-block"><figcaption>
+一般的に使用されているnull値の例
+</figcaption></figure>
 </div>
 <div class="section level3">
-<h3 id="formatting">フォーマットを使用して情報を伝える<a class="anchor" aria-label="anchor" href="#formatting"></a>
+<h3 id="formatting">フォーマットによる情報伝達<a class="anchor" aria-label="anchor" href="#formatting"></a>
 </h3>
-<p><strong>例</strong>: 分析から
-必要があるセル、行、または列を強調表示し、空白の行を残してデータの
-分離を示します。</p>
-<figure><img src="fig/formatting.png" class="figure mx-auto d-block"></figure><p><strong>解決策</strong>: 新しいフィールドを作成して、
-データをエンコードします。</p>
-<figure><img src="fig/good_formatting.png" class="figure mx-auto d-block"></figure>
+<p><strong>具体例</strong>:
+分析から除外すべきセル、行、または列を強調表示する場合や、データの区切りを示すために空白行を使用する場合。</p>
+<figure style="text-align: center"><img src="fig/formatting.png" alt="サンプル汚染を示すために黄色で強調表示された複数のセルを示す表" width="70%" class="figure mx-auto d-block"><figcaption>
+情報符号化に使用される色の例
+</figcaption></figure><p><strong>解決策</strong>:
+除外すべきデータを符号化する新しいフィールドを作成する。</p>
+<figure style="text-align: center"><img src="fig/good_formatting.png" alt="上記と同じ表に、汚染を示す新しい変数を追加したもの" width="70%" class="figure mx-auto d-block"><figcaption>
+サンプル汚染を符号化する新しい変数
+</figcaption></figure>
 </div>
 <div class="section level3">
-<h3 id="書式設定を使用してデータシートを美しく見せる-formatting_pretty">書式設定を使用してデータシートを美しく見せる
-{#formatting_pretty}<a class="anchor" aria-label="anchor" href="#%E6%9B%B8%E5%BC%8F%E8%A8%AD%E5%AE%9A%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B7%E3%83%BC%E3%83%88%E3%82%92%E7%BE%8E%E3%81%97%E3%81%8F%E8%A6%8B%E3%81%9B%E3%82%8B-formatting_pretty"></a>
+<h3 id="formattingpretty">データシートの見栄えを良くするためのフォーマット使用<a class="anchor" aria-label="anchor" href="#formattingpretty"></a>
 </h3>
-<p><strong>例</strong>: セルを結合します。</p>
-<p><strong>解決策</strong>: 注意しないと、ワークシートを
-より美しく見えるように書式設定すると、データ内の
-関連付けを認識するコンピュータの機能が損なわれる可能性があります。
-セルを結合すると、統計ソフトウェアで を読み取ることができなくなります。
-データを整理する
-にセルを結合する必要がないような方法でデータを再構築することを検討してください。</p>
+<p><strong>具体例</strong>: セルの結合。</p>
+<p><strong>解決策</strong>:
+注意しないと、ワークシートをより見栄え良くするためのフォーマット処理が、コンピュータがデータの関連性を認識する能力を損なう可能性があります。結合されたセルは統計解析ソフトウェアにとってデータが読み取り不能な状態になります。データを整理するためにセルを結合する必要がないようにデータ構造を再構成することを検討してください。</p>
 </div>
 <div class="section level3">
-<h3 id="セル-unitsにコメントまたはユニットを配置する">セル {#units}にコメントまたはユニットを配置する<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%AB-units%E3%81%AB%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%BE%E3%81%9F%E3%81%AF%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88%E3%82%92%E9%85%8D%E7%BD%AE%E3%81%99%E3%82%8B"></a>
+<h3 id="units">セルへのコメントや単位の記載<a class="anchor" aria-label="anchor" href="#units"></a>
 </h3>
-<p>ほとんどの分析ソフトウェアは Excel や LibreOffice
-のコメントを表示できないため、 データ
-セル内に配置されたコメントによって混乱する可能性があります。
-書式設定について で説明したように、セルに
-を追加する必要がある場合は、別のフィールドを作成します。
-同様に、セルに単位を含めないでください。理想的には、1 つの列に配置する
-の測定値が同じ
-単位内にある必要がありますが、何らかの理由でそうでない場合は、別のフィールドを作成し、
-セルの単位を指定します。で。</p>
+<p>ほとんどの解析ソフトウェアはExcelやLibreOfficeのコメントを認識できず、データセル内に配置されたコメントに混乱する可能性があります。前述のフォーマットの場合と同様に、セルに注釈を追加する必要がある場合は別のフィールドを作成してください。同様に、単位をセル内に記載することも避けてください。理想的には、1つの列に配置するすべての測定値は同じ単位であるべきです。何らかの理由で単位が異なる場合は、別のフィールドを作成し、セルの単位を明確に指定してください。</p>
 </div>
 <div class="section level3">
 <h3 id="セル-infoに複数の情報を入力する">セル {#info}に複数の情報を入力する<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%AB-info%E3%81%AB%E8%A4%87%E6%95%B0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B"></a>
@@ -2378,7 +2339,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>R はそれらをすべて同じ型に暗黙的に変換します。</p>
 </div>
@@ -2415,7 +2376,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2528,7 +2489,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>ベクトルのデータ型は 1 つだけです。 R は、 が情報を失わないという
 <em>共通分母</em> を見つけるために、このベクトルの内容を に変換 (強制)
@@ -2565,7 +2526,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>唯一。
 過去のデータ型の記憶はなく、ベクトルが初めて評価されるときに強制
@@ -2608,7 +2569,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>論理 → 数値 → 文字 ← 論理</p>
 </div>
@@ -2844,7 +2805,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3058,7 +3019,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3162,7 +3123,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb133">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3258,7 +3219,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb143">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3433,7 +3394,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <p>さまざまな順列</p>
 <div class="codewrapper sourceCode" id="cb163">
@@ -3899,7 +3860,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li>クラス: データ・フレーム</li>
@@ -3999,7 +3960,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4230,7 +4191,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4287,7 +4248,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul>
 <li>動物の名前の周りに引用符がない</li>
@@ -4337,7 +4298,7 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4421,7 +4382,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   解決策
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4465,7 +4426,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7526,7 +7487,7 @@ frame</strong>にプロットをバインドする。</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7604,7 +7565,7 @@ log2変換を適用することができる。 ここでは、
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7792,7 +7753,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7836,7 +7797,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7894,7 +7855,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>この2つのジオムの順番を入れ替えるべきだ：</p>
 <div class="codewrapper sourceCode" id="cb35">
@@ -7949,7 +7910,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8007,7 +7968,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8045,7 +8006,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8259,7 +8220,7 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8441,7 +8402,7 @@ ggplot 関数を探す)</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <p>例えば、このプロットに基づくと</p>
 <div class="codewrapper sourceCode" id="cb64">
@@ -9472,7 +9433,7 @@ function.-->
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9542,7 +9503,7 @@ Cyp2d22       1821       4019</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
