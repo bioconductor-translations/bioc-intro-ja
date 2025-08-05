@@ -13,11 +13,11 @@ download.file(url = "https://github.com/carpentries-incubator/bioc-intro/raw/mai
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- ggplotを使って散布図、箱ひげ図、折れ線グラフなどを作成する。
-- ユニバーサルプロット設定を行う。
-- ファセットとは何かを説明し、ggplotでファセットを適用する。
-- 既存のggplotプロットの美学（軸ラベルや色を含む）を修正する。
-- データフレーム内のデータから複雑でカスタマイズされたプロットを作成。
+- ggplotを使用して散布図、箱ひげ図、折れ線グラフなどを作成できる
+- プロットの共通設定を統一的に設定できる
+- ファセット処理の概念を理解し、ggplotで適切に適用できる
+- 既存のggplotプロットの外観要素（軸ラベルや色設定など）を変更可能である
+- データフレーム内のデータから、複雑でカスタマイズ性の高いプロットを構築できる
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -36,138 +36,103 @@ rna <- read.csv("data/rnaseq.csv")
 
 ## データの可視化
 
-必要なパッケージをロードすることから始める。 \*\*ggplot2`**は、 **tidyverse`\*\*パッケージに含まれています。
+まず必要なパッケージを読み込みます。**`ggplot2`**は**`tidyverse`**パッケージに含まれています。
 
 ```{r load-package, message=FALSE, purl=TRUE}
 library("tidyverse")
 ```
 
-ワークスペースにまだない場合は、前回の
-レッスンで保存したデータをロードします。
+まだワークスペースに読み込まれていない場合は、前回のレッスンで保存したデータを読み込みます。
 
 ```{r load-data, eval=FALSE, purl=TRUE}
 rna <- read.csv("data/rnaseq.csv")
 ```
 
-Data Visualization Cheat
-Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
-は `ggplot2` の基本からより高度な機能までをカバーし、
-パッケージで利用可能な多くのデータ表現
-の概要を理解するためのリマインダとしてだけでなく、手助けになるでしょう。 Thomas Lin Pedersen氏による以下のビデオ
-チュートリアル（[パート1](https://www.youtube.com/watch?v=h29g21z0a68)と
-[2](https://www.youtube.com/watch?v=0m4yywqNPVY)）
-も非常に参考になる。
+[データ可視化チートシート](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)では、`ggplot2`の基本機能から高度な使い方までを網羅しており、参考資料としてだけでなく、パッケージで利用可能な多様なデータ表現方法を把握するのにも役立ちます。Thomas Lin Pedersen氏による以下の動画チュートリアル（[パート1](https://www.youtube.com/watch?v=h29g21z0a68)および[パート2](https://www.youtube.com/watch?v=0m4yywqNPVY)）も非常に参考になります。
 
-## ggplot2\`によるプロット
+## `ggplot2`を使ったプロット作成
 
-ggplot2`は、データフレーム内のデータから複雑な
-プロットを簡単に作成できるプロットパッケージである。 どの変数をプロットするか、どのように表示するか、
-、一般的なビジュアル・プロパティを指定するための、よりプログラム的な
-。 
-`ggplot2\`を支える理論的基盤は、_Grammar of Graphics_ (@Wilkinson:2005)である。 この
-アプローチを使用すると、基礎となるデータが変更された場合、または棒グラフから散布図に変更することを決めた場合に
-、最小限の変更で済む。 これは、
-、最小限の調整で出版品質のプロットを作成するのに役立ちます
-、微調整。
+`ggplot2`はデータフレーム内のデータから複雑なプロットを簡単に作成できる描画パッケージです。変数の指定方法、表示方法、一般的な視覚的特性など、よりプログラム的なインターフェースを提供します。`ggplot2`を支える理論的基盤は*グラフィックスの文法*（@Wilkinson:2005）です。このアプローチを採用すれば、基礎データが変更されたり、棒グラフから散布図に変更したりする場合でも、最小限の修正で済みます。これにより、調整や微調整を最小限に抑えつつ、出版物に使用できる品質のプロットを作成できます。
 
-ggplot2`に関する本（@ggplot2book）があり、
-。 第3版は現在準備中で、 [オンラインで自由に利用できる](https://ggplot2-book.org/)。 
-の `ggplot2\` ウェブページ([https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org))に十分なドキュメントがあります。
+`ggplot2`に関する書籍（@ggplot2book）も出版されていますが、内容は古めです。現在第3版が準備中で、[無料でオンライン公開される予定](https://ggplot2-book.org/)です。`ggplot2`の公式ウェブサイト（[https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org)）には充実したドキュメントが用意されています。
 
-ggplot2`の関数は、'long'形式のデータ、つまり、
-すべての次元を表す列と、すべてのオブザベーションを表す行を持つ。 よく構造化されたデータ
-、 `ggplot2\`で図を作成する時間を大幅に節約できる。
+`ggplot2`の関数は、データが「長形式」（各次元ごとに1列、各観測値ごとに1行）になっている場合に最適に動作します。適切に構造化されたデータを用意しておけば、`ggplot2`で図を作成する際に大幅な時間節約になります。
 
-ggplotグラフィックスは、新しい要素を追加することによって段階的に構築される。 この方法で
-レイヤーを追加すると、プロットの広範な柔軟性と
-カスタマイズが可能になる。
+ggplotのグラフィックスは、新しい要素を段階的に追加することで構築されます。このようにレイヤーを追加していく方法により、プロットの表現に非常に柔軟性とカスタマイズ性が生まれます。
 
-> Grammar of Graphicsの背後にある考え方は、同じ3つのコンポーネントからすべての
-> グラフを構築できるということである：(1)データセット、(2)座標系、
-> 、(3)ジオム、つまりデータ点を表す視覚的マーク [^three_comp_ggplot2] である。
+>グラフィックスの文法の背後にある考え方は、あらゆるグラフを以下の3つの基本要素から構築できるということです：(1) データセット、(2) 座標系、(3) ジオメトリ（データポイントを表現する視覚的マーク）[^three\_comp\_ggplot2]
 
-[^three_comp_ggplot2]: 出典[データ可視化チートシート](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
+[^three\_comp\_ggplot2]: 出典：[データ可視化チートシート](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
 
-ggplotを構築するために、
-、さまざまなタイプのプロットに使用できる以下の基本テンプレートを使用する：
+ggplotを構築するには、以下の基本的なテンプレートを使用します。これはさまざまな種類のプロットに適用できる汎用的な形式です：
 
 ```
-ggplot(data =<DATA>, mapping = aes(<MAPPINGS>)) +<GEOM_FUNCTION>()
+ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ```
 
-- ggplot()`関数を使用し、`data\`引数を使用して特定の**data
- frame**にプロットをバインドする。
+- `ggplot()`関数を使用し、`data`引数で特定の**データフレーム**にプロットを結合します
 
 ```{r, eval=FALSE}
 ggplot(data = rna)
 ```
 
-- (`aes`)関数を使用して)**マッピング**を定義する。
- 、プロットする変数を選択し、
- 、x/yの位置や、
- 、サイズ、形、色などの特徴として、グラフでどのように表示するかを指定する。
+- **マッピング**を定義します（`aes`関数を使用して、プロットする変数を選択し、グラフ内での表示方法を指定します。例えばx/y座標、サイズ、形状、色などの特性として表示します）
 
 ```{r, eval=FALSE}
 ggplot(data = rna, mapping = aes(x = expression))
 ```
 
-- 追加 '**geoms**' - ジオメトリ、つまりプロット内の
- データのグラフ表現（点、線、棒）。 ggplot2\`は多くの
- 、様々なジオムを提供している：
+- '**ジオメトリ**'を追加します - プロット内のデータの幾何学的表現（点、線、棒など）。`ggplot2`には多くの異なるジオメトリが用意されており、今日は特に一般的な以下のものを使用します：
 
- ```
- * 散布図やドットプロットなどには `geom_point()` を使用する。
- *
- * `geom_boxplot()` ボックスプロット！
- * トレンドライン、時系列など。
- ```
+  ```
+  * `geom_point()` 散布図、ドットプロットなどに使用
+  * `geom_histogram()` ヒストグラム作成に使用
+  * `geom_boxplot()` ボックスプロット作成に使用
+  * `geom_line()` トレンドライン、時系列データなどに使用
+  ```
 
-プロットにgeom(etry)を追加するには `+` 演算子を使います。
-`geom_histogram()` をまず使ってみよう：
+プロットにジオメトリを追加するには`+`演算子を使用します。まずは`geom_histogram()`を使ってみましょう：
 
-```{r first-ggplot, cache=FALSE, purl=TRUE}
+```{r first-ggplot, cache=FALSE, purl=TRUE, fig.alt="ggplot()とgeom_histogram()で生成したexpressionデータのデフォルトヒストグラム"}
 ggplot(data = rna, mapping = aes(x = expression)) +
   geom_histogram()
 ```
 
-ggplot2`パッケージの`+`は特に便利で、
-、既存の`ggplot\`オブジェクトを修正することができる。 つまり、
-、プロット・テンプレートを簡単に設定し、
-、さまざまなタイプのプロットを便利に調べることができる：
+`ggplot2`パッケージの`+`演算子は特に便利で、既存の`ggplot`オブジェクトを変更できます。つまり、プロットテンプレートを簡単に設定し、さまざまな種類のプロットを便利に探索できるため、上記のプロットは以下のようなコードでも生成可能です：
 
 ```{r, eval=FALSE, purl=TRUE}
-# Assign plot to a variable
+# プロットを変数に割り当てる
 rna_plot <- ggplot(data = rna,
                    mapping = aes(x = expression))
 
-# Draw the plot
+# プロットを描画する
 rna_plot + geom_histogram()
 ```
 
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-ヒストグラムを描画するときに表示される自動メッセージにお気づきでしょう：
+ヒストグラムを描画する際に表示される自動メッセージにお気づきでしょうか？
 
 ```{r, echo=FALSE, fig.show="hide"}
 ggplot(rna, aes(x = expression)) +
   geom_histogram()
 ```
 
-geom_histogram()`の引数`bins`または`binwidth\` を変更して、
-ビンの数または幅を変更する。
+`geom_histogram()` の `bins` または `binwidth` 引数を変更することで、ビンの数や幅を調整できます。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r, purl=TRUE}
-# change bins
+```{r, purl=TRUE, fig.alt="ビン幅15の場合（上）とビン幅2000の場合（下）におけるggplot()とgeom_histogram()で生成された発現データのヒストグラム"}
+# ビン幅の変更
 ggplot(rna, aes(x = expression)) +
     geom_histogram(bins = 15)
 
-# change binwidth
+# ビン幅の変更
 ggplot(rna, aes(x = expression)) +
     geom_histogram(binwidth = 2000)
 ```
@@ -176,45 +141,38 @@ ggplot(rna, aes(x = expression)) +
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-データが右に偏っていることがわかる。 より対称的な分布にするために、
-log2変換を適用することができる。 ここでは、
-、0に等しい式の値に対して返される`-Inf`値
-を避けるために、小さな定数値（`+1`）を追加していることに注意してください。
+ここでデータが右に歪んでいることが確認できます。より対称的な分布を得るために、
+対数変換（log2変換）を適用することができます。なお、式値が0の場合に`-Inf`値が
+返されるのを防ぐため、ここでは小さな定数値（`+1`）を追加しています。
 
-```{r log-transfo, cache=FALSE, purl=TRUE}
-rna<- rna %>%
+```{r log-transfo, cache=FALSE, purl=TRUE, fig.alt="ggplot()とgeom_histogram()を用いて計算時にオンザフライで生成した発現量の対数値に基づくヒストグラム"}
+rna <- rna |>
   mutate(expression_log = log2(expression + 1))
 ```
 
-ここで対数変換した式のヒストグラムを描いてみると、
-の分布は確かに正規分布に近くなっている。
+次に、対数変換した発現量のヒストグラムを作成すると、確かに正規分布に近い分布が得られます。
 
-```{r second-ggplot, cache=FALSE, purl=TRUE}
+```{r second-ggplot, cache=FALSE, purl=TRUE, fig.alt="事前に計算した発現量の対数値に基づくヒストグラム（ggplot()とgeom_histogram()で生成）"}
 ggplot(rna, aes(x = expression_log)) + geom_histogram()
 ```
 
-これからは対数変換した発現値を扱うことにする。
+これ以降の分析では、対数変換した発現量の値を用いて作業を進めていきます。
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-この変換を視覚化するもう1つの方法は、オブザベーションのスケール
-を考えることである。 たとえば、
-プロットの空間でオブザベーションをよりよく分布させるために、軸のスケール
-を変更する価値があるかもしれません。 軸のスケールの変更は、
-他のコンポーネントの追加/変更と同様に（すなわち、
-コマンドをインクリメンタルに追加することによって）行われます。 このように変更してみてほしい：
+この変換を視覚的に理解する別の方法として、観測値のスケールを考慮する方法があります。例えば、軸のスケールを調整することで、プロット空間内での観測値の分布をより適切に調整できる場合があります。軸のスケール変更は、他のコンポーネントを追加・修正する場合と同様の手順で行います（つまり、段階的にコマンドを追加していく方法です）。以下の変更を試してみてください：
 
-- `scale_x_log10()` を参照。 前のグラフと比較してみよう。
- 、警告メッセージが表示されるようになったのはなぜですか？
+- 変換前の式を対数スケール（log10）で表示します。`scale_x_log10()` 関数を参照してください。以前のグラフと比較してください。なぜ今回は警告メッセージが表示されるのでしょうか？
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r, eval=TRUE, purl=TRUE, echo=TRUE}
-ggplot(data = rna,mapping = aes(x = expression))+
+```{r, eval=TRUE, purl=TRUE, echo=TRUE, fig.alt="発現量の対数に対する ggplot()、geom_histogram()、および scale_x_log10() で生成されたヒストグラム"}
+ggplot(data = rna, mapping = aes(x = expression))+
   geom_histogram() +
   scale_x_log10()
 ```
@@ -223,21 +181,14 @@ ggplot(data = rna,mapping = aes(x = expression))+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-**注**\*。
+**注意事項**
 
-- ggplot()`関数で設定したものはすべて、あなたが追加したgeom
-   レイヤーで見ることができます（つまり、これらはグローバルなプロット設定です）。 この
-   には、`aes()\`で設定したx軸とy軸のマッピングが含まれる。
-- また、`ggplot()`関数でグローバルに定義された
- マッピングとは別に、与えられたジオムに対するマッピングを指定することもできます。
-- 新しいレイヤーを追加するために使われる`+`記号は、_前の_レイヤーを含む
- 行の最後に置かなければなりません。 その代わりに、`+`記号が
- 新しいレイヤーを含む行の先頭に追加された場合、
- `ggplot2` は新しいレイヤーを追加せず、エラー
- メッセージを返す。
+- `ggplot()`関数内で指定した設定は、後から追加するすべてのジオメトリレイヤーから参照されます（つまり、これらはグローバルなプロット設定となります）。これには`aes()`で設定したx軸・y軸のマッピングも含まれます。
+- 特定のジオメトリレイヤーに対しては、`ggplot()`関数で定義したグローバル設定とは独立してマッピングを指定することも可能です。
+- 新しいレイヤーを追加する際に使用する`+`記号は、必ず*直前の*レイヤーを含む行の末尾に配置する必要があります。もし新しいレイヤーを含む行の先頭に`+`記号を置いた場合、`ggplot2`は新しいレイヤーを追加せず、エラーメッセージを返します。
 
 ```{r, eval=FALSE}
-# これはレイヤーを追加するための正しい構文です
+# これはレイヤーを追加する正しい構文です
 rna_plot +
   geom_histogram()
 
@@ -246,89 +197,69 @@ rna_plot
   + geom_histogram()
 ```
 
-## 反復的にプロットを構築する
+## プロットを段階的に構築する方法
 
-ここでは、2つの連続変数と
-`geom_point()`関数を使って散布図を描きます。 このグラフは、時間8と時間0、時間4と時間0を比較した発現のlog2倍変化
-。
-この目的のために、まず対数変換した
-発現値の平均値を遺伝子ごと、時間ごとに計算する必要がある。次に、
-、時間8と時間0の間の平均対数発現と、
-、時間4と時間0の間の平均対数発現を差し引くことにより、対数倍変化を計算する。 ここでは、後で遺伝子を表現するために使用する遺伝子
-バイオタイプも含めていることに注意されたい。
-フォールドの変化を `rna_fc.` という新しいデータフレームに保存する。
+ここでは、2つの連続変数を用いて散布図を作成し、`geom_point()`関数で表現します。このグラフは、時間8時点と時間0時点、および時間4時点と時間0時点における発現量の対数2倍変化を表します。まず、遺伝子ごと・時間ごとに対数変換した発現量の平均値を計算し、次に時間8時点と時間0時点、時間4時点と時間0時点の平均値の対数差を計算して対数2倍変化を求めます。なお、後で遺伝子を分類するために使用する遺伝子のバイオタイプ情報もここで含めます。これらの変化量は新しいデータフレーム`rna_fc`に保存します。
 
 ```{r rna_fc, cache=FALSE, purl=TRUE}
-rna_fc <- rna %>% select(gene, time,
-                         gene_biotype, expression_log) %>%
-  group_by(gene, time, gene_biotype) %>%
-  summarize(mean_exp = mean(expression_log)) %>%
+rna_fc <- rna |> select(gene, time,
+                         gene_biotype, expression_log) |>
+  group_by(gene, time, gene_biotype) |>
+  summarize(mean_exp = mean(expression_log)) |>
   pivot_wider(names_from = time,
-              values_from = mean_exp) %>%
+              values_from = mean_exp) |>
   mutate(time_8_vs_0 = `8` - `0`, time_4_vs_0 = `4` - `0`)
-
 ```
 
-新しく作成されたデータセット `rna_fc` を使って ggplot を作成することができる。
-ggplot2\`でプロットを作成するのは、通常、反復的なプロセスである。
-まず、使用するデータセットを定義し、軸を配置し、
-ジオムを選択する：
+作成したデータフレーム`rna_fc`を用いてggplotを構築します。`ggplot2`でプロットを作成する際は通常、反復的なプロセスで行います。まず使用するデータセットを定義し、軸を設定し、使用するジオメトリを選択します：
 
-```{r create-ggplot-object, cache=FALSE, purl=TRUE}
+```{r create-ggplot-object, cache=FALSE, purl=TRUE, fig.alt="上記で計算した対数2倍変化を比較する散布図。すべての点は黒色で表示されます"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point()
 ```
 
-次に、このプロットからより多くの情報を抽出するために、プロットを修正し始める。
-例えば、オーバープロットを避けるために透明度（`α`）を加えることができる：
+次に、このプロットをさらに修正してより多くの情報を抽出します。例えば、重なりを避けるための透明度（`alpha`）を追加できます：
 
-```{r adding-transparency, cache=FALSE, purl=TRUE}
+```{r adding-transparency, cache=FALSE, purl=TRUE, , fig.alt="上記で計算した対数2倍変化を比較する散布図。すべての点は半透明の黒色で表示されます"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point(alpha = 0.3)
 ```
 
-また、すべてのポイントに色を付けることもできる：
+すべての点に色を付けることも可能です：
 
-```{r adding-colors, cache=FALSE, purl=TRUE}
+```{r adding-colors, cache=FALSE, purl=TRUE, fig.alt="上記で計算した対数2倍変化を比較する散布図。すべての点は半透明の青色で表示されます"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point(alpha = 0.3, color = "blue")
 ```
 
-あるいは、プロット中の各遺伝子を異なる色にするために、
-、引数**color**の入力としてベクトルを使うこともできる。 ggplot2`は、ベクトルの異なる値に対応する異なる
-。 以下は、
-`gene_biotype\`を使った例である：
+あるいは、プロット内の各遺伝子を異なる色で表示したい場合は、`color`引数にベクトルを指定します。`ggplot2`はこのベクトルの値に応じて異なる色を自動的に割り当てます。以下は`gene_biotype`で色分けする例です：
 
-```{r color-by-gene_biotype1, cache=FALSE, purl=TRUE}
+```{r color-by-gene_biotype1, cache=FALSE, purl=TRUE, fig.alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
   geom_point(alpha = 0.3, aes(color = gene_biotype))
-
 ```
 
-また、
-`ggplot()`関数で提供されるマッピングの中で直接色を指定することもできる。 これはどのジオムレイヤーでも見ることができ、
-のマッピングは `aes()` で設定したx軸とy軸によって決定される。
+`ggplot()`関数内で直接マッピング時に色を指定することもできます。この設定はすべてのジオメトリレイヤーから参照され、`aes()`で設定したx軸・y軸のマッピングに基づいて決定されます。
 
-```{r color-by-gene_biotype2, cache=FALSE, purl=TRUE}
+```{r color-by-gene_biotype2, cache=FALSE, purl=TRUE, fig.alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
                                 color = gene_biotype)) +
   geom_point(alpha = 0.3)
 ```
 
-最後に、`geom_abline()`
-：
+最後に、`geom_abline()`関数を使用して対角線を追加することも可能です：
 
-```{r adding-diag, cache=FALSE, purl=TRUE}
+```{r adding-diag, cache=FALSE, purl=TRUE, fig.alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています。原点を通る傾き1の黒色の直線がgeom_abline()によって追加されています"}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
                                 color = gene_biotype)) +
   geom_point(alpha = 0.3) +
   geom_abline(intercept = 0)
 ```
 
-ジオムレイヤーを `geom_point` から
-`geom_jitter` に変更しても、色は `gene_biotype` によって決定されることに注意してください。
+注目すべきは、ジオメトリレイヤーを`geom_point`から`geom_jitter`に変更しても、色は依然として`gene_biotype`によって決定される点です。
 
-```{r color-by-gene_biotype3, cache=FALSE, purl=TRUE}
+
+```{r color-by-gene_biotype3, cache=FALSE, purl=TRUE, fig.alt="Scatter plot produced by ggplot() and geom_point() comparing the log-foldchanges computed above. Dots are colour-coded based on the gene's biotype. A black line of slope 1 crossing the origin was added by geom_abline()."}
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0,
                                 color = gene_biotype)) +
   geom_jitter(alpha = 0.3) +
@@ -341,34 +272,25 @@ library("hexbin")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-散布図は、小規模なデータセットの探索に役立つツールである。 rna_fc\`
-データセットのような多数のオブザベーションを持つ
-データセットの場合、点のオーバープロットは散布図の制限となりうる。
-このような設定を扱うための1つの戦略は、
-の観測値を六角形にビニングすることである。 プロット空間は六角形にテッセレーションされている。 それぞれの
-六角形は、
-その境界内に入るオブザベーションの数に基づいて色が割り当てられる。
+散布図は小規模なデータセットの探索的分析において有用なツールです。しかし、`rna_fc` データセットのように観測値数が多い場合、点の重なり（オーバープロット）が散布図の限界となることがあります。このような状況に対処するための有効な手法の一つが、観測値を六角形グリッドに分割するヘキサビン法です。
 
-- ggplot2`で六角ビニングを使用するには、まずRパッケージ
- `hexbin\`をCRANからインストールしてロードする。
+- `ggplot2` でヘキサビン法を使用するには、まず CRAN リポジトリから R パッケージ `hexbin` をインストールし、ロードする必要があります。
 
-- そして、`geom_hex()`関数を使ってhexbin図を作成する。
+- 次に `geom_hex()` 関数を使用することで、ヘキサビンプロットを作成できます。
 
-- 散布図と比較して、六角形のビン
- プロットの相対的な長所と短所は何か？ 上記の散布図（
- ）を調べ、作成した六角形のビンプロットと比較する。
+- ヘキサビンプロットと従来の散布図を比較した場合、それぞれの長所と短所は何でしょうか？上記の散布図と作成したヘキサビンプロットを詳細に比較・検討してください。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
 ```{r, eval=FALSE, purl=TRUE}
 install.packages("hexbin")
 ```
 
-```{r, purl=TRUE}
+```{r, purl=TRUE, fig.alt="Scatter plot produced by ggplot() and geom_hexbin() comparing the log-foldchanges computed above shows hexagons coloured based on the underlying dot density. A black line of slope 1 crossing the origin was added by geom_abline()."}
 library("hexbin")
 
 ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
@@ -383,17 +305,16 @@ ggplot(data = rna_fc, mapping = aes(x = time_4_vs_0, y = time_8_vs_0)) +
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-今学んだことを使って、`rna`データセットから`sample`に対する`expression_log`
-の散布図を作成し、
-異なる色で時間を表示する。 このようなデータを表示するのは良い方法ですか？
+これまでに学んだ知識を活用して、`rna` データセットから `sample` 列を選択し、`expression_log` 値を散布図としてプロットしてください。時間軸は異なる色で表示されるように設定します。このデータ表現方法はこの種のデータを示す上で適切な方法でしょうか？
+
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r, eval=TRUE, purl=TRUE}
+```{r, eval=TRUE, purl=TRUE, fig.alt="Figures showing a stretch of overlapping points indicating the log of expression + 1 for each sample. The points are coloured with different shades of blue for samples collected at different time points."}
 ggplot(data = rna, mapping = aes(y = expression_log, x = sample)) +
     geom_point(aes(color = time))
 ```
@@ -402,21 +323,19 @@ ggplot(data = rna, mapping = aes(y = expression_log, x = sample)) +
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## ボックスプロット
+## 箱ひげ図
 
-ボックスプロットを使って、各サンプル内の遺伝子発現の分布（
-）を可視化することができる：
+箱ひげ図を用いることで、各サンプル内における遺伝子発現量の分布を視覚的に表現することができます：
 
-```{r boxplot, cache=FALSE, purl=TRUE}
+```{r boxplot, cache=FALSE, purl=TRUE, fig.alt="geom_boxplot()によって生成された各サンプルの対数変換発現量+1値の分布を示す箱ひげ図。各箱ひげ図は白色で塗りつぶされています。"}
 ggplot(data = rna,
          mapping = aes(y = expression_log, x = sample)) +
   geom_boxplot()
 ```
 
-boxplotにポイントを追加することで、
-の測定数とその分布をよりよく知ることができる：
+箱ひげ図に点プロットを追加することで、測定値の総数とその分布状況をより明確に把握することが可能になります：
 
-```{r boxplot-with-points, cache=FALSE, purl=TRUE}
+```{r boxplot-with-points, cache=FALSE, purl=TRUE, fig.alt="geom_boxplot()によって生成された各サンプルの対数変換発現量+1値の分布を示す箱ひげ図と点プロット。各箱ひげ図は半透明で、ジッター処理された点プロットは半透過のトマト色で表示され、箱ひげ図の背面に配置されています。"}
 ggplot(data = rna,
          mapping = aes(y = expression_log, x = sample)) +
   geom_jitter(alpha = 0.2, color = "tomato") +
@@ -425,73 +344,67 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-ボックスプロットレイヤーがジッターレイヤーの前にあることに注目してほしい。
-、ボックスプロットをポイントの下に配置するために、コードのどこを変更する必要がありますか？
+箱ひげ図のレイヤーがジッタープロットのレイヤーの前面に表示されていることに注目してください。箱ひげ図を点の下に表示されるようにするには、コードをどのように変更すればよいでしょうか？
+
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-この2つのジオムの順番を入れ替えるべきだ：
+これら2つのジオメトリの順序を入れ替える必要があります：
 
-```{r boxplot-with-points2, cache=FALSE, purl=TRUE}
+```{r boxplot-with-points2, cache=FALSE, purl=TRUE, fig.alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). Each boxplot is transparent and the jittered dots are semi-transparent tomato-coloured. This time, the boxplots are behind the dots."}
 ggplot(data = rna,
-         mapping = aes(y = expression_log, x = sample))+
+         mapping = aes(y = expression_log, x = sample)) +
   geom_boxplot(alpha = 0) +
   geom_jitter(alpha = 0.2, color = "tomato")
 ```
 
+
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-X軸の値がまだ正しく
-読めないことにお気づきかもしれない。 ラベルの向きを変え、
-縦と横に重ならないように調整しよう。
-90度の角度を使ってもいいし、
-斜め向きのラベルに適切な角度を見つけるために実験してもいい：
+x軸上の値がまだ適切に読み取れないことにお気づきかもしれません。ラベルの表示方向を変更し、垂直方向と水平方向に調整して重なりが起こらないようにしましょう。90度の角度を使用するか、斜め向きのラベルに適した角度を見つけるために試行錯誤してみてください：
 
-```{r boxplot-xaxis-rotated, cache=FALSE, purl=TRUE}
+```{r boxplot-xaxis-rotated, cache=FALSE, purl=TRUE, fig.alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). Each boxplot is transparent and the jittered dots are semi-transparent tomato-coloured. The sample labels are displayed vertically and readable."}
 ggplot(data = rna,
-         mapping = aes(y = expression_log, x = sample))+
+         mapping = aes(y = expression_log, x = sample)) +
   geom_jitter(alpha = 0.2, color = "tomato") +
   geom_boxplot(alpha = 0) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90,  hjust = 0.5, vjust = 0.5))
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-感染期間（
-）に応じて、箱ひげ図上のデータ点に色を付ける（`time`）。
+箱ひげ図のデータポイントに、感染期間（`time`）に応じて色を付けてください。
 
-_ヒント:_ `time`のクラスをチェックする。
-`time` のクラスをggplotマッピングで整数から因数に直接変更することを検討する。
-、Rのグラフの作り方が変わるのはなぜですか？
+*ヒント:* `time` 変数のクラスを確認してください。ggplot のマッピング処理内で `time` のクラスを整数型から因子型に直接変更することを検討してください。この変更が R でグラフを作成する方法にどのような影響を与えるのでしょうか？
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r boxplot-color-time, cache=FALSE, purl=TRUE}
+```{r boxplot-color-time, cache=FALSE, purl=TRUE, fig.alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). On the first figure, each boxplot is transparent and the jittered dots are semi-transparent and coloured in different shares of blue. On the second figures, each boxplot is transparent and the jittered dots are semi-transparent and coloured red, green and blue."}
 # time as integer
 ggplot(data = rna,
          mapping = aes(y = expression_log,
-                       x = sample))+
-  geom_jitter(alpha = 0.2, aes(color = time))+
+                       x = sample)) +
+  geom_jitter(alpha = 0.2, aes(color = time)) +
   geom_boxplot(alpha = 0) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90,  hjust = 0.5, vjust = 0.5))
 
 # time as factor
 ggplot(data = rna,
          mapping = aes(y = expression_log,
-                       x = sample))+
-  geom_jitter(alpha = 0.2, aes(color = as.factor(time)))+
+                       x = sample)) +
+  geom_jitter(alpha = 0.2, aes(color = as.factor(time))) +
   geom_boxplot(alpha = 0) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90,  hjust = 0.5, vjust = 0.5))
 ```
 
 :::::::::::::::::::::::::
@@ -500,25 +413,21 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-箱ひげ図は便利な要約だが、
-分布の_形_を隠してしまう。 例えば、分布が二峰性であれば、
-、ボックスプロットではそれを見ることはできない。 箱ひげ図に代わるものとして、（点の密度の）形状を描くバイオリン
-プロットがある。
+箱ひげ図は分布の概要を把握するのに有用ですが、分布の「形状」そのものは表示しません。例えば、分布が二峰性の場合、箱ひげ図ではその特徴を捉えることができません。箱ひげ図の代替手段として「バイオリンプロット」があり、これはデータ点の密度分布の形状を視覚的に表現します。
 
-- geom_violin()`を参照してください。 
-   引数 `fill\` の時間に従ってヴァイオリンにフィルを入れる。
+- 箱ひげ図をバイオリンプロットに置き換えてください。`geom_violin()`関数を使用します。`fill`引数を用いて、時間軸に沿ってバイオリンプロットを塗り分けてください。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE}
+```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE, fig.alt="Violin plot showing the distribution of log expression + 1 values for each sample, as produced by geom_violin(). Each boxplot is transparent and the jittered dots are semi-transparent and coloured red, green and blue."}
 ggplot(data = rna,
-         mapping = aes(y = expression_log, x = sample))+
-  geom_violin(aes(fill = as.factor(time)))+
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5))
+         mapping = aes(y = expression_log, x = sample)) +
+  geom_violin(aes(fill = as.factor(time))) +
+  theme(axis.text.x = element_text(angle = 90,  hjust = 0.5, vjust = 0.5))
 ```
 
 :::::::::::::::::::::::::
@@ -527,149 +436,135 @@ ggplot(data = rna,
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-- ヴァイオリンのプロットを修正し、ヴァイオリンを `sex` で埋める。
+- バイオリンプロットを修正し、`性別`（sex）ごとにバイオリン部分を塗りつぶすようにしてください。
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE}
+```{r, eval=TRUE, echo=TRUE, cache=FALSE, purl=TRUE, fig.alt="Violin plot showing the distribution of log expression + 1 values for each sample, as produced by geom_violon(). Each violin plot is coloured in red or blue depending on the sex variable."}
 ggplot(data = rna,
-         mapping = aes(y = expression_log, x = sample))+
-  geom_violin(aes(fill = sex))+
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5))
+         mapping = aes(y = expression_log, x = sample)) +
+  geom_violin(aes(fill = sex)) +
+  theme(axis.text.x = element_text(angle = 90,  hjust = 0.5, vjust = 0.5))
 ```
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## 線プロット
+## 折れ線グラフ
 
-時刻8と
-時刻0を比較し、log fold変化が最も大きかった10の遺伝子について、感染期間ごとの平均発現量を計算してみよう。 まず、遺伝子を選択し、選択した10遺伝子を含む`sub_rna`と呼ばれる`rna`
-のサブセットを作成する必要がある。次に、
-データをグループ化し、各グループ内の平均遺伝子発現を計算する必要がある：
+感染期間ごとの平均発現量を、時間8時点と時間0時点を比較した際の対数倍率変化が最大となる10遺伝子について計算します。まず対象となる遺伝子を選択し、`rna`データセットからこれら10遺伝子のみを含むサブセット`sub_rna`を作成します。その後、データをグループ化し、各グループ内の遺伝子発現量の平均値を算出します：
 
 ```{r, purl=TRUE}
-rna_fc<- rna_fc %>% arrange(desc(time_8_vs_0))
+rna_fc <- rna_fc |> arrange(desc(time_8_vs_0))
 
 genes_selected <- rna_fc$gene[1:10]
 
-sub_rna<- rna %>%
+sub_rna <- rna |>
     filter(gene %in% genes_selected)
 
-mean_exp_by_time<- sub_rna %>%
-  group_by(gene,time) %>%
+mean_exp_by_time <- sub_rna |>
+  group_by(gene,time) |>
     summarize(mean_exp = mean(expression_log))
 
 mean_exp_by_time
 ```
 
-X軸に感染期間（
-）、Y軸に平均発現をとって折れ線グラフを作成することができる：
+感染期間をx軸、平均発現量をy軸とした折れ線グラフを作成できます：
 
-```{r first-time-series, purl=TRUE}
-ggplot(data = mean_exp_by_time, mapping = aes(x = time, y = mean_exp))+
+```{r first-time-series, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフですが、実際のデータが期待通りの傾向を示していません"}
+ggplot(data = mean_exp_by_time, mapping = aes(x = time, y = mean_exp)) +
   geom_line()
 ```
 
-残念なことに、これはうまくいかない。というのも、
-の全遺伝子のデータをまとめてプロットしたからである。 各遺伝子に対して線を引くようにggplotに指示する必要がある。
-、`group = gene`を含むようにesthetic関数を修正する：
+残念ながらこの手法ではうまくいきません。すべての遺伝子のデータを一括してプロットしているためです。各遺伝子ごとに別々の線を描画するには、美的関数を`group = gene`に変更する必要があります：
 
-```{r time-series-by-gene, purl=TRUE}
+```{r time-series-by-gene, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10本の線がそれぞれ異なる遺伝子の時間経過に伴う発現量の増加を示しています"}
 ggplot(data = mean_exp_by_time,
-       mapping = aes(x = time, y = mean_exp, group = gene))+
+       mapping = aes(x = time, y = mean_exp, group = gene)) +
   geom_line()
 ```
 
-色をつければ、プロットの中で遺伝子を区別できるようになる（
-`color`を使えば、自動的にデータをグループ化することもできる）：
+色分けを追加すれば（`color`パラメータを使用すると自動的にデータがグループ化されます）、プロット上で各遺伝子を区別できるようになります：
 
-```{r time-series-with-colors, purl=TRUE}
+```{r time-series-with-colors, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10本の色分けされた線がそれぞれ異なる遺伝子の時間経過に伴う発現量の増加を示しています"}
 ggplot(data = mean_exp_by_time,
-       mapping = aes(x = time, y = mean_exp, color = gene))+
+       mapping = aes(x = time, y = mean_exp, color = gene)) +
   geom_line()
 ```
 
-## ファセット
+## 面分割表示
 
-ggplot2\`には_faceting_と呼ばれる特別なテクニックがあり、
-、データセットに含まれる
-、1つのプロットを複数の(サブ)プロットに分割することができる。 こ れ ら の異な る サブプ ロ ッ ト は、 同 じ プ ロ パテ ィ
-を継承 し ます （軸の限界、目盛り、 ...）。 直接比較しやすくするためだ。
-、これを用いて各遺伝子について時間軸に沿った折れ線グラフを作成する：
+`ggplot2`には*面分割*と呼ばれる特殊な機能があり、データセットに含まれる因子に基づいて1つのプロットを複数のサブプロットに分割できます。これらのサブプロットは同じプロパティ（軸の範囲、目盛りなど）を継承するため、直接比較が容易になります。各遺伝子について時間経過に沿った折れ線グラフを作成する場合に活用しましょう：
 
-```{r first-facet, purl=TRUE}
+```{r first-facet, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す1本の線を表示しています。すべてのy軸スケールは同一です"}
 ggplot(data = mean_exp_by_time,
-       mapping = aes(x = time, y = mean_exp))+ geom_line() +
+       mapping = aes(x = time, y = mean_exp)) + geom_line() +
   facet_wrap(~ gene)
 ```
 
-ここでは、X軸とY軸はすべてのサブプロットで同じスケールになっている。、Y軸のスケールを自由に設定できるように`scales`を修正することで、このデフォルトの動作を変更することができる：
+ここではすべてのサブプロットにおいて、x軸とy軸が同じスケールになっています。このデフォルト設定を変更するには、`scales`パラメータを調整してy軸のスケールを自由に設定可能にできます：
 
-```{r first-facet-scales, purl=TRUE}
+```{r first-facet-scales, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す1本の線を表示しています。各面分割/遺伝子ごとにy軸スケールが発現量の範囲に合わせて調整されています"}
 ggplot(data = mean_exp_by_time,
-       mapping = aes(x = time, y = mean_exp))+
+       mapping = aes(x = time, y = mean_exp)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y")
 ```
 
-ここで、各プロットの線をマウスの性別で分けたい。
-そのためには、
-、遺伝子、時間、性別でグループ化したデータフレームの平均発現を計算する必要がある：
+次に、各プロット内の線をマウスの性別でさらに分割したいとします。そのためには、`gene`、`time`、`sex`でグループ化したデータフレーム内で平均発現量を計算する必要があります：
 
 ```{r data-facet-by-gene-and-sex, purl=TRUE}
-mean_exp_by_time_sex<- sub_rna %>%
-  group_by(gene, time, sex) %>%
+mean_exp_by_time_sex <- sub_rna |>
+  group_by(gene, time, sex) |>
     summarize(mean_exp = mean(expression_log))
 
 mean_exp_by_time_sex
 ```
 
-`color` を使ってさらに分割することで、ファセット化されたプロットを作ることができる（1つのプロット内で）：
+これで、`color`パラメータを使用して単一プロット内で性別ごとにさらに分割した面分割グラフを作成できます：
 
-```{r facet-by-gene-and-sex, cache=FALSE, purl=TRUE}
+```{r facet-by-gene-and-sex, cache=FALSE, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す2本の色分けされた線（メスは赤、オスは青）を表示しています"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y")
 ```
 
-通常、背景が白いプロットは印刷したときに読みやすくなる。
-、関数 `theme_bw()` を使って背景を白に設定することができる。
-さらに、グリッドを削除することもできる：
+通常、白背景のプロットは印刷時に視認性が高くなります。`theme_bw()`関数を使用して背景を白に設定できます。さらに、グリッドラインも削除可能です：
 
-```{r facet-by-gene-and-sex-white-bg, cache=FALSE, purl=TRUE}
+```{r facet-by-gene-and-sex-white-bg, cache=FALSE, purl=TRUE, fig.alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す2本の色分けされた線（メスは赤、オスは青）を表示しています。図の背景が白になっています"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank())
 ```
 
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-、各染色体の
-平均発現量が感染期間を通じてどのように変化するかをプロットする。
+これまでに学んだ知識を活用して、感染経過に伴う各染色体の平均発現量の変化を視覚的に表現するプロットを作成してください。
+
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-```{r mean-exp-chromosome-time-series, purl=TRUE}
-mean_exp_by_chromosome<- rna %>%
-  group_by(chromosome_name, time) %>%
-  summary(mean_exp = mean(expression_log))
+```{r mean-exp-chromosome-time-series, purl=TRUE, fig.alt="Line plot, as produced by geom_line(), with 21 sub-plots/facets, each showing one line with expression values over time for each chromosome."}
+mean_exp_by_chromosome <- rna |>
+  group_by(chromosome_name, time) |>
+  summarize(mean_exp = mean(expression_log))
 
 ggplot(data = mean_exp_by_chromosome, mapping = aes(x = time,
-                                y = mean_exp))+
+                                y = mean_exp)) +
   geom_line() +
   facet_wrap(~ chromosome_name, scales = "free_y")
 ```
@@ -678,116 +573,94 @@ ggplot(data = mean_exp_by_chromosome, mapping = aes(x = time,
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-facet_wrap`ジオメトリは、1ページにきれいに収まるように、プロットを任意の数の
-次元に抽出する。 一方、
-`facet_grid` ジオメトリでは、
-数式表記（`rows ~ columns`; `.\`
-は、1つの行または列のみを示すプレースホルダとして使用できます）によって、プロットの配置方法を明示的に指定することができます。
+`facet_wrap`ジオメトリはプロットを任意の数の次元に分割し、1ページにきれいに収まるようにします。一方、`facet_grid`ジオメトリでは、数式表記（`rows ~ columns`; 単一の行または列を示すプレースホルダーとして`.`を使用可）を用いて、プロットの配置方法を明示的に指定できます。
 
-先ほどのプロットを修正し、男性と女性の平均遺伝子発現
-が経時的にどのように変化したかを比較してみよう：
+以前のプロットを修正して、性別ごとの遺伝子発現の平均値が時間経過とともにどのように変化したかを比較してみましょう：
 
-```{r mean-exp-time-facet-sex-rows, purl=TRUE}
-# 1列、行ごとのファセット
+```{r mean-exp-time-facet-sex-rows, purl=TRUE, fig.alt="2つの折れ線グラフが上下に配置され、それぞれ遺伝子ごとに10本の線が色分けされています。上部のサブプロットは女性サンプルの発現値を、下部のサブプロットは男性サンプルの発現値を示しています"}
+# 1列レイアウト、行単位で分割
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = gene))+
+       mapping = aes(x = time, y = mean_exp, color = gene)) +
   geom_line() +
   facet_grid(sex ~ .)
 ```
 
-```{r mean-exp-time-facet-sex-columns, purl=TRUE}
-# 1行、列ごとのファセット
+```{r mean-exp-time-facet-sex-columns, purl=TRUE, fig.alt="2つの折れ線グラフが左右に配置され、それぞれ遺伝子ごとに10本の線が色分けされています。左側のサブプロットは女性サンプルの発現値を、右側のサブプロットは男性サンプルの発現値を示しています"}
+# 1行レイアウト、列単位で分割
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = gene))+
+       mapping = aes(x = time, y = mean_exp, color = gene)) +
   geom_line() +
   facet_grid(. ~ sex)
 ```
 
-## ggplot2\`テーマ
+## `ggplot2`テーマ
 
-`ggplot2` には、プロットの背景を白に変更する `theme_bw()` に加えて、
-手早く視覚化の見た目を変更するのに便利なテーマがいくつか用意されている。
-テーマの全リストは[https://ggplot2.tidyverse.org/reference/ggtheme.html](https://ggplot2.tidyverse.org/reference/ggtheme.html)で入手できる。
-theme_minimal()`や`theme_light()`は人気があり、`theme_void()\`
-は新しい手作りのテーマを作る出発点として役に立つ。
+プロットの背景色を白に変更する`theme_bw()`に加え、`ggplot2`には視覚化の外観を素早く変更できる他のテーマも用意されています。利用可能なテーマの完全なリストは[https://ggplot2.tidyverse.org/reference/ggtheme.html](https://ggplot2.tidyverse.org/reference/ggtheme.html)で確認できます。`theme_minimal()`と`theme_light()`は人気の高いテーマで、`theme_void()`は独自のテーマを作成する際の出発点として便利です。
 
-ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
-パッケージは様々なオプション（Excel 2003
-テーマを含む）を提供します。 `ggplot2` extensions
-website](https://exts.ggplot2.tidyverse.org/) は、追加の
-テーマを含む `ggplot2` の機能を拡張する
-パッケージのリストを提供しています。
+[ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)パッケージでは、Excel 2003テーマを含む多様なオプションが提供されています。[`ggplot2`拡張機能
+ウェブサイト](https://exts.ggplot2.tidyverse.org/)では、`ggplot2`の機能を拡張するパッケージの一覧が掲載されており、追加のテーマも含まれています。
 
 ## カスタマイズ
 
-時間別、遺伝子別の平均発現のファセット・プロットに戻ろう。
-性別に色分けされている。
+時間と遺伝子ごとの平均発現量を性別で分割したプロットに戻りましょう。色分けは性別で行います。
 
-ggplot2\`のカンニング
-シート](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf),
-を見て、プロットを改善する方法を考えてみてください。
+[`ggplot2`チートシート](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)を参照し、プロットを改善する方法を考えてみてください。
 
-ここで、軸の名前を
-'time' や 'mean_exp' よりも情報量の多いものに変更し、図にタイトルを追加する：
+次に、「時間」と「mean_exp」という単純な軸名をより情報量の多い表現に変更し、図にタイトルを追加しましょう：
 
-```{r mean_exp-time-with-right-labels, cache=FALSE, purl=TRUE}
+```{r mean_exp-time-with-right-labels, cache=FALSE, purl=TRUE, fig.alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルが表示されています"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  labs(title = "感染期間別の平均遺伝子発現",
-       x = "感染期間（日単位）",
-       y = "平均遺伝子発現")
+  labs(title = "感染期間別の遺伝子発現平均値",
+       x = "感染期間（日数）",
+       y = "平均遺伝子発現値")
 ```
 
-軸にはより情報量の多い名前が付けられているが、フォントサイズを大きくすることで読みやすさは
-：
+軸名はより情報量が増えましたが、可読性をさらに向上させるためにフォントサイズを大きくすることができます：
 
-```{r mean_exp-time-with-right-labels-xfont-size, cache=FALSE, purl=TRUE}
+```{r mean_exp-time-with-right-labels-xfont-size, cache=FALSE, purl=TRUE, fig.alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルのフォントサイズが拡大されています"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  labs(title = "感染期間別の平均遺伝子発現",
-       x = "感染期間（日単位）",
-       y = "平均遺伝子発現") +
+  labs(title = "感染期間別の遺伝子発現平均値",
+       x = "感染期間（日数）",
+       y = "平均遺伝子発現値")  +
   theme(text = element_text(size = 16))
 ```
 
-プロットのフォントを変更することも可能です。
-Windowsをお使いの場合は、 をインストールする必要があるかもしれません。
+なお、プロットのフォントを変更することも可能です。Windows環境では、[**`extrafont`**
+パッケージ](https://cran.r-project.org/web/packages/extrafont/index.html)をインストールする必要がある場合があります。
 
-さらに、X軸とY軸のテキストの色、
-グリッドの色などをカスタマイズできる。 例えば、
-`legend.position`を`"top"`に設定することで、凡例を一番上に移動させることもできる。
+さらに、x軸・y軸のテキスト色、グリッドの色などをカスタマイズできます。例えば、`legend.position`を`"top"`に設定することで凡例を上部に移動させることも可能です。
 
-```{r mean_exp-time-with-theme, cache=FALSE, purl=TRUE}
+```{r mean_exp-time-with-theme, cache=FALSE, purl=TRUE, fig.alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルのフォントサイズが拡大され、グリッドが青色になっています"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  labs(title = "感染期間別の平均遺伝子発現",
-       x = "感染期間（日単位）",
-       y = "平均遺伝子発現") +
+  labs(title = "感染期間別の遺伝子発現平均値",
+       x = "感染期間（日数）",
+       y = "平均遺伝子発現値")  +
   theme(text = element_text(size = 16),
-        axis.text.x = element_text(color = "royalblue4", size = 12),
-        axis.text.y = element_text(color = "royalblue4", size = 12),
-        panel.grid = element_line(color="lightsteelblue1"),
+        axis.text.x = element_text(colour = "royalblue4", size = 12),
+        axis.text.y = element_text(colour = "royalblue4", size = 12),
+        panel.grid = element_line(colour="lightsteelblue1"),
         legend.position = "top")
 ```
 
-作成した変更がデフォルトのテーマよりも気に入った場合は、
-、オブジェクトとして保存して、作成した他の
-プロットに簡単に適用することができます。 以下は、
-以前に作成したヒストグラムを使った例です。
+作成したカスタマイズテーマがデフォルトテーマよりも優れていると判断した場合、
+このテーマをオブジェクトとして保存しておけば、今後作成する他のプロットに簡単に適用できます。以下に、以前に作成したヒストグラムを例に説明します。
 
-```{r mean_exp-time-with-right-labels-xfont, cache=FALSE, purl=TRUE}
+```{r mean_exp-time-with-right-labels-xfont, cache=FALSE, purl=TRUE, fig.alt="カスタム 'blue_theme()' の使用例：青色のグリッドと青色の軸ラベルを表示"}
 blue_theme <- theme(axis.text.x = element_text(colour = "royalblue4",
                                                size = 12),
                     axis.text.y = element_text(colour = "royalblue4",
@@ -797,210 +670,194 @@ blue_theme <- theme(axis.text.x = element_text(colour = "royalblue4",
 
 ggplot(rna, aes(x = expression_log)) +
   geom_histogram(bins = 20) +
-    blue_theme
+    blue_theme()
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## チャレンジ
+## 課題
 
-これらの情報を手に入れたら、
-、この練習で作成したプロットのいずれかを改良するか、
-、あなた自身の美しいグラフを作成してください。 RStudio ggplot2
-を参考にしてください。 いくつかアイデアを挙げてみよう：
+ここまでの情報を踏まえ、この演習で生成されたプロットのいずれかを改善するか、
+あるいはあなた自身の美しいグラフを作成するのにさらに5分間取り組んでください。
+インスピレーションを得るために、RStudioの[`ggplot2`チートシート](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+を参照してください。以下にいくつかのアイデアをご紹介します：
 
-- 線の太さを変えてみてください。
-- 伝説の名前を変える方法はありますか？
- そのラベルについてはどうだろう？ (ヒント:
- `scale_` で始まる ggplot 関数を探す)
-- 別のカラーパレットを使用するか、線の
- カラーを手動で指定してみてください（
- [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\(ggplot2\)/) 参照）。
+- 線の太さを変更する方法を試してみてください。
+- 凡例の名称を変更する方法はありますか？ラベルの変更はどうでしょう？
+  （ヒント：`scale_`で始まる`ggplot`関数を探してみてください）
+- 異なるカラーパレットを使用するか、線の色を手動で指定する方法を試してみましょう
+  （詳細は[https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)をご覧ください）。
+
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解答
 
-例えば、このプロットに基づくと
+例えば、以下のプロットに基づいて：
 
-```{r, purl=TRUE}
+```{r, purl=TRUE, fig.alt="theme_bw()と空白のグリッド上に生成されたシンプルな面グラフ付き折れ線プロット"}
 ggplot(data = mean_exp_by_time_sex,
-       mapping = aes(x = time, y = mean_exp, color = sex))+
+       mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank())
 ```
 
-以下のようなカスタマイズが可能です：
+このプロットは以下の方法でカスタマイズ可能です：
 
-```{r, purl=TRUE}
-# change the thickness of the lines
+```{r, purl=TRUE, fig.alt="theme_bw()と幅広のグリッド線を使用したシンプルな面グラフ付き折れ線プロット"}
+# 線の太さを変更
 ggplot(data = mean_exp_by_time_sex,
        mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line(size=1.5) +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank())
+```
 
-# change the name of the legend and the labels
+```{r, purl=TRUE, fig.alt="theme_bw()と名称変更された色ラベルを使用したシンプルな面グラフ付き折れ線プロット"}
+# 凡例名とラベルの名称を変更
 ggplot(data = mean_exp_by_time_sex,
        mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  scale_color_discrete(name = "Gender", labels = c("F", "M"))
+  scale_color_discrete(name = "性別", labels = c("F", "M"))
+```
 
-# using a different color palette
+```{r, purl=TRUE, fig.alt="異なるカラーパレットと名称変更された色ラベルを使用したtheme_bw()と空白のグリッド上のシンプルな面グラフ付き折れ線プロット"}
+# 異なるカラーパレットを使用
 ggplot(data = mean_exp_by_time_sex,
        mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  scale_color_brewer(name = "Gender", labels = c("F", "M"), palette = "Dark2")
+  scale_color_brewer(name = "性別", labels = c("F", "M"), palette = "Dark2")
+```
 
-# manually specifying the colors
+```{r, purl=TRUE, fig.alt="手動で設定した色と名称変更された色ラベルを使用したtheme_bw()と空白のグリッド上のシンプルな面グラフ付き折れ線プロット"}
+# 色を手動で指定
 ggplot(data = mean_exp_by_time_sex,
        mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
   theme_bw() +
   theme(panel.grid = element_blank()) +
-  scale_color_manual(name = "Gender",  labels = c("F", "M"),
+  scale_color_manual(name = "性別",  labels = c("F", "M"),
                      values = c("royalblue", "deeppink"))
-
 ```
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## プロットの構成
+## 複数プロットの配置方法
 
-ファセッティングは、1つのプロットを複数のサブプロットに分割するのに最適なツールです。
-しかし、
-複数の独立したプロット、すなわち異なる
-変数、あるいは異なるデータフレームに基づくプロットを含む1つの図を作成したい場合があります。
+ファセット機能は1つのプロットを複数のサブプロットに分割する強力なツールですが、時には異なる変数やデータフレームに基づく独立した複数のプロットを1つの図にまとめたい場合もあります。
 
-、まず2つのプロットを作成する：
+まず、横に並べて表示したい2つのプロットを作成しましょう：
 
-最初のグラフは、染色体ごとにユニークな遺伝子の数を数えている。
-、まず`chromosome_name`のレベルを並べ替え、
-、染色体ごとにユニークな遺伝子をフィルタリングする必要がある。 また、読みやすくするために、Y軸のスケールを
-log10スケールに変更した。
+最初のグラフは各染色体ごとのユニークな遺伝子数をカウントしたものです。まず`chromosome_name`のレベル順序を並べ替え、各染色体ごとのユニークな遺伝子をフィルタリングします。また、読みやすさを向上させるため、y軸のスケールを対数10スケールに変更します。
 
-```{r sub1, purl=TRUE}
+```{r sub1, purl=TRUE, fig.alt="染色体ごとの遺伝子数を対数10スケールで表示したシンプルなヒストグラム（棒グラフ）"}
 rna$chromosome_name <- factor(rna$chromosome_name,
                                levels = c(1:19,"X","Y"))
 
-count_gene_chromosome <- rna %>% select(chromosome_name, gene) %>%
-  distinct() %>% ggplot() +
+count_gene_chromosome <- rna |>
+  select(chromosome_name, gene) |>
+  distinct() |> ggplot() +
   geom_bar(aes(x = chromosome_name), fill = "seagreen",
            position = "dodge", stat = "count") +
-  labs(y = "log10(n genes)", x = "chromosome") +
+  labs(y = "log10(遺伝子数)", x = "染色体") +
   scale_y_log10()
 
 count_gene_chromosome
 ```
 
-以下では、
-`legend.position` を `"none"` に設定することで、凡例を完全に削除することもできる。
+次に、`legend.position`を`"none"`に設定することで、凡例を完全に非表示にします。
 
-```{r sub2, purl=TRUE}
+```{r sub2, purl=TRUE, fig.alt="異なる時間ポイントにおける雌雄別の発現値を示す、透明度を持たせた赤と青の箱ひげ図"}
 exp_boxplot_sex <- ggplot(rna, aes(y=expression_log, x = as.factor(time),
                  color=sex)) +
    geom_boxplot(alpha = 0) +
-  labs(y = "Mean gene exp",
-       x = "time") + theme(legend.position = "none")
+  labs(y = "平均遺伝子発現値",
+       x = "時間") + theme(legend.position = "none")
 
 exp_boxplot_sex
 ```
 
-patchwork\*\*](https://github.com/thomasp85/patchwork)パッケージ
-は、`+` を使って図形を組み合わせるエレガントなアプローチを提供し、
-図形を（通常は横に並べて）並べます。 より具体的には、`|`
-は明示的に横に並べ、`/`は
-上に重ねる。
+[**patchwork**](https://github.com/thomasp85/patchwork)パッケージは、`+`演算子を使用して図を整然と配置する洗練された方法を提供します。具体的には、`|`演算子で図を左右に並べ、`/`演算子で上下に重ねることが可能です。
 
 ```{r install-patchwork, message=FALSE, eval=FALSE, purl=TRUE}
 install.packages("patchwork")
 ```
 
-```{r patchworkplot1, purl=TRUE}
+```{r patchworkplot1, purl=TRUE, fig.alt="左側にヒストグラム、右側に箱ひげ図を配置した合成図"}
 library("patchwork")
 count_gene_chromosome + exp_boxplot_sex
-## or count_gene_chromosome | exp_boxplot_sex
+## または count_gene_chromosome | exp_boxplot_sex と記述することも可能
 ```
 
-```{r patchwork2, purl=TRUE}
+```{r patchwork2, purl=TRUE, fig.alt="上部にヒストグラム、下部に箱ひげ図を配置した合成図"}
 count_gene_chromosome / exp_boxplot_sex
 ```
 
-`plot_layout` と組み合わせることで、最終的なコンポジションのレイアウトをさらにコントロールし、より複雑なレイアウトを作成することができる：
+`plot_layout`関数を使えば、さらに詳細なレイアウト制御が可能で、より複雑な配置も実現できます：
 
-```{r patchwork3, purl=TRUE}
+```{r patchwork3, purl=TRUE, fig.alt="上部にヒストグラム、下部に箱ひげ図を配置した合成図"}
 count_gene_chromosome + exp_boxplot_sex + plot_layout(ncol = 1)
 ```
 
-```{r patchwork4, purl=TRUE}
+```{r patchwork4, purl=TRUE, fig.alt="上部にヒストグラム、中央にヒストグラムと箱ひげ図の組み合わせ、左右に並べて表示、下部に箱ひげ図を配置した4プロット構成の図"}
 count_gene_chromosome +
  (count_gene_chromosome + exp_boxplot_sex) +
  exp_boxplot_sex +
  plot_layout(ncol = 1)
 ```
 
-最後のプロットは `|` と `/` のコンポーザーを使っても作成できる：
+最後のプロット構成は、`|`と`/`の配置演算子を使っても作成できます：
 
-```{r patchwork5, purl=TRUE}
+```{r patchwork5, purl=TRUE, fig.alt="上記と同様、上部にヒストグラム、中央にヒストグラムと箱ひげ図の組み合わせ、左右に並べて表示、下部に箱ひげ図を配置した4プロット構成の図"}
 count_gene_chromosome /
  (count_gene_chromosome | exp_boxplot_sex) /
  exp_boxplot_sex
 ```
 
-パッチワークの詳細については、
-[ウェブページ](https://patchwork.data-imaginist.com/)、またはこちらの
-[ビデオ](https://www.youtube.com/watch?v=0m4yywqNPVY)をご覧ください。
+`patchwork`についてさらに詳しく知りたい場合は、[公式ウェブサイト](https://patchwork.data-imaginist.com/)や[この解説動画](https://www.youtube.com/watch?v=0m4yywqNPVY)をご覧ください。
 
-もう一つのオプションは \*\*gridExtra`** パッケージで、
-の別々の ggplot を `grid.arrange()\` を使って一つの図にまとめることができます：
+別の選択肢として、**`gridExtra`**パッケージを使用する方法もあります。このパッケージでは`grid.arrange()`関数を使って個別のggplotプロットを1つの図に統合できます：
 
 ```{r install-gridextra, message=FALSE, eval=FALSE, purl=TRUE}
 install.packages("gridExtra")
 ```
 
-```{r gridarrange-example, message=FALSE, fig.width=10, purl=TRUE}
+```{r gridarrange-example, message=FALSE, fig.width=10, purl=TRUE, fig.alt="左側にヒストグラム、右側に箱ひげ図を配置した合成図"}
 library("gridExtra")
 grid.arrange(count_gene_chromosome, exp_boxplot_sex, ncol = 2)
 ```
 
-引数 `ncol` と `nrow` は単純な
-の配置を作るのに使われるが、それに加えて、より複雑な
-のレイアウトを作る ためのツールもある。
+`ncol`と`nrow`引数を使った基本的な配置に加え、[より複雑なレイアウト構成](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html)を実現するツールも用意されています。
 
-## プロットのエクスポート
+## プロットのエクスポート方法
 
-プロットを作成したら、お好きな
-形式でファイルに保存できます。 RStudioの**Plot**ペインのExportタブでは、
-のプロットが低解像度で保存されます。これは多くのジャーナルでは受け入れられませんし、
-ではポスター用にうまく拡大縮小できません。
+プロットの作成が完了したら、お好みの形式でファイルに保存できます。RStudioの「プロット」ペインにある「エクスポート」タブを使用すると、低解像度でプロットを保存できますが、多くの学術誌では受理されず、ポスター用の拡大表示にも適さない場合があります。
 
-代わりに `ggsave()` 関数を使います。この関数を使うと、
-の適切な引数（`width`, `height`, `dpi`）を調整することで、プロットの
-次元と解像度を簡単に変更することができます。
+代わりに、`ggsave()`関数を使用することをお勧めします。この関数では、適切な引数（`width`、`height`、`dpi`）を調整することで、プロットの寸法と解像度を簡単に変更できます。
 
-作業ディレクトリに `fig_output/` フォルダがあることを確認してください。
+作業ディレクトリに`fig_output/`フォルダが作成されていることを確認してください。
 
 ```{r ggsave-example, eval=FALSE, purl=TRUE}
 my_plot <- ggplot(data = mean_exp_by_time_sex,
        mapping = aes(x = time, y = mean_exp, color = sex)) +
   geom_line() +
   facet_wrap(~ gene, scales = "free_y") +
-  labs(title = "Mean gene expression by duration of the infection",
-         x = "Duration of the infection (in days)",
-         y = "Mean gene expression") +
-  guides(color=guide_legend(title="Gender")) +
+  labs(title = "感染期間別の平均遺伝子発現量",
+         x = "感染期間（日数）",
+         y = "平均遺伝子発現量") +
+  guides(color=guide_legend(title="性別")) +
   theme_bw() +
   theme(axis.text.x = element_text(colour = "royalblue4", size = 12),
         axis.text.y = element_text(colour = "royalblue4", size = 12),
@@ -1010,81 +867,62 @@ my_plot <- ggplot(data = mean_exp_by_time_sex,
 ggsave("fig_output/mean_exp_by_time_sex.png", my_plot, width = 15,
        height = 10)
 
-# This also works for grid.arrange() plots
+# grid.arrange()で作成したプロットも同様に保存可能です
 combo_plot <- grid.arrange(count_gene_chromosome, exp_boxplot_sex,
                            ncol = 2, widths = c(4, 6))
 ggsave("fig_output/combo_plot_chromosome_sex.png", combo_plot,
        width = 10, dpi = 300)
 ```
 
-注意: パラメータ `width` と `height` は、保存されたプロットのフォントサイズ
-も決定します。
+注意：`width`と`height`のパラメータは、保存されるプロットのフォントサイズも決定します。
 
 ```{r final-challenge, eval=FALSE, purl=TRUE, echo=FALSE}
-### プロットの最終課題：
-
-##
-## の練習で生成されたプロットを改良するか、あなた自身の美しいグラフを作成し てください。RStudio
-## ggplot2 チートシートを参考にしてください：
-## https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf
+### 最終課題：
+##  ここまでの情報を活用して、この演習で作成したプロットのいずれかを改善するか、
+##  独自の美しいグラフを作成してください。RStudioのggplot2チートシートを参考にすると便利です：
+##  https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf
 ```
 
-## その他のビジュアライゼーション用パッケージ
+## 可視化のためのその他のパッケージ
 
-ggplot2\`は非常に強力なパッケージで、我々の_tidy
-data_と_tidy tools_パイプラインにうまくフィットする。 Rには他にも無視できない可視化パッケージ
-がある。
+`ggplot2`は非常に強力なパッケージであり、私たちの「クリーンなデータ」と「クリーンなツール」のワークフローに非常によく適合します。Rには他に無視できない可視化パッケージも存在します。
 
-### ベースグラフィック
+### 基本グラフィックス
 
-Rに付属するデフォルトのグラフィックス・システムは、しばしば_ベースR
-グラフィックス_と呼ばれ、シンプルで高速である。 これは_画家またはキャンバスの
-モデル_に基づいており、異なる出力がそれぞれ
-互いに直接重ね合わされる（図@ref(fig:paintermodel)を参照）。 これは`ggplot2`（および後述する`lattice`）との基本的な
-の違いである。
-は専用のオブジェクトを返し、それは画面上またはファイル上にレンダリングされ、
-は更新することさえできる。
+Rに標準で付属しているグラフィックスシステム、いわゆる「基本Rグラフィックス」はシンプルで高速です。これは「画家モデル」または「キャンバスモデル」に基づいており、異なる出力が直接重ね合わされます（図@ref(fig:paintermodel)参照）。これは`ggplot2`（および後述する`lattice`）とは根本的な違いがあり、`ggplot2`は画面やファイルにレンダリングされる専用オブジェクトを返すため、さらに更新することも可能です。
 
-```{r paintermodel, fig.width=12, fig.height=4, fig.cap="Successive layers added on top of each other."}
+```{r paintermodel, fig.width=12, fig.height=4, fig.cap="順次重ね合わされるレイヤー", fig.alt="左から右へ、対角線上に20個の空の点、その上に垂直な赤色の線、さらにその上にプロット中央の長方形を重ねた「基本」グラフィックスの比較図"}
 par(mfrow = c(1, 3))
-plot(1:20, main = "First layer, produced with plot(1:20)")
+plot(1:20, main = "最初のレイヤー（plot(1:20)で作成）")
 
-plot(1:20, main = "A horizontal red line, added with abline(h = 10)")
+plot(1:20, main = "h = 10で追加した水平赤色線")
 abline(h = 10, col = "red")
 
-plot(1:20, main = "A rectangle, added with rect(5, 5, 15, 15)")
+plot(1:20, main = "rect(5, 5, 15, 15)で追加した長方形")
 abline(h = 10, col = "red")
 rect(5, 5, 15, 15, lwd = 3)
 ```
 
-もうひとつの主な違いは、ベース・グラフィックスのプロット関数は、入力タイプに基づいて、
-、_正しい_ことをしようとする。 これは、
-データフレームしか入力として受け付けない`ggplot2`で、プロットをビットごとに構築する必要があるのとは、
-異なる。
+もう一つの重要な違いは、基本グラフィックスのプロット関数が入力データの種類に基づいて「適切な」処理を試みる点です。つまり、入力データのクラスに応じて動作を適応させます。これは`ggplot2`とは大きく異なり、`ggplot2`はデータフレームのみを入力として受け付け、プロットを段階的に構築していく必要があります。
 
-```{r plotmethod, fig.width=8, fig.height=8, fig.cap="Plotting boxplots (top) and histograms (bottom) vectors (left) or a matrices (right)."}
+```{r plotmethod, fig.width=8, fig.height=8, fig.cap="ボックスプロット（上）とヒストグラム（下）をベクトルデータ（左）または行列データ（右）で作成する例", fig.alt="上部に2つのボックスプロット、下部に2つのヒストグラムを配置した2×2の構成図"}
 par(mfrow = c(2, 2))
 boxplot(rnorm(100),
-        main = "rnorm(100) の Boxplot")
+        main = "rnorm(100)のボックスプロット")
 boxplot(matrix(rnorm(100), ncol = 10),
-        main = "matrix(rnorm(100), ncol = 10) の Boxplot")
+        main = "matrix(rnorm(100), ncol = 10)のボックスプロット")
 hist(rnorm(100))
 hist(matrix(rnorm(100), ncol = 10))
 ```
 
-、`plot`、`hist`、 `boxplot`、...のような1行のコードと1つの関数で非常に素早く作成できる。
-しかし、デフォルトは必ずしも最も魅力的なものではありません。
-、図形のチューニングは、特に複雑になると（例えばファセットを生成するために
-）、時間がかかり面倒になります。
+基本グラフィックスのデフォルト設定は、シンプルで標準的な図を素早く作成する場合に非常に効率的です。`plot`、`hist`、`boxplot`などの単一の関数と1行のコードで迅速に生成できます。ただし、デフォルト設定が常に最も見栄えが良いとは限らず、特に複雑な図（例えばファセット表示を作成する場合など）では、調整に時間がかかり煩雑になることがあります。
 
-### 格子パッケージ
+### latticeパッケージ
 
-lattice`** パッケージは `ggplot2` と似ているが、
-データフレームを入力として使い、グラフィカルオブジェクトを返し、ファセットをサポートする。
-しかし、`lattice\`はグラフィックの文法に基づいておらず、
-より複雑なインターフェイスを持っている。
+**`lattice`**パッケージは、入力としてデータフレームを使用し、グラフィックオブジェクトを返し、ファセット表示をサポートする点で`ggplot2`と類似しています。ただし、`lattice`はグラフィックス文法に基づいておらず、インターフェースがより複雑です。
 
-lattice\`パッケージの良いリファレンスは@latticebookだ。
+`lattice`パッケージに関する優れたリファレンスとして、@latticebookを参照してください。
+
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
