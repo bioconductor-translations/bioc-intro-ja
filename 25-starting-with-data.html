@@ -233,11 +233,11 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">遺伝子発現データのプレゼンテーション</a></li>
+        <ul><li><a href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AC%E6%98%8E">遺伝子発現データの説明</a></li>
 <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF">データフレームとは？</a></li>
-<li><a href="#data.frame-%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A4%9C%E6%9F%BB">data.frame` オブジェクトの検査</a></li>
-<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8C%96%E3%81%A8%E3%82%B5%E3%83%96%E3%82%BB%E3%83%83%E3%83%88%E5%8C%96">データフレームのインデックス化とサブセット化</a></li>
-<li><a href="#%E8%A6%81%E5%9B%A0">要因</a></li>
+<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A4%9C%E6%9F%BB">データフレームオブジェクトの検査</a></li>
+<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E7%B4%A2%E5%BC%95%E4%BB%98%E3%81%91%E3%81%A8%E9%83%A8%E5%88%86%E6%8A%BD%E5%87%BA">データフレームの索引付けと部分抽出</a></li>
+<li><a href="#factors">Factors</a></li>
 <li><a href="#%E3%83%9E%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9">マトリックス</a></li>
 <li><a href="#%E6%97%A5%E4%BB%98%E3%81%AE%E6%9B%B8%E5%BC%8F%E8%A8%AD%E5%AE%9A">日付の書式設定</a></li>
 <li><a href="#r%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A6%82%E8%A6%81">Rオブジェクトの概要</a></li>
@@ -334,7 +334,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>データから始める</h1>
-        <p>Last updated on 2025-07-01 |
+        <p>Last updated on 2025-08-05 |
 
         <a href="https://github.com/carpentries-incubator/bioc-intro/edit/main/episodes/25-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -362,15 +362,15 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul><li>
-<code>data.frame</code> が何なのか説明してみましょう。</li>
-<li>.csv ファイルからデータ
-フレームに外部データを読み込みましょう。</li>
-<li>データフレームの内容を要約してみましょう。</li>
-<li>ファクターとは何か？</li>
-<li>string と factor を変換してみましょう。</li>
-<li>factor の並び替えとリネームを行ってみましょう。</li>
-<li>日付をフォーマットしてみましょう。</li>
-<li>データをエクスポートして保存してみましょう。</li>
+<code>data.frame</code> の概念について説明してください。</li>
+<li>.csv
+ファイルから外部データを読み込み、データフレームに格納する方法を示してください。</li>
+<li>データフレームの内容を要約する方法を説明してください。</li>
+<li>因子（factor）の概念について説明してください。</li>
+<li>文字列と因子間の変換方法を示してください。</li>
+<li>因子の順序変更と名前変更の方法を説明してください。</li>
+<li>日付のフォーマット方法を示してください。</li>
+<li>データのエクスポートと保存方法について説明してください。</li>
 </ul></div>
 </div>
 </div>
@@ -380,48 +380,34 @@
 <p>このエピソードは、Data Carpentriesの_Data Analysis and Visualisation
 in R for Ecologists_レッスンに基づいています。</p>
 </blockquote>
-<section><h2 class="section-heading" id="遺伝子発現データのプレゼンテーション">遺伝子発現データのプレゼンテーション<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3"></a></h2>
-<hr class="half-width"><p>Blackmore <em>et al.</em> (2017)](<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/" class="external-link uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/</a>),
-<em>The effect of upper-respiratory infection on transcriptomic changes
-in CNS</em> によって発表されたデータの一部を使用する予定である。
-研究の目的は、 上部呼吸器感染症が、感染後の小脳と脊髄で
-起こるRNA転写の変化に及ぼす影響を調べることであった。
-性別を一致させた8匹の 週齢のC57BL/6マウスに、生理食塩水または
-鼻腔内経路でインフルエンザAを接種し、0日目
-（非感染）、4日目、8日目に小脳と
-脊髄組織におけるトランスクリプトーム変化をRNA-seqで評価した。</p>
-<p>データセットは、カンマ区切りの値（CSV）ファイルとして保存される。
-各行 は1つのRNA発現測定の情報を持ち、最初の11列 はそれを表している：</p>
-<table class="table"><colgroup><col width="9%"><col width="90%"></colgroup><thead><tr class="header"><th>コラム</th>
+<section><h2 class="section-heading" id="遺伝子発現データの説明">遺伝子発現データの説明<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AC%E6%98%8E"></a></h2>
+<hr class="half-width"><p>本研究では、<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/" class="external-link">Blackmoreら（2017）</a>が公表したデータの一部を使用します。論文タイトルは『上気道感染症が中枢神経系のトランスクリプトーム変化に及ぼす影響』です。この研究の目的は、上気道感染症が感染後の小脳および脊髄におけるRNA転写変化に及ぼす影響を明らかにすることでした。性別を一致させた8週齢のC57BL/6マウスを用い、生理食塩水またはインフルエンザA型ウイルスを経鼻投与し、感染0日目、4日目、および8日目における小脳および脊髄組織のトランスクリプトーム変化をRNA-seq法で評価しました。</p>
+<p>データセットはカンマ区切り値（CSV）ファイルとして保存されています。各行は単一のRNA発現測定値に関する情報を保持しており、最初の11列は以下の項目を表します：</p>
+<table class="table"><colgroup><col width="10%"><col width="89%"></colgroup><thead><tr class="header"><th>列名</th>
 <th>説明</th>
-</tr></thead><tbody><tr class="odd"><td>遺伝子</td>
-<td>測定された遺伝子名</td>
-</tr><tr class="even"><td>サンプル</td>
-<td>遺伝子発現を測定したサンプル名</td>
-</tr><tr class="odd"><td>表現</td>
-<td>遺伝子発現の値</td>
-</tr><tr class="even"><td>有機体</td>
-<td>生物／種 - ここではすべてのデータはマウスに由来する</td>
-</tr><tr class="odd"><td>年齢</td>
-<td>マウスの年齢（ここではすべてのマウスが8週齢であった）</td>
-</tr><tr class="even"><td>セックス</td>
+</tr></thead><tbody><tr class="odd"><td>gene</td>
+<td>測定対象とした遺伝子名</td>
+</tr><tr class="even"><td>sample</td>
+<td>遺伝子発現測定を実施したサンプル名</td>
+</tr><tr class="odd"><td>expression</td>
+<td>遺伝子発現値</td>
+</tr><tr class="even"><td>organism</td>
+<td>生物種/分類群 - 本データはすべてマウス由来です</td>
+</tr><tr class="odd"><td>age</td>
+<td>マウスの年齢（すべてのマウスは8週齢）</td>
+</tr><tr class="even"><td>sex</td>
 <td>マウスの性別</td>
-</tr><tr class="odd"><td>感染症</td>
-<td>マウスの感染状態、すなわちA型インフルエンザに感染しているか、感染していないか。</td>
-</tr><tr class="even"><td>緊張</td>
-<td>インフルエンザA型。</td>
-</tr><tr class="odd"><td>時間</td>
-<td>感染期間（日単位）。</td>
-</tr><tr class="even"><td>組織</td>
-<td>遺伝子発現実験に使用した組織、すなわち小脳または脊髄。</td>
-</tr><tr class="odd"><td>マウス</td>
-<td>マウス固有の識別子。</td>
-</tr></tbody></table><p>R関数の<code>download.file()</code>を使って遺伝子発現データを含む
-CSVファイルをダウンロードし、 <code>read.csv()</code>
-を使ってCSVファイルの内容を
-<code>data.frame</code>クラスのオブジェクトとしてメモリにロードする。
-download.file<code>コマンドの内部では、 の最初のエントリーは、ソースURLの文字列である。 このソースURL はGitHubリポジトリからCSVファイルをダウンロードします。  、カンマ（</code>“data/rnaseq.csv”<code>）の後のテキストは、 、ローカルマシン上のファイルの保存先です。 あなたのマシンに</code>“data”<code>というフォルダを用意し、そこにファイルをダウンロードする必要があります。 そこで、このコマンドは リモートファイルをダウンロードし、</code>“rnaseq.csv”<code>という名前を付けて、</code>“data”`
-という名前の フォルダに追加する。</p>
+</tr><tr class="odd"><td>infection</td>
+<td>マウスの感染状態 - インフルエンザA型に感染しているか否か</td>
+</tr><tr class="even"><td>strain</td>
+<td>インフルエンザA型の株</td>
+</tr><tr class="odd"><td>time</td>
+<td>感染期間（日数）</td>
+</tr><tr class="even"><td>tissue</td>
+<td>遺伝子発現実験に使用した組織 - 小脳または脊髄</td>
+</tr><tr class="odd"><td>mouse</td>
+<td>マウスの一意識別子</td>
+</tr></tbody></table><p>遺伝子発現データを含むCSVファイルのダウンロードにはR関数<code>download.file()</code>を使用し、取得したCSVファイルの内容を<code>read.csv()</code>でメモリ上に<code>data.frame</code>クラスのオブジェクトとして読み込みます。<code>download.file()</code>コマンドの第1引数にはソースURLを指定する文字列を指定します。このURLはGitHubリポジトリからCSVファイルをダウンロードします。カンマの後に続くテキスト（<code>"data/rnaseq.csv"</code>）が、ローカルマシン上のファイル保存先パスとなります。事前に<code>"data"</code>という名前のフォルダを作成しておく必要があります。このコマンドはリモートファイルをダウンロードし、<code>"rnaseq.csv"</code>という名前を付けて既存の<code>"data"</code>フォルダに追加します。</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -429,25 +415,21 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <code class="sourceCode R"><span><span class="fu">download.file</span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/carpentries-incubator/bioc-intro/raw/main/episodes/data/rnaseq.csv"</span>,</span>
 <span>              destfile <span class="op">=</span> <span class="st">"data/rnaseq.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>これでデータをロードする準備ができた：</p>
+<p>これでデータの読み込み準備が整いました。以下のようにデータを読み込めます：</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rna</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"data/rnaseq.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>、代入は何も表示しないからだ。
-、データがロードされたことを確認したい場合は、
-、その名前をタイプすることでデータフレームの中身を見ることができる：</p>
+<p>このコマンドは出力を表示しません。これは割り当て操作自体が出力を生成しないためです。データが正しく読み込まれたことを確認するには、データフレームの名前を直接入力してその内容を確認できます：</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">RNA</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">rna</span></span></code></pre>
 </div>
-<p>うわぁ…。 多くのアウトプットがあった。 少なくとも、 。 関数
-<code>head()</code> を使って、このデータ・フレーム
-の先頭（最初の6行）をチェックしてみよう：</p>
+<p>うわっ…かなりの量の出力ですね。少なくともデータが正常に読み込まれたことを示しています。<code>head()</code>関数を使用してこのデータフレームの先頭6行を確認してみましょう：</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -504,12 +486,11 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">##</span></span>
-<span><span class="co">## View(rna)も試してみる。</span></span></code></pre>
+<code class="sourceCode R"><span><span class="co">## 以下の方法もお試しください</span></span>
+<span><span class="co">## View(rna)</span></span></code></pre>
 </div>
-<p><strong>注</strong>*。</p>
-<p>read.csv()<code>は、フィールドがカンマで区切られていると仮定しているが、 いくつかの国では、カンマは小数の区切り文字として使用され、 セミコロン（;）はフィールドの区切り文字として使用される。 Rでこの種のファイルを 、</code>read.csv2()<code>関数を使うことができる。</code>read.csv()<code>と全く同じ動作をするが、 小数とフィールドのセパレーターに異なるパラメーターを使用する。 別の フォーマットを使用している場合は、ユーザーが両方指定することができます。 詳しくは、</code>read.csv()<code>のヘルプを</code>?read.csv<code>と入力して確認してください。 また、</code>read.delim()<code>関数があり、タブ区切りのデータファイルを読み込むことができる。  重要なことは、これらの関数はすべて、 メインの</code>read.table()<code>関数に異なる引数を指定するためのラッパー関数であるということです。  そのため、 上のデータは、</code>read.table()<code>、区切りの引数を</code>,`
-にしてロードすることもできた。 コードは以下の通り：</p>
+<p><strong>注意</strong></p>
+<p><code>read.csv()</code>関数はデフォルトでカンマをフィールド区切り文字として認識しますが、一部の国ではカンマが小数点区切りとして使用され、セミコロン（;）がフィールド区切り文字として用いられています。このような形式のファイルをRで読み込む場合は、<code>read.csv2()</code>関数を使用できます。この関数は<code>read.csv()</code>と完全に同様の動作をしますが、小数点区切り文字とフィールド区切り文字のパラメータが異なります。別の形式のファイルを扱う場合、これらの区切り文字はユーザーが指定可能です。詳細な情報については、<code>?read.csv</code>と入力してヘルプを参照してください。タブ区切りデータファイルを読み込む場合は<code>read.delim()</code>関数も利用可能です。これらの関数はすべて、異なる引数を持つ主要な<code>read.table()</code>関数のラッパー関数であることに注意が必要です。したがって、前述のデータは<code>read.table()</code>関数を使用し、区切り文字として<code>,</code>を指定することでも読み込むことができます。以下がそのコード例です：</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -518,21 +499,14 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <span>                  sep <span class="op">=</span> <span class="st">","</span>,</span>
 <span>                  header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<p>デフォルトでは <code>read.table()</code> の header 引数は FALSE
-に設定されているので、 のヘッダーを読むためには header 引数を TRUE
-に設定しなければならない。</p>
+<p><code>header</code>引数はデフォルトで<code>read.table()</code>が<code>FALSE</code>に設定されているため、ヘッダーを正しく読み込むためには<code>TRUE</code>に設定する必要があります。</p>
 </section><section><h2 class="section-heading" id="データフレームとは">データフレームとは？<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF"></a></h2>
-<hr class="half-width"><p>データ・フレームは、ほとんどの表データ、
-、統計やプロットに使われる_事実上の_データ構造である。</p>
-<p>データフレームは手作業で作成することもできますが、最も一般的なのは、関数
-<code>read.csv()</code> や <code>read.table()</code> によって生成される
-データフレームです。</p>
-<p>データフレームとは、
-、列がすべて同じ長さのベクトルである表の形式でデータを表現したものである。
-、列はベクトルであるため、各列は1種類のデータ
-（文字、整数、因子など）を含まなければならない。 例えば、 、数値、文字、
-論理ベクトルからなるデータフレームを示す図である。</p>
-<figure><img src="./fig/data-frame.svg" class="figure mx-auto d-block"></figure><p>str()`という関数で ：</p>
+<hr class="half-width"><p>データフレームは、ほとんどの表形式データにおいて事実上の標準データ構造であり、統計処理やグラフ作成の際に用いられる基本的なデータ形式です。</p>
+<p>データフレームは手動で作成することも可能ですが、実際には<code>read.csv()</code>や<code>read.table()</code>といった関数を用いて作成されることが一般的です。つまり、ハードディスクやウェブ上のスプレッドシートデータをインポートする際に生成される形式です。</p>
+<p>データフレームとは、列がすべて同じ長さのベクトルで構成される表形式のデータ表現です。列がベクトルであるため、各列には単一のデータ型（例：文字列、整数、因子など）のみが含まれます。例えば、以下の図は数値型、文字列型、論理型のベクトルで構成されるデータフレームの概念図です。</p>
+<figure style="text-align: center"><img src="fig/data-frame.svg" alt="異なる色で表現された列と変数タイプを示す表形式構造の模式図" width="70%" class="figure mx-auto d-block"><figcaption>
+データフレームの概念的表現
+</figcaption></figure><p>データフレームの<b>構造</b>を<code>str()</code>関数で確認すると、この概念が明確に理解できます：</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -563,42 +537,48 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
  $ phenotype_description                : chr  "abnormal circulating amino acid level" "abnormal lipid homeostasis" "abnormal skin morphology" "abnormal cytokine level" ...
  $ hsapiens_homolog_associated_gene_name: chr  "ASL" "APOD" "CYP2D6" "KLK6" ...</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="data-frame-オブジェクトの検査">data.frame` オブジェクトの検査<a class="anchor" aria-label="anchor" href="#data-frame-%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A4%9C%E6%9F%BB"></a></h2>
-<hr class="half-width"><p>関数 <code>head()</code> と <code>str()</code> が、
-データフレームの内容と構造をチェックするのに便利であることは、すでに説明した。
-以下は、 データの内容／構造を知るための、 非網羅的な機能のリストである。
-試してみよう！</p>
-<p>**サイズ</p>
-<ul><li>dim(rna)` - 行数を最初の 要素とし、列数を2番目の要素（オブジェクトの
-<strong>dim</strong>ensions ）とするベクトルを返す。</li>
-<li>nrow(rna)` - 行の数を返す。</li>
-<li>ncol(rna)` - 列数を返す。</li>
-</ul><p>**内容</p>
-<ul><li>head(rna)` - 最初の6行を表示する。</li>
-<li>tail(rna)` - 最後の6行を表示する。</li>
-</ul><p><strong>名前</strong>：</p>
-<ul><li>names(rna)<code>- 列名を返す（</code>data.frame<code>オブジェクトの</code>colnames()`
-と同義）。</li>
-<li>rownames(rna)` - 行の名前を返す。</li>
-</ul><p><strong>要約</strong>：</p>
-<ul><li>str(rna)` - オブジェクトの構造と、
-クラス、各カラムの長さと内容に関する情報。</li>
+</section><section><h2 class="section-heading" id="データフレームオブジェクトの検査">データフレームオブジェクトの検査<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A4%9C%E6%9F%BB"></a></h2>
+<hr class="half-width"><p>すでに<code>head()</code>関数と<code>str()</code>関数がデータフレームの内容と構造を確認するのに有用であることを説明しました。以下に、データの内容/構造を把握するための代表的な関数を非網羅的に紹介します。実際に試してみましょう！</p>
+<p><strong>サイズ情報</strong>:</p>
+<ul><li>
+<code>dim(rna)</code> -
+行数を第1要素、列数を第2要素とするベクトルを返します（オブジェクトの<strong>次元</strong>情報）。</li>
 <li>
-<code>summary(rna)</code> - 各カラムの要約統計量。</li>
-</ul><p>注：これらの関数のほとんどは
-“ジェネリック”であり、<code>data.frame</code>以外の
-オブジェクトにも使用できます。</p>
-<div id="チャレンジだ" class="callout challenge">
+<code>nrow(rna)</code> - 行数を返します。</li>
+<li>
+<code>ncol(rna)</code> - 列数を返します。</li>
+</ul><p><strong>内容情報</strong>:</p>
+<ul><li>
+<code>head(rna)</code> - 最初の6行を表示します。</li>
+<li>
+<code>tail(rna)</code> - 最後の6行を表示します。</li>
+</ul><p><strong>名前情報</strong>:</p>
+<ul><li>
+<code>names(rna)</code> -
+列名を返します（<code>data.frame</code>オブジェクトの場合、<code>colnames()</code>関数と同じ機能です）。</li>
+<li>
+<code>rownames(rna)</code> - 行名を返します。</li>
+</ul><p><strong>要約情報</strong>:</p>
+<ul><li>
+<code>str(rna)</code> -
+オブジェクトの構造と、各列のクラス、長さ、内容に関する情報を提供します。</li>
+<li>
+<code>summary(rna)</code> -
+各列に対する要約統計量を表示します。</li>
+</ul><p>注記:
+これらの関数の多くは「汎用関数」であり、<code>data.frame</code>以外の他のデータ型に対しても使用できます。</p>
+<div id="課題" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題" class="callout-inner">
+<h3 class="callout-title">課題：</h3>
 <div class="callout-content">
-<p>str(rna)`の出力に基づいて、以下の の質問に答えられるか？</p>
+<p><code>str(rna)</code>
+の出力結果に基づいて、以下の質問に答えてください：</p>
 <ul><li>オブジェクト <code>rna</code> のクラスは何ですか？</li>
-<li>このオブジェクトにはいくつの行といくつの列がありますか？</li>
+<li>このオブジェクトには行がいくつ、列がいくつありますか？</li>
 </ul></div>
 </div>
 </div>
@@ -606,89 +586,92 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">
-  ソリューション
+  解法
   </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<ul><li>クラス: データ・フレーム</li>
-<li>行数：66465、列数：11：11</li>
+<ul><li>class: データフレーム</li>
+<li>行数: 32428、列数: 19</li>
 </ul></div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="データフレームのインデックス化とサブセット化">データフレームのインデックス化とサブセット化<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E5%8C%96%E3%81%A8%E3%82%B5%E3%83%96%E3%82%BB%E3%83%83%E3%83%88%E5%8C%96"></a></h2>
-<hr class="half-width"><p>rna`データフレームには行と列がある（2次元ある）。
-、そこから特定のデータを抽出したい場合は、
-「座標」を指定する必要がある。 行番号が最初に来て、 列番号がそれに続く。
-しかし、これらの
-座標を指定する方法が異なれば、異なるクラスの結果が得られることに注意されたい。</p>
+</section><section><h2 class="section-heading" id="データフレームの索引付けと部分抽出">データフレームの索引付けと部分抽出<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E7%B4%A2%E5%BC%95%E4%BB%98%E3%81%91%E3%81%A8%E9%83%A8%E5%88%86%E6%8A%BD%E5%87%BA"></a></h2>
+<hr class="half-width"><p><code>rna</code>
+データフレームは行と列を持つ2次元構造です。特定のデータを抽出する場合、取得したい「座標」を明示的に指定する必要があります。まず行番号を指定し、その後に列番号を指定します。ただし、これらの座標を指定する方法によって結果のクラスが異なる点に注意してください。</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># データフレームの1列目の最初の要素（ベクトルとして）</span></span>
+<code class="sourceCode R"><span><span class="co"># データフレームの最初の行・最初の列の要素（ベクトルとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span></span>
-<span><span class="co"># 6列目の最初の要素（ベクトルとして）</span></span>
+<span><span class="co"># データフレームの6番目の列の最初の要素（ベクトルとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">6</span><span class="op">]</span></span>
-<span><span class="co"># データフレームの1列目の要素（ベクトルとして）</span></span>
+<span><span class="co"># データフレームの最初の列全体（ベクトルとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
-<span><span class="co"># データフレームの1列目の要素（data.フレームとして）</span></span>
+<span><span class="co"># データフレームの最初の列全体（データフレームとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span><span class="co"># 7列目の最初の3要素（ベクトルとして）</span></span>
+<span><span class="co"># データフレームの7番目の列の最初の3要素（ベクトルとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">7</span><span class="op">]</span></span>
-<span><span class="co"># データフレームの3行目（data.frameとして）</span></span>
+<span><span class="co"># データフレームの3行目全体（データフレームとして）</span></span>
 <span><span class="va">rna</span><span class="op">[</span><span class="fl">3</span>, <span class="op">]</span></span>
-<span><span class="co"># head_rna &lt;- head(rna)</span></span>
+<span><span class="co"># head_rna &lt;- head(rna) と同等</span></span>
 <span><span class="va">head_rna</span> <span class="op">&lt;-</span> <span class="va">rna</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span></span>
 <span><span class="va">head_rna</span></span></code></pre>
 </div>
-<p>1:10<code>と</code>10:1`は の例で、
-の増加または減少の順序で整数の数値ベクトルを作成する特別な関数である。
-<a href="mailto:%E8%A9%B3%E3%81%97%E3%81%8F%E3%81%AF@ref" class="email">詳しくは@ref</a>(sec:genvec)を参照のこと。</p>
-<p>また、「<code>-</code>」記号を使ってデータフレームの特定のインデックスを除外することもできる：</p>
+<p><code>:</code>
+は特殊な関数で、整数の数値ベクトルを昇順または降順で生成します。例えば
+<code>1:10</code> や <code>10:1</code> のように使用します。<a href="mailto:%E8%A9%B3%E7%B4%B0%E3%81%AF%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3@ref" class="email">詳細はセクション@ref</a>(sec:genvec)を参照してください。</p>
+<p>また、“<code>-</code>”
+記号を使用してデータフレームの特定のインデックスを除外することも可能です：</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="co">## 最初の列を除いたデータフレーム全体</span></span>
-<span><span class="va">rna</span><span class="op">[</span><span class="op">-</span><span class="fu">c</span><span class="op">(</span><span class="fl">7</span><span class="op">:</span><span class="fl">66465</span><span class="op">)</span>, <span class="op">]</span> <span class="co">## head(rna)と等価</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">rna</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span>          <span class="co">## 最初の列を除いたデータフレーム全体</span></span>
+<span><span class="va">rna</span><span class="op">[</span><span class="op">-</span><span class="fu">c</span><span class="op">(</span><span class="fl">7</span><span class="op">:</span><span class="fl">66465</span><span class="op">)</span>, <span class="op">]</span> <span class="co">## head(rna) と同等</span></span></code></pre>
 </div>
-<p>データフレームは、インデックス（前に示したように）や
-、列名を直接呼び出してサブセットすることもできる：</p>
+<p>データフレームの部分抽出は、前述のようにインデックスを指定する方法のほか、列名を直接指定する方法でも行えます：</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>rna[<span class="st">"gene"</span>] <span class="co"># Result is a data.frame</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>rna[, <span class="st">"gene"</span>] <span class="co"># Result is a vector</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>rna[[<span class="st">"gene"</span>]].     <span class="co"># 結果はベクトル</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>rna<span class="sc">$</span>gene          <span class="co"># 結果はベクトル</span></span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rna</span><span class="op">[</span><span class="st">"gene"</span><span class="op">]</span>       <span class="co"># 結果はデータフレーム</span></span>
+<span><span class="va">rna</span><span class="op">[</span>, <span class="st">"gene"</span><span class="op">]</span>     <span class="co"># 結果はベクトル</span></span>
+<span><span class="va">rna</span><span class="op">[[</span><span class="st">"gene"</span><span class="op">]</span><span class="op">]</span>     <span class="co"># 結果はベクトル</span></span>
+<span><span class="va">rna</span><span class="op">$</span><span class="va">gene</span>          <span class="co"># 結果はベクトル</span></span></code></pre>
 </div>
-<p>RStudio では、オートコンプリート機能を使用して、列の完全で
-正しい名前を取得できます。</p>
-<div id="チャレンジ" class="callout challenge">
+<p>RStudioでは、自動補完機能を利用することで、列の完全かつ正確な名前を簡単に取得できます。</p>
+<div id="課題-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-1" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<ol style="list-style-type: decimal"><li><p>データセット <code>rna</code> の 行 200 番目のデータのみを含む
-<code>data.frame</code> (<code>rna_200</code>) を作成する。</p></li>
-<li><p>nrow()<code>が</code>data.frame`の行数を示していることに気づいただろうか？</p></li>
-</ol><ul><li><p>この数字を使って、最初の
-<code>rna</code>データフレームの最後の行だけを取り出す。</p></li>
-<li><p>tail()`を使った最後の行と比較し、
-、期待に応えていることを確認する。</p></li>
-<li><p>行番号の代わりに <code>nrow()</code>
-を使って最後の行を取り出す。</p></li>
-<li><p>最後の行から新しいデータフレーム（<code>rna_last</code>）を作成する。</p></li>
-</ul><ol start="3" style="list-style-type: decimal"><li><p><code>rna</code> データフレームの中央にある行を抽出するには
-<code>nrow()</code> を使用する。 この行の内容をオブジェクト
-<code>rna_middle</code> に格納する。</p></li>
-<li><p>nrow()<code>と上記の</code>-<code>表記を組み合わせると、rnaデータセットの1行目から6行目までの     行だけを保持し、</code>head(rna)`の
-挙動を再現することができる。</p></li>
+<ol style="list-style-type: decimal"><li><p><code>rna</code> データセットの200行目のみを含む
+<code>data.frame</code> オブジェクト <code>rna_200</code>
+を作成してください。</p></li>
+<li><p><code>nrow()</code> 関数が <code>data.frame</code>
+の行数を返す仕組みに注目してください。</p></li>
+</ol><ul><li><p>この行数を利用して、初期の <code>rna</code>
+データフレームから最後の行だけを抽出してください。</p></li>
+<li><p><code>tail()</code>
+関数で表示される最後の行と比較し、期待通りの結果が得られていることを確認してください。</p></li>
+<li><p>行番号ではなく、<code>nrow()</code>
+関数を使って最後の行を抽出してください。</p></li>
+<li><p>この最後の行から新しいデータフレーム <code>rna_last</code>
+を作成してください。</p></li>
+</ul><ol start="3" style="list-style-type: decimal"><li><p><code>nrow()</code> 関数を使用して、<code>rna</code>
+データフレームの中央に位置する行を抽出してください。この行の内容を
+<code>rna_middle</code>
+という名前のオブジェクトに格納してください。</p></li>
+<li><p><code>nrow()</code> 関数と前述の <code>-</code>
+表記を組み合わせて、<code>head(rna)</code>
+関数と同様の動作を実現し、<code>rna</code>
+データセットの最初の6行のみを保持してください。</p></li>
 </ol></div>
 </div>
 </div>
@@ -696,7 +679,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
@@ -708,7 +691,7 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <code class="sourceCode R"><span><span class="co">## 1.</span></span>
 <span><span class="va">rna_200</span> <span class="op">&lt;-</span> <span class="va">rna</span><span class="op">[</span><span class="fl">200</span>, <span class="op">]</span></span>
 <span><span class="co">## 2.</span></span>
-<span><span class="co">## Saving `n_rows` to improve readability and reduce duplication</span></span>
+<span><span class="co">## 可読性向上と重複削減のため `n_rows` を保存</span></span>
 <span><span class="va">n_rows</span> <span class="op">&lt;-</span> <span class="fu">nrow</span><span class="op">(</span><span class="va">rna</span><span class="op">)</span></span>
 <span><span class="va">rna_last</span> <span class="op">&lt;-</span> <span class="va">rna</span><span class="op">[</span><span class="va">n_rows</span>, <span class="op">]</span></span>
 <span><span class="co">## 3.</span></span>
@@ -720,28 +703,23 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="要因">要因<a class="anchor" aria-label="anchor" href="#%E8%A6%81%E5%9B%A0"></a></h2>
-<hr class="half-width"><p>要因は<strong>カテゴリーデータ</strong>を表す。 これらは、
-ラベルに関連付けられた整数として格納され、順序付けされたものであっても、順序付けされていないものであってもよい。
-因子は文字ベクトルのように見える（そしてしばしば振舞う）が、
-、実際にはRでは整数ベクトルとして扱われる。そのため、文字列として扱う場合は非常に
-注意する必要がある。</p>
-<p>いったん作成されたファクターは、あらかじめ定義された値のセット（
-、_レベル_として知られている）しか含むことができない。
-デフォルトでは、Rは常にレベルをアルファベット順（ ）でソートする。
-例えば、2つのレベルを持つ因子があるとする：</p>
+</section><section><h2 class="section-heading" id="factors">Factors<a class="anchor" aria-label="anchor" href="#factors"></a></h2>
+<hr class="half-width"><p>因子は<strong>カテゴリカルデータ</strong>を表します。これらはラベルと関連付けられた整数として格納され、順序付きまたは順序なしのいずれかとして扱うことができます。
+因子は見た目（そして多くの場合動作も）文字ベクトルのように見えますが、Rでは実際には整数ベクトルとして扱われます。したがって、文字列として扱う際には細心の注意が必要です。</p>
+<p>一度作成された因子は、事前に定義された値のセット（<em>レベル</em>と呼ばれる）のみを含むことができます。デフォルトでは、Rは常にレベルをアルファベット順に並べ替えます。例えば、2つのレベルを持つ因子がある場合：</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">セックス</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Rは<code>1</code>をレベル<code>"female"</code>に、<code>2</code>をレベル
-<code>"male"</code>に割り当てる（このベクトルの最初の要素
-が<code>"male"</code>であるにもかかわらず、<code>f</code>が<code>m</code>の前に来るため）。
-これは、 <code>levels()</code>
-という関数を使うことで見ることができ、<code>nlevels()</code>
-を使えばレベル数を知ることができる：</p>
+<p>Rはレベル <code>"female"</code> に <code>1</code> を、レベル
+<code>"male"</code> に <code>2</code>
+を割り当てます（このベクトルの最初の要素が <code>"male"</code>
+であっても、<code>f</code> は <code>m</code>
+よりもアルファベット順で先に来るため）。<code>levels()</code>
+関数を使用するとこの割り当てを確認でき、<code>nlevels()</code>
+でレベルの総数を取得できます：</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -749,9 +727,9 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] "female" "male"  </code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -760,82 +738,64 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <code class="sourceCode R"><span><span class="fu">nlevels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2</code></pre>
 </div>
-<p>要因の順番が重要でない場合もあるが、 、意味がある（例えば、“low”、
-“medium”、“high”）、視覚化が向上する、または特定のタイプの分析で必要である（
-）ため、順番を指定したい場合もある。 ここで、
-<code>sex</code>ベクトルでレベルを並べ替える一つの方法は次のようになる：</p>
+<p>因子の順序が重要でない場合もありますが、意味的な意味を持つ場合（例：「低」「中」「高」）、可視化が向上する場合、あるいは特定の分析手法で必要とされる場合には、順序を指定したいことがあります。ここでは、<code>sex</code>
+ベクトルのレベル順序を並べ替える方法の一例を示します：</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sex</span> <span class="co">## current order</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">sex</span> <span class="co">## 現在の順序</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] male   female female male   female
+Levels: female male</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">sex</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">sex</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">sex</span> <span class="co">## 順序変更後</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] male   female female male   female
+Levels: male female</code></pre>
 </div>
+<p>Rのメモリ内では、これらの因子は整数（1, 2,
+3）として表現されますが、因子は自己記述的であるため整数よりも情報量が豊富です：<code>"female"</code>
+や <code>"male"</code> というラベルは、<code>1</code> や <code>2</code>
+という数値よりもはるかに説明的です。どちらが「男性」を表すのか、整数値だけでは判断できません。一方、因子にはこの情報が組み込まれています。特にレベル数が多い場合（例：本例の遺伝子バイオタイプ）にこの機能は非常に有用です。</p>
+<p>データが因子として格納されている場合、<code>plot()</code>
+関数を使用することで、各因子レベルが表す観測値の数を素早く把握できます。ここでは、データ内の男性と女性の数を確認してみましょう。</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sex</span> <span class="co">## after re-ordering</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
-</div>
-<p>Rの記憶では、これらの因子は整数(1, 2, 3)、 で表現されるが、因子は自己
-を記述するため、整数よりも情報量が多い。<code>"女性"</code>、<code>"男性"</code>は<code>1</code>、
-<code>2</code>よりも説明的である。 どちらが “男性”ですか？<br>
-の整数データだけではわからないだろう。
-一方、ファクターはこの情報を内蔵している。
-特に、レベルが多い場合（例のデータセットの
-遺伝子バイオタイプのような）に便利である。</p>
-<p>データが因子として格納されているとき、各因子レベルによって表現されるオブザベーションの数
-を素早く見るために、 <code>plot()</code> 関数を使うことができます。
-データ中の男性 、女性の数を見てみよう。</p>
-<div class="codewrapper sourceCode" id="cb25">
+<figure style="text-align: center"><img src="fig/25-starting-with-data-rendered-firstfactorplot-1.png" alt="「男性」と「女性」の出現回数を示す棒グラフ" class="figure mx-auto d-block"><figcaption>
+女性と男性の数を示す棒グラフ
+</figcaption></figure><div class="section level3">
+<h3 id="因子を文字ベクトルに変換する場合">因子を文字ベクトルに変換する場合<a class="anchor" aria-label="anchor" href="#%E5%9B%A0%E5%AD%90%E3%82%92%E6%96%87%E5%AD%97%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88"></a></h3>
+<p>因子を文字ベクトルに変換する必要がある場合は、<code>as.character()</code>関数を使用します。</p>
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">プロット</span><span class="op">(</span><span class="va">性</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">as.character</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in プロット(性): could not find function "プロット"</code></pre>
-</div>
-<div class="section level3">
-<h3 id="文字への変換">文字への変換<a class="anchor" aria-label="anchor" href="#%E6%96%87%E5%AD%97%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B"></a></h3>
-<p>因数を文字ベクトルに変換する必要がある場合は、
-<code>as.character(x)</code>.</p>
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">as.character</span><span class="op">(</span><span class="va">性</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object '性' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] "male"   "female" "female" "male"   "female"</code></pre>
 </div>
 <!-- ### Numeric factors -->
 <!-- Converting factors where the levels appear as numbers (such as -->
@@ -859,61 +819,48 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <!--   vector `year_fct` inside the square brackets -->
 </div>
 <div class="section level3">
-<h3 id="要因の名称変更">要因の名称変更<a class="anchor" aria-label="anchor" href="#%E8%A6%81%E5%9B%A0%E3%81%AE%E5%90%8D%E7%A7%B0%E5%A4%89%E6%9B%B4"></a></h3>
-<p>これらのファクターの名前を変えたい場合は、 ：</p>
-<div class="codewrapper sourceCode" id="cb29">
+<h3 id="因子名の変更">因子名の変更<a class="anchor" aria-label="anchor" href="#%E5%9B%A0%E5%AD%90%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4"></a></h3>
+<p>これらの因子名を変更する場合、必要なのは因子の
+水準を変更することだけです：</p>
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] "male"   "female"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span></span>
+<span><span class="va">sex</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] M F F M F
+Levels: M F</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb33">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sex</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
-</div>
-<div id="チャレンジだ-1" class="callout challenge">
+<figure><img src="fig/25-starting-with-data-rendered-unnamed-chunk-17-1.png" alt="「M」と「F」の出現回数を示す棒グラフ" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="課題-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-1" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題-2" class="callout-inner">
+<h3 class="callout-title">課題:</h3>
 <div class="callout-content">
-<ul><li>F “と”M “の名前をそれぞれ”Female “と”Male “に変更する。</li>
+<ul><li>変数「F」と「M」をそれぞれ「Female」（女性）と「Male」（男性）に名称変更してください。</li>
 </ul></div>
 </div>
 </div>
@@ -921,55 +868,50 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] "M" "F"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'sex' not found</code></pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div id="チャレンジだ-2" class="callout challenge">
+<div id="チャレンジだ" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-2" class="callout-inner">
+<div id="チャレンジだ" class="callout-inner">
 <h3 class="callout-title">チャレンジだ：</h3>
 <div class="callout-content">
 <p>read.csv()<code>を使ってデータフレームを作成する方法を見てきましたが、</code>data.frame()<code>関数を使って手作業で作成することもできます。 この手作りの</code>data.frame`にはいくつか間違いがある。
 、それを見つけて修正することはできますか？
 実験することをためらってはいけない！</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>       <span class="at">animal =</span> <span class="fu">c</span>(dog, cat, sea cucumber, sea nurchin),</span>
-<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>       <span class="at">feel =</span> <span class="fu">c</span>(<span class="st">"furry"</span>, <span class="st">"squishy"</span>, <span class="st">"spiny"</span>),</span>
-<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a>       <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">8</span> <span class="fl">1.1</span>, <span class="fl">0.8</span>))</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>       <span class="at">animal =</span> <span class="fu">c</span>(dog, cat, sea cucumber, sea nurchin),</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>       <span class="at">feel =</span> <span class="fu">c</span>(<span class="st">"furry"</span>, <span class="st">"squishy"</span>, <span class="st">"spiny"</span>),</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>       <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">8</span> <span class="fl">1.1</span>, <span class="fl">0.8</span>))</span></code></pre>
 </div>
 </div>
 </div>
@@ -990,12 +932,12 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 </div>
 </div>
 </div>
-<div id="チャレンジだ-3" class="callout challenge">
+<div id="チャレンジだ-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-3" class="callout-inner">
+<div id="チャレンジだ-1" class="callout-inner">
 <h3 class="callout-title">チャレンジだ：</h3>
 <div class="callout-content">
 <p>次の の例で、各列のクラスを予測できますか？</p>
@@ -1006,16 +948,16 @@ download.file<code>コマンドの内部では、 の最初のエントリーは
 を追加してもう一度試してみてください。 今、何が起きているのか？
 stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベースの
 のスプレッドシートをRに読み込むときにも設定できる。</p></li>
-</ul><div class="codewrapper sourceCode" id="cb42">
+</ul><div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>country_climate <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>       <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"Panama"</span>, <span class="st">"South Africa"</span>, <span class="st">"Australia"</span>),</span>
-<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>       <span class="at">climate =</span> <span class="fu">c</span>(<span class="st">"cold"</span>, <span class="st">"hot"</span>, <span class="st">"temperate"</span>, <span class="st">"hot/temperate"</span>)、</span>
-<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>       <span class="at">temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">18</span>, <span class="st">"15"</span>),</span>
-<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>       <span class="at">northern_hemisphere =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="st">"FALSE"</span>),</span>
-<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a>       <span class="at">has_kangaroo =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="dv">1</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a>)</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>country_climate <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>       <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"Panama"</span>, <span class="st">"South Africa"</span>, <span class="st">"Australia"</span>),</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>       <span class="at">climate =</span> <span class="fu">c</span>(<span class="st">"cold"</span>, <span class="st">"hot"</span>, <span class="st">"temperate"</span>, <span class="st">"hot/temperate"</span>)、</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>       <span class="at">temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">18</span>, <span class="st">"15"</span>),</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>       <span class="at">northern_hemisphere =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="st">"FALSE"</span>),</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a>       <span class="at">has_kangaroo =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="dv">1</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1029,7 +971,7 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1074,7 +1016,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 <p>行列のデフォルトコンストラクタは <code>matrix</code> である。
 行列を構成するための の値のベクトルと、行および/または の列数<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>を取る。
 下の図（ ）のように、値は列に沿ってソートされる。</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1089,12 +1031,12 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 [2,]    2    5    8
 [3,]    3    6    9</code></pre>
 </div>
-<div id="チャレンジだ-4" class="callout challenge">
+<div id="チャレンジだ-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-4" class="callout-inner">
+<div id="チャレンジだ-2" class="callout-inner">
 <h3 class="callout-title">チャレンジだ：</h3>
 <div class="callout-content">
 <p>installed.packages()<code>という関数を使って、 あなたのコンピューターに現在インストールされているすべてのパッケージの情報を含む</code>文字`行列
@@ -1111,7 +1053,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1134,12 +1076,12 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 以下の練習問題は、平均0、標準偏差 1の正規分布から無作為に
 データを抽出して、そのような行列を作成するものです。これは
 <code>rnorm()</code> 関数で行うことができます。</p>
-<div id="チャレンジだ-5" class="callout challenge">
+<div id="チャレンジだ-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-5" class="callout-inner">
+<div id="チャレンジだ-3" class="callout-inner">
 <h3 class="callout-title">チャレンジだ：</h3>
 <div class="callout-content">
 <p>正規分布データ （平均0、標準偏差1）の次元1000×3の行列を作る。</p>
@@ -1155,7 +1097,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 </button>
 <div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1168,7 +1110,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1000    3</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1223,7 +1165,7 @@ OCT4のような名前や識別子である。
 しかし、コアTidyverseには属さないので、
 <code><a href="https://lubridate.tidyverse.org" class="external-link">library(lubridate)</a></code>で明示的にロードする必要があります。</p>
 <p>必要なパッケージをロードすることから始める：</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1234,7 +1176,7 @@ OCT4のような名前や識別子である。
 関数が必要とする引数は柔軟であるが、ベストプラクティスとしては、“YYYY-MM-DD”としてフォーマットされた文字
 ベクトルである。</p>
 <p>日付オブジェクトを作成し、構造を調べてみよう：</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1247,7 +1189,7 @@ OCT4のような名前や識別子である。
 <pre class="output" tabindex="0"><code> Date[1:1], format: "2015-01-01"</code></pre>
 </div>
 <p>では、年、月、日を別々に貼り付けてみよう：</p>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1263,7 +1205,7 @@ OCT4のような名前や識別子である。
 <p>それでは、典型的な日付操作 のパイプラインに慣れておこう。
 以下の小さなデータには、異なる <code>year</code>、
 <code>month</code>、<code>day</code> 列に日付が格納されている。</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1277,7 +1219,7 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="error" tabindex="0"><code>Error in data.frame(year = c(1996, 1992, 1987, 1986, 2000, 1990, 2002, : arguments imply differing number of rows: 10, 9</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1292,7 +1234,7 @@ OCT4のような名前や識別子である。
 まず、<code>paste()</code> を使って、<code>x</code> の
 <code>year</code>、<code>month</code>、<code>day</code> 列から
 の文字ベクトルを作る：</p>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1305,7 +1247,7 @@ OCT4のような名前や識別子である。
 </div>
 <p>この文字ベクトルは <code>ymd()</code>
 の引数として使うことができる：</p>
-<div class="codewrapper sourceCode" id="cb63">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1318,7 +1260,7 @@ OCT4のような名前や識別子である。
 </div>
 <p>出来上がった <code>Date</code> ベクトルは <code>x</code> に
 <code>date</code> という新しいカラムとして追加することができる：</p>
-<div class="codewrapper sourceCode" id="cb65">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1329,7 +1271,7 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb67">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1342,7 +1284,7 @@ OCT4のような名前や識別子である。
 </div>
 <p>すべてが正しく機能していることを確認しよう。
 新しいカラムを検査する一つの方法は、<code>summary()</code>を使うことである：</p>
-<div class="codewrapper sourceCode" id="cb69">
+<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1355,7 +1297,7 @@ OCT4のような名前や識別子である。
 </div>
 <p>ymd()<code>は、年、月、日を の順番で持つことを期待している。 例えば、日、月、年があれば、</code>dmy()`
 が必要になる。</p>
-<div class="codewrapper sourceCode" id="cb71">
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1385,7 +1327,7 @@ OCT4のような名前や識別子である。
 1つの次元で、各項目は異なるデータ 型にすることができる。</li>
 </ul><p>以下では、数値、文字、
 行列、データフレーム、別のリストのベクトルを含むリストを作ってみよう：</p>
-<div class="codewrapper sourceCode" id="cb73">
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1401,7 +1343,7 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="output" tabindex="0"><code>[1] 5</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb75">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1413,9 +1355,9 @@ OCT4のような名前や識別子である。
 <pre class="output" tabindex="0"><code>List of 5
  $ : int [1:10] 1 2 3 4 5 6 7 8 9 10
  $ : chr [1:26] "a" "b" "c" "d" ...
- $ : chr [1:165, 1:16] "abind" "askpass" "backports" "base64enc" ...
+ $ : chr [1:161, 1:16] "abind" "askpass" "backports" "base64enc" ...
   ..- attr(*, "dimnames")=List of 2
-  .. ..$ : chr [1:165] "abind" "askpass" "backports" "base64enc" ...
+  .. ..$ : chr [1:161] "abind" "askpass" "backports" "base64enc" ...
   .. ..$ : chr [1:16] "Package" "LibPath" "Version" "Priority" ...
  $ :'data.frame':	50 obs. of  2 variables:
   ..$ speed: num [1:50] 4 4 7 7 8 9 10 10 10 11 ...
@@ -1429,7 +1371,7 @@ OCT4のような名前や識別子である。
 を使って新しいサブリストをサブセットするか、<code>[]]</code>
 を使ってそのリストの単一要素を取り出す（
 リストに名前がついている場合は、インデックスか名前を使う）。</p>
-<div class="codewrapper sourceCode" id="cb77">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1440,7 +1382,7 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="output" tabindex="0"><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb79">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1456,7 +1398,7 @@ OCT4のような名前や識別子である。
  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
 [20] "t" "u" "v" "w" "x" "y" "z"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb81">
+<div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1473,7 +1415,7 @@ OCT4のような名前や識別子である。
 ファミリーの関数を使って、テキストベースのスプレッドシートをRに読み込む方法を見てきた。
 data.frame<code>を テキストベースのスプレッドシートにエクスポートするには、 関数の</code>write.table<code>セット（</code>write.csv<code>,</code>write.delim<code>, ...）を使用します。 これらはすべて、 エクスポートする変数と、エクスポートするファイルを指定する。 例えば、</code>rna<code>のデータを</code>data_output<code>ディレクトリの</code>my_rna.csv`
 ファイルにエクスポートするには、次のように実行する：</p>
-<div class="codewrapper sourceCode" id="cb83">
+<div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1560,7 +1502,7 @@ data.frame<code>を テキストベースのスプレッドシートにエクス
   "url": "https://carpentries-incubator.github.io/bioc-intro/25-starting-with-data.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/25-starting-with-data.html",
   "dateCreated": "2020-09-14",
-  "dateModified": "2025-07-01",
+  "dateModified": "2025-08-05",
   "datePublished": "2025-08-05"
 }
 
