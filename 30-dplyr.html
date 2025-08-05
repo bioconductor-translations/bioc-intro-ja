@@ -916,7 +916,7 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
   解答
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1180,7 +1180,7 @@ the `.groups` argument.</code></pre>
   解答
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1380,7 +1380,7 @@ the `.groups` argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1910,7 +1910,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb100">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1970,18 +1970,21 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
 </div>
 </div>
 </div>
-<div id="質問-1" class="callout challenge">
+<div id="問題" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="質問-1" class="callout-inner">
-<h3 class="callout-title">質問</h3>
+<div id="問題" class="callout-inner">
+<h3 class="callout-title">問題</h3>
 <div class="callout-content">
-<p>rna<code>データフレームから X 染色体と Y 染色体に位置する遺伝子をサブセットし、</code>sex<code>を列、</code>chromosome_name\`
-を 行、各染色体に位置する遺伝子の平均発現量を値として、
-以下のようにデータフレームを広げる：</p>
-<figure><img src="fig/Exercise_pivot_W.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>整形する前にまとめる必要がある！</p>
+<p><code>rna</code>
+データフレームから、X染色体とY染色体上に位置する遺伝子サブセットを抽出し、
+<code>sex</code> を列、<code>chromosome_name</code>
+を行、各染色体上の遺伝子の平均発現量を値とした
+データフレームを再構成してください。結果は以下の tibble
+形式で表示します：</p>
+<figure><img src="fig/Exercise_pivot_W.png" alt="X染色体とY染色体を行名、FemaleとMaleを列名とした2×2の表。各X/YおよびFemale/Maleの組み合わせごとの合計カウント数を示しています。Y/Femaleの組み合わせは3カウントで、その他の組み合わせはすべて2000カウントを超えています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>再構成作業の前には必ず要約統計量の計算を行ってください！</p>
 </div>
 </div>
 </div>
@@ -1989,13 +1992,12 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">
-  ソリューション
+  解法
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<p>まず、
-男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう…</p>
+<p>まず、男性および女性サンプルからX染色体およびY染色体上の遺伝子の平均発現量を計算します…</p>
 <div class="codewrapper sourceCode" id="cb104">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2023,7 +2025,7 @@ argument.</code></pre>
 3 Male   X               2497.
 4 Male   Y               2117.</code></pre>
 </div>
-<p>そして、表をワイドフォーマットにピボットする</p>
+<p>次に、このデータをワイド形式に変換します</p>
 <div class="codewrapper sourceCode" id="cb107">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2056,9 +2058,7 @@ argument.</code></pre>
 1 X                3504. 2497.
 2 Y                   3  2117.</code></pre>
 </div>
-<p>各行が一意な <code>chromosome_name</code> と <code>gender</code>
-の組み合わせになるように、このデータフレームを
-<code>pivot_longer()</code> で変換する。</p>
+<p>このデータフレームを<code>pivot_longer()</code>関数で変換し、各行が<code>性別</code>と<code>染色体名</code>のユニークな組み合わせに対応するようにします。</p>
 <div class="codewrapper sourceCode" id="cb111">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2083,12 +2083,12 @@ argument.</code></pre>
 </div>
 </div>
 </div>
-<div id="質問-2" class="callout challenge">
+<div id="質問-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="質問-2" class="callout-inner">
+<div id="質問-1" class="callout-inner">
 <h3 class="callout-title">質問</h3>
 <div class="callout-content">
 <p>rna\`データセットを使って、 各行が遺伝子の平均発現量を表し、
@@ -2103,7 +2103,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
 <div class="codewrapper sourceCode" id="cb113">
@@ -2302,12 +2302,12 @@ argument.</code></pre>
 </div>
 </div>
 </div>
-<div id="質問-3" class="callout challenge">
+<div id="質問-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="質問-3" class="callout-inner">
+<div id="質問-2" class="callout-inner">
 <h3 class="callout-title">質問</h3>
 <div class="callout-content">
 <p>タイムポイントごとの平均発現レベルを含む前のデータフレームを使用し、
@@ -2325,7 +2325,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>rna_time tibbleから開始する：</p>
 <div class="codewrapper sourceCode" id="cb129">
@@ -2624,7 +2624,7 @@ full_join()<code>関数を使用して、テーブル</code>rna_mini<code>と</c
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb146">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
