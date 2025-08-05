@@ -373,7 +373,7 @@
         
 <section id="aio-10-data-organisation"><p>Content from <a href="10-data-organisation.html">スプレッドシートを使用したデータ整理</a></p>
 <hr>
-<p>Last updated on 2025-08-04 |
+<p>Last updated on 2025-08-05 |
 
         <a href="https://github.com/carpentries-incubator/bioc-intro/edit/main/episodes/10-data-organisation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -818,90 +818,50 @@ ABO血液型とRh因子を一つのセルに記録する場合（例：A+、B+�
 Data』<a href="https://datalib.edina.ac.uk/mantra" class="external-link">MANTRA</a>の内容を改変したものです。MANTRAのライセンスは<a href="https://creativecommons.org/licenses/by/4.0/" class="external-link">Creative Commons
 表示 4.0 国際ライセンス</a>に準拠しています。）</p>
 </div>
-</section><section><h2 class="section-heading" id="データのエクスポート">データのエクスポート<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88"></a>
+</section><section><h2 class="section-heading" id="データのエクスポート方法">データのエクスポート方法<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95"></a>
 </h2>
 <hr class="half-width">
 <p><strong>質問</strong></p>
 <ul>
-<li>ストリーム
-アプリケーションに役立つ方法でスプレッドシートからデータをエクスポートするにはどうすればよいでしょうか?</li>
+<li>スプレッドシートからエクスポートしたデータを、後続の分析アプリケーションで効果的に活用するにはどうすればよいでしょうか？</li>
 </ul>
 <p><strong>目的</strong></p>
 <ul>
-<li>スプレッドシート データをユニバーサル
-ファイル形式で保存します。</li>
-<li>スプレッドシートから CSV ファイルにデータをエクスポートします。</li>
+<li>スプレッドシートデータを汎用的なファイル形式で保存する</li>
+<li>スプレッドシートからCSVファイルへデータをエクスポートする</li>
 </ul>
-<p><strong>キーポイント</strong></p>
+<p><strong>重要なポイント</strong></p>
 <ul>
-<li><p>一般的なスプレッドシート形式で保存されたデータは、データ分析ソフトウェアに
-読み込まれないことが多く、 にエラーが生じます。</p></li>
-<li><p>スプレッドシートから CSV や TSV
-などの形式にデータをエクスポートすると、ほとんどのプログラムで一貫して使用できる形式でデータが
-になります。</p></li>
+<li><p>一般的なスプレッドシート形式で保存されたデータは、データ分析ソフトウェアで正しく読み込まれないことが多く、データにエラーが生じる原因となります。</p></li>
+<li><p>CSVやTSVといった形式にデータをエクスポートすれば、ほとんどのアプリケーションで一貫して利用できる形式になります。</p></li>
 </ul>
-<p>分析に使用するデータを Excel 既定のファイル形式 (Excel
-バージョンに応じて <code>*.xls</code> または <code>*.xlsx</code>)
-で保存することはお勧めできません。 なぜ？</p>
+<p>分析に使用するデータをExcelの標準ファイル形式（<code>*.xls</code>または<code>*.xlsx</code>
+-
+使用するExcelのバージョンによって異なります）で保存するのは推奨されません。その理由は？</p>
 <ul>
-<li><p>これは独自の形式であり、 的にはファイルを開くことが不可能では
-にしても不便になる技術が存在しなくなる (または十分にまれになる)
-可能性があるためです。</p></li>
-<li><p>他の表計算ソフトウェアでは、 の Excel
-形式で保存されたファイルを開くことができない場合があります。</p></li>
-<li><p>Excel のバージョンが異なるとデータの処理方法が異なる場合があり、
-整合が発生する可能性があります。 <a href="https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html" class="external-link">日付</a>
-は、データ ストレージにおける不整合の十分に文書化された例です。</p></li>
-<li><p>最後に、データをデータ リポジトリに
-することを要求するジャーナルや補助金機関が増えています。また、そのほとんどは
-Excel 形式を受け入れ ん。
-で説明する形式のいずれかである必要があります。</p></li>
-<li><p>上記の点は、LibreOffice / Open Office で使用されるオープン データ
-形式などの他の形式にも当てはまります。 これらの形式は ではなく、
-ソフトウェア パッケージによって同じ方法で解析されません。</p></li>
+<li><p>この形式は独自のファイル形式であり、将来的に技術が廃れたり、ファイルを開くことが不便、あるいは不可能になる可能性があるためです。</p></li>
+<li><p>他のスプレッドシートソフトウェアでは、Excel独自の形式で保存されたファイルを開けない場合があります。</p></li>
+<li><p>Excelの異なるバージョン間でデータの扱い方が異なるため、不整合が生じる可能性があります。<a href="https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html" class="external-link">日付データ</a>の取り扱いは、データ保存における不整合の典型的な例としてよく知られています。</p></li>
+<li><p>さらに、多くの学術誌や研究助成機関がデータリポジトリへのデータ登録を義務付けており、これらの機関のほとんどはExcel形式を受け付けていません。以下に挙げる別の形式を使用する必要があります。</p></li>
+<li><p>上記のポイントは、LibreOffice/OpenOfficeで使用されるオープンデータ形式などの他の形式にも当てはまります。これらの形式は静的なものではなく、異なるソフトウェアパッケージ間で同じように解析されるわけではありません。</p></li>
 </ul>
-<p>データを汎用的でオープンな静的形式で保存すると、この問題に
-するのに役立ちます。 タブ区切り (タブ区切り値または TSV) または
-カンマ区切り (カンマ区切り値または CSV) を試してください。 CSV
-ファイルは、列がカンマで区切られたプレーン テキスト
-ファイルです。したがって、「カンマ で区切られた値」または CSV
-と呼ばれます。 Excel/SPSS/などと した CSV
-ファイルの利点ファイルは、TextEdit や などのプレーン テキスト
-エディタを含む、ほぼすべてのソフトウェア を使用して CSV
-ファイルを開いて読み取ることができるということです。 CSV
-ファイル内のデータは、SQLite や R などの他
-形式や環境にも簡単にインポートできます。CSV
-ファイルを使用する場合、特定の高価なプログラムの
-のバージョンに縛られることがないので、最大限の移植性と
-性を実現するために使用するフォーマット。 ほとんどのスプレッドシート
-プログラムは
-などの区切りテキスト形式で簡単に保存できますが、ファイルのエクスポート
-に警告が表示される場合があります。</p>
-<p>Excel で開いたファイルを CSV 形式で保存するには:</p>
+<p>汎用的でオープン、かつ静的な形式でデータを保存すれば、この問題を効果的に解決できます。タブ区切り形式（タブ区切り値またはTSV）またはカンマ区切り形式（カンマ区切り値またはCSV）の使用を検討してください。CSVファイルはテキストファイルの一種で、列がカンマで区切られているため「カンマ区切り値」と呼ばれます。Excel/SPSSなどのファイル形式に比べてCSVファイルの利点は、ほぼすべてのソフトウェア、例えばTextEditやNotePadといったテキストエディタでも開いて読み込める点です。CSVファイルのデータは、SQLiteやRなどの他の形式や環境にも簡単にインポートできます。CSVファイルを使用する場合、特定の高価なソフトウェアの特定バージョンに縛られることがないため、最大限の移植性と永続性が求められる場合に最適な形式と言えます。ほとんどのスプレッドシートソフトウェアでは、CSV形式などの区切りテキスト形式へのエクスポートが簡単に行えますが、ファイルエクスポート時には警告が表示される場合があります。</p>
+<p>Excelで開いているファイルをCSV形式で保存するには：</p>
 <ol style="list-style-type: decimal">
-<li>上部のメニューから「ファイル」と「名前を付けて保存」を選択します。</li>
-<li>[形式] フィールドのリストから、[カンマ区切りの 値]
-(<code>*.csv</code>) を選択します。</li>
-<li>ファイル名と する場所を再確認し、「保存」をクリックします。</li>
+<li>上部メニューから「ファイル」→「名前を付けて保存」を選択します。</li>
+<li>「ファイル形式」フィールドのリストから「カンマ区切り値」（<code>*.csv</code>）を選択します。</li>
+<li>ファイル名と保存先を再確認し、「保存」をクリックします。</li>
 </ol>
-<p>下位互換性に関する重要な注意: ファイルは Excel
-で開くことができます。</p>
-<figure style="text-align: center"><img src="fig/excel-to-csv.png" alt="Saving an Excel file to CSV." width="70%" class="figure mx-auto d-block"><figcaption>
-Saving an Excel file to CSV.
-</figcaption></figure><p><strong>R と <code>xls</code> に関するメモ</strong>: <code>xls</code>
-ファイル (および Google スプレッドシート) を読み取ることができる R
-パッケージがあります。 「xls」ドキュメント内の
-ワークシートにアクセスすることも可能です。</p>
-<p><strong>しかし</strong></p>
+<p>後方互換性に関する重要な注意点：CSVファイルはExcelでも開くことができます！</p>
+<figure style="text-align: center"><img src="fig/excel-to-csv.png" alt="MacOSでExcelデータをCSV形式でエクスポートするメニュー" width="70%" class="figure mx-auto d-block"><figcaption>
+ExcelファイルをCSV形式で保存する方法
+</figcaption></figure><p><strong>Rと<code>xls</code>ファイルに関する補足</strong>：<code>xls</code>ファイル（およびGoogleスプレッドシート）を読み込めるRパッケージが存在します。<code>xls</code>ドキュメント内の異なるワークシートにアクセスすることも可能です。</p>
+<p>ただし：</p>
 <ul>
-<li>これらの中には Windows でのみ動作するものもあります。</li>
-<li>これは、データ分析 R コードの追加の複雑さ/依存性を
-して、(単純だが手動の) <code>csv</code>
-へのエクスポートを置き換えることに相当します。</li>
-<li>データ形式のベスト プラクティスは引き続き適用されます。</li>
-<li>
-<code>csv</code> (または類似のもの) が
-では不十分である正当な理由は本当にあるのでしょうか?</li>
+<li>これらのパッケージの中にはWindows環境でしか動作しないものがあります。</li>
+<li>これは、単純な手動エクスポート処理の代わりに、データ分析用Rコードに追加の複雑さと依存関係が生じることを意味します。</li>
+<li>データフォーマットのベストプラクティスは依然として適用されます。</li>
+<li>本当に<code>csv</code>形式（または類似の形式）が不適切だと言えるほどの正当な理由があるのでしょうか？</li>
 </ul>
 <div class="section level3">
 <h3 id="カンマに関する注意事項">カンマに関する注意事項<a class="anchor" aria-label="anchor" href="#%E3%82%AB%E3%83%B3%E3%83%9E%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"></a>
@@ -5302,7 +5262,7 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5428,7 +5388,7 @@ expressionが5より高い遺伝子のみを含んでいなければならない
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5695,7 +5655,7 @@ the `.groups` argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5900,7 +5860,7 @@ arrange()`を使って表を並べ替えることができる。
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6464,7 +6424,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb102">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6546,7 +6506,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>まず、
 男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう…</p>
@@ -6657,7 +6617,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
 <div class="codewrapper sourceCode" id="cb115">
@@ -6879,7 +6839,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>rna_time tibbleから開始する：</p>
 <div class="codewrapper sourceCode" id="cb131">
@@ -7180,7 +7140,7 @@ full_join()<code>関数を使用して、テーブル</code>rna_mini<code>と</c
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb148">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7434,7 +7394,7 @@ frame</strong>にプロットをバインドする。</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7512,7 +7472,7 @@ log2変換を適用することができる。 ここでは、
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7700,7 +7660,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7744,7 +7704,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7802,7 +7762,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>この2つのジオムの順番を入れ替えるべきだ：</p>
 <div class="codewrapper sourceCode" id="cb35">
@@ -7857,7 +7817,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7915,7 +7875,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7953,7 +7913,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8167,7 +8127,7 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8349,7 +8309,7 @@ ggplot 関数を探す)</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
 <div class="accordion-body">
 <p>例えば、このプロットに基づくと</p>
 <div class="codewrapper sourceCode" id="cb64">
@@ -9380,7 +9340,7 @@ function.-->
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9450,7 +9410,7 @@ Cyp2d22       1821       4019</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9864,7 +9824,7 @@ DESeq2<code>パッケージの全解析は</code>SummarizedExperiment`
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/aio.html",
   "dateCreated": "2020-09-14",
   "dateModified": "2025-08-05",
-  "datePublished": "2025-08-04"
+  "datePublished": "2025-08-05"
 }
 
   </script><script>
