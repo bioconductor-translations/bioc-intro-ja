@@ -1082,86 +1082,77 @@ RStudioの設定で「ワークスペースを保存しない」を選択しま�
 <figure style="text-align: center"><img src="../fig/working-directory-structure.png" alt="典型的なRStudioプロジェクトにおける作業ディレクトリと各種ディレクトリの構造を示すフロー図" width="100%" class="figure mx-auto d-block"><figcaption>
 作業ディレクトリの構造例
 </figcaption></figure><p>本コースでは、生データを保存するための<code>data/</code>フォルダが必要です。また、CSVファイルとしてデータをエクスポートする方法を学ぶ際には<code>data_output/</code>フォルダを使用し、作成した図を保存するための<code>fig_output/</code>フォルダも用意します。</p>
-<div id="課題プロジェクトのディレクトリ構造を作る" class="callout discussion">
+<div id="課題-プロジェクト用ディレクトリ構造を作成する" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="課題プロジェクトのディレクトリ構造を作る" class="callout-inner">
-<h3 class="callout-title">課題：プロジェクトのディレクトリ構造を作る</h3>
+<div id="課題-プロジェクト用ディレクトリ構造を作成する" class="callout-inner">
+<h3 class="callout-title">課題:
+プロジェクト用ディレクトリ構造を作成する</h3>
 <div class="callout-content">
-<p>画面右側の<code>Files</code>タブで、<code>New Folder</code>をクリックし、
-、新しく作成した作業ディレクトリー
-（例：<code>~/bioc-intro/data</code>）の中に<code>data</code>という名前のフォルダーを作成します。
-(あるいは、Rのコンソール で <code>dir.create("data")</code>
-とタイプする)。 これらの操作を繰り返して、<code>data_output/</code> と
-<code>fig_output</code> フォルダーを作成する。</p>
+<p>画面右側の「ファイル」タブで、まず「新規フォルダ」をクリックし、
+新たに作成した作業ディレクトリ内に「data」という名前のフォルダを作成します
+（例：<code>~/bioc-intro/data</code>）。（別の方法として、Rコンソールで<code>dir.create("data")</code>と入力しても構いません）。
+同様の操作を繰り返して、「data_output/」フォルダと「fig_output」フォルダを作成してください。</p>
 </div>
 </div>
 </div>
-<p>スクリプトは作業ディレクトリのルート
-に置くことにする。使用するのは1つのファイルだけだし、
-事が簡単になるからだ。</p>
-<p>作業ディレクトリはこのようになっているはずだ：</p>
-<figure style="text-align: center"><img src="../fig/r-starting-how-it-should-look-like.png" alt="How it should look like at the beginning of this lesson" width="100%" class="figure mx-auto d-block"><figcaption>
-How it should look like at the beginning of this lesson
-</figcaption></figure><p><strong>プロジェクト管理</strong>は、バイオインフォマティクス・プロジェクトにも適用できる。
-<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>。
-William Noble (<span class="citation">@Noble:2009</span>)は、
-以下のディレクトリ構造を提案している：</p>
+<p>作業ディレクトリのルートディレクトリにスクリプトを保存することにします。
+使用するファイルは1つだけであり、この方法を採用することで作業が
+より効率的になるからです。</p>
+<p>作業ディレクトリの状態は以下のようになります：</p>
+<figure style="text-align: center"><img src="../fig/r-starting-how-it-should-look-like.png" alt="RStudioのファイルパネルのスクリーンショット" width="100%" class="figure mx-auto d-block"><figcaption>
+本レッスン開始時の理想的な作業ディレクトリの状態
+</figcaption></figure><p><strong>プロジェクト管理</strong>はバイオインフォマティクスプロジェクトにも
+当然適用されます<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>。William Noble氏（<span class="citation">@Noble:2009</span>）は
+以下のようなディレクトリ構造を提案しています：</p>
 <blockquote>
-<p>ディレクトリ名は大きな書体で、ファイル名は小さな 。
-ここに掲載したのは、その一部である。 なお、
-の日付は、<year>-<month>-<day><code>というフォーマットになっているので、 時系列順に並べ替えることができる。 ソースコード</code>src/ms-analysis.c<code>がコンパイルされて</code>bin/ms-analysis<code>が作成され、</code>doc/ms-analysis.html<code>に文書化されている。 データ・ディレクトリ にある</code>README<code>ファイルには、誰がどの URL から の日付にデータ・ファイルをダウンロードしたかが明記されている。 ドライバスクリプト</code>results/2009-01-15/runall<code>は自動的に 3つのサブディレクトリ split1、split2、split3 を生成する。 は3つのクロスバリデーション分割に対応する。</code>bin/parse-sqt.py<code>スクリプトは</code>runall`
-ドライバ スクリプトの両方から呼び出される。</day></month></year></p>
+<p>ディレクトリ名は大文字で、ファイル名は小文字で表記しています。ここでは
+一部のファイルのみを表示しています。日付は<code>&lt;年&gt;-&lt;月&gt;-&lt;日&gt;</code>形式で
+記載されており、時系列で並べ替えが可能です。ソースコード<code>src/ms-analysis.c</code>
+はコンパイルされて<code>bin/ms-analysis</code>として実行可能になり、<code>doc/ms-analysis.html</code>
+でドキュメント化されています。データディレクトリ内の<code>README</code>ファイルには、
+各データファイルが何月何日にどのURLからダウンロードされたかが記載されています。
+ドライバスクリプト<code>results/2009-01-15/runall</code>は自動的に3つのサブディレクトリ
+split1、split2、split3を生成します。これらは3つの交差検証分割に対応しています。
+<code>bin/parse-sqt.py</code>スクリプトは、両方の<code>runall</code>ドライバスクリプトから呼び出されます。</p>
 </blockquote>
-<figure style="text-align: center"><img src="../fig/noble-bioinfo-project.png" alt="Directory structure for a sample bioinformatics project." width="100%" class="figure mx-auto d-block"><figcaption>
-Directory structure for a sample bioinformatics project.
-</figcaption></figure><p>よく定義され、よく文書化された
-プロジェクトのディレクトリの最も重要な側面は、 プロジェクト<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>をよく知らない人が、次のことをできるようにすることである。</p>
+<figure style="text-align: center"><img src="../fig/noble-bioinfo-project.png" alt="Noble et al. (2009)による複雑なバイオインフォマティクスプロジェクト構造を示す図" width="100%" class="figure mx-auto d-block"><figcaption>
+サンプルバイオインフォマティクスプロジェクトのディレクトリ構造
+</figcaption></figure><p>適切に定義され、十分に文書化されたプロジェクトディレクトリの最も重要な利点は、
+プロジェクトに詳しくない人<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>が</p>
 <ol style="list-style-type: decimal">
-<li><p>どのようなプロジェクトなのか、どのようなデータが入手可能なのか、どのような
-分析が行われ、どのような結果が出たのかを理解すること、そして最も重要なことは、
-を理解することである。</p></li>
-<li><p>新しいデータで、あるいは
-分析パラメーターの一部を変更して、分析を繰り返す。</p></li>
+<li><p>プロジェクトの内容、利用可能なデータ、実施された分析、得られた結果を
+理解できること、そして最も重要なのは</p></li>
+<li><p>新しいデータを使用したり分析パラメータを変更したりして、
+同じ分析を再現できることです。</p></li>
 </ol>
 </div>
 <div class="section level3">
 <h3 id="作業ディレクトリ">作業ディレクトリ<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA"></a>
 </h3>
-<p>作業ディレクトリは理解すべき重要な概念である。
-Rがファイルを探して保存する 。
-プロジェクトのコードを書くときは、作業ディレクトリのルート
-に関連するファイルを参照し、この 構造内のファイルだけが必要です。</p>
-<p>RStudioプロジェクトを使用すると、この作業が簡単になり、
-ディレクトリが適切に設定されます。 もし確認する必要があれば、
-<code>getwd()</code> を使うことができる。
-何らかの理由で作業ディレクトリが のようになっていない場合は、RStudio
-のインターフェイスで
-ファイルブラウザーで作業ディレクトリがあるべき場所に移動し、
-青い歯車のアイコン <code>More</code>
-をクリックし、<code>Set As Working Directory</code>
-を選択して変更することができます。
-あるいは、<code>setwd("/path/to/working/directory")</code>を使って、
-作業ディレクトリをリセットすることもできる。
-しかし、あなたのスクリプトには、
-、この行を含めるべきではありません。なぜなら、他の誰かのコンピューターで失敗してしまうからです。</p>
-<p>**例</p>
-<p>以下のスキーマは作業ディレクトリ <code>bioc-intro</code> と
-<code>data</code> と <code>fig_output</code>
-のサブディレクトリ、そして後者にある2つのファイルを表しています：</p>
+<p>作業ディレクトリは理解しておくべき重要な概念です。これはRがファイルの
+検索と保存を行う基準となる場所です。プロジェクト用のコードを書く際には、
+作業ディレクトリのルートを基準としてファイルを参照し、この構造内の
+ファイルのみを使用するようにしてください。</p>
+<p>RStudioプロジェクトを使用すればこの作業が容易になり、作業ディレクトリが
+適切に設定されることが保証されます。確認が必要な場合は<code>getwd()</code>関数を使用できます。
+何らかの理由で作業ディレクトリが想定通りでない場合は、RStudioのファイルブラウザで
+作業ディレクトリが設定されるべき場所に移動し、青い歯車アイコン<code>More</code>を選択して
+<code>Set As Working Directory</code>を選択してください。別の方法として、<code>setwd("/path/to/working/directory")</code>
+を使用して作業ディレクトリをリセットすることも可能です。ただし、この行をスクリプトに
+含めると、他のコンピュータで実行した際にエラーが発生するため注意が必要です。</p>
+<p><strong>具体例</strong></p>
+<p>以下の図は、<code>data</code>サブディレクトリと<code>fig_output</code>サブディレクトリ、および
+後者に2つのファイルを持つ作業ディレクトリ<code>bioc-intro</code>の構造を示しています：</p>
 <pre><code>bioc-intro/data/
           /fig_output/fig1.pdf
           /fig_output/fig2.png</code></pre>
-<p>もし作業ディレクトリにいれば、相対パス
-<code>bioc-intro/fig_output/fig1.pdf</code> か、 絶対パス
-<code>/home/user/bioc-intro/fig_output/fig1.pdf</code> を使って
-<code>fig1.pdf</code> ファイルを参照することができます。</p>
-<p>もし <code>data</code> ディレクトリにいたとしたら、相対パス
-<code>../fig_output/fig1.pdf</code> か、同じ絶対パス
-<code>/home/user/bioc-intro/fig_output/fig1.pdf</code>
-を使うことになる。</p>
+<p>作業ディレクトリ内にいれば、<code>fig1.pdf</code>ファイルには相対パス<code>bioc-intro/fig_output/fig1.pdf</code>
+または絶対パス<code>/home/user/bioc-intro/fig_output/fig1.pdf</code>でアクセスできます。</p>
+<p><code>data</code>ディレクトリ内にいれば、相対パス<code>../fig_output/fig1.pdf</code>または同じ絶対パス
+<code>/home/user/bioc-intro/fig_output/fig1.pdf</code>を使用してアクセスします。</p>
 </div>
 </section><section><h2 class="section-heading" id="rとの対話">Rとの対話<a class="anchor" aria-label="anchor" href="#r%E3%81%A8%E3%81%AE%E5%AF%BE%E8%A9%B1"></a>
 </h2>
@@ -1550,11 +1541,10 @@ Network</em> (CRAN) で、CRAN で利用可能なパッケージは
 <ol>
 <li id="fn1"><p>コマンドラインのコンソールから直接Rを使用する場合とは異なります。Rと連携・統合する他のソフトウェアも存在しますが、RStudioは特に初心者に適しており、同時に非常に高度な機能を多数備えている点が特徴です。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>つまり、バイオインフォマティクスデータ解析など、Rに新たな機能を追加する追加モジュールのことです。<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>このコースでは、バイオインフォマティクスを、
-、生物学的または生物医学的データに適用されるデータサイエンスと考える。<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>その誰かとは、
-、分析が実行された数カ月後、あるいは数年後に、
-、未来のあなた自身である可能性が高い。<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>本コースでは、バイオインフォマティクスを
+生物学的または生物医学データに適用されるデータサイエンスと定義します。<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>この「詳しくない人」とは、分析実施から数ヶ月あるいは数年後の
+あなた自身である可能性が非常に高いことを意味します。<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p>ここでは、これらのほとんど（統計学を除く）
 を紹介するが、Rで可能なこと の富の表面をかすめることしかできない。<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
@@ -2116,7 +2106,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>R はそれらをすべて同じ型に暗黙的に変換します。</p>
 </div>
@@ -2153,7 +2143,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2266,7 +2256,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>ベクトルのデータ型は 1 つだけです。 R は、 が情報を失わないという
 <em>共通分母</em> を見つけるために、このベクトルの内容を に変換 (強制)
@@ -2303,7 +2293,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>唯一。
 過去のデータ型の記憶はなく、ベクトルが初めて評価されるときに強制
@@ -2346,7 +2336,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>論理 → 数値 → 文字 ← 論理</p>
 </div>
@@ -2582,7 +2572,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2796,7 +2786,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2900,7 +2890,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb133">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2996,7 +2986,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb143">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3171,7 +3161,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <p>さまざまな順列</p>
 <div class="codewrapper sourceCode" id="cb163">
@@ -5134,7 +5124,7 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5260,7 +5250,7 @@ expressionが5より高い遺伝子のみを含んでいなければならない
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5527,7 +5517,7 @@ the `.groups` argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5732,7 +5722,7 @@ arrange()`を使って表を並べ替えることができる。
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6296,7 +6286,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb102">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6378,7 +6368,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>まず、
 男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう…</p>
@@ -6489,7 +6479,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
 <div class="codewrapper sourceCode" id="cb115">
@@ -6711,7 +6701,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>rna_time tibbleから開始する：</p>
 <div class="codewrapper sourceCode" id="cb131">
@@ -7012,7 +7002,7 @@ full_join()<code>関数を使用して、テーブル</code>rna_mini<code>と</c
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb148">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9214,7 +9204,7 @@ function.-->
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9284,7 +9274,7 @@ Cyp2d22       1821       4019</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
