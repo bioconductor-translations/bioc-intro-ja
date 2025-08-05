@@ -644,24 +644,24 @@ pivot_longer(names_to = "mouse_id", values_to = "counts", -gene)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## 質問
+## 問題
 
-rna`データフレームから X 染色体と Y 染色体に位置する遺伝子をサブセットし、`sex` を列、`chromosome_name\\` を
-行、各染色体に位置する遺伝子の平均発現量を値として、
-以下のようにデータフレームを広げる：
+`rna` データフレームから、X染色体とY染色体上に位置する遺伝子サブセットを抽出し、
+`sex` を列、`chromosome_name` を行、各染色体上の遺伝子の平均発現量を値とした
+データフレームを再構成してください。結果は以下の tibble 形式で表示します：
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, fig.alt="X染色体とY染色体を行名、FemaleとMaleを列名とした2×2の表。各X/YおよびFemale/Maleの組み合わせごとの合計カウント数を示しています。Y/Femaleの組み合わせは3カウントで、その他の組み合わせはすべて2000カウントを超えています"}
 knitr::include_graphics("fig/Exercise_pivot_W.png")
 ```
 
-整形する前にまとめる必要がある！
+再構成作業の前には必ず要約統計量の計算を行ってください！
+
 
 :::::::::::::::  solution
 
-## ソリューション
+## 解法
 
-まず、
-男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう...
+まず、男性および女性サンプルからX染色体およびY染色体上の遺伝子の平均発現量を計算します...
 
 ```{r}
  rna |>
@@ -670,7 +670,7 @@ knitr::include_graphics("fig/Exercise_pivot_W.png")
   summarise(mean = mean(expression))
 ```
 
-そして、表をワイドフォーマットにピボットする
+次に、このデータをワイド形式に変換します
 
 ```{r, answer=TRUE, purl=TRUE}
 rna_1 <- rna |>
@@ -683,7 +683,8 @@ rna_1 <- rna |>
 rna_1
 ```
 
-各行が一意な `chromosome_name` と `gender` の組み合わせになるように、このデータフレームを `pivot_longer()` で変換する。
+このデータフレームを`pivot_longer()`関数で変換し、各行が`性別`と`染色体名`のユニークな組み合わせに対応するようにします。
+
 
 ```{r, answer=TRUE, purl=TRUE}
 rna_1 |>
