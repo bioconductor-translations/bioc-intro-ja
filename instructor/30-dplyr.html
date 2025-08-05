@@ -2085,16 +2085,16 @@ argument.</code></pre>
 </div>
 </div>
 </div>
-<div id="質問-1" class="callout challenge">
+<div id="問題-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="質問-1" class="callout-inner">
-<h3 class="callout-title">質問</h3>
+<div id="問題-1" class="callout-inner">
+<h3 class="callout-title">問題</h3>
 <div class="callout-content">
-<p>rna\`データセットを使って、 各行が遺伝子の平均発現量を表し、
-各列が異なるタイムポイントを表す発現行列を作成する。</p>
+<p><code>rna</code>
+データセットを使用して、各行が遺伝子の平均発現量を、各列が異なる時間ポイントを表す発現量行列を作成してください。</p>
 </div>
 </div>
 </div>
@@ -2102,12 +2102,12 @@ argument.</code></pre>
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
-<p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
+<p>まず、遺伝子ごとおよび時間ポイントごとに平均発現量を計算しましょう</p>
 <div class="codewrapper sourceCode" id="cb113">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2141,7 +2141,7 @@ argument.</code></pre>
 10 Aamp         0    4603.
 # ℹ 4,412 more rows</code></pre>
 </div>
-<p>pivot_wider()関数を使用する前に</p>
+<p>次に、<code>pivot_wider()</code> 関数を適用します</p>
 <div class="codewrapper sourceCode" id="cb116">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2183,11 +2183,9 @@ argument.</code></pre>
 10 Abl2     2170.   2078.   2131.
 # ℹ 1,464 more rows</code></pre>
 </div>
-<p>これにより、数字で始まるカラム名を持つティブルが生成されることに注意。
-これにより、数字で始まるカラム名を持つティブルが生成されることに注意。
-タイムポイントに対応するカラムを選択したい場合、
-、カラム名を直接使うことはできない。 列4を選択するとどうなるか？
-列4を選択するとどうなるか？</p>
+<p>この操作を行うと、一部の列名が数字で始まるtibbleが生成されます。
+時間ポイントに対応する列を選択したい場合、列名を直接指定することはできません…
+列4を選択しようとするとどうなるでしょうか？</p>
 <div class="codewrapper sourceCode" id="cb120">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2224,17 +2222,17 @@ argument.</code></pre>
 10 Abl2     2131.
 # ℹ 1,464 more rows</code></pre>
 </div>
-<p>タイムポイント4を選択するには、“˶\`”
-というバックスティックを付けたカラム名を引用しなければならない。</p>
+<p>時間ポイント4を選択するには、列名をバッククォート “`”
+で囲んで引用符で指定する必要があります</p>
 <div class="codewrapper sourceCode" id="cb123">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarise</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">rna</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">time</span>,</span>
-<span>              values_from <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              values_from <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">gene</span>, <span class="va">`4`</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -2262,7 +2260,7 @@ argument.</code></pre>
 10 Abl2     2078.
 # ℹ 1,464 more rows</code></pre>
 </div>
-<p>、数字で始まらない名前を選択する：</p>
+<p>別の方法として、列名を変更し、数字で始まらない名前を選択することも可能です：</p>
 <div class="codewrapper sourceCode" id="cb126">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2304,12 +2302,12 @@ argument.</code></pre>
 </div>
 </div>
 </div>
-<div id="質問-2" class="callout challenge">
+<div id="質問-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="質問-2" class="callout-inner">
+<div id="質問-1" class="callout-inner">
 <h3 class="callout-title">質問</h3>
 <div class="callout-content">
 <p>タイムポイントごとの平均発現レベルを含む前のデータフレームを使用し、
