@@ -239,7 +239,7 @@
 <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E7%B4%A2%E5%BC%95%E4%BB%98%E3%81%91%E3%81%A8%E9%83%A8%E5%88%86%E6%8A%BD%E5%87%BA">データフレームの索引付けと部分抽出</a></li>
 <li><a href="#factors">Factors</a></li>
 <li><a href="#%E3%83%9E%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9">マトリックス</a></li>
-<li><a href="#%E6%97%A5%E4%BB%98%E3%81%AE%E6%9B%B8%E5%BC%8F%E8%A8%AD%E5%AE%9A">日付の書式設定</a></li>
+<li><a href="#%E6%97%A5%E4%BB%98%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E5%87%A6%E7%90%86">日付のフォーマット処理</a></li>
 <li><a href="#r%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A6%82%E8%A6%81">Rオブジェクトの概要</a></li>
 <li><a href="#%E3%83%AA%E3%82%B9%E3%83%88">リスト</a></li>
 <li><a href="#sec:exportandsave">表形式データのエクスポートと保存</a></li>
@@ -589,7 +589,7 @@ in R for Ecologists_レッスンに基づいています。</p>
   解法
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul><li>class: データフレーム</li>
 <li>行数: 32428、列数: 19</li>
@@ -682,7 +682,7 @@ in R for Ecologists_レッスンに基づいています。</p>
   解答
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -871,7 +871,7 @@ Levels: M F</code></pre>
   解答
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -923,7 +923,7 @@ Levels: M F</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul><li>動物の名前の周りに引用符がない</li>
 <li>“feel”欄に1つ記入がない（おそらく毛皮の動物の1つ）。</li>
@@ -969,7 +969,7 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1051,7 +1051,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   解決策
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1095,7 +1095,7 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1131,51 +1131,24 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="日付の書式設定">日付の書式設定<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E4%BB%98%E3%81%AE%E6%9B%B8%E5%BC%8F%E8%A8%AD%E5%AE%9A"></a></h2>
-<hr class="half-width"><p>新人（そしてベテラン！）が抱える最も一般的な問題の1つである。
-Rユーザーは、 、日付と時刻の情報を、
-適切で分析中に使用可能な変数に変換している。</p>
+</section><section><h2 class="section-heading" id="日付のフォーマット処理">日付のフォーマット処理<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E4%BB%98%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E5%87%A6%E7%90%86"></a></h2>
+<hr class="half-width"><p>Rを使い始めたばかりのユーザー（そして経験豊富なユーザーも！）が直面する最も一般的な問題の一つが、日付と時刻情報を分析に適した変数形式に変換する作業です。</p>
 <div class="section level3">
-<h3 id="表計算ソフトの日付に関する注意">表計算ソフトの日付に関する注意<a class="anchor" aria-label="anchor" href="#%E8%A1%A8%E8%A8%88%E7%AE%97%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E6%97%A5%E4%BB%98%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%B3%A8%E6%84%8F"></a></h3>
-<p>スプレッドシートの日付は通常、1つの列に格納される。
-これが日付を記録する最も自然な方法のように思えるが、実際には
-ベストプラクティスではない。 スプレッドシート・アプリケーションは、
-一見正しい方法で日付を表示する（人間の観察者には）。しかし、実際に
-どのように日付を処理し、保存するかには問題があるかもしれない。
-YEAR、MONTH、DAYを別々のカラムに、または
-、YEARとDAY-OF-YEARを別々のカラムに保存した方が、
-より安全な場合が多い。</p>
-<p>LibreOffice、Microsoft Excel、OpenOffice、
-Gnumericなどの表計算プログラム。 は、
-日付のエンコード方法が異なる（そしてしばしば互換性がない）（同じプログラムであっても、バージョンやオペレーティング
-システム間で）。 さらに、エクセルは日付でないものを 日付に変える (<span class="citation">@Zeeberg:2004</span>)ことができる。例えば、MAR1、DEC1、
-OCT4のような名前や識別子である。
-そのため、全体的に日付フォーマットを避けているのであれば、
-、こうした問題を特定しやすくなる。</p>
-<p>Data CarpentryレッスンのDates as data
-セクションでは、スプレッドシートを使った日付の落とし穴について、さらなる洞察
-を提供しています。</p>
-<p><strong>lubridate<code>** パッケージの</code>ymd()<code>関数を使用します (**tidyverse</code></strong>
-に属します。詳しくは <a href="https://www.tidyverse.org/" class="external-link">こちら</a>)。
-. **lubridate<code>**は**tidyverse</code>**のインストールの一部として 。
-<strong><code>tidyverse</code></strong>
-(<code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code>) をロードすると、コアパッケージ
-(ほとんどのデータ分析で使用される パッケージ) がロードされます。
-<strong><code>lubridate</code></strong>
-しかし、コアTidyverseには属さないので、
-<code><a href="https://lubridate.tidyverse.org" class="external-link">library(lubridate)</a></code>で明示的にロードする必要があります。</p>
-<p>必要なパッケージをロードすることから始める：</p>
+<h3 id="表計算ソフトにおける日付の取り扱いについて">表計算ソフトにおける日付の取り扱いについて<a class="anchor" aria-label="anchor" href="#%E8%A1%A8%E8%A8%88%E7%AE%97%E3%82%BD%E3%83%95%E3%83%88%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%97%A5%E4%BB%98%E3%81%AE%E5%8F%96%E3%82%8A%E6%89%B1%E3%81%84%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"></a></h3>
+<p>表計算ソフトでは通常、日付情報は単一の列に格納されます。一見するとこれが自然な方法のように思えますが、実は最適な方法とは言えません。表計算ソフトは人間の目には正しく表示されたように見えますが、実際に日付をどのように処理・保存しているかについては問題が生じる可能性があります。日付を分析する際には、年・月・日を別々の列に格納するか、年と年の何日目かを別々の列に分ける方法の方がはるかに安全です。</p>
+<p>LibreOffice、Microsoft
+Excel、OpenOffice、Gnumericなどの表計算ソフトでは、日付のエンコード方法が異なり（同じソフトでもバージョンやOSによって互換性がない場合もあります）、特にExcelでは<a href="https://nsaunders.wordpress.com/2012/10/22/gene-name-errors-and-excel-lessons-not-learned/" class="external-link">日付でないデータを日付として処理してしまう問題</a>が報告されています（<span class="citation">@Zeeberg:2004</span>）。例えば、MAR1、DEC1、OCT4といった名前や識別子も日付として扱われる可能性があります。そのため、日付形式そのものを避けることで、こうした問題を未然に防ぐことができます。</p>
+<p>Data Carpentryの「<a href="https://datacarpentry.org/spreadsheet-ecology-lesson/03-dates-as-data/index.html" class="external-link">日付データの扱い</a>」セクションでは、表計算ソフトにおける日付処理の注意点について詳しく解説しています。</p>
+<p>本解説では、<strong><code>tidyverse</code></strong>パッケージ群の一部である<strong><code>lubridate</code></strong>パッケージの<code>ymd()</code>関数を使用します（<strong><code>tidyverse</code></strong>の詳細については<a href="https://www.tidyverse.org/" class="external-link">公式ウェブサイト</a>をご覧ください）。<strong><code>lubridate</code></strong>は<strong><code>tidyverse</code></strong>のインストール時に自動的にインストールされます。<strong><code>tidyverse</code></strong>を読み込むと（<code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code>）、ほとんどのデータ分析で使用されるコアパッケージが自動的にロードされますが、<strong><code>lubridate</code></strong>はコアパッケージではないため、<code><a href="https://lubridate.tidyverse.org" class="external-link">library(lubridate)</a></code>で明示的に読み込む必要があります。</p>
+<p>まず必要なパッケージを読み込みましょう：</p>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="st">"lubridate"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>ymd()<code>は年、月、日を表すベクトルを受け取り、</code>Date<code>ベクトルに変換する。 Date</code>はRが
-、日付であると認識するデータのクラスであり、そのように操作することができる。
-関数が必要とする引数は柔軟であるが、ベストプラクティスとしては、“YYYY-MM-DD”としてフォーマットされた文字
-ベクトルである。</p>
-<p>日付オブジェクトを作成し、構造を調べてみよう：</p>
+<p><code>ymd()</code>関数は年・月・日を表すベクトルを受け取り、<code>Date</code>型のベクトルに変換します。<code>Date</code>はRが日付データとして認識するデータクラスで、これを適切に操作できます。関数の引数は柔軟な仕様となっていますが、ベストプラクティスとして「YYYY-MM-DD」形式の文字列ベクトルを使用することが推奨されます。</p>
+<p>日付オブジェクトを作成し、構造を確認してみましょう：</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1188,12 +1161,12 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="output" tabindex="0"><code> Date[1:1], format: "2015-01-01"</code></pre>
 </div>
-<p>では、年、月、日を別々に貼り付けてみよう：</p>
+<p>次に、年・月・日を個別に結合してみます。同じ結果が得られることが確認できます：</p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># sep は各コンポーネントを区切るために使う文字を示す</span></span>
+<code class="sourceCode R"><span><span class="co"># sepは各要素を区切る文字を指定します</span></span>
 <span><span class="va">my_date</span> <span class="op">&lt;-</span> <span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="st">"2015"</span>, <span class="st">"1"</span>, <span class="st">"1"</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">str</span><span class="op">(</span><span class="va">my_date</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1202,140 +1175,126 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="output" tabindex="0"><code> Date[1:1], format: "2015-01-01"</code></pre>
 </div>
-<p>それでは、典型的な日付操作 のパイプラインに慣れておこう。
-以下の小さなデータには、異なる <code>year</code>、
-<code>month</code>、<code>day</code> 列に日付が格納されている。</p>
+<p>ここでは一般的な日付操作の手順について説明します。以下のサンプルデータでは、日付が「year」「month」「day」の各列に別々に格納されています。</p>
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>year <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1996</span>, <span class="fl">1992</span>, <span class="fl">1987</span>, <span class="fl">1986</span>, <span class="fl">2000</span>, <span class="fl">1990</span>, <span class="fl">2002</span>, <span class="fl">1994</span>, <span class="fl">1997</span>, <span class="fl">1985</span><span class="op">)</span>,</span>
-<span>                month <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">1</span>, <span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>,</span>
-<span>                day <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">24</span>, <span class="fl">8</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">17</span>, <span class="fl">13</span>, <span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">24</span><span class="op">)</span>,</span>
-<span>                value <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">3</span>, <span class="fl">8</span>, <span class="fl">10</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>                month <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>,  <span class="fl">3</span>,  <span class="fl">3</span>, <span class="fl">10</span>,  <span class="fl">1</span>,  <span class="fl">8</span>,  <span class="fl">3</span>,  <span class="fl">4</span>,  <span class="fl">5</span>,  <span class="fl">5</span><span class="op">)</span>,</span>
+<span>                day <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">24</span>,  <span class="fl">8</span>,  <span class="fl">1</span>,  <span class="fl">5</span>,  <span class="fl">8</span>, <span class="fl">17</span>, <span class="fl">13</span>, <span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">24</span><span class="op">)</span>,</span>
+<span>                value <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>,  <span class="fl">5</span>,  <span class="fl">1</span>,  <span class="fl">9</span>,  <span class="fl">3</span>,  <span class="fl">8</span>, <span class="fl">10</span>,  <span class="fl">2</span>,  <span class="fl">6</span>,  <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">x</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in data.frame(year = c(1996, 1992, 1987, 1986, 2000, 1990, 2002, : arguments imply differing number of rows: 10, 9</code></pre>
+<pre class="output" tabindex="0"><code>   year month day value
+1  1996     2  24     4
+2  1992     3   8     5
+3  1987     3   1     1
+4  1986    10   5     9
+5  2000     1   8     3
+6  1990     8  17     8
+7  2002     3  13    10
+8  1994     4  10     2
+9  1997     5  11     6
+10 1985     5  24     7</code></pre>
 </div>
+<p>この関数を<code>x</code>データセットに適用します。まず<code>paste()</code>関数を使って<code>x</code>の「year」「month」「day」列から文字列ベクトルを作成します：</p>
 <div class="codewrapper sourceCode" id="cb52">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
-</div>
-<p>次に、この関数を <code>x</code> データセットに適用する。
-まず、<code>paste()</code> を使って、<code>x</code> の
-<code>year</code>、<code>month</code>、<code>day</code> 列から
-の文字ベクトルを作る：</p>
-<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">year</span>, <span class="va">x</span><span class="op">$</span><span class="va">month</span>, <span class="va">x</span><span class="op">$</span><span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
+<pre class="output" tabindex="0"><code> [1] "1996-2-24" "1992-3-8"  "1987-3-1"  "1986-10-5" "2000-1-8"  "1990-8-17"
+ [7] "2002-3-13" "1994-4-10" "1997-5-11" "1985-5-24"</code></pre>
 </div>
-<p>この文字ベクトルは <code>ymd()</code>
-の引数として使うことができる：</p>
-<div class="codewrapper sourceCode" id="cb56">
+<p>この文字列ベクトルを<code>ymd()</code>関数の引数として使用できます：</p>
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">year</span>, <span class="va">x</span><span class="op">$</span><span class="va">month</span>, <span class="va">x</span><span class="op">$</span><span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
+<pre class="output" tabindex="0"><code> [1] "1996-02-24" "1992-03-08" "1987-03-01" "1986-10-05" "2000-01-08"
+ [6] "1990-08-17" "2002-03-13" "1994-04-10" "1997-05-11" "1985-05-24"</code></pre>
 </div>
-<p>出来上がった <code>Date</code> ベクトルは <code>x</code> に
-<code>date</code> という新しいカラムとして追加することができる：</p>
+<p>処理結果の<code>Date</code>型ベクトルは、<code>x</code>データセットに新しい列「date」として追加できます：</p>
+<div class="codewrapper sourceCode" id="cb56">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">year</span>, <span class="va">x</span><span class="op">$</span><span class="va">month</span>, <span class="va">x</span><span class="op">$</span><span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">str</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># 新たに追加された列と、クラスが「date」となっていることを確認してください</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>'data.frame':	10 obs. of  5 variables:
+ $ year : num  1996 1992 1987 1986 2000 ...
+ $ month: num  2 3 3 10 1 8 3 4 5 5
+ $ day  : num  24 8 1 5 8 17 13 10 11 24
+ $ value: num  4 5 1 9 3 8 10 2 6 7
+ $ date : Date, format: "1996-02-24" "1992-03-08" ...</code></pre>
+</div>
+<p>正しく処理されているか確認しましょう。新しい列を確認する方法の一つとして<code>summary()</code>関数を使用する方法があります：</p>
 <div class="codewrapper sourceCode" id="cb58">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">year</span>, <span class="va">x</span><span class="op">$</span><span class="va">month</span>, <span class="va">x</span><span class="op">$</span><span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb60">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">str</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># '日付'をクラスとする新しいカラムに注目。</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
-</div>
-<p>すべてが正しく機能していることを確認しよう。
-新しいカラムを検査する一つの方法は、<code>summary()</code>を使うことである：</p>
-<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">summary</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
+<pre class="output" tabindex="0"><code>        Min.      1st Qu.       Median         Mean      3rd Qu.         Max.
+"1985-05-24" "1988-01-11" "1993-03-24" "1993-03-18" "1997-01-20" "2002-03-13" </code></pre>
 </div>
-<p>ymd()<code>は、年、月、日を の順番で持つことを期待している。 例えば、日、月、年があれば、</code>dmy()`
-が必要になる。</p>
-<div class="codewrapper sourceCode" id="cb64">
+<p><code>ymd()</code>関数は年・月・日の順序で入力されることを前提としています。例えば日・月・年の順でデータがある場合には<code>dmy()</code>関数を使用する必要があります。</p>
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dmy</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">day</span>, <span class="va">x</span><span class="op">$</span><span class="va">month</span>, <span class="va">x</span><span class="op">$</span><span class="va">year</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: object 'x' not found</code></pre>
+<pre class="output" tabindex="0"><code> [1] "1996-02-24" "1992-03-08" "1987-03-01" "1986-10-05" "2000-01-08"
+ [6] "1990-08-17" "2002-03-13" "1994-04-10" "1997-05-11" "1985-05-24"</code></pre>
 </div>
-<p>lubdridate`は、あらゆる日付のバリエーションに対応する多くの関数を持っている。</p>
+<p><strong><code>lubridate</code></strong>パッケージには、あらゆる種類の日付バリエーションに対応するための豊富な関数が用意されています。</p>
 </div>
 </section><section><h2 class="section-heading" id="rオブジェクトの概要">Rオブジェクトの概要<a class="anchor" aria-label="anchor" href="#r%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A6%82%E8%A6%81"></a></h2>
-<hr class="half-width"><p>これまで、次元数（ ）、格納できるデータの種類（
-）が単一か複数かによって異なる、いくつかのタイプのRオブジェクトを見てきた：</p>
+<hr class="half-width"><p>これまでに、次元数や単一データ型・複数データ型の格納可否が異なる様々な種類のRオブジェクトを見てきました。主なものは以下の通りです：</p>
 <ul><li>
-<strong>vector`</strong>：1次元（長さがある）、1種類のデータ。</li>
+<strong><code>ベクトル</code></strong>：1次元構造（長さを持つ）、単一データ型</li>
 <li>
-<strong>マトリックス`</strong>：2次元、単一データ型。</li>
+<strong><code>行列</code></strong>：2次元構造、単一データ型</li>
 <li>
-<strong>data.frame`</strong>：2次元、1列1型。</li>
+<strong><code>データフレーム</code></strong>：2次元構造、列ごとに異なるデータ型</li>
 </ul></section><section><h2 class="section-heading" id="リスト">リスト<a class="anchor" aria-label="anchor" href="#%E3%83%AA%E3%82%B9%E3%83%88"></a></h2>
-<hr class="half-width"><p>まだ見ていないが、知っておくと便利なデータ型がリストだ。
-、先ほどのまとめから続く：</p>
+<hr class="half-width"><p>これまで取り上げてこなかったものの、理解しておくと有用なデータ型として「リスト」があります。これは先ほどの概要から自然に導かれる概念です：</p>
 <ul><li>
-<strong><code>list</code></strong>:
-1つの次元で、各項目は異なるデータ 型にすることができる。</li>
-</ul><p>以下では、数値、文字、
-行列、データフレーム、別のリストのベクトルを含むリストを作ってみよう：</p>
-<div class="codewrapper sourceCode" id="cb66">
+<strong><code>リスト</code></strong>：1次元構造で、各要素は異なるデータ型を取り得る</li>
+</ul><p>以下に、数値ベクトル、文字ベクトル、行列、データフレーム、および別のリストを含むリストを作成してみましょう：</p>
+<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="co">## numeric</span></span>
-<span>          <span class="va">letters</span>, <span class="co">## character</span></span>
-<span>          <span class="fu">installed.packages</span><span class="op">(</span><span class="op">)</span>, <span class="co">## a matrix</span></span>
-<span>          <span class="va">cars</span>, <span class="co">## a data.frame</span></span>
-<span>          <span class="fu">list</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="co">## a list</span></span>
+<code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu">list</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="co">## 数値データ</span></span>
+<span>          <span class="va">letters</span>, <span class="co">## 文字データ</span></span>
+<span>          <span class="fu">installed.packages</span><span class="op">(</span><span class="op">)</span>, <span class="co">## 行列データ</span></span>
+<span>          <span class="va">cars</span>, <span class="co">## データフレーム</span></span>
+<span>          <span class="fu">list</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="co">## リスト</span></span>
 <span><span class="fu">length</span><span class="op">(</span><span class="va">l</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1343,7 +1302,7 @@ OCT4のような名前や識別子である。
 </h3>
 <pre class="output" tabindex="0"><code>[1] 5</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb68">
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1367,26 +1326,25 @@ OCT4のような名前や識別子である。
   ..$ : num 2
   ..$ : num 3</code></pre>
 </div>
-<p>リストのサブセットは <code>[]</code>
-を使って新しいサブリストをサブセットするか、<code>[]]</code>
-を使ってそのリストの単一要素を取り出す（
-リストに名前がついている場合は、インデックスか名前を使う）。</p>
-<div class="codewrapper sourceCode" id="cb70">
+<p>リストの部分抽出には <code>[]</code>
+を使用して新しいサブリストを抽出するか、<code>[[]]</code>
+を使用してリスト内の単一要素を抽出します（インデックス指定または名前指定が可能で、リストに名前が付けられている場合）。</p>
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">l</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="co">##</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">l</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co">## 最初の要素を抽出</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb72">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="co">## 長さ 2 のリスト</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="co">## 長さ2のリストを抽出</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1398,11 +1356,11 @@ OCT4のような名前や識別子である。
  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
 [20] "t" "u" "v" "w" "x" "y" "z"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb74">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co">## 長さ 1 のリスト</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>   <span class="co">## 長さ1のリストを抽出</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1411,21 +1369,14 @@ OCT4のような名前や識別子である。
  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="sec:exportandsave">表形式データのエクスポートと保存<a class="anchor" aria-label="anchor" href="#sec:exportandsave"></a></h2>
-<hr class="half-width"><p><code>read.table</code>
-ファミリーの関数を使って、テキストベースのスプレッドシートをRに読み込む方法を見てきた。
-data.frame<code>を テキストベースのスプレッドシートにエクスポートするには、 関数の</code>write.table<code>セット（</code>write.csv<code>,</code>write.delim<code>, ...）を使用します。 これらはすべて、 エクスポートする変数と、エクスポートするファイルを指定する。 例えば、</code>rna<code>のデータを</code>data_output<code>ディレクトリの</code>my_rna.csv`
-ファイルにエクスポートするには、次のように実行する：</p>
-<div class="codewrapper sourceCode" id="cb76">
+<hr class="half-width"><p>テキストベースのスプレッドシートをRに読み込む方法として、<code>read.table</code>ファミリーの関数を使用する方法を説明しました。<code>data.frame</code>をテキストベースのスプレッドシートとしてエクスポートする場合は、<code>write.table</code>関数群（<code>write.csv</code>、<code>write.delim</code>など）を使用します。これらの関数はいずれも、エクスポート対象の変数と出力先ファイルを引数として受け取ります。例えば、<code>rna</code>データフレームを<code>data_output</code>ディレクトリ内の<code>my_rna.csv</code>ファイルにエクスポートするには、以下のように実行します：</p>
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">write.csv</span><span class="op">(</span><span class="va">rna</span>, file <span class="op">=</span> <span class="st">"data_output/my_rna.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>この新しいcsvファイルは、
-、Rに精通していない他の共同研究者と共有することができます。<code>data.frame</code>のフィールドの一部（例えば、“product”列を参照）にカンマがあるにもかかわらず、Rはデフォルトで
-、各フィールドを引用符で囲みます。したがって、
-、列の区切り文字としてカンマを使用しているにもかかわらず、
-、Rに正しく読み込むことができます。</p>
+<p>このようにして作成した新しいCSVファイルは、Rに詳しくない他の共同作業者と共有することが可能です。なお、<code>data.frame</code>の一部のフィールドにカンマが含まれている場合（例えば「product」列など）でも、Rはデフォルトで各フィールドを引用符で囲みます。そのため、列区切り文字としてもカンマを使用している場合でも、正しくRに再読み込みすることができます。</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
