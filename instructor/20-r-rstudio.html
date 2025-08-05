@@ -218,7 +218,7 @@
         <ul><li><a href="#r%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B-rstudio%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">Rとは何か？ RStudioとは何か？</a></li>
 <li><a href="#r%E3%82%92%E5%AD%A6%E3%81%B6%E7%90%86%E7%94%B1">Rを学ぶ理由</a></li>
 <li><a href="#rstudio%E3%81%AE%E6%93%8D%E4%BD%9C%E3%81%AB%E6%85%A3%E3%82%8C%E3%82%8B">RStudioの操作に慣れる</a></li>
-<li><a href="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97">セットアップ</a></li>
+<li><a href="#%E4%BD%9C%E6%A5%AD%E7%92%B0%E5%A2%83%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95">作業環境のセットアップ方法</a></li>
 <li><a href="#r%E3%81%A8%E3%81%AE%E5%AF%BE%E8%A9%B1">Rとの対話</a></li>
 <li><a href="#%E3%82%B3%E3%83%BC%E3%82%B9%E4%B8%AD%E3%82%84%E3%82%B3%E3%83%BC%E3%82%B9%E7%B5%82%E4%BA%86%E5%BE%8C%E3%81%AB%E3%81%95%E3%82%89%E3%81%AB%E5%AD%A6%E3%81%B6%E3%81%AB%E3%81%AF">コース中やコース終了後にさらに学ぶには？</a></li>
 <li><a href="#%E5%8A%A9%E3%81%91%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">助けを求める</a></li>
@@ -438,77 +438,39 @@ RStudioインターフェースのスクリーンショット。左上から時�
 <li>R<strong>コンソール</strong>パネル（左下）</li>
 </ul><p>これらのパネルの配置や内容はカスタマイズ可能です（メニューの「ツール」→「グローバルオプション」→「パネルレイアウト」から設定できます）。</p>
 <p>RStudioを使用する利点の一つは、コード記述に必要なすべての情報が単一のウィンドウで確認できる点です。さらに、豊富なショートカットキー、<strong>自動補完</strong>機能、R開発時に頻繁に使用する主要ファイルタイプに対する<strong>ハイライト表示</strong>などにより、タイピング作業がより容易になり、入力ミスも減少します。</p>
-</section><section><h2 class="section-heading" id="セットアップ">セットアップ<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97"></a></h2>
-<hr class="half-width"><p>関連するデータ、分析、テキスト（ ）のセットは、<strong>working
-directory</strong>と呼ばれる1つのフォルダに自己完結させておくのがよい習慣である。
-このフォルダー内のすべてのスクリプトは、 <strong>相対パス</strong>
-を使用して、
-ファイルがプロジェクト内のどこにあるかを示すことができます（
-ファイルが特定のコンピューター上のどこにあるかを示す絶対パスとは異なります）。
-この方法で作業することで、
-、自分のコンピュータ上でプロジェクトを移動したり、
-他の人と共有したりすることが、基盤となるスクリプト
-がまだ動くかどうかを心配することなく、とても簡単になる。</p>
-<p>RStudioは、“Projects”
-インターフェイスを通じて、このような作業を行うための便利なツールセットを提供しています。このツールは、作業ディレクトリを作成するだけでなく、
-その場所を記憶し（すぐに移動できるようになります）、
-カスタム設定や開いているファイルを保存して、
-休憩後に作業を再開しやすくすることもできます。 この
-チュートリアルのための “Rプロジェクト”の作成手順を以下に示す。</p>
+</section><section><h2 class="section-heading" id="作業環境のセットアップ方法">作業環境のセットアップ方法<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E7%92%B0%E5%A2%83%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95"></a></h2>
+<hr class="half-width"><p>関連するデータ、分析結果、およびテキストファイルを単一のフォルダにまとめ、<strong>作業ディレクトリ</strong>として管理することは良い習慣です。このフォルダ内のすべてのスクリプトは、<strong>相対パス</strong>を使用してファイルを指定できます。相対パスとは、プロジェクト内のファイルの位置を示す方法です（絶対パスとは異なり、特定のコンピュータ上のファイルの正確な場所を指定するものです）。この方法を採用することで、プロジェクトをコンピュータ間で移動させたり、他者と共有したりする際にも、基礎となるスクリプトが正しく動作するかどうかを心配する必要がなくなります。</p>
+<p>RStudioでは、「プロジェクト」インターフェースを通じて、この作業を容易にする便利なツールセットを提供しています。この機能は作業ディレクトリを作成するだけでなく、その場所を記憶し（簡単にアクセスできるようにします）、オプションでカスタム設定や開かれているファイルを保存することで、作業再開時の利便性を向上させます。以下の手順に従って、このチュートリアル用の「Rプロジェクト」を作成してください。</p>
 <ol style="list-style-type: decimal"><li>RStudioを起動します。</li>
-<li>File<code>メニューの下にある</code>New
-project<code>をクリックする。 新規ディレクトリ</code>を選択し、
-<code>新規プロジェクト</code>を選択する。</li>
-<li>この新しいフォルダ（または「ディレクトリ」）の名前を入力し、
-便利な場所を選択します。 これはこのセッション (またはコース全体) の
-<strong>作業ディレクトリ</strong> になります (例
-<code>bioc-intro</code>)。</li>
-<li>Create project`をクリックする。</li>
-<li>(オプション）RStudio でワークスペースを保存しない設定にします。</li>
-</ol><p>RStudioのデフォルトの環境設定は一般的にうまく機能しますが、ワークスペースを
-.RDataに保存するのは、特に大きなデータセットを扱う場合は面倒です。
-これをオフにするには、「ツール」→「グローバル・オプション」で、終了時に「ワークスペースを.RDataに保存する」
-「決してしない」オプションを選択します。</p>
-<figure style="text-align: center"><img src="../fig/rstudio-preferences.png" alt="Set 'Save workspace to .RData on exit' to 'Never'" width="70%" class="figure mx-auto d-block"><figcaption>
-Set ‘Save workspace to .RData on exit’ to ‘Never’
-</figcaption></figure><p>ウィンドウズと他のオペレーティング・システム間の文字エンコーディングの問題](<a href="https://yihui.name/en/2018/11/biggest-regret-knitr/)%E3%82%92%E9%81%BF%E3%81%91%E3%82%8B%E3%81%9F%E3%82%81" class="external-link uri">https://yihui.name/en/2018/11/biggest-regret-knitr/)を避けるため</a>、
-、デフォルトでUTF-8を設定します：</p>
-<figure style="text-align: center"><img src="../fig/utf8.png" alt="Set the default text encoding to UTF-8 to save us headache in the coming future. (Figure from the link above)." width="70%" class="figure mx-auto d-block"><figcaption>
-Set the default text encoding to UTF-8 to save us headache in the coming
-future. (Figure from the link above).
+<li>
+<code>ファイル</code>メニューから<code>新規プロジェクト</code>をクリックします。次に<code>新規ディレクトリ</code>を選択し、続けて<code>新規プロジェクト</code>を選びます。</li>
+<li>この新しいフォルダに名前を付けます（「ディレクトリ」とも呼ばれます）。また、作業しやすい場所を選択します。このフォルダがこのセッション（あるいはコース全体）の<strong>作業ディレクトリ</strong>となります（例：<code>bioc-intro</code>）。</li>
+<li>
+<code>プロジェクトを作成</code>をクリックします。</li>
+<li>(オプション)
+RStudioの設定で「ワークスペースを保存しない」を選択します。</li>
+</ol><p>RStudioのデフォルト設定は一般的に問題なく機能しますが、特に大規模なデータセットを扱う場合、ワークスペースを.RDataファイルに保存するのは煩雑になることがあります。この機能を無効にするには、<code>ツール</code>メニューから<code>グローバルオプション</code>を選択し、終了時にワークスペースを.RDataに保存するオプションを「しない」に設定してください。</p>
+<figure style="text-align: center"><img src="../fig/rstudio-preferences.png" alt="RStudioの一般オプションパネルのスクリーンショット" width="70%" class="figure mx-auto d-block"><figcaption>
+終了時にワークスペースを.RDataに保存する設定を「しない」に設定
+</figcaption></figure><p><a href="https://yihui.name/en/2018/11/biggest-regret-knitr/" class="external-link">Windowsと他のオペレーティングシステム間で発生する文字エンコーディングの問題</a>を回避するため、デフォルトのテキストエンコーディングをUTF-8に設定します：</p>
+<figure style="text-align: center"><img src="../fig/utf8.png" alt="RStudioのコードオプションパネルのスクリーンショット" width="70%" class="figure mx-auto d-block"><figcaption>
+今後のトラブルを防ぐため、デフォルトのテキストエンコーディングをUTF-8に設定します。（上記リンクの図を参照）
 </figcaption></figure><div class="section level3">
-<h3 id="作業ディレクトリの整理">作業ディレクトリの整理<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%95%B4%E7%90%86"></a></h3>
-<p>プロジェクト全体で一貫性のあるフォルダ構造を使うことで、
-、整理整頓がしやすくなり、将来的に探し出したりファイルしたりするのも簡単になります。
-この 、複数のプロジェクトを抱えているときには特に役立つ。 一般的に、
-、*<strong>スクリプト</strong>、*<strong>データ</strong>、*<strong>ドキュメント</strong>用のディレクトリ（フォルダ）を作成することができます。</p>
+<h3 id="作業ディレクトリの整理方法">作業ディレクトリの整理方法<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%95%B4%E7%90%86%E6%96%B9%E6%B3%95"></a></h3>
+<p>プロジェクト間で一貫したフォルダ構造を採用することで、作業環境を整理できるだけでなく、将来的にファイルを簡単に検索・管理できるようになります。特に複数のプロジェクトを扱う場合に有効です。一般的には、<strong>スクリプト</strong>用、<strong>データ</strong>用、<strong>ドキュメント</strong>用のディレクトリを作成するとよいでしょう。</p>
 <ul><li>
-<strong>data/</strong>*
-このフォルダは、生データと、特定の分析に必要な中間データセット（
-）を保存するために使用します。 透明性と <a href="https://en.wikipedia.org/wiki/Provenance" class="external-link">出所</a>のために、
-<em>常に</em> 生データのコピーにアクセスできるようにしておき、
-データのクリーンアップと前処理をできるだけプログラム的に（つまり、手作業ではなく
-スクリプトで）行うべきである。 生データ
-、加工データから切り離すのも良いアイデアだ。 例えば、
-<code>data/raw/tree_survey.plot1.txt</code>と<code>...plot2.txt</code>のファイルを、
-<code>scripts/01.preprocess.tree_survey.R</code>スクリプトによって生成された<code>data/processed/tree.survey.csv</code>ファイルとは別に
-。</li>
+<strong><code>data/</code></strong>
+このフォルダには、生データや特定の分析に必要な中間データセットを保存します。透明性と<a href="https://en.wikipedia.org/wiki/Provenance" class="external-link">プロバンス</a>を確保するため、<em>常に</em>生データのコピーをアクセス可能な状態で保持し、可能な限りデータのクリーニングや前処理はプログラム的に行う（手動ではなくスクリプトを使用する）ようにしてください。生データと処理済みデータを分離することも良い習慣です。例えば、<code>data/raw/tree_survey.plot1.txt</code>や<code>...plot2.txt</code>といったファイルは、<code>scripts/01.preprocess.tree_survey.R</code>スクリプトによって生成された<code>data/processed/tree.survey.csv</code>ファイルとは別に管理します。</li>
 <li>
 <strong><code>documents/</code></strong>
-ここは、アウトライン、下書き、
-、その他のテキストを保管する場所になります。</li>
-<li>**scripts/<code>** (または</code>src`)
-この場所には、さまざまな分析やプロット用の R スクリプトを保存し、
-関数用の別フォルダを作成することもできます（詳しくは後述します）。</li>
-</ul><p>あなたのプロジェクトの必要性に応じて、追加のディレクトリやサブディレクトリが必要になるかもしれないが、これらはあなたの作業用
-ディレクトリのバックボーンを形成するはずである。</p>
-<figure style="text-align: center"><img src="../fig/working-directory-structure.png" alt="Example of a working directory structure." width="100%" class="figure mx-auto d-block"><figcaption>
-Example of a working directory structure.
-</figcaption></figure><p>このコースでは、生データを保存するために <code>data/</code>
-フォルダが必要です。 、データを CSV
-ファイルとしてエクスポートする方法を学ぶために <code>data_output/</code>
-フォルダを使用し、図を保存するために <code>fig_output/</code>
-フォルダを使用します。</p>
+ここにはアウトライン、ドラフト、その他のテキストファイルを保存します。</li>
+<li>
+<strong><code>scripts/</code></strong>（または<code>src</code>）
+このフォルダには、各種分析やプロット作成用のRスクリプトを保存します。また、関数用の専用フォルダを設けることもできます（詳細は後述します）。</li>
+</ul><p>プロジェクトの要件に応じて追加のディレクトリやサブディレクトリが必要になる場合もありますが、これらが作業ディレクトリの基本構造となります。</p>
+<figure style="text-align: center"><img src="../fig/working-directory-structure.png" alt="典型的なRStudioプロジェクトにおける作業ディレクトリと各種ディレクトリの構造を示すフロー図" width="100%" class="figure mx-auto d-block"><figcaption>
+作業ディレクトリの構造例
+</figcaption></figure><p>本コースでは、生データを保存するための<code>data/</code>フォルダが必要です。また、CSVファイルとしてデータをエクスポートする方法を学ぶ際には<code>data_output/</code>フォルダを使用し、作成した図を保存するための<code>fig_output/</code>フォルダも用意します。</p>
 <div id="課題プロジェクトのディレクトリ構造を作る" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
