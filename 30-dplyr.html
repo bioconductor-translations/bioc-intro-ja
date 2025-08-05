@@ -245,7 +245,7 @@
         <ul><li><a href="#dplyr%E3%81%A8tidyr%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E6%93%8D%E4%BD%9C"><strong><code>dplyr</code></strong>と<strong><code>tidyr</code></strong>を用いたデータ操作</a></li>
 <li><a href="#tidyverse%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">tidyverseを使ったデータ読み込み</a></li>
 <li><a href="#%E5%88%97%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E8%A1%8C%E3%81%AE%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0">列の選択と行のフィルタリング</a></li>
-<li><a href="#%E3%83%91%E3%82%A4%E3%83%97">パイプ</a></li>
+<li><a href="#%E3%83%91%E3%82%A4%E3%83%97%E6%BC%94%E7%AE%97%E5%AD%90">パイプ演算子</a></li>
 <li><a href="#%E3%83%9F%E3%83%A5%E3%83%BC%E3%83%86%E3%83%BC%E3%83%88">ミューテート</a></li>
 <li><a href="#%E5%88%86%E5%89%B2-%E9%81%A9%E7%94%A8-%E7%B5%90%E5%90%88%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90">分割-適用-結合データ分析</a></li>
 <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%86%8D%E6%A7%8B%E7%AF%89">データの再構築</a></li>
@@ -455,12 +455,9 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 <li>
 <code>count()</code>：離散値の出現回数をカウント</li>
 </ul></section><section><h2 class="section-heading" id="列の選択と行のフィルタリング">列の選択と行のフィルタリング<a class="anchor" aria-label="anchor" href="#%E5%88%97%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E8%A1%8C%E3%81%AE%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0"></a></h2>
-<hr class="half-width"><p>データフレームの列を選択するには <code>select()</code> を使う。
-この関数の最初の引数 はデータフレーム (<code>rna</code>) で、続く
-の引数は保持する列です。 Tibblesは、以前
-で紹介したデータ・フレーム・オブジェクトの動作の一部を微調整している。
-データ構造はデータフレームによく似ている。
-我々の目的にとって、唯一の違いはそれだ：</p>
+<hr class="half-width"><p>データフレームから特定の列を選択するには <code>select()</code>
+関数を使用します。この関数の第1引数には対象のデータフレーム（ここでは
+<code>rna</code>）を指定し、続く引数には保持したい列名を指定します。</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -485,8 +482,7 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 10 Gnb4    GSM2545336 Cerebellum       1071
 # ℹ 32,418 more rows</code></pre>
 </div>
-<p>特定の列を除く*すべての列を選択するには、
-その変数の前に”-“を付けて除外する。</p>
+<p>特定の列を除いたすべての列を選択する場合は、除外したい列名の前に「-」を付けます。</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -514,10 +510,10 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 #   external_synonym &lt;chr&gt;, chromosome_name &lt;chr&gt;, gene_biotype &lt;chr&gt;,
 #   phenotype_description &lt;chr&gt;, hsapiens_homolog_associated_gene_name &lt;chr&gt;</code></pre>
 </div>
-<p>これは <code>rna</code> の中の、 <code>tissue</code> と
-<code>organism</code> 以外のすべての変数を選択する。</p>
-<p>特定の条件に基づいて行を選択するには、<code>filter()</code>
-を使用する：</p>
+<p>これにより、<code>rna</code> データフレームから <code>tissue</code>
+列と <code>organism</code> 列を除いたすべての変数が選択されます。</p>
+<p>特定の条件に基づいて行を選択する場合は <code>filter()</code>
+関数を使用します：</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -574,16 +570,12 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 #   gene_biotype &lt;chr&gt;, phenotype_description &lt;chr&gt;,
 #   hsapiens_homolog_associated_gene_name &lt;chr&gt;</code></pre>
 </div>
-<p>ここで、このデータセットで解析されたマウス
-遺伝子のヒトホモログに興味があるとしよう。 この情報は、
-<code>hsapiens_homolog_associated_gene_name</code> という名前の
-<code>rna</code> tibbleの 最後のカラムにある。
-ここで、このデータセットで解析されたマウス
-遺伝子のヒトホモログに興味があるとしよう。 この情報は、
-<code>hsapiens_homolog_associated_gene_name</code> という名前の
-<code>rna</code> tibbleの 最後のカラムにある。 簡単に視覚化するために、
-、2つの列<code>gene</code>と
-<code>hsapiens_homolog_associated_gene_name</code>だけを含む新しいテーブルを作成する。</p>
+<p>次に、このデータセットで解析されたマウス遺伝子のヒト相同遺伝子について調べたいとします。この情報は
+<code>rna</code> データフレームの最後の列
+<code>hsapiens_homolog_associated_gene_name</code>
+に格納されています。この情報を視覚化しやすくするため、<code>gene</code>
+列と <code>hsapiens_homolog_associated_gene_name</code>
+列のみを含む新しいテーブルを作成します。</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -609,9 +601,10 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 10 Gnb4    GNB4
 # ℹ 32,418 more rows</code></pre>
 </div>
-<p>マウス遺伝子の中にはヒトにホモログがないものもある。 これらは、
-<code>filter()</code> と、 何かが <code>NA</code> かどうかを判定する
-<code>is.na()</code> 関数を使って取得することができる。</p>
+<p>マウス遺伝子の中にはヒト相同遺伝子が存在しないものもあります。これらの遺伝子は
+<code>filter()</code> 関数と <code>is.na()</code>
+関数を使用して取得できます。<code>is.na()</code> 関数は値が
+<code>NA</code> かどうかを判定します。</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -636,10 +629,10 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 10 Ebp      &lt;NA&gt;
 # ℹ 4,280 more rows</code></pre>
 </div>
-<p>ヒトのホモログを持つマウス遺伝子だけを保持したい場合、
-、結果を否定する”!“記号を挿入することができる。したがって、
-、hsapiens_homolog_associated_gene_name <em>is not</em> an
-<code>NA</code> となるすべての行を求めることになる。</p>
+<p>ヒト相同遺伝子が存在するマウス遺伝子のみを保持したい場合は、結果を否定する
+<code>!</code>
+記号を使用します。これにより、<code>hsapiens_homolog_associated_gene_name</code>
+が <code>NA</code> でないすべての行を選択できます。</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -664,13 +657,9 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 10 Gnb4    GNB4
 # ℹ 28,128 more rows</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="パイプ">パイプ<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97"></a></h2>
-<hr class="half-width"><p>選択とフィルタを同時に行いたい場合は？ これを行うには、
-、中間ステップ、ネストされた関数、パイプの3つの方法がある。
-これを行うには、
-、中間ステップ、ネストされた関数、パイプの3つの方法がある。</p>
-<p>中間ステップでは、一時的なデータフレームを作成し、
-、次の関数の入力として使用する：</p>
+</section><section><h2 class="section-heading" id="パイプ演算子">パイプ演算子<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97%E6%BC%94%E7%AE%97%E5%AD%90"></a></h2>
+<hr class="half-width"><p>列選択とフィルタリングを同時に行いたい場合、以下の3つの方法があります：中間ステップを使用する方法、関数をネストする方法、またはパイプ演算子を使用する方法です。</p>
+<p>中間ステップを使用する場合、一時的なデータフレームを作成してそれを次の関数の入力として渡します。例えば：</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -697,30 +686,14 @@ Carpentriesの「生態学者向けRによるデータ分析と可視化」講�
 10 Gnb4    GSM2545340 Cerebellum       1355
 # ℹ 14,730 more rows</code></pre>
 </div>
-<p>これは読みやすいが、
-、個別に名前を付けなければならない中間オブジェクトがたくさんあるため、ワークスペースが散らかる可能性がある。
-複数の 、それを把握するのは難しいかもしれない。 複数の
-、それを把握するのは難しいかもしれない。</p>
-<p>、関数を入れ子にすることもできる：</p>
+<p>この方法は可読性は高いですが、中間オブジェクトが多数生成されるため、ワークスペースが乱雑になりがちです。特に複数のステップがある場合、管理が難しくなることがあります。</p>
+<p>関数をネストする方法もあります：</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna3</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="fu">filter</span><span class="op">(</span><span class="va">rna</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">"Male"</span>, <span class="va">gene</span>, <span class="va">sample</span>, <span class="va">tissue</span>, <span class="va">expression</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `filter()`:
-ℹ In argument: `gene`.
-Caused by error:
-! `..2` must be a logical vector, not a character vector.</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb23">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna3</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">rna3</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="fu">filter</span><span class="op">(</span><span class="va">rna</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">"Male"</span><span class="op">)</span>, <span class="va">gene</span>, <span class="va">sample</span>, <span class="va">tissue</span>, <span class="va">expression</span><span class="op">)</span></span>
+<span><span class="va">rna3</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -740,28 +713,25 @@ Caused by error:
 10 Gnb4    GSM2545340 Cerebellum       1355
 # ℹ 14,730 more rows</code></pre>
 </div>
-<p>これは便利だが、
-Rは式を内側から外側へと評価する（この場合、フィルタリングしてから選択する）ため、関数が入れ子になりすぎると読みにくくなることがある。</p>
-<p>最後のオプションである_パイプ_は、Rに最近追加されたものである。パイプを使うと、ある関数の出力を
-、次の関数に直接送ることができる。これは、同じデータセットに対して多くの処理を行う必要がある場合に便利である
-。</p>
-<p>ミューテート R のパイプは <code>%&gt;%</code>
-(<strong><code>magrittr</code></strong> パッケージで利用可能) または
-<code>|&gt;</code> (ベース R で利用可能) のように見えます。
-RStudioを使用する場合は、
-PCをお持ちの場合は<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>、
-Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイプを
-。</p>
-<p>上記のコードでは、パイプを使って <code>rna</code> データセットをまず
-<code>filter()</code> を通して <code>sex</code> が Male
-である行を残し、次に <code>select()</code> を通して <code>gene</code>,
-<code>sample</code>, <code>tissue</code>, <code>expression</code>columns
-だけを残すように送っている。</p>
-<p>パイプ <code>%&gt;%</code> はその左側にあるオブジェクトを受け取り、
-その右側にある関数の最初の引数として直接渡します。 <code>filter()</code>
-と <code>select()</code>
-関数の引数として明示的にデータフレームを含める必要はもうありません。</p>
-<div class="codewrapper sourceCode" id="cb25">
+<p>この方法は便利ですが、関数がネストしすぎると読みにくくなる可能性があります。Rは式を内側から評価するため（この場合、まずフィルタリングを行い、その後選択を行います）、複雑な処理になると理解が難しくなる場合があります。</p>
+<p>最後の選択肢である「パイプ演算子」はRに最近追加された機能です。パイプ演算子を使用すると、ある関数の出力を直接次の関数の入力として渡すことができ、同じデータセットに対して複数の処理を行う場合に特に便利です。</p>
+<p>Rでパイプ演算子を使用するには <code>%&gt;%</code>
+記号を使用します（<strong><code>magrittr</code></strong>
+パッケージで利用可能）。また <code>|&gt;</code>
+記号も使用できます（基本Rで利用可能）。RStudioを使用している場合、PCでは<kbd>Ctrl</kbd>
++ <kbd>Shift</kbd> + <kbd>M</kbd>、Macでは<kbd>Cmd</kbd> +
+<kbd>Shift</kbd> + <kbd>M</kbd> でパイプ演算子を入力できます。</p>
+<p>上記のコードでは、パイプ演算子を使用して <code>rna</code>
+データセットを最初に <code>filter()</code> 関数で <code>sex</code> が
+“Male” の行のみを保持するようにフィルタリングし、次に
+<code>select()</code> 関数で <code>gene</code>, <code>sample</code>,
+<code>tissue</code>, <code>expression</code>
+列のみを保持するように選択しています。</p>
+<p><code>|&gt;</code>
+パイプ演算子は左側のオブジェクトを右側の関数の第1引数として直接渡すため、<code>filter()</code>
+や <code>select()</code>
+関数にデータフレームを明示的に引数として指定する必要がなくなります。</p>
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -787,19 +757,15 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
 10 Gnb4    GSM2545340 Cerebellum       1355
 # ℹ 14,730 more rows</code></pre>
 </div>
-<p>パイプを “then”のように読むことが役に立つと思う人もいるだろう。
-パイプを “then”のように読むことが役に立つと思う人もいるだろう。 例えば、
-上の例では、データフレーム <code>rna</code>
-を取得し、<code>sex=="Male"</code> の行を で
-<code>フィルター</code>し、<code>gene</code>, <code>sample</code>,
-<code>tissue</code>, <code>expression</code> の列を <code>選択</code>
-した。</p>
-<p>dplyr\`**関数はそれ自体ではやや単純だが、
-、パイプを使った線形ワークフローに組み合わせることで、
-、データフレームのより複雑な操作を行うことができる。</p>
-<p>この小さいバージョンのデータで新しいオブジェクトを作りたい場合、
-、新しい名前を割り当てることができる：</p>
-<div class="codewrapper sourceCode" id="cb27">
+<p>パイプ演算子を「その後」という意味で読むと理解しやすいかもしれません。例えば上記の例では、<code>rna</code>
+データフレームを最初に取得し、<em>その後</em> <code>sex == "Male"</code>
+の行をフィルタリングし、<em>その後</em> <code>gene</code>,
+<code>sample</code>, <code>tissue</code>, <code>expression</code>
+列を選択しています。</p>
+<p><strong><code>dplyr</code></strong>
+関数自体はシンプルな機能ですが、パイプ演算子を使ってこれらの関数を線形的なワークフローに組み合わせることで、より複雑なデータフレーム操作が可能になります。</p>
+<p>この小さなサイズのデータセットから新しいオブジェクトを作成したい場合は、以下のように新しい名前を割り当てられます：</p>
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -848,9 +814,9 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -887,7 +853,7 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
 <code>mutate()</code> を使う。 これには <code>mutate()</code>
 を使う。</p>
 <p>時間単位の新しい列を作成する：</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -914,7 +880,7 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
 # ℹ 32,418 more rows</code></pre>
 </div>
 <p>また、<code>mutate()</code>の同じ呼び出しの中で、最初の新しいカラムに基づいて2番目の新しいカラムを作成することもできる：</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -972,9 +938,9 @@ expressionが5より高い遺伝子のみを含んでいなければならない
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1015,7 +981,7 @@ _split-apply-combine_パラダイムを使ってアプローチすることが�
 関数を使って、これを非常に簡単にしている。
 **dplyr<code>\*\* は</code>group_by()`
 関数を使って、これを非常に簡単にしている。</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1048,7 +1014,7 @@ _split-apply-combine_パラダイムを使ってアプローチすることが�
 <p>group_by()<code>関数はデータ処理を行わず、 データをサブセットにグループ化する。上の例では、 32428オブザベーションの最初の</code>tibble<code>は、1474グループに</code>gene\`
 変数に基づいて分割される。</p>
 <p>同様に、ティブルをサンプルごとにグループ分けすることもできる：</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1090,7 +1056,7 @@ _split-apply-combine_パラダイムを使ってアプローチすることが�
 は、 <strong>カテゴリー</strong> 変数を含むカラム名を引数として取り、
 統計のサマリーを計算します。
 そこで、遺伝子ごとの平均「発現」を計算する：</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1117,7 +1083,7 @@ _split-apply-combine_パラダイムを使ってアプローチすることが�
 # ℹ 1,464 more rows</code></pre>
 </div>
 <p>また、各サンプルの全遺伝子の平均発現量を計算することもできる：</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1144,7 +1110,7 @@ _split-apply-combine_パラダイムを使ってアプローチすることが�
 # ℹ 12 more rows</code></pre>
 </div>
 <p>しかし、複数の列でグループ化することもできる：</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1183,7 +1149,7 @@ the `.groups` argument.</code></pre>
 列を追加することができる：
 例えば、遺伝子別、条件別の「発現」の中央値を示す
 列を追加することができる：</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1236,9 +1202,9 @@ the `.groups` argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1269,7 +1235,7 @@ the `.groups` argument.</code></pre>
 このタスクのために、**dplyr<code>** は</code>count()` を提供している。
 例えば、感染したサンプルと感染していないサンプルそれぞれについて、
 、データの行数をカウントしたい場合、次のようにする：</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1288,7 +1254,7 @@ the `.groups` argument.</code></pre>
 <p>count()<code>関数は、すでに見たことのある、変数でグループ化し、そのグループ内のオブザベーションの数をカウントして要約する、ということの省略記法です。 言い換えれば、</code>rna
 %&gt;% count(infection)`は次のものと等価である：
 言い換えれば、<code>rna %&gt;% count(infection)\</code>は次のものと等価である：</p>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1312,7 +1278,7 @@ the `.groups` argument.</code></pre>
 、行数/観察数を数えている。
 もし、<code>感染</code>と<code>時間</code>のような_要因の組み合わせ_をカウントしたいのであれば、
 、<code>count()</code>の引数として1つ目と2つ目の要因を指定することになる：</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1330,7 +1296,7 @@ the `.groups` argument.</code></pre>
 3 NonInfected     0 10318</code></pre>
 </div>
 <p>これと等価である：</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1358,7 +1324,7 @@ the `.groups` argument.</code></pre>
 <p>比較を容易にするために、結果を並べ替えると便利なことがある。
 arrange()`を使って表を並べ替えることができる。
 例えば、上の表を時間順に並べたいとする：</p>
-<div class="codewrapper sourceCode" id="cb62">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1377,7 +1343,7 @@ arrange()`を使って表を並べ替えることができる。
 3 InfluenzaA      8 10318</code></pre>
 </div>
 <p>あるいは回数で：</p>
-<div class="codewrapper sourceCode" id="cb64">
+<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1396,7 +1362,7 @@ arrange()`を使って表を並べ替えることができる。
 3 InfluenzaA      4 11792</code></pre>
 </div>
 <p>降順にソートするには、<code>desc()</code>関数を追加する必要がある：</p>
-<div class="codewrapper sourceCode" id="cb66">
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1438,9 +1404,9 @@ arrange()`を使って表を並べ替えることができる。
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb68">
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1466,7 +1432,7 @@ arrange()`を使って表を並べ替えることができる。
 10 GSM2545345  1474
 # ℹ 12 more rows</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1494,7 +1460,7 @@ arrange()`を使って表を並べ替えることができる。
 10 GSM2545349   2758006
 # ℹ 12 more rows</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb72">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1524,7 +1490,7 @@ arrange()`を使って表を並べ替えることができる。
 12 transcribed_unitary_pseudogene         1
 13 transcribed_unprocessed_pseudogene     1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb74">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1570,7 +1536,7 @@ ENTREZ_ID, product, …)。 その他の列はすべて、
 （生物、年齢、性別、…）のいずれかを記述する変数に対応している。
 または遺伝子(gene_biotype, ENTREZ_ID, product, …)。
 遺伝子やサンプルによって変化しない変数は、すべての行で同じ値を持つ。</p>
-<div class="codewrapper sourceCode" id="cb77">
+<div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1648,7 +1614,7 @@ ENTREZ_ID, product, …)。 その他の列はすべて、
 <h3 id="より広いフォーマットへのデータのピボット">より広いフォーマットへのデータのピボット<a class="anchor" aria-label="anchor" href="#%E3%82%88%E3%82%8A%E5%BA%83%E3%81%84%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%81%B8%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%94%E3%83%9C%E3%83%83%E3%83%88"></a></h3>
 <p>rna<code>の最初の3列を選択し、</code>pivot_wider()\`
 を使ってデータをワイドフォーマットに変換してみよう。</p>
-<div class="codewrapper sourceCode" id="cb80">
+<div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1681,7 +1647,7 @@ ENTREZ_ID, product, …)。 その他の列はすべて、
 <li>value_from\`: 新しいカラム を埋める値。</li>
 </ol><figure style="text-align: center"><img src="fig/pivot_wider.png" alt="Wide pivot of the `rna` data." class="figure mx-auto d-block"><figcaption>
 Wide pivot of the <code>rna</code> data.
-</figcaption></figure><div class="codewrapper sourceCode" id="cb82">
+</figcaption></figure><div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1720,7 +1686,7 @@ Wide pivot of the <code>rna</code> data.
 何らかの理由で、あるサンプルで
 、いくつかの遺伝子の発現値が欠落していたとしよう。
 以下の架空の例では、遺伝子Cyp2d22の発現値はGSM2545338サンプルの 。</p>
-<div class="codewrapper sourceCode" id="cb84">
+<div class="codewrapper sourceCode" id="cb82">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1750,7 +1716,7 @@ Wide pivot of the <code>rna</code> data.
 の値が見つからない場合に <code>NA</code> を追加する。 これは、
 <code>pivot_wider()</code> 関数の <code>values_fill</code>
 引数でパラメータ化できる。 summarise()\`関数</p>
-<div class="codewrapper sourceCode" id="cb86">
+<div class="codewrapper sourceCode" id="cb84">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1768,7 +1734,7 @@ Wide pivot of the <code>rna</code> data.
 2 Apod         36194      10347       9173
 3 Cyp2d22         NA         NA       1603</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb88">
+<div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1809,7 +1775,7 @@ create a key called <code>sample</code> and value called
 the key variable. Here we drop <code>gene</code> column with a minus
 sign.</p>
 <p>Notice how the new variable names are to be quoted here.</p>
-<div class="codewrapper sourceCode" id="cb90">
+<div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1847,7 +1813,7 @@ sign.</p>
 のサンプル名をすべてリストアップすることなく取得することができる！
 もう一つの可能性は <code>:</code> 演算子を使うことである！
 もう一つの可能性は <code>:</code> 演算子を使うことである！</p>
-<div class="codewrapper sourceCode" id="cb92">
+<div class="codewrapper sourceCode" id="cb90">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1874,7 +1840,7 @@ sign.</p>
 10 Asl   GSM2545345        597
 # ℹ 32,418 more rows</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb94">
+<div class="codewrapper sourceCode" id="cb92">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1904,7 +1870,7 @@ sign.</p>
 <p>ワイドフォーマットで欠損値があった場合、新しいロングフォーマットでは<code>NA</code>が
 。</p>
 <p>前回の欠損値を含む架空のティブルを思い出してほしい：</p>
-<div class="codewrapper sourceCode" id="cb96">
+<div class="codewrapper sourceCode" id="cb94">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1924,7 +1890,7 @@ sign.</p>
 6 Apod    GSM2545338       9173
 7 Cyp2d22 GSM2545338       1603</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb98">
+<div class="codewrapper sourceCode" id="cb96">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1943,7 +1909,7 @@ sign.</p>
 2 Apod         36194      10347       9173
 3 Cyp2d22         NA         NA       1603</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb100">
+<div class="codewrapper sourceCode" id="cb98">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1994,9 +1960,9 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb102">
+<div class="codewrapper sourceCode" id="cb100">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2025,7 +1991,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
 # ℹ 11 more variables: `24` &lt;dbl&gt;, `8` &lt;dbl&gt;, `7` &lt;dbl&gt;, `1` &lt;dbl&gt;, `16` &lt;dbl&gt;,
 #   `21` &lt;dbl&gt;, `4` &lt;dbl&gt;, `2` &lt;dbl&gt;, `20` &lt;dbl&gt;, `12` &lt;dbl&gt;, `19` &lt;dbl&gt;</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb104">
+<div class="codewrapper sourceCode" id="cb102">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2076,11 +2042,11 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>まず、
 男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう…</p>
-<div class="codewrapper sourceCode" id="cb106">
+<div class="codewrapper sourceCode" id="cb104">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2108,7 +2074,7 @@ argument.</code></pre>
 4 Male   Y               2117.</code></pre>
 </div>
 <p>そして、表をワイドフォーマットにピボットする</p>
-<div class="codewrapper sourceCode" id="cb109">
+<div class="codewrapper sourceCode" id="cb107">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2125,7 +2091,7 @@ argument.</code></pre>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'sex'. You can override using the `.groups`
 argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb111">
+<div class="codewrapper sourceCode" id="cb109">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2143,7 +2109,7 @@ argument.</code></pre>
 <p>各行が一意な <code>chromosome_name</code> と <code>gender</code>
 の組み合わせになるように、このデータフレームを
 <code>pivot_longer()</code> で変換する。</p>
-<div class="codewrapper sourceCode" id="cb113">
+<div class="codewrapper sourceCode" id="cb111">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2187,10 +2153,10 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
-<div class="codewrapper sourceCode" id="cb115">
+<div class="codewrapper sourceCode" id="cb113">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2224,7 +2190,7 @@ argument.</code></pre>
 # ℹ 4,412 more rows</code></pre>
 </div>
 <p>pivot_wider()関数を使用する前に</p>
-<div class="codewrapper sourceCode" id="cb118">
+<div class="codewrapper sourceCode" id="cb116">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2240,7 +2206,7 @@ argument.</code></pre>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'gene'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb120">
+<div class="codewrapper sourceCode" id="cb118">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2270,7 +2236,7 @@ argument.</code></pre>
 タイムポイントに対応するカラムを選択したい場合、
 、カラム名を直接使うことはできない。 列4を選択するとどうなるか？
 列4を選択するとどうなるか？</p>
-<div class="codewrapper sourceCode" id="cb122">
+<div class="codewrapper sourceCode" id="cb120">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2308,7 +2274,7 @@ argument.</code></pre>
 </div>
 <p>タイムポイント4を選択するには、“˶\`”
 というバックスティックを付けたカラム名を引用しなければならない。</p>
-<div class="codewrapper sourceCode" id="cb125">
+<div class="codewrapper sourceCode" id="cb123">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2345,7 +2311,7 @@ argument.</code></pre>
 # ℹ 1,464 more rows</code></pre>
 </div>
 <p>、数字で始まらない名前を選択する：</p>
-<div class="codewrapper sourceCode" id="cb128">
+<div class="codewrapper sourceCode" id="cb126">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2409,10 +2375,10 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>rna_time tibbleから開始する：</p>
-<div class="codewrapper sourceCode" id="cb131">
+<div class="codewrapper sourceCode" id="cb129">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2438,7 +2404,7 @@ argument.</code></pre>
 # ℹ 1,464 more rows</code></pre>
 </div>
 <p>フォールドチェンジを計算する：</p>
-<div class="codewrapper sourceCode" id="cb133">
+<div class="codewrapper sourceCode" id="cb131">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2465,7 +2431,7 @@ argument.</code></pre>
 # ℹ 1,464 more rows</code></pre>
 </div>
 <p>そして、pivot_longer()関数を使用する：</p>
-<div class="codewrapper sourceCode" id="cb135">
+<div class="codewrapper sourceCode" id="cb133">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2518,7 +2484,7 @@ argument.</code></pre>
 、テーブル結合に関する簡単な概要も提供している。</p>
 <p>、元の<code>rna</code>テーブルをサブセットして作成し、
 、3つのカラムと10行だけを残す。</p>
-<div class="codewrapper sourceCode" id="cb137">
+<div class="codewrapper sourceCode" id="cb135">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2551,7 +2517,7 @@ gene_descriptionの2つのカラムがある。 <a href="https://carpentries-inc
 annot1.csv</a>
 リンクをクリックして<code>data/</code>フォルダに移動するか、
 以下のRコードを使って直接フォルダにダウンロードすることができる。</p>
-<div class="codewrapper sourceCode" id="cb139">
+<div class="codewrapper sourceCode" id="cb137">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2590,7 +2556,7 @@ annot1.csv</a>
 この場合、<code>gene</code>は共通の 。 このような変数をキーと呼ぶ。
 キーは、
 オブザベーションを異なるテーブル間でマッチさせるために使用される。</p>
-<div class="codewrapper sourceCode" id="cb141">
+<div class="codewrapper sourceCode" id="cb139">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2623,7 +2589,7 @@ annot1.csv</a>
 この場合も、 <a href="https://carpentries-incubator.github.io/bioc-intro/data/annot2.csv" class="external-link">download
 annot2.csv</a>
 、自分で<code>data/\</code>に移動するか、以下のRコードを使う。</p>
-<div class="codewrapper sourceCode" id="cb144">
+<div class="codewrapper sourceCode" id="cb142">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2655,7 +2621,7 @@ annot2.csv</a>
 変数を手動で設定することができる。 これらの変数は、<code>rna_mini</code>
 と <code>annot2</code> テーブルを使用して以下に示すように、
 <code>by</code> 引数を使用して設定することができる。</p>
-<div class="codewrapper sourceCode" id="cb146">
+<div class="codewrapper sourceCode" id="cb144">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2708,9 +2674,9 @@ full_join()<code>関数を使用して、テーブル</code>rna_mini<code>と</c
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb148">
+<div class="codewrapper sourceCode" id="cb146">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2766,7 +2732,7 @@ data<code>フォルダーには、 、変更されていない生のデータだ
 ディレクトリの内容を生成するので、そこに含まれるファイルが削除されても、
 再生成することができる。</p>
 <p>write_csv()\`を使用して、以前に作成したrna_wideテーブルを保存しよう。</p>
-<div class="codewrapper sourceCode" id="cb150">
+<div class="codewrapper sourceCode" id="cb148">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
