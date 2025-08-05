@@ -252,16 +252,16 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%AF%E8%A6%96%E5%8C%96">データの可視化</a></li>
-<li><a href="#ggplot2%E3%81%AB%E3%82%88%E3%82%8B%E3%83%97%E3%83%AD%E3%83%83%E3%83%88">ggplot2`によるプロット</a></li>
-<li><a href="#%E5%8F%8D%E5%BE%A9%E7%9A%84%E3%81%AB%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B">反復的にプロットを構築する</a></li>
-<li><a href="#%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%83%E3%83%88">ボックスプロット</a></li>
-<li><a href="#%E7%B7%9A%E3%83%97%E3%83%AD%E3%83%83%E3%83%88">線プロット</a></li>
-<li><a href="#%E3%83%95%E3%82%A1%E3%82%BB%E3%83%83%E3%83%88">ファセット</a></li>
-<li><a href="#ggplot2%E3%83%86%E3%83%BC%E3%83%9E">ggplot2`テーマ</a></li>
+<li><a href="#ggplot2%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90"><code>ggplot2</code>を使ったプロット作成</a></li>
+<li><a href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%82%92%E6%AE%B5%E9%9A%8E%E7%9A%84%E3%81%AB%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">プロットを段階的に構築する方法</a></li>
+<li><a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3">箱ひげ図</a></li>
+<li><a href="#%E6%8A%98%E3%82%8C%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95">折れ線グラフ</a></li>
+<li><a href="#%E9%9D%A2%E5%88%86%E5%89%B2%E8%A1%A8%E7%A4%BA">面分割表示</a></li>
+<li><a href="#ggplot2%E3%83%86%E3%83%BC%E3%83%9E"><code>ggplot2</code>テーマ</a></li>
 <li><a href="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA">カスタマイズ</a></li>
-<li><a href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E6%A7%8B%E6%88%90">プロットの構成</a></li>
-<li><a href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88">プロットのエクスポート</a></li>
-<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%A8%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8">その他のビジュアライゼーション用パッケージ</a></li>
+<li><a href="#%E8%A4%87%E6%95%B0%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">複数プロットの配置方法</a></li>
+<li><a href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95">プロットのエクスポート方法</a></li>
+<li><a href="#%E5%8F%AF%E8%A6%96%E5%8C%96%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8">可視化のためのその他のパッケージ</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -335,7 +335,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>データの可視化</h1>
-        <p>Last updated on 2025-07-01 |
+        <p>Last updated on 2025-08-05 |
 
         <a href="https://github.com/carpentries-incubator/bioc-intro/edit/main/episodes/40-visualization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -362,11 +362,11 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>ggplotを使って散布図、箱ひげ図、折れ線グラフなどを作成する。</li>
-<li>ユニバーサルプロット設定を行う。</li>
-<li>ファセットとは何かを説明し、ggplotでファセットを適用する。</li>
-<li>既存のggplotプロットの美学（軸ラベルや色を含む）を修正する。</li>
-<li>データフレーム内のデータから複雑でカスタマイズされたプロットを作成。</li>
+<ul><li>ggplotを使用して散布図、箱ひげ図、折れ線グラフなどを作成できる</li>
+<li>プロットの共通設定を統一的に設定できる</li>
+<li>ファセット処理の概念を理解し、ggplotで適切に適用できる</li>
+<li>既存のggplotプロットの外観要素（軸ラベルや色設定など）を変更可能である</li>
+<li>データフレーム内のデータから、複雑でカスタマイズ性の高いプロットを構築できる</li>
 </ul></div>
 </div>
 </div>
@@ -377,77 +377,60 @@
 in R for Ecologists_レッスンに基づいています。</p>
 </blockquote>
 <section><h2 class="section-heading" id="データの可視化">データの可視化<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%AF%E8%A6%96%E5%8C%96"></a></h2>
-<hr class="half-width"><p>必要なパッケージをロードすることから始める。
-**ggplot2<code>**は、 **tidyverse</code>**パッケージに含まれています。</p>
+<hr class="half-width"><p>まず必要なパッケージを読み込みます。<strong><code>ggplot2</code></strong>は<strong><code>tidyverse</code></strong>パッケージに含まれています。</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>ワークスペースにまだない場合は、前回の
-レッスンで保存したデータをロードします。</p>
+<p>まだワークスペースに読み込まれていない場合は、前回のレッスンで保存したデータを読み込みます。</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rna</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"data/rnaseq.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Data Visualization Cheat Sheet](<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link uri">https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf</a>)
-は <code>ggplot2</code> の基本からより高度な機能までをカバーし、
-パッケージで利用可能な多くのデータ表現
-の概要を理解するためのリマインダとしてだけでなく、手助けになるでしょう。
-Thomas Lin Pedersen氏による以下のビデオ チュートリアル（<a href="https://www.youtube.com/watch?v=h29g21z0a68" class="external-link">パート1</a>と <a href="https://www.youtube.com/watch?v=0m4yywqNPVY" class="external-link">2</a>）
-も非常に参考になる。</p>
-</section><section><h2 class="section-heading" id="ggplot2によるプロット">ggplot2`によるプロット<a class="anchor" aria-label="anchor" href="#ggplot2%E3%81%AB%E3%82%88%E3%82%8B%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"></a></h2>
-<hr class="half-width"><p>ggplot2<code>は、データフレーム内のデータから複雑な プロットを簡単に作成できるプロットパッケージである。 どの変数をプロットするか、どのように表示するか、 、一般的なビジュアル・プロパティを指定するための、よりプログラム的な 。</code>ggplot2`を支える理論的基盤は、<em>Grammar
-of Graphics</em> (<span class="citation">@Wilkinson:2005</span>)である。
-この
-アプローチを使用すると、基礎となるデータが変更された場合、または棒グラフから散布図に変更することを決めた場合に
-、最小限の変更で済む。 これは、
-、最小限の調整で出版品質のプロットを作成するのに役立ちます
-、微調整。</p>
-<p>ggplot2<code>に関する本（@ggplot2book）があり、 。 第3版は現在準備中で、 [オンラインで自由に利用できる](https://ggplot2-book.org/)。  の</code>ggplot2`
-ウェブページ(<a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>)に十分なドキュメントがあります。</p>
-<p>ggplot2<code>の関数は、'long'形式のデータ、つまり、 すべての次元を表す列と、すべてのオブザベーションを表す行を持つ。 よく構造化されたデータ 、</code>ggplot2`で図を作成する時間を大幅に節約できる。</p>
-<p>ggplotグラフィックスは、新しい要素を追加することによって段階的に構築される。
-この方法で レイヤーを追加すると、プロットの広範な柔軟性と
-カスタマイズが可能になる。</p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link">データ可視化チートシート</a>では、<code>ggplot2</code>の基本機能から高度な使い方までを網羅しており、参考資料としてだけでなく、パッケージで利用可能な多様なデータ表現方法を把握するのにも役立ちます。Thomas
+Lin Pedersen氏による以下の動画チュートリアル（<a href="https://www.youtube.com/watch?v=h29g21z0a68" class="external-link">パート1</a>および<a href="https://www.youtube.com/watch?v=0m4yywqNPVY" class="external-link">パート2</a>）も非常に参考になります。</p>
+</section><section><h2 class="section-heading" id="ggplot2を使ったプロット作成">
+<code>ggplot2</code>を使ったプロット作成<a class="anchor" aria-label="anchor" href="#ggplot2%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90"></a></h2>
+<hr class="half-width"><p><code>ggplot2</code>はデータフレーム内のデータから複雑なプロットを簡単に作成できる描画パッケージです。変数の指定方法、表示方法、一般的な視覚的特性など、よりプログラム的なインターフェースを提供します。<code>ggplot2</code>を支える理論的基盤は<em>グラフィックスの文法</em>（<span class="citation">@Wilkinson:2005</span>）です。このアプローチを採用すれば、基礎データが変更されたり、棒グラフから散布図に変更したりする場合でも、最小限の修正で済みます。これにより、調整や微調整を最小限に抑えつつ、出版物に使用できる品質のプロットを作成できます。</p>
+<p><code>ggplot2</code>に関する書籍（<span class="citation">@ggplot2book</span>）も出版されていますが、内容は古めです。現在第3版が準備中で、<a href="https://ggplot2-book.org/" class="external-link">無料でオンライン公開される予定</a>です。<code>ggplot2</code>の公式ウェブサイト（<a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>）には充実したドキュメントが用意されています。</p>
+<p><code>ggplot2</code>の関数は、データが「長形式」（各次元ごとに1列、各観測値ごとに1行）になっている場合に最適に動作します。適切に構造化されたデータを用意しておけば、<code>ggplot2</code>で図を作成する際に大幅な時間節約になります。</p>
+<p>ggplotのグラフィックスは、新しい要素を段階的に追加することで構築されます。このようにレイヤーを追加していく方法により、プロットの表現に非常に柔軟性とカスタマイズ性が生まれます。</p>
 <blockquote>
-<p>Grammar of
-Graphicsの背後にある考え方は、同じ3つのコンポーネントからすべての
-グラフを構築できるということである：(1)データセット、(2)座標系、
-、(3)ジオム、つまりデータ点を表す視覚的マーク <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> である。</p>
+<p>グラフィックスの文法の背後にある考え方は、あらゆるグラフを以下の3つの基本要素から構築できるということです：(1)
+データセット、(2) 座標系、(3)
+ジオメトリ（データポイントを表現する視覚的マーク）<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </blockquote>
-<p>ggplotを構築するために、
-、さまざまなタイプのプロットに使用できる以下の基本テンプレートを使用する：</p>
-<pre><code>ggplot(data =&lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) +&lt;GEOM_FUNCTION&gt;()</code></pre>
-<ul><li>ggplot()<code>関数を使用し、</code>data`引数を使用して特定の<strong>data
-frame</strong>にプロットをバインドする。</li>
+<p>ggplotを構築するには、以下の基本的なテンプレートを使用します。これはさまざまな種類のプロットに適用できる汎用的な形式です：</p>
+<pre><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) +  &lt;GEOM_FUNCTION&gt;()</code></pre>
+<ul><li>
+<code>ggplot()</code>関数を使用し、<code>data</code>引数で特定の<strong>データフレーム</strong>にプロットを結合します</li>
 </ul><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span><span class="op">)</span></span></code></pre>
 </div>
-<ul><li>(<code>aes</code>)関数を使用して)<strong>マッピング</strong>を定義する。
-、プロットする変数を選択し、 、x/yの位置や、
-、サイズ、形、色などの特徴として、グラフでどのように表示するかを指定する。</li>
+<ul><li>
+<strong>マッピング</strong>を定義します（<code>aes</code>関数を使用して、プロットする変数を選択し、グラフ内での表示方法を指定します。例えばx/y座標、サイズ、形状、色などの特性として表示します）</li>
 </ul><div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<ul><li>追加 ‘<strong>geoms</strong>’ - ジオメトリ、つまりプロット内の
-データのグラフ表現（点、線、棒）。 ggplot2`は多くの
-、様々なジオムを提供している：</li>
-</ul><pre><code>* 散布図やドットプロットなどには `geom_point()` を使用する。
-*
-* `geom_boxplot()` ボックスプロット！
-* トレンドライン、時系列など。</code></pre>
-<p>プロットにgeom(etry)を追加するには <code>+</code> 演算子を使います。
-<code>geom_histogram()</code> をまず使ってみよう：</p>
+<ul><li>
+<p>’<strong>ジオメトリ</strong>’を追加します -
+プロット内のデータの幾何学的表現（点、線、棒など）。<code>ggplot2</code>には多くの異なるジオメトリが用意されており、今日は特に一般的な以下のものを使用します：</p>
+<pre><code>* `geom_point()` 散布図、ドットプロットなどに使用
+* `geom_histogram()` ヒストグラム作成に使用
+* `geom_boxplot()` ボックスプロット作成に使用
+* `geom_line()` トレンドライン、時系列データなどに使用</code></pre>
+</li>
+</ul><p>プロットにジオメトリを追加するには<code>+</code>演算子を使用します。まずは<code>geom_histogram()</code>を使ってみましょう：</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -460,36 +443,35 @@ frame</strong>にプロットをバインドする。</li>
 </h3>
 <pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-first-ggplot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>ggplot2<code>パッケージの</code>+<code>は特に便利で、 、既存の</code>ggplot`オブジェクトを修正することができる。
-つまり、 、プロット・テンプレートを簡単に設定し、
-、さまざまなタイプのプロットを便利に調べることができる：</p>
+<figure><img src="fig/40-visualization-rendered-first-ggplot-1.png" alt="ggplot()とgeom_histogram()で生成したexpressionデータのデフォルトヒストグラム" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>ggplot2</code>パッケージの<code>+</code>演算子は特に便利で、既存の<code>ggplot</code>オブジェクトを変更できます。つまり、プロットテンプレートを簡単に設定し、さまざまな種類のプロットを便利に探索できるため、上記のプロットは以下のようなコードでも生成可能です：</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Assign plot to a variable</span></span>
+<code class="sourceCode R"><span><span class="co"># プロットを変数に割り当てる</span></span>
 <span><span class="va">rna_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
 <span>                   mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Draw the plot</span></span>
+<span><span class="co"># プロットを描画する</span></span>
 <span><span class="va">rna_plot</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="チャレンジ" class="callout challenge">
+<div id="課題" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>ヒストグラムを描画するときに表示される自動メッセージにお気づきでしょう：</p>
+<p>ヒストグラムを描画する際に表示される自動メッセージにお気づきでしょうか？</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
-<p>geom_histogram()<code>の引数</code>bins<code>または</code>binwidth`
-を変更して、 ビンの数または幅を変更する。</p>
+<p><code>geom_histogram()</code> の <code>bins</code> または
+<code>binwidth</code>
+引数を変更することで、ビンの数や幅を調整できます。</p>
 </div>
 </div>
 </div>
@@ -497,7 +479,7 @@ frame</strong>にプロットをバインドする。</li>
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
@@ -506,35 +488,33 @@ frame</strong>にプロットをバインドする。</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># change bins</span></span>
+<code class="sourceCode R"><span><span class="co"># ビン幅の変更</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">rna</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb12">
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-5-1.png" alt="ビン幅15の場合（上）とビン幅2000の場合（下）におけるggplot()とgeom_histogram()で生成された発現データのヒストグラム" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># change binwidth</span></span>
+<code class="sourceCode R"><span><span class="co"># ビン幅の変更</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">rna</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-5-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-5-2.png" alt="ビン幅15の場合（上）とビン幅2000の場合（下）におけるggplot()とgeom_histogram()で生成された発現データのヒストグラム" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<p>データが右に偏っていることがわかる。 より対称的な分布にするために、
-log2変換を適用することができる。 ここでは、
-、0に等しい式の値に対して返される<code>-Inf</code>値
-を避けるために、小さな定数値（<code>+1</code>）を追加していることに注意してください。</p>
+<p>ここでデータが右に歪んでいることが確認できます。より対称的な分布を得るために、
+対数変換（log2変換）を適用することができます。なお、式値が0の場合に<code>-Inf</code>値が
+返されるのを防ぐため、ここでは小さな定数値（<code>+1</code>）を追加しています。</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna</span><span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">rna</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>expression_log <span class="op">=</span> <span class="fu">log2</span><span class="op">(</span><span class="va">expression</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>ここで対数変換した式のヒストグラムを描いてみると、
-の分布は確かに正規分布に近くなっている。</p>
+<p>次に、対数変換した発現量のヒストグラムを作成すると、確かに正規分布に近い分布が得られます。</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -546,25 +526,18 @@ log2変換を適用することができる。 ここでは、
 </h3>
 <pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-second-ggplot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>これからは対数変換した発現値を扱うことにする。</p>
-<div id="チャレンジ-1" class="callout challenge">
+<figure><img src="fig/40-visualization-rendered-second-ggplot-1.png" alt="事前に計算した発現量の対数値に基づくヒストグラム（ggplot()とgeom_histogram()で生成）" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>これ以降の分析では、対数変換した発現量の値を用いて作業を進めていきます。</p>
+<div id="課題-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-1" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-1" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>この変換を視覚化するもう1つの方法は、オブザベーションのスケール
-を考えることである。 たとえば、
-プロットの空間でオブザベーションをよりよく分布させるために、軸のスケール
-を変更する価値があるかもしれません。 軸のスケールの変更は、
-他のコンポーネントの追加/変更と同様に（すなわち、
-コマンドをインクリメンタルに追加することによって）行われます。
-このように変更してみてほしい：</p>
-<ul><li>
-<code>scale_x_log10()</code> を参照。 前のグラフと比較してみよう。
-、警告メッセージが表示されるようになったのはなぜですか？</li>
+<p>この変換を視覚的に理解する別の方法として、観測値のスケールを考慮する方法があります。例えば、軸のスケールを調整することで、プロット空間内での観測値の分布をより適切に調整できる場合があります。軸のスケール変更は、他のコンポーネントを追加・修正する場合と同様の手順で行います（つまり、段階的にコマンドを追加していく方法です）。以下の変更を試してみてください：</p>
+<ul><li>変換前の式を対数スケール（log10）で表示します。<code>scale_x_log10()</code>
+関数を参照してください。以前のグラフと比較してください。なぜ今回は警告メッセージが表示されるのでしょうか？</li>
 </ul></div>
 </div>
 </div>
@@ -572,7 +545,7 @@ log2変換を適用することができる。 ここでは、
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
@@ -581,7 +554,7 @@ log2変換を適用することができる。 ここでは、
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -601,23 +574,20 @@ log2変換を適用することができる。 ここでは、
 <pre class="warning" tabindex="0"><code>Warning: Removed 507 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-6-1.png" alt="発現量の対数に対する ggplot()、geom_histogram()、および scale_x_log10() で生成されたヒストグラム" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<p><strong>注</strong>*。</p>
-<ul><li>ggplot()<code>関数で設定したものはすべて、あなたが追加したgeom    レイヤーで見ることができます（つまり、これらはグローバルなプロット設定です）。 この    には、</code>aes()`で設定したx軸とy軸のマッピングが含まれる。</li>
-<li>また、<code>ggplot()</code>関数でグローバルに定義された
-マッピングとは別に、与えられたジオムに対するマッピングを指定することもできます。</li>
-<li>新しいレイヤーを追加するために使われる<code>+</code>記号は、_前の_レイヤーを含む
-行の最後に置かなければなりません。 その代わりに、<code>+</code>記号が
-新しいレイヤーを含む行の先頭に追加された場合、 <code>ggplot2</code>
-は新しいレイヤーを追加せず、エラー メッセージを返す。</li>
+<p><strong>注意事項</strong></p>
+<ul><li>
+<code>ggplot()</code>関数内で指定した設定は、後から追加するすべてのジオメトリレイヤーから参照されます（つまり、これらはグローバルなプロット設定となります）。これには<code>aes()</code>で設定したx軸・y軸のマッピングも含まれます。</li>
+<li>特定のジオメトリレイヤーに対しては、<code>ggplot()</code>関数で定義したグローバル設定とは独立してマッピングを指定することも可能です。</li>
+<li>新しいレイヤーを追加する際に使用する<code>+</code>記号は、必ず<em>直前の</em>レイヤーを含む行の末尾に配置する必要があります。もし新しいレイヤーを含む行の先頭に<code>+</code>記号を置いた場合、<code>ggplot2</code>は新しいレイヤーを追加せず、エラーメッセージを返します。</li>
 </ul><div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># これはレイヤーを追加するための正しい構文です</span></span>
+<code class="sourceCode R"><span><span class="co"># これはレイヤーを追加する正しい構文です</span></span>
 <span><span class="va">rna_plot</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -625,27 +595,18 @@ log2変換を適用することができる。 ここでは、
 <span><span class="va">rna_plot</span></span>
 <span>  <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="反復的にプロットを構築する">反復的にプロットを構築する<a class="anchor" aria-label="anchor" href="#%E5%8F%8D%E5%BE%A9%E7%9A%84%E3%81%AB%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B"></a></h2>
-<hr class="half-width"><p>ここでは、2つの連続変数と
-<code>geom_point()</code>関数を使って散布図を描きます。
-このグラフは、時間8と時間0、時間4と時間0を比較した発現のlog2倍変化 。
-この目的のために、まず対数変換した
-発現値の平均値を遺伝子ごと、時間ごとに計算する必要がある。次に、
-、時間8と時間0の間の平均対数発現と、
-、時間4と時間0の間の平均対数発現を差し引くことにより、対数倍変化を計算する。
-ここでは、後で遺伝子を表現するために使用する遺伝子
-バイオタイプも含めていることに注意されたい。 フォールドの変化を
-<code>rna_fc.</code> という新しいデータフレームに保存する。</p>
+</section><section><h2 class="section-heading" id="プロットを段階的に構築する方法">プロットを段階的に構築する方法<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%82%92%E6%AE%B5%E9%9A%8E%E7%9A%84%E3%81%AB%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95"></a></h2>
+<hr class="half-width"><p>ここでは、2つの連続変数を用いて散布図を作成し、<code>geom_point()</code>関数で表現します。このグラフは、時間8時点と時間0時点、および時間4時点と時間0時点における発現量の対数2倍変化を表します。まず、遺伝子ごと・時間ごとに対数変換した発現量の平均値を計算し、次に時間8時点と時間0時点、時間4時点と時間0時点の平均値の対数差を計算して対数2倍変化を求めます。なお、後で遺伝子を分類するために使用する遺伝子のバイオタイプ情報もここで含めます。これらの変化量は新しいデータフレーム<code>rna_fc</code>に保存します。</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna_fc</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>,</span>
-<span>                         <span class="va">gene_biotype</span>, <span class="va">expression_log</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>, <span class="va">gene_biotype</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">rna_fc</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>,</span>
+<span>                         <span class="va">gene_biotype</span>, <span class="va">expression_log</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>, <span class="va">gene_biotype</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">time</span>,</span>
-<span>              values_from <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              values_from <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>time_8_vs_0 <span class="op">=</span> <span class="va">`8`</span> <span class="op">-</span> <span class="va">`0`</span>, time_4_vs_0 <span class="op">=</span> <span class="va">`4`</span> <span class="op">-</span> <span class="va">`0`</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -654,10 +615,7 @@ log2変換を適用することができる。 ここでは、
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'gene', 'time'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<p>新しく作成されたデータセット <code>rna_fc</code> を使って ggplot
-を作成することができる。
-ggplot2`でプロットを作成するのは、通常、反復的なプロセスである。
-まず、使用するデータセットを定義し、軸を配置し、 ジオムを選択する：</p>
+<p>作成したデータフレーム<code>rna_fc</code>を用いてggplotを構築します。<code>ggplot2</code>でプロットを作成する際は通常、反復的なプロセスで行います。まず使用するデータセットを定義し、軸を設定し、使用するジオメトリを選択します：</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -665,8 +623,7 @@ ggplot2`でプロットを作成するのは、通常、反復的なプロセス
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna_fc</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time_4_vs_0</span>, y <span class="op">=</span> <span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-create-ggplot-object-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>次に、このプロットからより多くの情報を抽出するために、プロットを修正し始める。
-例えば、オーバープロットを避けるために透明度（<code>α</code>）を加えることができる：</p>
+<figure><img src="fig/40-visualization-rendered-create-ggplot-object-1.png" alt="上記で計算した対数2倍変化を比較する散布図。すべての点は黒色で表示されます" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>次に、このプロットをさらに修正してより多くの情報を抽出します。例えば、重なりを避けるための透明度（<code>alpha</code>）を追加できます：</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -674,7 +631,7 @@ ggplot2`でプロットを作成するのは、通常、反復的なプロセス
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna_fc</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time_4_vs_0</span>, y <span class="op">=</span> <span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-adding-transparency-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>また、すべてのポイントに色を付けることもできる：</p>
+<figure><img src="fig/40-visualization-rendered-adding-transparency-1.png" alt="上記で計算した対数2倍変化を比較する散布図。すべての点は半透明の黒色で表示されます" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>すべての点に色を付けることも可能です：</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -682,9 +639,7 @@ ggplot2`でプロットを作成するのは、通常、反復的なプロセス
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna_fc</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time_4_vs_0</span>, y <span class="op">=</span> <span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-adding-colors-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>あるいは、プロット中の各遺伝子を異なる色にするために、
-、引数<strong>color</strong>の入力としてベクトルを使うこともできる。
-ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以下は、</code>gene_biotype`を使った例である：</p>
+<figure><img src="fig/40-visualization-rendered-adding-colors-1.png" alt="上記で計算した対数2倍変化を比較する散布図。すべての点は半透明の青色で表示されます" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>あるいは、プロット内の各遺伝子を異なる色で表示したい場合は、<code>color</code>引数にベクトルを指定します。<code>ggplot2</code>はこのベクトルの値に応じて異なる色を自動的に割り当てます。以下は<code>gene_biotype</code>で色分けする例です：</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -692,10 +647,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna_fc</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time_4_vs_0</span>, y <span class="op">=</span> <span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">gene_biotype</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>また、
-<code>ggplot()</code>関数で提供されるマッピングの中で直接色を指定することもできる。
-これはどのジオムレイヤーでも見ることができ、 のマッピングは
-<code>aes()</code> で設定したx軸とy軸によって決定される。</p>
+<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype1-1.png" alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>ggplot()</code>関数内で直接マッピング時に色を指定することもできます。この設定はすべてのジオメトリレイヤーから参照され、<code>aes()</code>で設定したx軸・y軸のマッピングに基づいて決定されます。</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -704,7 +656,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>                                color <span class="op">=</span> <span class="va">gene_biotype</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>最後に、<code>geom_abline()</code> ：</p>
+<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype2-1.png" alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>最後に、<code>geom_abline()</code>関数を使用して対角線を追加することも可能です：</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -714,9 +666,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-adding-diag-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>ジオムレイヤーを <code>geom_point</code> から
-<code>geom_jitter</code> に変更しても、色は <code>gene_biotype</code>
-によって決定されることに注意してください。</p>
+<figure><img src="fig/40-visualization-rendered-adding-diag-1.png" alt="上記で計算した対数2倍変化を比較する散布図。点の色は遺伝子のバイオタイプに基づいて色分けされています。原点を通る傾き1の黒色の直線がgeom_abline()によって追加されています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>注目すべきは、ジオメトリレイヤーを<code>geom_point</code>から<code>geom_jitter</code>に変更しても、色は依然として<code>gene_biotype</code>によって決定される点です。</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -726,26 +676,22 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="チャレンジ-2" class="callout challenge">
+<figure><img src="fig/40-visualization-rendered-color-by-gene_biotype3-1.png" alt="Scatter plot produced by ggplot() and geom_point() comparing the log-foldchanges computed above. Dots are colour-coded based on the gene's biotype. A black line of slope 1 crossing the origin was added by geom_abline()." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="課題-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-2" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-2" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>散布図は、小規模なデータセットの探索に役立つツールである。 rna_fc`
-データセットのような多数のオブザベーションを持つ
-データセットの場合、点のオーバープロットは散布図の制限となりうる。
-このような設定を扱うための1つの戦略は、
-の観測値を六角形にビニングすることである。
-プロット空間は六角形にテッセレーションされている。 それぞれの 六角形は、
-その境界内に入るオブザベーションの数に基づいて色が割り当てられる。</p>
-<ul><li><p>ggplot2<code>で六角ビニングを使用するには、まずRパッケージ</code>hexbin`をCRANからインストールしてロードする。</p></li>
-<li><p>そして、<code>geom_hex()</code>関数を使ってhexbin図を作成する。</p></li>
-<li><p>散布図と比較して、六角形のビン
-プロットの相対的な長所と短所は何か？ 上記の散布図（
-）を調べ、作成した六角形のビンプロットと比較する。</p></li>
+<p>散布図は小規模なデータセットの探索的分析において有用なツールです。しかし、<code>rna_fc</code>
+データセットのように観測値数が多い場合、点の重なり（オーバープロット）が散布図の限界となることがあります。このような状況に対処するための有効な手法の一つが、観測値を六角形グリッドに分割するヘキサビン法です。</p>
+<ul><li><p><code>ggplot2</code> でヘキサビン法を使用するには、まず CRAN
+リポジトリから R パッケージ <code>hexbin</code>
+をインストールし、ロードする必要があります。</p></li>
+<li><p>次に <code>geom_hex()</code>
+関数を使用することで、ヘキサビンプロットを作成できます。</p></li>
+<li><p>ヘキサビンプロットと従来の散布図を比較した場合、それぞれの長所と短所は何でしょうか？上記の散布図と作成したヘキサビンプロットを詳細に比較・検討してください。</p></li>
 </ul></div>
 </div>
 </div>
@@ -753,7 +699,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
@@ -774,21 +720,21 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>  <span class="fu">geom_hex</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-10-1.png" alt="Scatter plot produced by ggplot() and geom_hexbin() comparing the log-foldchanges computed above shows hexagons coloured based on the underlying dot density. A black line of slope 1 crossing the origin was added by geom_abline()." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<div id="チャレンジ-3" class="callout challenge">
+<div id="課題-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-3" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-3" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>今学んだことを使って、<code>rna</code>データセットから<code>sample</code>に対する<code>expression_log</code>
-の散布図を作成し、 異なる色で時間を表示する。
-このようなデータを表示するのは良い方法ですか？</p>
+<p>これまでに学んだ知識を活用して、<code>rna</code> データセットから
+<code>sample</code> 列を選択し、<code>expression_log</code>
+値を散布図としてプロットしてください。時間軸は異なる色で表示されるように設定します。このデータ表現方法はこの種のデータを示す上で適切な方法でしょうか？</p>
 </div>
 </div>
 </div>
@@ -796,7 +742,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
@@ -808,13 +754,12 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-11-1.png" alt="Figures showing a stretch of overlapping points indicating the log of expression + 1 for each sample. The points are coloured with different shades of blue for samples collected at different time points." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="ボックスプロット">ボックスプロット<a class="anchor" aria-label="anchor" href="#%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"></a></h2>
-<hr class="half-width"><p>ボックスプロットを使って、各サンプル内の遺伝子発現の分布（
-）を可視化することができる：</p>
+</section><section><h2 class="section-heading" id="箱ひげ図">箱ひげ図<a class="anchor" aria-label="anchor" href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3"></a></h2>
+<hr class="half-width"><p>箱ひげ図を用いることで、各サンプル内における遺伝子発現量の分布を視覚的に表現することができます：</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -823,8 +768,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>boxplotにポイントを追加することで、
-の測定数とその分布をよりよく知ることができる：</p>
+<figure><img src="fig/40-visualization-rendered-boxplot-1.png" alt="geom_boxplot()によって生成された各サンプルの対数変換発現量+1値の分布を示す箱ひげ図。各箱ひげ図は白色で塗りつぶされています。" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>箱ひげ図に点プロットを追加することで、測定値の総数とその分布状況をより明確に把握することが可能になります：</p>
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -834,16 +778,15 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-with-points-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="チャレンジ-4" class="callout challenge">
+<figure><img src="fig/40-visualization-rendered-boxplot-with-points-1.png" alt="geom_boxplot()によって生成された各サンプルの対数変換発現量+1値の分布を示す箱ひげ図と点プロット。各箱ひげ図は半透明で、ジッター処理された点プロットは半透過のトマト色で表示され、箱ひげ図の背面に配置されています。" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="課題-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-4" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-4" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>ボックスプロットレイヤーがジッターレイヤーの前にあることに注目してほしい。
-、ボックスプロットをポイントの下に配置するために、コードのどこを変更する必要がありますか？</p>
+<p>箱ひげ図のレイヤーがジッタープロットのレイヤーの前面に表示されていることに注目してください。箱ひげ図を点の下に表示されるようにするには、コードをどのように変更すればよいでしょうか？</p>
 </div>
 </div>
 </div>
@@ -851,53 +794,50 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<p>この2つのジオムの順番を入れ替えるべきだ：</p>
+<p>これら2つのジオメトリの順序を入れ替える必要があります：</p>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
-<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-with-points2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-boxplot-with-points2-1.png" alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). Each boxplot is transparent and the jittered dots are semi-transparent tomato-coloured. This time, the boxplots are behind the dots." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<p>X軸の値がまだ正しく 読めないことにお気づきかもしれない。
-ラベルの向きを変え、 縦と横に重ならないように調整しよう。
-90度の角度を使ってもいいし、
-斜め向きのラベルに適切な角度を見つけるために実験してもいい：</p>
+<p>x軸上の値がまだ適切に読み取れないことにお気づきかもしれません。ラベルの表示方向を変更し、垂直方向と水平方向に調整して重なりが起こらないようにしましょう。90度の角度を使用するか、斜め向きのラベルに適した角度を見つけるために試行錯誤してみてください：</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
-<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, color <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>,  hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-xaxis-rotated-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="チャレンジ-5" class="callout challenge">
+<figure><img src="fig/40-visualization-rendered-boxplot-xaxis-rotated-1.png" alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). Each boxplot is transparent and the jittered dots are semi-transparent tomato-coloured. The sample labels are displayed vertically and readable." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="課題-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-5" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-5" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>感染期間（
-）に応じて、箱ひげ図上のデータ点に色を付ける（<code>time</code>）。</p>
-<p><em>ヒント:</em> <code>time</code>のクラスをチェックする。
+<p>箱ひげ図のデータポイントに、感染期間（<code>time</code>）に応じて色を付けてください。</p>
+<p><em>ヒント:</em> <code>time</code>
+変数のクラスを確認してください。ggplot のマッピング処理内で
 <code>time</code>
-のクラスをggplotマッピングで整数から因数に直接変更することを検討する。
-、Rのグラフの作り方が変わるのはなぜですか？</p>
+のクラスを整数型から因子型に直接変更することを検討してください。この変更が
+R でグラフを作成する方法にどのような影響を与えるのでしょうか？</p>
 </div>
 </div>
 </div>
@@ -905,7 +845,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
@@ -917,42 +857,37 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <code class="sourceCode R"><span><span class="co"># time as integer</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
 <span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>,</span>
-<span>                       x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>                       x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>,  hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-color-time-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb38">
+<figure><img src="fig/40-visualization-rendered-boxplot-color-time-1.png" alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). On the first figure, each boxplot is transparent and the jittered dots are semi-transparent and coloured in different shares of blue. On the second figures, each boxplot is transparent and the jittered dots are semi-transparent and coloured red, green and blue." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># time as factor</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
 <span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>,</span>
-<span>                       x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="fu">as.factor</span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>                       x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span>, <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="fu">as.factor</span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>,  hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-boxplot-color-time-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-boxplot-color-time-2.png" alt="Boxplot and dots showing the distribution of log expression + 1 values for each sample, as produced by geom_boxlpot(). On the first figure, each boxplot is transparent and the jittered dots are semi-transparent and coloured in different shares of blue. On the second figures, each boxplot is transparent and the jittered dots are semi-transparent and coloured red, green and blue." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<div id="チャレンジ-6" class="callout challenge">
+<div id="課題-6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-6" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-6" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>箱ひげ図は便利な要約だが、 分布の_形_を隠してしまう。
-例えば、分布が二峰性であれば、
-、ボックスプロットではそれを見ることはできない。
-箱ひげ図に代わるものとして、（点の密度の）形状を描くバイオリン
-プロットがある。</p>
-<ul><li>geom_violin()<code>を参照してください。     引数</code>fill`
-の時間に従ってヴァイオリンにフィルを入れる。</li>
+<p>箱ひげ図は分布の概要を把握するのに有用ですが、分布の「形状」そのものは表示しません。例えば、分布が二峰性の場合、箱ひげ図ではその特徴を捉えることができません。箱ひげ図の代替手段として「バイオリンプロット」があり、これはデータ点の密度分布の形状を視覚的に表現します。</p>
+<ul><li>箱ひげ図をバイオリンプロットに置き換えてください。<code>geom_violin()</code>関数を使用します。<code>fill</code>引数を用いて、時間軸に沿ってバイオリンプロットを塗り分けてください。</li>
 </ul></div>
 </div>
 </div>
@@ -960,7 +895,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
@@ -970,24 +905,23 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
-<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">as.factor</span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">as.factor</span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>,  hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-12-1.png" alt="Violin plot showing the distribution of log expression + 1 values for each sample, as produced by geom_violin(). Each boxplot is transparent and the jittered dots are semi-transparent and coloured red, green and blue." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-<div id="チャレンジ-7" class="callout challenge">
+<div id="課題-7" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-7" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-7" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<ul><li>ヴァイオリンのプロットを修正し、ヴァイオリンを <code>sex</code>
-で埋める。</li>
+<ul><li>バイオリンプロットを修正し、<code>性別</code>（sex）ごとにバイオリン部分を塗りつぶすようにしてください。</li>
 </ul></div>
 </div>
 </div>
@@ -995,7 +929,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
@@ -1005,33 +939,29 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">rna</span>,</span>
-<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>         mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">expression_log</span>, x <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>,  hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-13-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-13-1.png" alt="Violin plot showing the distribution of log expression + 1 values for each sample, as produced by geom_violon(). Each violin plot is coloured in red or blue depending on the sex variable." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="線プロット">線プロット<a class="anchor" aria-label="anchor" href="#%E7%B7%9A%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"></a></h2>
-<hr class="half-width"><p>時刻8と 時刻0を比較し、log
-fold変化が最も大きかった10の遺伝子について、感染期間ごとの平均発現量を計算してみよう。
-まず、遺伝子を選択し、選択した10遺伝子を含む<code>sub_rna</code>と呼ばれる<code>rna</code>
-のサブセットを作成する必要がある。次に、
-データをグループ化し、各グループ内の平均遺伝子発現を計算する必要がある：</p>
+</section><section><h2 class="section-heading" id="折れ線グラフ">折れ線グラフ<a class="anchor" aria-label="anchor" href="#%E6%8A%98%E3%82%8C%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95"></a></h2>
+<hr class="half-width"><p>感染期間ごとの平均発現量を、時間8時点と時間0時点を比較した際の対数倍率変化が最大となる10遺伝子について計算します。まず対象となる遺伝子を選択し、<code>rna</code>データセットからこれら10遺伝子のみを含むサブセット<code>sub_rna</code>を作成します。その後、データをグループ化し、各グループ内の遺伝子発現量の平均値を算出します：</p>
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rna_fc</span><span class="op">&lt;-</span> <span class="va">rna_fc</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">rna_fc</span> <span class="op">&lt;-</span> <span class="va">rna_fc</span> <span class="op">|&gt;</span> <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">time_8_vs_0</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">genes_selected</span> <span class="op">&lt;-</span> <span class="va">rna_fc</span><span class="op">$</span><span class="va">gene</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
 <span></span>
-<span><span class="va">sub_rna</span><span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">sub_rna</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">filter</span><span class="op">(</span><span class="va">gene</span> <span class="op">%in%</span> <span class="va">genes_selected</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mean_exp_by_time</span><span class="op">&lt;-</span> <span class="va">sub_rna</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>,<span class="va">time</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">mean_exp_by_time</span> <span class="op">&lt;-</span> <span class="va">sub_rna</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>,<span class="va">time</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1065,70 +995,59 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
 10 Chil3     0     4.00
 # ℹ 20 more rows</code></pre>
 </div>
-<p>X軸に感染期間（
-）、Y軸に平均発現をとって折れ線グラフを作成することができる：</p>
+<p>感染期間をx軸、平均発現量をy軸とした折れ線グラフを作成できます：</p>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-first-time-series-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>残念なことに、これはうまくいかない。というのも、
-の全遺伝子のデータをまとめてプロットしたからである。
-各遺伝子に対して線を引くようにggplotに指示する必要がある。
-、<code>group = gene</code>を含むようにesthetic関数を修正する：</p>
+<figure><img src="fig/40-visualization-rendered-first-time-series-1.png" alt="geom_line()で生成した折れ線グラフですが、実際のデータが期待通りの傾向を示していません" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>残念ながらこの手法ではうまくいきません。すべての遺伝子のデータを一括してプロットしているためです。各遺伝子ごとに別々の線を描画するには、美的関数を<code>group = gene</code>に変更する必要があります：</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, group <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, group <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-time-series-by-gene-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>色をつければ、プロットの中で遺伝子を区別できるようになる（
-<code>color</code>を使えば、自動的にデータをグループ化することもできる）：</p>
+<figure><img src="fig/40-visualization-rendered-time-series-by-gene-1.png" alt="geom_line()で生成した折れ線グラフで、10本の線がそれぞれ異なる遺伝子の時間経過に伴う発現量の増加を示しています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>色分けを追加すれば（<code>color</code>パラメータを使用すると自動的にデータがグループ化されます）、プロット上で各遺伝子を区別できるようになります：</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-time-series-with-colors-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="ファセット">ファセット<a class="anchor" aria-label="anchor" href="#%E3%83%95%E3%82%A1%E3%82%BB%E3%83%83%E3%83%88"></a></h2>
-<hr class="half-width"><p>ggplot2`には_faceting_と呼ばれる特別なテクニックがあり、
-、データセットに含まれる
-、1つのプロットを複数の(サブ)プロットに分割することができる。 こ れ ら
-の異な る サブプ ロ ッ ト は、 同 じ プ ロ パテ ィ を継承 し ます
-（軸の限界、目盛り、 …）。 直接比較しやすくするためだ。
-、これを用いて各遺伝子について時間軸に沿った折れ線グラフを作成する：</p>
+<figure><img src="fig/40-visualization-rendered-time-series-with-colors-1.png" alt="geom_line()で生成した折れ線グラフで、10本の色分けされた線がそれぞれ異なる遺伝子の時間経過に伴う発現量の増加を示しています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="面分割表示">面分割表示<a class="anchor" aria-label="anchor" href="#%E9%9D%A2%E5%88%86%E5%89%B2%E8%A1%A8%E7%A4%BA"></a></h2>
+<hr class="half-width"><p><code>ggplot2</code>には<em>面分割</em>と呼ばれる特殊な機能があり、データセットに含まれる因子に基づいて1つのプロットを複数のサブプロットに分割できます。これらのサブプロットは同じプロパティ（軸の範囲、目盛りなど）を継承するため、直接比較が容易になります。各遺伝子について時間経過に沿った折れ線グラフを作成する場合に活用しましょう：</p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span><span class="op">+</span> <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-first-facet-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>ここでは、X軸とY軸はすべてのサブプロットで同じスケールになっている。、Y軸のスケールを自由に設定できるように<code>scales</code>を修正することで、このデフォルトの動作を変更することができる：</p>
+<figure><img src="fig/40-visualization-rendered-first-facet-1.png" alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す1本の線を表示しています。すべてのy軸スケールは同一です" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>ここではすべてのサブプロットにおいて、x軸とy軸が同じスケールになっています。このデフォルト設定を変更するには、<code>scales</code>パラメータを調整してy軸のスケールを自由に設定可能にできます：</p>
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-first-facet-scales-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>ここで、各プロットの線をマウスの性別で分けたい。 そのためには、
-、遺伝子、時間、性別でグループ化したデータフレームの平均発現を計算する必要がある：</p>
+<figure><img src="fig/40-visualization-rendered-first-facet-scales-1.png" alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す1本の線を表示しています。各面分割/遺伝子ごとにy軸スケールが発現量の範囲に合わせて調整されています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>次に、各プロット内の線をマウスの性別でさらに分割したいとします。そのためには、<code>gene</code>、<code>time</code>、<code>sex</code>でグループ化したデータフレーム内で平均発現量を計算する必要があります：</p>
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mean_exp_by_time_sex</span><span class="op">&lt;-</span> <span class="va">sub_rna</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">mean_exp_by_time_sex</span> <span class="op">&lt;-</span> <span class="va">sub_rna</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gene</span>, <span class="va">time</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1162,41 +1081,37 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
 10 Aipl1     4 Male       3.72
 # ℹ 50 more rows</code></pre>
 </div>
-<p><code>color</code>
-を使ってさらに分割することで、ファセット化されたプロットを作ることができる（1つのプロット内で）：</p>
+<p>これで、<code>color</code>パラメータを使用して単一プロット内で性別ごとにさらに分割した面分割グラフを作成できます：</p>
 <div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-facet-by-gene-and-sex-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>通常、背景が白いプロットは印刷したときに読みやすくなる。 、関数
-<code>theme_bw()</code> を使って背景を白に設定することができる。
-さらに、グリッドを削除することもできる：</p>
+<figure><img src="fig/40-visualization-rendered-facet-by-gene-and-sex-1.png" alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す2本の色分けされた線（メスは赤、オスは青）を表示しています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>通常、白背景のプロットは印刷時に視認性が高くなります。<code>theme_bw()</code>関数を使用して背景を白に設定できます。さらに、グリッドラインも削除可能です：</p>
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-facet-by-gene-and-sex-white-bg-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="チャレンジ-8" class="callout challenge">
+<figure><img src="fig/40-visualization-rendered-facet-by-gene-and-sex-white-bg-1.png" alt="geom_line()で生成した折れ線グラフで、10個のサブプロット/面分割があり、それぞれが時間経過に伴う発現量の増加を示す2本の色分けされた線（メスは赤、オスは青）を表示しています。図の背景が白になっています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="課題-8" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-8" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-8" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>、各染色体の
-平均発現量が感染期間を通じてどのように変化するかをプロットする。</p>
+<p>これまでに学んだ知識を活用して、感染経過に伴う各染色体の平均発現量の変化を視覚的に表現するプロットを作成してください。</p>
 </div>
 </div>
 </div>
@@ -1204,7 +1119,7 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
@@ -1213,133 +1128,117 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mean_exp_by_chromosome</span><span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">chromosome_name</span>, <span class="va">time</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summary</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_chromosome</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>,</span>
-<span>                                y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">chromosome_name</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">mean_exp_by_chromosome</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">chromosome_name</span>, <span class="va">time</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean_exp <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">expression_log</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `fortify()`:
-! `data` must be a &lt;data.frame&gt;, or an object coercible by `fortify()`,
-  or a valid &lt;data.frame&gt;-like object coercible by `as.data.frame()`.
-Caused by error in `.postvalidate_data_frame_like_object()`:
-! `as.data.frame(data)` must preserve dimensions.</code></pre>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'chromosome_name'. You can override using
+the `.groups` argument.</code></pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<p>facet_wrap<code>ジオメトリは、1ページにきれいに収まるように、プロットを任意の数の 次元に抽出する。 一方、</code>facet_grid<code>ジオメトリでは、 数式表記（</code>rows
-~ columns<code>;</code>.`
-は、1つの行または列のみを示すプレースホルダとして使用できます）によって、プロットの配置方法を明示的に指定することができます。</p>
-<p>先ほどのプロットを修正し、男性と女性の平均遺伝子発現
-が経時的にどのように変化したかを比較してみよう：</p>
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1列、行ごとのファセット</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_chromosome</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>,</span>
+<span>                                y <span class="op">=</span> <span class="va">mean_exp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">chromosome_name</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/40-visualization-rendered-mean-exp-chromosome-time-series-1.png" alt="Line plot, as produced by geom_line(), with 21 sub-plots/facets, each showing one line with expression values over time for each chromosome." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+</div>
+</div>
+</div>
+<p><code>facet_wrap</code>ジオメトリはプロットを任意の数の次元に分割し、1ページにきれいに収まるようにします。一方、<code>facet_grid</code>ジオメトリでは、数式表記（<code>rows ~ columns</code>;
+単一の行または列を示すプレースホルダーとして<code>.</code>を使用可）を用いて、プロットの配置方法を明示的に指定できます。</p>
+<p>以前のプロットを修正して、性別ごとの遺伝子発現の平均値が時間経過とともにどのように変化したかを比較してみましょう：</p>
+<div class="codewrapper sourceCode" id="cb59">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1列レイアウト、行単位で分割</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-mean-exp-time-facet-sex-rows-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb59">
+<figure><img src="fig/40-visualization-rendered-mean-exp-time-facet-sex-rows-1.png" alt="2つの折れ線グラフが上下に配置され、それぞれ遺伝子ごとに10本の線が色分けされています。上部のサブプロットは女性サンプルの発現値を、下部のサブプロットは男性サンプルの発現値を示しています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1行、列ごとのファセット</span></span>
+<code class="sourceCode R"><span><span class="co"># 1行レイアウト、列単位で分割</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">gene</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-mean-exp-time-facet-sex-columns-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="ggplot2テーマ">ggplot2`テーマ<a class="anchor" aria-label="anchor" href="#ggplot2%E3%83%86%E3%83%BC%E3%83%9E"></a></h2>
-<hr class="half-width"><p><code>ggplot2</code> には、プロットの背景を白に変更する
-<code>theme_bw()</code> に加えて、
-手早く視覚化の見た目を変更するのに便利なテーマがいくつか用意されている。
-テーマの全リストは<a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>で入手できる。
-theme_minimal()<code>や</code>theme_light()<code>は人気があり、</code>theme_void()`
-は新しい手作りのテーマを作る出発点として役に立つ。</p>
-<p>ggthemes](<a href="https://jrnold.github.io/ggthemes/reference/index.html" class="external-link uri">https://jrnold.github.io/ggthemes/reference/index.html</a>)
-パッケージは様々なオプション（Excel 2003 テーマを含む）を提供します。
-<code>ggplot2</code> extensions website](<a href="https://exts.ggplot2.tidyverse.org/" class="external-link uri">https://exts.ggplot2.tidyverse.org/</a>) は、追加の
-テーマを含む <code>ggplot2</code> の機能を拡張する
-パッケージのリストを提供しています。</p>
+<figure><img src="fig/40-visualization-rendered-mean-exp-time-facet-sex-columns-1.png" alt="2つの折れ線グラフが左右に配置され、それぞれ遺伝子ごとに10本の線が色分けされています。左側のサブプロットは女性サンプルの発現値を、右側のサブプロットは男性サンプルの発現値を示しています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="ggplot2テーマ">
+<code>ggplot2</code>テーマ<a class="anchor" aria-label="anchor" href="#ggplot2%E3%83%86%E3%83%BC%E3%83%9E"></a></h2>
+<hr class="half-width"><p>プロットの背景色を白に変更する<code>theme_bw()</code>に加え、<code>ggplot2</code>には視覚化の外観を素早く変更できる他のテーマも用意されています。利用可能なテーマの完全なリストは<a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>で確認できます。<code>theme_minimal()</code>と<code>theme_light()</code>は人気の高いテーマで、<code>theme_void()</code>は独自のテーマを作成する際の出発点として便利です。</p>
+<p><a href="https://jrnold.github.io/ggthemes/reference/index.html" class="external-link">ggthemes</a>パッケージでは、Excel
+2003テーマを含む多様なオプションが提供されています。<a href="https://exts.ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code>拡張機能
+ウェブサイト</a>では、<code>ggplot2</code>の機能を拡張するパッケージの一覧が掲載されており、追加のテーマも含まれています。</p>
 </section><section><h2 class="section-heading" id="カスタマイズ">カスタマイズ<a class="anchor" aria-label="anchor" href="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA"></a></h2>
-<hr class="half-width"><p>時間別、遺伝子別の平均発現のファセット・プロットに戻ろう。
-性別に色分けされている。</p>
-<p>ggplot2`のカンニング シート](<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link uri">https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf</a>),
-を見て、プロットを改善する方法を考えてみてください。</p>
-<p>ここで、軸の名前を ‘time’ や ‘mean_exp’
-よりも情報量の多いものに変更し、図にタイトルを追加する：</p>
-<div class="codewrapper sourceCode" id="cb60">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の平均遺伝子発現"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"感染期間（日単位）"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現"</span><span class="op">)</span></span></code></pre>
-</div>
-<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>軸にはより情報量の多い名前が付けられているが、フォントサイズを大きくすることで読みやすさは
-：</p>
+<hr class="half-width"><p>時間と遺伝子ごとの平均発現量を性別で分割したプロットに戻りましょう。色分けは性別で行います。</p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link"><code>ggplot2</code>チートシート</a>を参照し、プロットを改善する方法を考えてみてください。</p>
+<p>次に、「時間」と「mean_exp」という単純な軸名をより情報量の多い表現に変更し、図にタイトルを追加しましょう：</p>
 <div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の平均遺伝子発現"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"感染期間（日単位）"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の遺伝子発現平均値"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"感染期間（日数）"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現値"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-xfont-size-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>プロットのフォントを変更することも可能です。
-Windowsをお使いの場合は、
-をインストールする必要があるかもしれません。</p>
-<p>さらに、X軸とY軸のテキストの色、
-グリッドの色などをカスタマイズできる。 例えば、
-<code>legend.position</code>を<code>"top"</code>に設定することで、凡例を一番上に移動させることもできる。</p>
+<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-1.png" alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルが表示されています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>軸名はより情報量が増えましたが、可読性をさらに向上させるためにフォントサイズを大きくすることができます：</p>
 <div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の平均遺伝子発現"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"感染期間（日単位）"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の遺伝子発現平均値"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"感染期間（日数）"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現値"</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-xfont-size-1.png" alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルのフォントサイズが拡大されています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>なお、プロットのフォントを変更することも可能です。Windows環境では、<a href="https://cran.r-project.org/web/packages/extrafont/index.html" class="external-link"><strong><code>extrafont</code></strong>
+パッケージ</a>をインストールする必要がある場合があります。</p>
+<p>さらに、x軸・y軸のテキスト色、グリッドの色などをカスタマイズできます。例えば、<code>legend.position</code>を<code>"top"</code>に設定することで凡例を上部に移動させることも可能です。</p>
+<div class="codewrapper sourceCode" id="cb63">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の遺伝子発現平均値"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"感染期間（日数）"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"平均遺伝子発現値"</span><span class="op">)</span>  <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span>,</span>
-<span>        axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
-<span>        axis.text.y <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
-<span>        panel.grid <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>color<span class="op">=</span><span class="st">"lightsteelblue1"</span><span class="op">)</span>,</span>
+<span>        axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        axis.text.y <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        panel.grid <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"lightsteelblue1"</span><span class="op">)</span>,</span>
 <span>        legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-theme-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>作成した変更がデフォルトのテーマよりも気に入った場合は、
-、オブジェクトとして保存して、作成した他の
-プロットに簡単に適用することができます。 以下は、
-以前に作成したヒストグラムを使った例です。</p>
-<div class="codewrapper sourceCode" id="cb63">
+<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-theme-1.png" alt="白背景の折れ線グラフで、カスタムタイトルと軸ラベルのフォントサイズが拡大され、グリッドが青色になっています" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>作成したカスタマイズテーマがデフォルトテーマよりも優れていると判断した場合、
+このテーマをオブジェクトとして保存しておけば、今後作成する他のプロットに簡単に適用できます。以下に、以前に作成したヒストグラムを例に説明します。</p>
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1352,27 +1251,30 @@ Windowsをお使いの場合は、
 <span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">rna</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">expression_log</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="va">blue_theme</span></span></code></pre>
+<span>    <span class="fu">blue_theme</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-mean_exp-time-with-right-labels-xfont-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="チャレンジ-9" class="callout challenge">
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in blue_theme(): could not find function "blue_theme"</code></pre>
+</div>
+<div id="課題-9" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジ-9" class="callout-inner">
-<h3 class="callout-title">チャレンジ</h3>
+<div id="課題-9" class="callout-inner">
+<h3 class="callout-title">課題</h3>
 <div class="callout-content">
-<p>これらの情報を手に入れたら、
-、この練習で作成したプロットのいずれかを改良するか、
-、あなた自身の美しいグラフを作成してください。 RStudio ggplot2
-を参考にしてください。 いくつかアイデアを挙げてみよう：</p>
-<ul><li>線の太さを変えてみてください。</li>
-<li>伝説の名前を変える方法はありますか？
-そのラベルについてはどうだろう？ (ヒント: <code>scale_</code> で始まる
-ggplot 関数を探す)</li>
-<li>別のカラーパレットを使用するか、線の
-カラーを手動で指定してみてください（ <a href="https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" class="external-link">http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/</a>
-参照）。</li>
+<p>ここまでの情報を踏まえ、この演習で生成されたプロットのいずれかを改善するか、
+あるいはあなた自身の美しいグラフを作成するのにさらに5分間取り組んでください。
+インスピレーションを得るために、RStudioの<a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf" class="external-link"><code>ggplot2</code>チートシート</a>
+を参照してください。以下にいくつかのアイデアをご紹介します：</p>
+<ul><li>線の太さを変更する方法を試してみてください。</li>
+<li>凡例の名称を変更する方法はありますか？ラベルの変更はどうでしょう？
+（ヒント：<code>scale_</code>で始まる<code>ggplot</code>関数を探してみてください）</li>
+<li>異なるカラーパレットを使用するか、線の色を手動で指定する方法を試してみましょう
+（詳細は<a href="https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" class="external-link">https://www.cookbook-r.com/Graphs/Colors_(ggplot2)/</a>をご覧ください）。</li>
 </ul></div>
 </div>
 </div>
@@ -1380,29 +1282,29 @@ ggplot 関数を探す)</li>
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution10" aria-expanded="false" aria-controls="collapseSolution10">
   <h4 class="accordion-header" id="headingSolution10">
-  ソリューション
+  解答
   </h4>
 </button>
 <div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
-<p>例えば、このプロットに基づくと</p>
-<div class="codewrapper sourceCode" id="cb64">
+<p>例えば、以下のプロットに基づいて：</p>
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>以下のようなカスタマイズが可能です：</p>
-<div class="codewrapper sourceCode" id="cb65">
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-15-1.png" alt="theme_bw()と空白のグリッド上に生成されたシンプルな面グラフ付き折れ線プロット" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>このプロットは以下の方法でカスタマイズ可能です：</p>
+<div class="codewrapper sourceCode" id="cb67">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># change the thickness of the lines</span></span>
+<code class="sourceCode R"><span><span class="co"># 線の太さを変更</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
 <span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span>size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1419,129 +1321,118 @@ This warning is displayed once every 8 hours.
 Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 generated.</code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb67">
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-16-1.png" alt="theme_bw()と幅広のグリッド線を使用したシンプルな面グラフ付き折れ線プロット" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb69">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># change the name of the legend and the labels</span></span>
+<code class="sourceCode R"><span><span class="co"># 凡例名とラベルの名称を変更</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
 <span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_color_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Gender"</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">scale_color_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"性別"</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-16-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb68">
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-17-1.png" alt="theme_bw()と名称変更された色ラベルを使用したシンプルな面グラフ付き折れ線プロット" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># using a different color palette</span></span>
+<code class="sourceCode R"><span><span class="co"># 異なるカラーパレットを使用</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
 <span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_color_brewer</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Gender"</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">scale_color_brewer</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"性別"</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-16-3.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb69">
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-18-1.png" alt="異なるカラーパレットと名称変更された色ラベルを使用したtheme_bw()と空白のグリッド上のシンプルな面グラフ付き折れ線プロット" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb71">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># manually specifying the colors</span></span>
+<code class="sourceCode R"><span><span class="co"># 色を手動で指定</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">mean_exp_by_time_sex</span>,</span>
 <span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_color_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Gender"</span>,  labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>,</span>
+<span>  <span class="fu">scale_color_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"性別"</span>,  labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>,</span>
 <span>                     values <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"royalblue"</span>, <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-unnamed-chunk-16-4.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/40-visualization-rendered-unnamed-chunk-19-1.png" alt="手動で設定した色と名称変更された色ラベルを使用したtheme_bw()と空白のグリッド上のシンプルな面グラフ付き折れ線プロット" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="プロットの構成">プロットの構成<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E6%A7%8B%E6%88%90"></a></h2>
-<hr class="half-width"><p>ファセッティングは、1つのプロットを複数のサブプロットに分割するのに最適なツールです。
-しかし、 複数の独立したプロット、すなわち異なる
-変数、あるいは異なるデータフレームに基づくプロットを含む1つの図を作成したい場合があります。</p>
-<p>、まず2つのプロットを作成する：</p>
-<p>最初のグラフは、染色体ごとにユニークな遺伝子の数を数えている。
-、まず<code>chromosome_name</code>のレベルを並べ替え、
-、染色体ごとにユニークな遺伝子をフィルタリングする必要がある。
-また、読みやすくするために、Y軸のスケールを
-log10スケールに変更した。</p>
-<div class="codewrapper sourceCode" id="cb70">
+</section><section><h2 class="section-heading" id="複数プロットの配置方法">複数プロットの配置方法<a class="anchor" aria-label="anchor" href="#%E8%A4%87%E6%95%B0%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"></a></h2>
+<hr class="half-width"><p>ファセット機能は1つのプロットを複数のサブプロットに分割する強力なツールですが、時には異なる変数やデータフレームに基づく独立した複数のプロットを1つの図にまとめたい場合もあります。</p>
+<p>まず、横に並べて表示したい2つのプロットを作成しましょう：</p>
+<p>最初のグラフは各染色体ごとのユニークな遺伝子数をカウントしたものです。まず<code>chromosome_name</code>のレベル順序を並べ替え、各染色体ごとのユニークな遺伝子をフィルタリングします。また、読みやすさを向上させるため、y軸のスケールを対数10スケールに変更します。</p>
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rna</span><span class="op">$</span><span class="va">chromosome_name</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">rna</span><span class="op">$</span><span class="va">chromosome_name</span>,</span>
 <span>                               levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">19</span>,<span class="st">"X"</span>,<span class="st">"Y"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">count_gene_chromosome</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">chromosome_name</span>, <span class="va">gene</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">count_gene_chromosome</span> <span class="op">&lt;-</span> <span class="va">rna</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">chromosome_name</span>, <span class="va">gene</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">chromosome_name</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"seagreen"</span>,</span>
 <span>           position <span class="op">=</span> <span class="st">"dodge"</span>, stat <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10(n genes)"</span>, x <span class="op">=</span> <span class="st">"chromosome"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10(遺伝子数)"</span>, x <span class="op">=</span> <span class="st">"染色体"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_y_log10</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">count_gene_chromosome</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-sub1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>以下では、 <code>legend.position</code> を <code>"none"</code>
-に設定することで、凡例を完全に削除することもできる。</p>
-<div class="codewrapper sourceCode" id="cb71">
+<figure><img src="fig/40-visualization-rendered-sub1-1.png" alt="染色体ごとの遺伝子数を対数10スケールで表示したシンプルなヒストグラム（棒グラフ）" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>次に、<code>legend.position</code>を<code>"none"</code>に設定することで、凡例を完全に非表示にします。</p>
+<div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_boxplot_sex</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">rna</span>, <span class="fu">aes</span><span class="op">(</span>y<span class="op">=</span><span class="va">expression_log</span>, x <span class="op">=</span> <span class="fu">as.factor</span><span class="op">(</span><span class="va">time</span><span class="op">)</span>,</span>
 <span>                 color<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Mean gene exp"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"平均遺伝子発現値"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"時間"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">exp_boxplot_sex</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-sub2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>patchwork**](<a href="https://github.com/thomasp85/patchwork)%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8" class="external-link uri">https://github.com/thomasp85/patchwork)パッケージ</a>
-は、<code>+</code>
-を使って図形を組み合わせるエレガントなアプローチを提供し、
-図形を（通常は横に並べて）並べます。 より具体的には、<code>|</code>
-は明示的に横に並べ、<code>/</code>は 上に重ねる。</p>
-<div class="codewrapper sourceCode" id="cb72">
+<figure><img src="fig/40-visualization-rendered-sub2-1.png" alt="異なる時間ポイントにおける雌雄別の発現値を示す、透明度を持たせた赤と青の箱ひげ図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><a href="https://github.com/thomasp85/patchwork" class="external-link"><strong>patchwork</strong></a>パッケージは、<code>+</code>演算子を使用して図を整然と配置する洗練された方法を提供します。具体的には、<code>|</code>演算子で図を左右に並べ、<code>/</code>演算子で上下に重ねることが可能です。</p>
+<div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"patchwork"</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb73">
+<div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="st">"patchwork"</span><span class="op">)</span></span>
 <span><span class="va">count_gene_chromosome</span> <span class="op">+</span> <span class="va">exp_boxplot_sex</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-patchworkplot1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb74">
+<figure><img src="fig/40-visualization-rendered-patchworkplot1-1.png" alt="左側にヒストグラム、右側に箱ひげ図を配置した合成図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## or count_gene_chromosome | exp_boxplot_sex</span></span></code></pre>
+<code class="sourceCode R"><span><span class="co">## または count_gene_chromosome | exp_boxplot_sex と記述することも可能</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb75">
+<div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">count_gene_chromosome</span> <span class="op">/</span> <span class="va">exp_boxplot_sex</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-patchwork2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>plot_layout</code>
-と組み合わせることで、最終的なコンポジションのレイアウトをさらにコントロールし、より複雑なレイアウトを作成することができる：</p>
-<div class="codewrapper sourceCode" id="cb76">
+<figure><img src="fig/40-visualization-rendered-patchwork2-1.png" alt="上部にヒストグラム、下部に箱ひげ図を配置した合成図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>plot_layout</code>関数を使えば、さらに詳細なレイアウト制御が可能で、より複雑な配置も実現できます：</p>
+<div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">count_gene_chromosome</span> <span class="op">+</span> <span class="va">exp_boxplot_sex</span> <span class="op">+</span> <span class="fu">plot_layout</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-patchwork3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb77">
+<figure><img src="fig/40-visualization-rendered-patchwork3-1.png" alt="上部にヒストグラム、下部に箱ひげ図を配置した合成図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb79">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1550,9 +1441,8 @@ log10スケールに変更した。</p>
 <span> <span class="va">exp_boxplot_sex</span> <span class="op">+</span></span>
 <span> <span class="fu">plot_layout</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-patchwork4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>最後のプロットは <code>|</code> と <code>/</code>
-のコンポーザーを使っても作成できる：</p>
-<div class="codewrapper sourceCode" id="cb78">
+<figure><img src="fig/40-visualization-rendered-patchwork4-1.png" alt="上部にヒストグラム、中央にヒストグラムと箱ひげ図の組み合わせ、左右に並べて表示、下部に箱ひげ図を配置した4プロット構成の図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>最後のプロット構成は、<code>|</code>と<code>/</code>の配置演算子を使っても作成できます：</p>
+<div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1560,39 +1450,27 @@ log10スケールに変更した。</p>
 <span> <span class="op">(</span><span class="va">count_gene_chromosome</span> <span class="op">|</span> <span class="va">exp_boxplot_sex</span><span class="op">)</span> <span class="op">/</span></span>
 <span> <span class="va">exp_boxplot_sex</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-patchwork5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>パッチワークの詳細については、 <a href="https://patchwork.data-imaginist.com/" class="external-link">ウェブページ</a>、またはこちらの
-<a href="https://www.youtube.com/watch?v=0m4yywqNPVY" class="external-link">ビデオ</a>をご覧ください。</p>
-<p>もう一つのオプションは
-**gridExtra<code>** パッケージで、 の別々の ggplot を</code>grid.arrange()`
-を使って一つの図にまとめることができます：</p>
-<div class="codewrapper sourceCode" id="cb79">
+<figure><img src="fig/40-visualization-rendered-patchwork5-1.png" alt="上記と同様、上部にヒストグラム、中央にヒストグラムと箱ひげ図の組み合わせ、左右に並べて表示、下部に箱ひげ図を配置した4プロット構成の図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>patchwork</code>についてさらに詳しく知りたい場合は、<a href="https://patchwork.data-imaginist.com/" class="external-link">公式ウェブサイト</a>や<a href="https://www.youtube.com/watch?v=0m4yywqNPVY" class="external-link">この解説動画</a>をご覧ください。</p>
+<p>別の選択肢として、<strong><code>gridExtra</code></strong>パッケージを使用する方法もあります。このパッケージでは<code>grid.arrange()</code>関数を使って個別のggplotプロットを1つの図に統合できます：</p>
+<div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"gridExtra"</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb80">
+<div class="codewrapper sourceCode" id="cb82">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="st">"gridExtra"</span><span class="op">)</span></span>
 <span><span class="fu">grid.arrange</span><span class="op">(</span><span class="va">count_gene_chromosome</span>, <span class="va">exp_boxplot_sex</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/40-visualization-rendered-gridarrange-example-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>引数 <code>ncol</code> と <code>nrow</code> は単純な
-の配置を作るのに使われるが、それに加えて、より複雑な のレイアウトを作る
-ためのツールもある。</p>
-</section><section><h2 class="section-heading" id="プロットのエクスポート">プロットのエクスポート<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88"></a></h2>
-<hr class="half-width"><p>プロットを作成したら、お好きな 形式でファイルに保存できます。
-RStudioの<strong>Plot</strong>ペインのExportタブでは、
-のプロットが低解像度で保存されます。これは多くのジャーナルでは受け入れられませんし、
-ではポスター用にうまく拡大縮小できません。</p>
-<p>代わりに <code>ggsave()</code> 関数を使います。この関数を使うと、
-の適切な引数（<code>width</code>, <code>height</code>,
-<code>dpi</code>）を調整することで、プロットの
-次元と解像度を簡単に変更することができます。</p>
-<p>作業ディレクトリに <code>fig_output/</code>
-フォルダがあることを確認してください。</p>
-<div class="codewrapper sourceCode" id="cb81">
+<figure><img src="fig/40-visualization-rendered-gridarrange-example-1.png" alt="左側にヒストグラム、右側に箱ひげ図を配置した合成図" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p><code>ncol</code>と<code>nrow</code>引数を使った基本的な配置に加え、<a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html" class="external-link">より複雑なレイアウト構成</a>を実現するツールも用意されています。</p>
+</section><section><h2 class="section-heading" id="プロットのエクスポート方法">プロットのエクスポート方法<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95"></a></h2>
+<hr class="half-width"><p>プロットの作成が完了したら、お好みの形式でファイルに保存できます。RStudioの「プロット」ペインにある「エクスポート」タブを使用すると、低解像度でプロットを保存できますが、多くの学術誌では受理されず、ポスター用の拡大表示にも適さない場合があります。</p>
+<p>代わりに、<code>ggsave()</code>関数を使用することをお勧めします。この関数では、適切な引数（<code>width</code>、<code>height</code>、<code>dpi</code>）を調整することで、プロットの寸法と解像度を簡単に変更できます。</p>
+<p>作業ディレクトリに<code>fig_output/</code>フォルダが作成されていることを確認してください。</p>
+<div class="codewrapper sourceCode" id="cb83">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1600,10 +1478,10 @@ RStudioの<strong>Plot</strong>ペインのExportタブでは、
 <span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span>, y <span class="op">=</span> <span class="va">mean_exp</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">gene</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Mean gene expression by duration of the infection"</span>,</span>
-<span>         x <span class="op">=</span> <span class="st">"Duration of the infection (in days)"</span>,</span>
-<span>         y <span class="op">=</span> <span class="st">"Mean gene expression"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">guides</span><span class="op">(</span>color<span class="op">=</span><span class="fu">guide_legend</span><span class="op">(</span>title<span class="op">=</span><span class="st">"Gender"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"感染期間別の平均遺伝子発現量"</span>,</span>
+<span>         x <span class="op">=</span> <span class="st">"感染期間（日数）"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"平均遺伝子発現量"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">guides</span><span class="op">(</span>color<span class="op">=</span><span class="fu">guide_legend</span><span class="op">(</span>title<span class="op">=</span><span class="st">"性別"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
 <span>        axis.text.y <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"royalblue4"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
@@ -1613,74 +1491,55 @@ RStudioの<strong>Plot</strong>ペインのExportタブでは、
 <span><span class="fu">ggsave</span><span class="op">(</span><span class="st">"fig_output/mean_exp_by_time_sex.png"</span>, <span class="va">my_plot</span>, width <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>       height <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># This also works for grid.arrange() plots</span></span>
+<span><span class="co"># grid.arrange()で作成したプロットも同様に保存可能です</span></span>
 <span><span class="va">combo_plot</span> <span class="op">&lt;-</span> <span class="fu">grid.arrange</span><span class="op">(</span><span class="va">count_gene_chromosome</span>, <span class="va">exp_boxplot_sex</span>,</span>
 <span>                           ncol <span class="op">=</span> <span class="fl">2</span>, widths <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">ggsave</span><span class="op">(</span><span class="st">"fig_output/combo_plot_chromosome_sex.png"</span>, <span class="va">combo_plot</span>,</span>
 <span>       width <span class="op">=</span> <span class="fl">10</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre>
 </div>
-<p>注意: パラメータ <code>width</code> と <code>height</code>
-は、保存されたプロットのフォントサイズ も決定します。</p>
-</section><section><h2 class="section-heading" id="その他のビジュアライゼーション用パッケージ">その他のビジュアライゼーション用パッケージ<a class="anchor" aria-label="anchor" href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%A8%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"></a></h2>
-<hr class="half-width"><p>ggplot2`は非常に強力なパッケージで、我々の_tidy data_と_tidy
-tools_パイプラインにうまくフィットする。
-Rには他にも無視できない可視化パッケージ がある。</p>
+<p>注意：<code>width</code>と<code>height</code>のパラメータは、保存されるプロットのフォントサイズも決定します。</p>
+</section><section><h2 class="section-heading" id="可視化のためのその他のパッケージ">可視化のためのその他のパッケージ<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"></a></h2>
+<hr class="half-width"><p><code>ggplot2</code>は非常に強力なパッケージであり、私たちの「クリーンなデータ」と「クリーンなツール」のワークフローに非常によく適合します。Rには他に無視できない可視化パッケージも存在します。</p>
 <div class="section level3">
-<h3 id="ベースグラフィック">ベースグラフィック<a class="anchor" aria-label="anchor" href="#%E3%83%99%E3%83%BC%E3%82%B9%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF"></a></h3>
-<p>Rに付属するデフォルトのグラフィックス・システムは、しばしば_ベースR
-グラフィックス_と呼ばれ、シンプルで高速である。
-これは_画家またはキャンバスの
-モデル_に基づいており、異なる出力がそれぞれ 互いに直接重ね合わされる（<a href="mailto:%E5%9B%B3@ref" class="email">図@ref</a>(fig:paintermodel)を参照）。
-これは<code>ggplot2</code>（および後述する<code>lattice</code>）との基本的な
-の違いである。
-は専用のオブジェクトを返し、それは画面上またはファイル上にレンダリングされ、
-は更新することさえできる。</p>
-<div class="codewrapper sourceCode" id="cb82">
+<h3 id="基本グラフィックス">基本グラフィックス<a class="anchor" aria-label="anchor" href="#%E5%9F%BA%E6%9C%AC%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9"></a></h3>
+<p>Rに標準で付属しているグラフィックスシステム、いわゆる「基本Rグラフィックス」はシンプルで高速です。これは「画家モデル」または「キャンバスモデル」に基づいており、異なる出力が直接重ね合わされます（<a href="mailto:%E5%9B%B3@ref" class="email">図@ref</a>(fig:paintermodel)参照）。これは<code>ggplot2</code>（および後述する<code>lattice</code>）とは根本的な違いがあり、<code>ggplot2</code>は画面やファイルにレンダリングされる専用オブジェクトを返すため、さらに更新することも可能です。</p>
+<div class="codewrapper sourceCode" id="cb84">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">par</span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"First layer, produced with plot(1:20)"</span><span class="op">)</span></span>
+<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"最初のレイヤー（plot(1:20)で作成）"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"A horizontal red line, added with abline(h = 10)"</span><span class="op">)</span></span>
+<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"h = 10で追加した水平赤色線"</span><span class="op">)</span></span>
 <span><span class="fu">abline</span><span class="op">(</span>h <span class="op">=</span> <span class="fl">10</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"A rectangle, added with rect(5, 5, 15, 15)"</span><span class="op">)</span></span>
+<span><span class="fu">plot</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, main <span class="op">=</span> <span class="st">"rect(5, 5, 15, 15)で追加した長方形"</span><span class="op">)</span></span>
 <span><span class="fu">abline</span><span class="op">(</span>h <span class="op">=</span> <span class="fl">10</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu">rect</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">15</span>, <span class="fl">15</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre>
 </div>
-<figure style="text-align: center"><img src="fig/40-visualization-rendered-paintermodel-1.png" alt="Successive layers added on top of each other." class="figure mx-auto d-block"><figcaption>
-Successive layers added on top of each other.
-</figcaption></figure><p>もうひとつの主な違いは、ベース・グラフィックスのプロット関数は、入力タイプに基づいて、
-、_正しい_ことをしようとする。 これは、
-データフレームしか入力として受け付けない<code>ggplot2</code>で、プロットをビットごとに構築する必要があるのとは、
-異なる。</p>
-<div class="codewrapper sourceCode" id="cb83">
+<figure style="text-align: center"><img src="fig/40-visualization-rendered-paintermodel-1.png" alt="左から右へ、対角線上に20個の空の点、その上に垂直な赤色の線、さらにその上にプロット中央の長方形を重ねた「基本」グラフィックスの比較図" class="figure mx-auto d-block"><figcaption>
+順次重ね合わされるレイヤー
+</figcaption></figure><p>もう一つの重要な違いは、基本グラフィックスのプロット関数が入力データの種類に基づいて「適切な」処理を試みる点です。つまり、入力データのクラスに応じて動作を適応させます。これは<code>ggplot2</code>とは大きく異なり、<code>ggplot2</code>はデータフレームのみを入力として受け付け、プロットを段階的に構築していく必要があります。</p>
+<div class="codewrapper sourceCode" id="cb85">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">par</span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">boxplot</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,</span>
-<span>        main <span class="op">=</span> <span class="st">"rnorm(100) の Boxplot"</span><span class="op">)</span></span>
+<span>        main <span class="op">=</span> <span class="st">"rnorm(100)のボックスプロット"</span><span class="op">)</span></span>
 <span><span class="fu">boxplot</span><span class="op">(</span><span class="fu">matrix</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
-<span>        main <span class="op">=</span> <span class="st">"matrix(rnorm(100), ncol = 10) の Boxplot"</span><span class="op">)</span></span>
+<span>        main <span class="op">=</span> <span class="st">"matrix(rnorm(100), ncol = 10)のボックスプロット"</span><span class="op">)</span></span>
 <span><span class="fu">hist</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">hist</span><span class="op">(</span><span class="fu">matrix</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure style="text-align: center"><img src="fig/40-visualization-rendered-plotmethod-1.png" alt="Plotting boxplots (top) and histograms (bottom) vectors (left) or a matrices (right)." class="figure mx-auto d-block"><figcaption>
-Plotting boxplots (top) and histograms (bottom) vectors (left) or a
-matrices (right).
-</figcaption></figure><p>、<code>plot</code>、<code>hist</code>、
-<code>boxplot</code>、…のような1行のコードと1つの関数で非常に素早く作成できる。
-しかし、デフォルトは必ずしも最も魅力的なものではありません。
-、図形のチューニングは、特に複雑になると（例えばファセットを生成するために
-）、時間がかかり面倒になります。</p>
+<figure style="text-align: center"><img src="fig/40-visualization-rendered-plotmethod-1.png" alt="上部に2つのボックスプロット、下部に2つのヒストグラムを配置した2×2の構成図" class="figure mx-auto d-block"><figcaption>
+ボックスプロット（上）とヒストグラム（下）をベクトルデータ（左）または行列データ（右）で作成する例
+</figcaption></figure><p>基本グラフィックスのデフォルト設定は、シンプルで標準的な図を素早く作成する場合に非常に効率的です。<code>plot</code>、<code>hist</code>、<code>boxplot</code>などの単一の関数と1行のコードで迅速に生成できます。ただし、デフォルト設定が常に最も見栄えが良いとは限らず、特に複雑な図（例えばファセット表示を作成する場合など）では、調整に時間がかかり煩雑になることがあります。</p>
 </div>
 <div class="section level3">
-<h3 id="格子パッケージ">格子パッケージ<a class="anchor" aria-label="anchor" href="#%E6%A0%BC%E5%AD%90%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"></a></h3>
-<p>lattice<code>** パッケージは</code>ggplot2<code>と似ているが、 データフレームを入力として使い、グラフィカルオブジェクトを返し、ファセットをサポートする。 しかし、</code>lattice`はグラフィックの文法に基づいておらず、
-より複雑なインターフェイスを持っている。</p>
-<p>lattice`<a href="mailto:%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E8%89%AF%E3%81%84%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9%E3%81%AF@latticebook%E3%81%A0" class="email">パッケージの良いリファレンスは@latticebookだ</a>。</p>
+<h3 id="latticeパッケージ">latticeパッケージ<a class="anchor" aria-label="anchor" href="#lattice%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"></a></h3>
+<p><strong><code>lattice</code></strong>パッケージは、入力としてデータフレームを使用し、グラフィックオブジェクトを返し、ファセット表示をサポートする点で<code>ggplot2</code>と類似しています。ただし、<code>lattice</code>はグラフィックス文法に基づいておらず、インターフェースがより複雑です。</p>
+<p><code>lattice</code>パッケージに関する優れたリファレンスとして、<span class="citation">@latticebookを参照してください</span>。</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1694,7 +1553,7 @@ matrices (right).
 </div>
 </div>
 </section><div class="footnotes footnotes-end-of-document">
-<hr><ol><li id="fn1"><p>出典<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link">データ可視化チートシート</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<hr><ol><li id="fn1"><p>出典：<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf" class="external-link">データ可視化チートシート</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol></div>
 
 
@@ -1757,7 +1616,7 @@ matrices (right).
   "url": "https://carpentries-incubator.github.io/bioc-intro/40-visualization.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/40-visualization.html",
   "dateCreated": "2020-09-14",
-  "dateModified": "2025-07-01",
+  "dateModified": "2025-08-05",
   "datePublished": "2025-08-05"
 }
 
