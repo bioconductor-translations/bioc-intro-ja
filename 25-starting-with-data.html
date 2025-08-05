@@ -238,7 +238,7 @@
 <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A4%9C%E6%9F%BB">データフレームオブジェクトの検査</a></li>
 <li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%81%AE%E7%B4%A2%E5%BC%95%E4%BB%98%E3%81%91%E3%81%A8%E9%83%A8%E5%88%86%E6%8A%BD%E5%87%BA">データフレームの索引付けと部分抽出</a></li>
 <li><a href="#factors">Factors</a></li>
-<li><a href="#%E3%83%9E%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9">マトリックス</a></li>
+<li><a href="#%E8%A1%8C%E5%88%97">行列</a></li>
 <li><a href="#%E6%97%A5%E4%BB%98%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E5%87%A6%E7%90%86">日付のフォーマット処理</a></li>
 <li><a href="#r%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%A6%82%E8%A6%81">Rオブジェクトの概要</a></li>
 <li><a href="#%E3%83%AA%E3%82%B9%E3%83%88">リスト</a></li>
@@ -589,7 +589,7 @@ in R for Ecologists_レッスンに基づいています。</p>
   解法
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul><li>class: データフレーム</li>
 <li>行数: 32428、列数: 19</li>
@@ -682,7 +682,7 @@ in R for Ecologists_レッスンに基づいています。</p>
   解答
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -871,7 +871,7 @@ Levels: M F</code></pre>
   解答
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -894,22 +894,26 @@ Levels: M F</code></pre>
 </div>
 </div>
 </div>
-<div id="チャレンジだ" class="callout challenge">
+<div id="課題-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題-3" class="callout-inner">
+<h3 class="callout-title">課題：</h3>
 <div class="callout-content">
-<p>read.csv()<code>を使ってデータフレームを作成する方法を見てきましたが、</code>data.frame()<code>関数を使って手作業で作成することもできます。 この手作りの</code>data.frame`にはいくつか間違いがある。
-、それを見つけて修正することはできますか？
-実験することをためらってはいけない！</p>
+<p><code>read.csv()</code>
+関数を使用した場合のデータフレームの作成方法は理解できたと思いますが、
+<code>data.frame()</code>
+関数を使えば手動でデータフレームを作成することも可能です。
+以下の手動で作成された <code>data.frame</code>
+にはいくつかの誤りが含まれています。これらの誤りを見つけて修正できますか？
+遠慮せずに試行錯誤してみてください！</p>
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>animal_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>       <span class="at">animal =</span> <span class="fu">c</span>(dog, cat, sea cucumber, sea nurchin),</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>       <span class="at">animal =</span> <span class="fu">c</span>(dog, cat, sea cucumber, sea urchin),</span>
 <span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>       <span class="at">feel =</span> <span class="fu">c</span>(<span class="st">"furry"</span>, <span class="st">"squishy"</span>, <span class="st">"spiny"</span>),</span>
 <span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>       <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">8</span> <span class="fl">1.1</span>, <span class="fl">0.8</span>))</span></code></pre>
 </div>
@@ -920,44 +924,46 @@ Levels: M F</code></pre>
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">
-  ソリューション
+  解決策
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<ul><li>動物の名前の周りに引用符がない</li>
-<li>“feel”欄に1つ記入がない（おそらく毛皮の動物の1つ）。</li>
-<li>体重欄のコンマが1つ足りない</li>
+<ul><li>動物の名称の前後に引用符が欠落している箇所がある</li>
+<li>「感触」欄の1つのエントリーが欠落している（おそらく毛皮を持つ動物の1つに関するもの）</li>
+<li>重量欄のカンマが1つ欠落している箇所がある</li>
 </ul></div>
 </div>
 </div>
 </div>
-<div id="チャレンジだ-1" class="callout challenge">
+<div id="課題-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-1" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題-4" class="callout-inner">
+<h3 class="callout-title">課題：</h3>
 <div class="callout-content">
-<p>次の の例で、各列のクラスを予測できますか？</p>
-<p>str(country_climate)`を使って推測をチェックする：</p>
-<ul><li><p>期待通りですか？ なぜですか？ なぜだ？</p></li>
-<li><p>データフレームを作成する際に、最後の 変数の後に
+<p>以下の例において、各列のデータ型を予測できますか？</p>
+<p><code>str(country_climate)</code>
+コマンドを使用して予測結果を確認してください。</p>
+<ul><li><p>予測結果は予想通りでしたか？その理由は？予想と違った場合、その理由は？</p></li>
+<li><p>データフレーム作成時に最後の変数の後に
 <code>stringsAsFactors = TRUE</code>
-を追加してもう一度試してみてください。 今、何が起きているのか？
-stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベースの
-のスプレッドシートをRに読み込むときにも設定できる。</p></li>
+を追加してみてください。現在どのような現象が起こっていますか？<code>stringsAsFactors</code>
+は、<code>read.csv()</code>
+関数を使用してテキストベースのスプレッドシートをRに読み込む際にも設定可能です。</p></li>
 </ul><div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>country_climate <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>       <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Canada"</span>, <span class="st">"Panama"</span>, <span class="st">"South Africa"</span>, <span class="st">"Australia"</span>),</span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>       <span class="at">climate =</span> <span class="fu">c</span>(<span class="st">"cold"</span>, <span class="st">"hot"</span>, <span class="st">"temperate"</span>, <span class="st">"hot/temperate"</span>)、</span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>       <span class="at">temperature =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">18</span>, <span class="st">"15"</span>),</span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>       <span class="at">northern_hemisphere =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="st">"FALSE"</span>),</span>
-<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a>       <span class="at">has_kangaroo =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="dv">1</span>)</span>
-<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a>)</span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">country_climate</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
+<span>       country <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"カナダ"</span>, <span class="st">"パナマ"</span>, <span class="st">"南アフリカ"</span>, <span class="st">"オーストラリア"</span><span class="op">)</span>,</span>
+<span>       climate <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"寒冷"</span>, <span class="st">"温暖"</span>, <span class="st">"温帯"</span>, <span class="st">"温暖/温帯"</span><span class="op">)</span>,</span>
+<span>       temperature <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">18</span>, <span class="st">"15"</span><span class="op">)</span>,</span>
+<span>       northern_hemisphere <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="st">"FALSE"</span><span class="op">)</span>,</span>
+<span>       has_kangaroo <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>       <span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -966,18 +972,18 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">
-  ソリューション
+  解答
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">country_climate</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
-<span>       country <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"Panama"</span>, <span class="st">"South Africa"</span>, <span class="st">"Australia"</span><span class="op">)</span>,</span>
-<span>       climate <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"cold"</span>, <span class="st">"hot"</span>, <span class="st">"temperate"</span>, <span class="st">"hot/temperate"</span><span class="op">)</span>,</span>
+<span>       country <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"カナダ"</span>, <span class="st">"パナマ"</span>, <span class="st">"南アフリカ"</span>, <span class="st">"オーストラリア"</span><span class="op">)</span>,</span>
+<span>       climate <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"寒冷"</span>, <span class="st">"温暖"</span>, <span class="st">"温帯"</span>, <span class="st">"温暖/温帯"</span><span class="op">)</span>,</span>
 <span>       temperature <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">18</span>, <span class="st">"15"</span><span class="op">)</span>,</span>
 <span>       northern_hemisphere <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="st">"FALSE"</span><span class="op">)</span>,</span>
 <span>       has_kangaroo <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -988,8 +994,8 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>'data.frame':	4 obs. of  5 variables:
- $ country            : chr  "Canada" "Panama" "South Africa" "Australia"
- $ climate            : chr  "cold" "hot" "temperate" "hot/temperate"
+ $ country            : chr  "カナダ" "パナマ" "南アフリカ" "オーストラリア"
+ $ climate            : chr  "寒冷" "温暖" "温帯" "温暖/温帯"
  $ temperature        : chr  "10" "30" "18" "15"
  $ northern_hemisphere: chr  "TRUE" "TRUE" "FALSE" "FALSE"
  $ has_kangaroo       : num  0 0 0 1</code></pre>
@@ -998,24 +1004,12 @@ stringsAsFactors<code>は、</code>read.csv()`を使ってテキストベース�
 </div>
 </div>
 </div>
-<p>データ型の自動変換は、時に恵みであり、時に 迷惑である。
-その存在を認識し、ルールを学び、Rでインポートするデータ
-がデータフレーム内で正しい型であることを再確認すること。
-そうでない場合は、
-データ入力中に生じたかもしれないミス（例えば、数字しか入っていないはずの列に文字が入っている）を検出するために、
-を活用する。</p>
-<p>詳しくはRStudio チュートリアルをご覧ください。</p>
+<p>データ型の自動変換は、時には便利な機能ですが、時には厄介な問題を引き起こすこともあります。この機能が存在することを認識し、その規則を理解し、Rにインポートするデータがデータフレーム内で正しい型であることを必ず確認してください。もしそうでない場合は、データ入力時に生じた可能性のある誤り（例えば数値のみが含まれるべき列に文字データが含まれている場合など）を検出するためにこの機能を活用しましょう。</p>
+<p>詳細については、<a href="https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio" class="external-link">RStudioのチュートリアル</a>をご覧ください。</p>
 </div>
-</section><section><h2 class="section-heading" id="マトリックス">マトリックス<a class="anchor" aria-label="anchor" href="#%E3%83%9E%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9"></a></h2>
-<hr class="half-width"><p>先に進む前に、データ・フレームについて学んだので、
-パッケージのインストールを復習し、新しいデータ型、すなわち
-<code>matrix</code> について学んでみよう。
-data.frame<code>のように、行列は行と 列の2つの次元を持つ。 しかし大きな違いは、</code>行列<code>のすべてのセルは 同じ型でなければならないということである：numeric</code>、<code>character</code>、<code>logical</code>、…
-その点で、行列は <code>data.frame</code> よりも <code>vector</code>
-に近い。</p>
-<p>行列のデフォルトコンストラクタは <code>matrix</code> である。
-行列を構成するための の値のベクトルと、行および/または の列数<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>を取る。
-下の図（ ）のように、値は列に沿ってソートされる。</p>
+</section><section><h2 class="section-heading" id="行列">行列<a class="anchor" aria-label="anchor" href="#%E8%A1%8C%E5%88%97"></a></h2>
+<hr class="half-width"><p>データフレームについて学んだところで、次はパッケージのインストール方法を復習し、新しいデータ型である「行列」について学びましょう。行列はデータフレームと同様に2次元構造を持ち、行と列で構成されます。しかし決定的な違いは、行列のすべてのセルは同じ型でなければならないという点です：数値型、文字型、論理型など。この点において、行列はデータフレームよりもベクトルに近い性質を持っています。</p>
+<p>行列のデフォルトコンストラクタは「matrix」関数です。この関数は、行列を埋めるための値のベクトルと、行数および/または列数<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>を引数として取ります。値は以下のように列方向に並べられます。</p>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1031,16 +1025,18 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 [2,]    2    5    8
 [3,]    3    6    9</code></pre>
 </div>
-<div id="チャレンジだ-2" class="callout challenge">
+<div id="課題-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-2" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題-5" class="callout-inner">
+<h3 class="callout-title">課題:</h3>
 <div class="callout-content">
-<p>installed.packages()<code>という関数を使って、 あなたのコンピューターに現在インストールされているすべてのパッケージの情報を含む</code>文字`行列
-を作成します。 探検してみよう。</p>
+<p><code>installed.packages()</code>
+関数を使用して、現在コンピュータにインストールされているすべてのパッケージに関する情報を含む
+<code>character</code>
+型の行列を作成してください。作成した行列を調査・分析してください。</p>
 </div>
 </div>
 </div>
@@ -1048,43 +1044,43 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">
-  解決策
+  解答:
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">##</span></span>
+<code class="sourceCode R"><span><span class="co">## 行列の作成</span></span>
 <span><span class="va">ip</span> <span class="op">&lt;-</span> <span class="fu">installed.packages</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">head</span><span class="op">(</span><span class="va">ip</span><span class="op">)</span></span>
-<span><span class="co">## View(ip)</span></span>
-<span><span class="co">## パッケージの数</span></span>
+<span><span class="co">## View(ip) での表示もお試しください</span></span>
+<span><span class="co">## インストール済みパッケージの総数</span></span>
 <span><span class="fu">nrow</span><span class="op">(</span><span class="va">ip</span><span class="op">)</span></span>
-<span><span class="co">## インストールされている全てのパッケージの名前</span></span>
+<span><span class="co">## すべてのインストール済みパッケージ名</span></span>
 <span><span class="fu">rownames</span><span class="op">(</span><span class="va">ip</span><span class="op">)</span></span>
-<span><span class="co">## 各パッケージに関する情報の種類</span></span>
+<span><span class="co">## 各パッケージについて取得可能な情報の種類</span></span>
 <span><span class="fu">colnames</span><span class="op">(</span><span class="va">ip</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>テストデータとして、大規模なランダムデータ行列を作成することはしばしば有用である。
-以下の練習問題は、平均0、標準偏差 1の正規分布から無作為に
-データを抽出して、そのような行列を作成するものです。これは
-<code>rnorm()</code> 関数で行うことができます。</p>
-<div id="チャレンジだ-3" class="callout challenge">
+<p>テストデータとして、大規模なランダムデータ行列を作成することは有用であることが多い。以下の演習では、平均
+0、標準偏差 1
+の正規分布からランダムに生成されたデータを含むこのような行列を作成することが求められる。これは
+<code>rnorm()</code> 関数を使用して実行可能である。</p>
+<div id="課題-6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="チャレンジだ-3" class="callout-inner">
-<h3 class="callout-title">チャレンジだ：</h3>
+<div id="課題-6" class="callout-inner">
+<h3 class="callout-title">課題：</h3>
 <div class="callout-content">
-<p>正規分布データ （平均0、標準偏差1）の次元1000×3の行列を作る。</p>
+<p>平均0、標準偏差1の正規分布に従うデータからなる、1000行3列の行列を作成してください</p>
 </div>
 </div>
 </div>
@@ -1092,10 +1088,10 @@ data.frame<code>のように、行列は行と 列の2つの次元を持つ。 �
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">
-  ソリューション
+  解答
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1389,8 +1385,7 @@ Excel、OpenOffice、Gnumericなどの表計算ソフトでは、日付のエン
 </div>
 </div>
 </section><div class="footnotes footnotes-end-of-document">
-<hr><ol><li id="fn1"><p>行数か列数のどちらかだけで十分で、もう一方は値の長さから推測できる。
-値と行／列の数が合わない場合に何が起こるか試してみてください。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<hr><ol><li id="fn1"><p>行数か列数のいずれか一方を指定すれば十分で、もう一方は値の長さから自動的に計算されます。値の数と行数/列数が一致しない場合に何が起こるか、実際に試してみてください。<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol></div>
 
 
