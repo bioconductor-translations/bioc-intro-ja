@@ -796,65 +796,30 @@ ABO血液型とRh因子を一つのセルに記録する場合（例：A+、B+�
 </table>
 </div>
 <div class="section level3">
-<h3 id="データ-specialでの特殊文字の使用">データ {#special}での特殊文字の使用<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF-special%E3%81%A7%E3%81%AE%E7%89%B9%E6%AE%8A%E6%96%87%E5%AD%97%E3%81%AE%E4%BD%BF%E7%94%A8"></a>
+<h3 id="special">データファイルにおける特殊文字の使用<a class="anchor" aria-label="anchor" href="#special"></a>
 </h3>
-<p><strong>例</strong>: たとえば、Word または
-のアプリケーションからデータを直接コピーするなど、メモを書くときにスプレッドシート
-プログラムをワード プロセッサ として扱います。</p>
-<p><strong>解決策</strong>: これは一般的な戦略です。 たとえば、セルに
-の長いテキストを書き込む場合、スプレッドシートに改行、全角ダッシュ、
-などを含めることがよくあります。 また、Word など
-アプリケーションからデータをコピーする場合、書式設定や派手な 標準文字
-(左揃えと右揃えの引用符など) が含まれます。 このデータをコーディング/
-環境またはリレーショナル
-データベースにエクスポートすると、行が半分に切断されたり、エンコード
-エラーが発生したりする 、危険なことが発生する可能性があります。</p>
-<p>一般的なベスト プラクティスは、改行、
-タブ、垂直タブなどの文字の追加を避けることです。 言い換えれば、テキスト
-セルを、テキストとスペースのみを含めることができる単純な Web フォームで
-かのように扱います。</p>
+<p><strong>具体例</strong>:
+スプレッドシートプログラムをワープロソフトのように扱う場合
+例えば、Word文書などからデータを直接コピーしてメモを作成する際などに見られます。</p>
+<p><strong>解決策</strong>:
+これは一般的な手法です。例えば、セル内に長文を入力する場合、改行記号やエンダッシュなどの特殊文字を含めることがよくあります。また、Wordなどのアプリケーションからデータをコピーすると、書式設定や非標準の装飾文字（左右揃えの引用符など）も一緒にコピーされます。このようなデータをコーディング環境や統計処理システム、あるいはリレーショナルデータベースにエクスポートすると、行が途中で切断されたり、エンコーディングエラーが発生したりするなどの問題が生じる可能性があります。</p>
+<p>一般的なベストプラクティスとして、改行記号、タブ、垂直タブなどの特殊文字を追加することは避けるべきです。言い換えれば、テキストセルはテキストとスペースのみを含むシンプルなWebフォームと同様に扱うべきです。</p>
 </div>
 <div class="section level3">
-<h3 id="データテーブル-metadataへのメタデータの組み込み">データテーブル {#metadata}へのメタデータの組み込み<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB-metadata%E3%81%B8%E3%81%AE%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF"></a>
+<h3 id="metadata">データテーブルへのメタデータの包含<a class="anchor" aria-label="anchor" href="#metadata"></a>
 </h3>
-<p><strong>例</strong>: データ テーブル
-の上部または下部に、列の意味、単位、例外などを説明する凡例を追加します。</p>
-<p><strong>解決策</strong>: データに関するデータ (「メタデータ」)
-を記録することは ではありません。 データセットを
-して分析している間は、データセットと親密な関係にあるかもしれませんが、変数「sglmemgp」がグループの単一のメンバー
-(たとえば
-を意味すること、または以前に使用した正確なアルゴリズムを意味することをまだ覚えている可能性は
-ありません。変数 変換するか、派生変数を作成すると、数か月後、1
-年後、またはそれ以上かかります。</p>
-<p>また、他の人があなたのデータを調べたり、使用したりする理由はたくさんあります。あなたの発見を理解するため、
-を検証するため、
-提出された出版物をレビューするため、結果を再現するため、
-同様の研究を計画するため、さらには他の人がアクセスしたり
-利用できるようにデータをアーカイブします。 デジタルデータは定義上、
-可読ではありませんが、その意味を理解することは の仕事です。
-研究の収集段階および分析段階でデータを文書化することの重要性は、特に研究が
-記録の一部となる場合には 過大評価することはできません 。</p>
-<p>ただし、データファイル 自体にはメタデータを含めないでください。
-論文や補足ファイルの表とは異なり、メタデータ ( 形式) はデータ
-ファイルに含めるべきではありません。この情報はデータではなく、
-データを含めるとコンピューター プログラムがデータ ファイルを解釈する
-が混乱する可能性があるためです。 むしろ、メタデータは、データ
-ファイルと同じディレクトリに別のファイルとして保存する必要があります。できればファイルと明確に関連付けられる名前を付けてプレーン
-テキスト形式で保存する必要があります。 メタデータ ファイルはフリー
-テキスト形式であるため、コメント、単位、
-値のエンコード方法に関する情報などをエンコードすることも
-ます。これらの情報は文書化するには重要ですが、データ ファイルの
-設定を混乱させる可能性があります。</p>
-<p>さらに、ファイルまたはデータベース
-レベルのメタデータは、データセットを構成するファイルが相互に
-ように関連するかを記述します。どのような形式であるか。
-は、以前のファイルに優先されるか、または以前のファイルによって置き換えられるか。
-フォルダー レベルの readme.txt ファイルは、プロジェクト内のすべて
-ファイルとフォルダーを説明する古典的な方法です。</p>
-<p>(メタデータに関するテキストは、EDINA および 大学データ
-ライブラリによるオンライン コース Research Data <a href="https://datalib.edina.ac.uk/mantra" class="external-link">MANTRA</a>
-から改変されました。 MANTRA は クリエイティブ コモンズ 表示 4.0 国際
-ライセンス に基づいてライセンスされています。</p>
+<p><strong>具体例</strong>:
+データテーブルの上部または下部に、各列の意味や単位、例外事項などを説明した凡例を追加する場合</p>
+<p><strong>解決策</strong>:
+データに関するメタデータ（「メタデータ」）の記録は不可欠です。データ収集・分析作業中はデータセットと密接に関わっているため、その時点であれば「sglmemgp」という変数が「グループの単独メンバー」を意味することや、変数を変換したり派生変数を作成した際に使用した正確なアルゴリズムなどを覚えているかもしれません。しかし、数ヶ月後や数年後にこれらを正確に覚えている可能性は極めて低いでしょう。</p>
+<p>さらに、他の人々があなたのデータを調査・利用したいと考える理由は多岐にわたります
+-
+あなたの研究成果を理解するため、あなたの発見を検証するため、提出した論文を見直すため、あなたの結果を再現するため、類似研究を設計するため、あるいは単に他者がアクセス・再利用できるようにデータをアーカイブするためです。デジタルデータは定義上機械可読ですが、データの意味を理解するのは人間の役割です。研究の収集・分析段階でデータを文書化することの重要性は、特にその研究が学術記録の一部となる場合にはいくら強調してもしすぎることはありません。</p>
+<p>ただし、メタデータはデータファイル自体に含めるべきではありません。紙媒体の表や補足ファイルとは異なり、メタデータ（凡例の形式など）はデータファイル内に含めるべきではありません。なぜなら、この情報はデータそのものではなく、データファイルの解釈方法を乱す可能性があるからです。代わりに、メタデータはデータファイルと同じディレクトリに別ファイルとして保存し、できればプレーンテキスト形式で、データファイルと明確に関連付けられる名前を付けるべきです。メタデータファイルは自由テキスト形式であるため、データファイルのフォーマットを乱すことなく、コメントや単位、null値の符号化方法など、文書化が必要な重要な情報も記録できます。</p>
+<p>さらに、ファイルレベルまたはデータベースレベルのメタデータは、データセットを構成するファイル間の関係性、それらのファイル形式、および以前のファイルに取って代わるものか補完するものかといった情報を示します。プロジェクト内のすべてのファイルとフォルダを記録する古典的な方法として、フォルダレベルのreadme.txtファイルが用いられます。</p>
+<p>（メタデータに関する記述は、EDINAとエディンバラ大学データライブラリが提供するオンラインコース『Research
+Data』<a href="https://datalib.edina.ac.uk/mantra" class="external-link">MANTRA</a>の内容を改変したものです。MANTRAのライセンスは<a href="https://creativecommons.org/licenses/by/4.0/" class="external-link">Creative Commons
+表示 4.0 国際ライセンス</a>に準拠しています。）</p>
 </div>
 </section><section><h2 class="section-heading" id="データのエクスポート">データのエクスポート<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88"></a>
 </h2>
@@ -2326,7 +2291,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>R はそれらをすべて同じ型に暗黙的に変換します。</p>
 </div>
@@ -2363,7 +2328,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2476,7 +2441,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>ベクトルのデータ型は 1 つだけです。 R は、 が情報を失わないという
 <em>共通分母</em> を見つけるために、このベクトルの内容を に変換 (強制)
@@ -2513,7 +2478,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>唯一。
 過去のデータ型の記憶はなく、ベクトルが初めて評価されるときに強制
@@ -2556,7 +2521,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>論理 → 数値 → 文字 ← 論理</p>
 </div>
@@ -2792,7 +2757,7 @@ double)、整数、および論理型であることがわかりました。
   解決
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3006,7 +2971,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3110,7 +3075,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb133">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3206,7 +3171,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb143">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3381,7 +3346,7 @@ attr(,"class")
   解決
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
 <div class="accordion-body">
 <p>さまざまな順列</p>
 <div class="codewrapper sourceCode" id="cb163">
@@ -5344,7 +5309,7 @@ Macをお持ちの場合は<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Mで</kbd>パイ
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5470,7 +5435,7 @@ expressionが5より高い遺伝子のみを含んでいなければならない
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5737,7 +5702,7 @@ the `.groups` argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5942,7 +5907,7 @@ arrange()`を使って表を並べ替えることができる。
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6506,7 +6471,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb102">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6588,7 +6553,7 @@ rnaテーブルから始めて、<code>pivot_wider()</code>関数を使用して
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>まず、
 男性と女性のサンプルから、XとYの連鎖遺伝子の平均発現量を計算してみよう…</p>
@@ -6699,7 +6664,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>まず、遺伝子別、時間別の平均発現量を計算してみよう。</p>
 <div class="codewrapper sourceCode" id="cb115">
@@ -6921,7 +6886,7 @@ argument.</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>rna_time tibbleから開始する：</p>
 <div class="codewrapper sourceCode" id="cb131">
@@ -7222,7 +7187,7 @@ full_join()<code>関数を使用して、テーブル</code>rna_mini<code>と</c
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb148">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7477,7 +7442,7 @@ frame</strong>にプロットをバインドする。</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7555,7 +7520,7 @@ log2変換を適用することができる。 ここでは、
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7743,7 +7708,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7787,7 +7752,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7845,7 +7810,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>この2つのジオムの順番を入れ替えるべきだ：</p>
 <div class="codewrapper sourceCode" id="cb35">
@@ -7900,7 +7865,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7958,7 +7923,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7996,7 +7961,7 @@ ggplot2<code>は、ベクトルの異なる値に対応する異なる 。 以�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8210,7 +8175,7 @@ fold変化が最も大きかった10の遺伝子について、感染期間ご�
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8392,7 +8357,7 @@ ggplot 関数を探す)</li>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <p>例えば、このプロットに基づくと</p>
 <div class="codewrapper sourceCode" id="cb64">
@@ -9424,7 +9389,7 @@ function.-->
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9494,7 +9459,7 @@ Cyp2d22       1821       4019</code></pre>
   ソリューション
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9907,7 +9872,7 @@ DESeq2<code>パッケージの全解析は</code>SummarizedExperiment`
   "url": "https://carpentries-incubator.github.io/bioc-intro/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/instructor/aio.html",
   "dateCreated": "2020-09-14",
-  "dateModified": "2025-08-04",
+  "dateModified": "2025-08-05",
   "datePublished": "2025-08-04"
 }
 
