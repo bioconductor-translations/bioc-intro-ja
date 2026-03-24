@@ -387,13 +387,13 @@ attached base packages:
 loaded via a namespace (and not attached):
  [1] assertthat_0.2.1      R6_2.6.1              xfun_0.52            
  [4] magrittr_2.0.4        glue_1.8.0            knitr_1.50           
- [7] sandpaper_0.17.2.9000 lifecycle_1.0.4       xml2_1.4.1           
+ [7] sandpaper_0.20.1.9000 lifecycle_1.0.5       xml2_1.5.2           
 [10] ps_1.9.1              cli_3.6.5             processx_3.8.6       
-[13] callr_3.7.6           vctrs_0.6.5           renv_1.1.5           
-[16] withr_3.0.2           compiler_4.5.2        purrr_1.2.0          
+[13] callr_3.7.6           vctrs_0.7.2           renv_1.1.8           
+[16] withr_3.0.2           compiler_4.5.2        purrr_1.2.1          
 [19] tools_4.5.2           tinkr_0.3.0           evaluate_1.0.3       
 [22] yaml_2.3.10           BiocManager_1.30.25   pegboard_0.7.9       
-[25] rlang_1.1.6          
+[25] rlang_1.1.7          
 ```
 
 ### サポートを受けるには？
