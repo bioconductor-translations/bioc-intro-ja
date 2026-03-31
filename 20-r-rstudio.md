@@ -364,7 +364,7 @@ sessionInfo()
 ```
 
 ``` output
-R version 4.5.2 (2025-10-31)
+R version 4.5.3 (2026-03-11)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.5 LTS
 
@@ -389,9 +389,9 @@ loaded via a namespace (and not attached):
  [4] magrittr_2.0.4        glue_1.8.0            knitr_1.50           
  [7] sandpaper_0.20.1.9000 lifecycle_1.0.5       xml2_1.5.2           
 [10] ps_1.9.1              cli_3.6.5             processx_3.8.6       
-[13] callr_3.7.6           vctrs_0.7.2           renv_1.1.8           
-[16] withr_3.0.2           compiler_4.5.2        purrr_1.2.1          
-[19] tools_4.5.2           tinkr_0.3.0           evaluate_1.0.3       
+[13] callr_3.7.6           vctrs_0.7.2           renv_1.2.0           
+[16] withr_3.0.2           compiler_4.5.3        purrr_1.2.1          
+[19] tools_4.5.3           tinkr_0.3.0           evaluate_1.0.3       
 [22] yaml_2.3.10           BiocManager_1.30.25   pegboard_0.7.9       
 [25] rlang_1.1.7          
 ```
