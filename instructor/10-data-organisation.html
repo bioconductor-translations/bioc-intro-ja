@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav incubator" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav incubator" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 0%" class="percentage">
-    0%
-  </div>
-  <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress incubator">
+    <div class="progress-bar incubator" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">0%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -310,8 +306,8 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/20-r-rstudio.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/index.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/20-r-rstudio.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -324,7 +320,7 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>スプレッドシートを使用したデータ整理</h1>
         <p>Last updated on 2026-04-28 |
 
@@ -638,28 +634,28 @@ ABO血液型とRh因子を一つのセルに記録する場合（例：A+、B+�
 <p>説明的なフィールド名を使用することは重要ですが、スペース、数字、特殊文字を含めないように注意してください。スペースは区切り文字としてスペースを使用するパーサーによって誤解釈される可能性があり、一部のプログラムでは数字で始まるテキスト文字列のフィールド名を受け付けない場合があります。</p>
 <p>アンダースコア（<code>_</code>）はスペースの代わりとして有効です。読みやすさを向上させるため、キャメルケース表記（例：ExampleFileName）を使用することも検討してください。ただし、現時点で意味が通じる略語も、6ヶ月後には理解しづらくなる可能性があることに留意してください。一方で、名前が過度に長くなりすぎないようにすることも大切です。フィールド名に単位を含めることで、混乱を防ぎ、他者がデータの意味を容易に理解できるようになります。</p>
 <p><strong>具体例</strong></p>
-<table class="table"><thead><tr class="header"><th>適切な名前</th>
+<table class="table"><thead><tr><th>適切な名前</th>
 <th>代替案</th>
 <th>避けるべき例</th>
-</tr></thead><tbody><tr class="odd"><td>Max_temp_C</td>
+</tr></thead><tbody><tr><td>Max_temp_C</td>
 <td>MaxTemp</td>
 <td>Maximum Temp (°C)</td>
-</tr><tr class="even"><td>Precipitation_mm</td>
+</tr><tr><td>Precipitation_mm</td>
 <td>Precipitation</td>
 <td>precmm</td>
-</tr><tr class="odd"><td>Mean_year_growth</td>
+</tr><tr><td>Mean_year_growth</td>
 <td>MeanYearGrowth</td>
 <td>Mean growth/year</td>
-</tr><tr class="even"><td>sex</td>
+</tr><tr><td>sex</td>
 <td>sex</td>
 <td>M/F</td>
-</tr><tr class="odd"><td>weight</td>
+</tr><tr><td>weight</td>
 <td>weight</td>
 <td>w.</td>
-</tr><tr class="even"><td>cell_type</td>
+</tr><tr><td>cell_type</td>
 <td>CellType</td>
 <td>Cell Type</td>
-</tr><tr class="odd"><td>Observation_01</td>
+</tr><tr><td>Observation_01</td>
 <td>first_observation</td>
 <td>1st Obs</td>
 </tr></tbody></table></div>
@@ -807,7 +803,7 @@ BA,Baiomys,taylori,Rodent</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/main" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/main" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/main" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/main" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/main" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/main" class="external-link">varnish (1.1.1.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -830,7 +826,7 @@ BA,Baiomys,taylori,Rodent</code></pre>
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/instructor/10-data-organisation.html",
   "dateCreated": "2020-09-14",
   "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>

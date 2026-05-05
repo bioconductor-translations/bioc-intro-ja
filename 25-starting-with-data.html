@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav incubator" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav incubator" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
-    33%
-  </div>
-  <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" style="width: 33%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress incubator">
+    <div class="progress-bar incubator" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">33%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -315,8 +311,8 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="23-starting-with-r.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="30-dplyr.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="23-starting-with-r.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="30-dplyr.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -329,7 +325,7 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>データから始める</h1>
         <p>Last updated on 2026-04-28 |
 
@@ -380,29 +376,29 @@ in R for Ecologists_レッスンに基づいています。</p>
 <section><h2 class="section-heading" id="遺伝子発現データの説明">遺伝子発現データの説明<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E7%99%BA%E7%8F%BE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AC%E6%98%8E"></a></h2>
 <hr class="half-width"><p>本研究では、<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5544260/" class="external-link">Blackmoreら（2017）</a>が公表したデータの一部を使用します。論文タイトルは『上気道感染症が中枢神経系のトランスクリプトーム変化に及ぼす影響』です。この研究の目的は、上気道感染症が感染後の小脳および脊髄におけるRNA転写変化に及ぼす影響を明らかにすることでした。性別を一致させた8週齢のC57BL/6マウスを用い、生理食塩水またはインフルエンザA型ウイルスを経鼻投与し、感染0日目、4日目、および8日目における小脳および脊髄組織のトランスクリプトーム変化をRNA-seq法で評価しました。</p>
 <p>データセットはカンマ区切り値（CSV）ファイルとして保存されています。各行は単一のRNA発現測定値に関する情報を保持しており、最初の11列は以下の項目を表します：</p>
-<table class="table"><colgroup><col width="10%"><col width="89%"></colgroup><thead><tr class="header"><th>列名</th>
+<table class="table"><colgroup><col width="10%"><col width="89%"></colgroup><thead><tr><th>列名</th>
 <th>説明</th>
-</tr></thead><tbody><tr class="odd"><td>gene</td>
+</tr></thead><tbody><tr><td>gene</td>
 <td>測定対象とした遺伝子名</td>
-</tr><tr class="even"><td>sample</td>
+</tr><tr><td>sample</td>
 <td>遺伝子発現測定を実施したサンプル名</td>
-</tr><tr class="odd"><td>expression</td>
+</tr><tr><td>expression</td>
 <td>遺伝子発現値</td>
-</tr><tr class="even"><td>organism</td>
+</tr><tr><td>organism</td>
 <td>生物種/分類群 - 本データはすべてマウス由来です</td>
-</tr><tr class="odd"><td>age</td>
+</tr><tr><td>age</td>
 <td>マウスの年齢（すべてのマウスは8週齢）</td>
-</tr><tr class="even"><td>sex</td>
+</tr><tr><td>sex</td>
 <td>マウスの性別</td>
-</tr><tr class="odd"><td>infection</td>
+</tr><tr><td>infection</td>
 <td>マウスの感染状態 - インフルエンザA型に感染しているか否か</td>
-</tr><tr class="even"><td>strain</td>
+</tr><tr><td>strain</td>
 <td>インフルエンザA型の株</td>
-</tr><tr class="odd"><td>time</td>
+</tr><tr><td>time</td>
 <td>感染期間（日数）</td>
-</tr><tr class="even"><td>tissue</td>
+</tr><tr><td>tissue</td>
 <td>遺伝子発現実験に使用した組織 - 小脳または脊髄</td>
-</tr><tr class="odd"><td>mouse</td>
+</tr><tr><td>mouse</td>
 <td>マウスの一意識別子</td>
 </tr></tbody></table><p>遺伝子発現データを含むCSVファイルのダウンロードにはR関数<code>download.file()</code>を使用し、取得したCSVファイルの内容を<code>read.csv()</code>でメモリ上に<code>data.frame</code>クラスのオブジェクトとして読み込みます。<code>download.file()</code>コマンドの第1引数にはソースURLを指定する文字列を指定します。このURLはGitHubリポジトリからCSVファイルをダウンロードします。カンマの後に続くテキスト（<code>"data/rnaseq.csv"</code>）が、ローカルマシン上のファイル保存先パスとなります。事前に<code>"data"</code>という名前のフォルダを作成しておく必要があります。このコマンドはリモートファイルをダウンロードし、<code>"rnaseq.csv"</code>という名前を付けて既存の<code>"data"</code>フォルダに追加します。</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -1425,7 +1421,7 @@ Excel、OpenOffice、Gnumericなどの表計算ソフトでは、日付のエン
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/main" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/main" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/main" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/main" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/main" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/main" class="external-link">varnish (1.1.1.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1448,7 +1444,7 @@ Excel、OpenOffice、Gnumericなどの表計算ソフトでは、日付のエン
   "identifier": "https://carpentries-incubator.github.io/bioc-intro/25-starting-with-data.html",
   "dateCreated": "2020-09-14",
   "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
